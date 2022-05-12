@@ -1,0 +1,38 @@
+﻿:root {
+    --text-color:#482B01;
+    --primary-color: #FFDFC0;
+    --black-color: #292929;
+    --background-color: #FFFFFF;
+    --surface-color: #E7E0D6;
+}
+
+*{
+    box-sizing:inherit;
+}
+
+body{
+    padding:0;
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 2.4rem;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing:border-box;
+}
+
+.grid{
+    width: 1200px;
+    max-width: 100%;
+    margin:auto;
+}
+
+.grid__full-width{
+    width:100%
+}
+
+.grid__row{
+    display:flex;
+    flex-wrap:wrap;
+}
+
