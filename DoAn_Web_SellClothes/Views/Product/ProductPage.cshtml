@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "ProductPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" style="margin-left: 11.8rem"> @Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="breadcrumb-item active" aria-current="page"> @Html.ActionLink("Product", "ProductPage", "Product")</li>
+        </ol>
+    </nav>
+    <div class="bodypage">
+        <p class="name__page">Living room</p>
+
+        <div class="bodypage__product">
+
+            <div class="filter__list">
+                <div class="filter__item-firt">
+                    <p>Category</p>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger filter__item-firt">Men</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split filter__item-firt" data-toggle="dropdown" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Top</a>
+                        <a class="dropdown-item" href="#">Bottoms</a>
+                        <a class="dropdown-item" href="#">Accessories</a>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger filter__item-firt">Women</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split filter__item-firt" data-toggle="dropdown" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Top</a>
+                        <a class="dropdown-item" href="#">Bottoms</a>
+                        <a class="dropdown-item" href="#">Accessories</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product__list row row-cols-1 row-cols-md-3">
+                <div class="col mb-4">
+                    <div class="card">
+                        <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-title">Polo shirt</p>
+                            <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card">
+                        <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-title">Polo shirt</p>
+                            <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card">
+                        <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-title">Polo shirt</p>
+                            <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card">
+                        <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-title">Polo shirt</p>
+                            <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="product__list">
+            <ul>
+                <li>
+                    <div class="product">
+                        <div class="thumbnail">
+                            @Html.ActionLink("home", "Index", "Home");
+                            <span style="background-image: url(/Assets/img/productImage.png)"></span>
+                        </div>
+                        <div class="info">
+                            <p class="name__product"> Polo shirt</p>
+                            <p class="price__product">150.000<span class="currency-symbol">VND</span></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>*@
+        </div>
+    </div>
+</div>

@@ -17,9 +17,9 @@ namespace DoAn_Web_SellClothes.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index",controller = "Home" ,id = UrlParameter.Optional },
+                new { action = "Index", controller = "Home", id = UrlParameter.Optional },
                 namespaces: new[] { "DoAn_Web_SellClothes.Areas.Admin.Controllers"}
-            );
+            ) ;
         }
     }
 }

@@ -4,19 +4,60 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="home">
-    <div class="home__action">
-        <h1 class="home__title">
-            Welcome to Furny
-        </h1>
-        <p class="home__description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing<br />
-            elit. Consequat condimentum sit scelerisque eu morbi<br />
-            faucibus amet, viverra. Porta  mattis nunc.
-        </p>
-        <button class="home__button">
-            Shop now
-        </button>
+<div>
+    <div class="home">
+        <div class="home__action">
+            <h1 class="home__title">
+                Welcome to Furny
+            </h1>
+            <p class="home__description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing<br />
+                elit. Consequat condimentum sit scelerisque eu morbi<br />
+                faucibus amet, viverra. Porta  mattis nunc.
+            </p>
+            <button class="home__button">
+                @Html.ActionLink("Shop now", "ProductPage", "Product")
+            </button>
+        </div>
+    </div>
+    <div class="featured">
+        <p class="name__page" style="text-align:center"> Hightlight</p>
+        <div class="card-deck" style="margin:0 1.6rem; justify-content:space-evenly">
+            <div class="card">
+                <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title">Polo shirt</p>
+                    <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title">Polo shirt</p>
+                    <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title">Polo shirt</p>
+                    <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title">Polo shirt</p>
+                    <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title">Polo shirt</p>
+                    <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-

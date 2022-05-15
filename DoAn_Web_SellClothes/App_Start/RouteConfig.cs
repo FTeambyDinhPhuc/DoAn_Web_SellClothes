@@ -18,7 +18,7 @@ namespace DoAn_Web_SellClothes
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] {"DoAn_Web_SellClothes.Controllers"}
-            );
+            ) ;
         }
     }
 }

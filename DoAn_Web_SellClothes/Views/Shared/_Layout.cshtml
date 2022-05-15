@@ -15,30 +15,20 @@
     <div class="app">
         <header class="header-customer">
             <div class="logo">
-                Furny
+                @Html.ActionLink("Furny", "Index", "Home")
             </div>
 
             <ul class="navbar__list">
-                <li class="navbar__item ">
-                    <a href="#" class="navbar__item-link active">
-                        <span>Home</span>
-                    </a>
+                <li class="navbar__item navbar__item-link">
+                    @Html.ActionLink("Home", "Index", "Home")
                 </li>
 
-                <li class="navbar__item dropdown">
-                    <a href="#" class="navbar__item-link dropdown-toggle" id="dropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
-                       Product
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Male</a></li>
-                        <li><a class="dropdown-item" href="#">Female</a></li>
-                    </ul>
+                <li class="navbar__item navbar__item-link">
+                    @Html.ActionLink("Product", "ProductPage", "Product")
                 </li>
 
-                <li class="navbar__item">
-                    <a href="#" class="navbar__item-link">
-                        About
-                    </a>
+                <li class="navbar__item navbar__item-link">
+                    @Html.ActionLink("About", "Index", "Home")
                 </li>
             </ul>
 
