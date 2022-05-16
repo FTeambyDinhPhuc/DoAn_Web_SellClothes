@@ -8,8 +8,10 @@
     --surface-color: #E7E0D6;
 }
 
-*{
-    box-sizing:inherit;
+* {
+    box-sizing: inherit;
+    list-style: none;
+    user-select:none;
 }
 
 body{
@@ -20,7 +22,7 @@ html {
     font-size: 62.5%;
     line-height: 2.4rem;
     font-family: 'Open Sans', sans-serif;
-    box-sizing:border-box;
+    box-sizing: border-box;
 }
 
 .grid{

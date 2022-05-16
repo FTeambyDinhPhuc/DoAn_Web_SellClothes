@@ -31,7 +31,6 @@ a {
 .navbar__list {
     padding: 0px;
     margin: 0px;
-    list-style: none;
 }
 
 .navbar__item {
@@ -201,33 +200,76 @@ a {
 .bodypage__product {
     display: flex;
     height:80%;
-    
 }
 
-.filter__list {
-    display: flex;
+
+.sidebar {
     margin-right: 1.6rem;
     width: 28.4rem;
     height: 26.2rem;
     border: 2px solid var(--border-color);
     border-radius: 16px;
-    flex: 1;
-    flex-direction:column;
-    justify-content:space-around
 }
 
+.sidebar .text{
+    color:white;
+    font-size: 25px;
+    font-weight: 600;
 
-.filter__item-firt {
-    list-style: none;
-    color: var(--text-color-filter-list);
-    font-weight: 500;
-    font-size:1.6rem;
+    text-align: center;
+    background: #1e1e1e;
+    letter-spacing:1px;
 }
 
-.btn-group .filter__item-firt{
-    background-color:blue;
+.sidebar ul{
+    padding:0;
+    background:red;
+    width:100%;
+}
+
+.sidebar ul li a{
+    position:relative;
+    padding-left:16px;
+}
+
+.sidebar ul li a:hover{
+    color:cyan;
+    background:blue;
+}
+
+.sidebar ul ul{
+    position:static;
+    display:none;
+}
+
+.sidebar ul .feat-show.show{
+    display:block;
+}
+
+.sidebar ul ul li{
+    line-height:42px;
+    border-bottom:none;
+}
+
+.sidebar ul ul li a{
+    font-size:17px;
+    padding-left:32px;
+}
+
+.sidebar ul li a span{
+    position: absolute;
+    top:50%;
+    left: 100px;
+    transform:translateY(-50%);
+    font-size:22px;
+    transition: transform 0.4s;
+    
+}
+
+.sidebar ul li a:hover span{
+    transform:translateY(-50%) rotate(-180deg);
 }
 
 .product__list {
-    flex: 4;
+   
 }
