@@ -5,8 +5,8 @@
 <div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item" style="margin-left: 11.8rem"> @Html.ActionLink("Home", "Index", "Home")</li>
-            <li class="breadcrumb-item active" aria-current="page"> @Html.ActionLink("Product", "ProductPage", "Product")</li>
+            <li class="breadcrumb-item" style="margin-left: 11.8rem"> <a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Product</li>
         </ol>
     </nav>
     <div class="bodypage">
@@ -15,26 +15,24 @@
         <div class="bodypage__product">
 
             <nav class="sidebar">
-                <div class="text" > Side Menu</div>
+                <div class="text" > Category</div>
                 <ul>
-                    <li><a href="#"> Dashboard</a></li>
                     <li>
-                        <a href="#" class="feat-btn"> Features
-                            <span class="fas fa-caret-down first"></span>
+                        <a href="#" class="men-btn"> Men <span class="fas fa-caret-down first"></span>
                         </a>
-                        <ul class="feat-show">
-                            <li><a href="#"> Pages</a></li>
-                            <li><a href="#"> Elements</a></li>
+                        <ul class="men-show">
+                            <li><a href="#"> Top</a></li>
+                            <li><a href="#"> Bottoms</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="serv-btn">
-                            Services
+                        <a href="#" class="women-btn">
+                            Women
                             <span class="fas fa-caret-down second"></span>
                         </a>
-                        <ul class="serv-show">
-                            <li><a href="#">App Design</a></li>
-                            <li><a href="#"> Web Design</a></li>
+                        <ul class="women-show">
+                            <li><a href="#">Top</a></li>
+                            <li><a href="#">Bottoms</a></li>
                         </ul>
                     </li>
 
@@ -42,42 +40,54 @@
             </nav>
 
             <div class="product__list row row-cols-1 row-cols-md-3">
+
                 <div class="col mb-4">
-                    <div class="card">
-                        <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-title">Polo shirt</p>
-                            <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                    <a href=@Url.Action("ProductDetails", "Product")>
+                        <div class="card">
+                            <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="card-title">Polo shirt</p>
+                                <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
+                </div>
+
+                <div class="col mb-4">
+                    <a href=@Url.Action("ProductDetails", "Product")>
+                        <div class="card">
+                            <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="card-title">Polo shirt</p>
+                                <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
                 <div class="col mb-4">
-                    <div class="card">
-                        <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-title">Polo shirt</p>
-                            <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                    <a href=@Url.Action("ProductDetails", "Product")>
+                        <div class="card">
+                            <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="card-title">Polo shirt</p>
+                                <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col mb-4">
-                    <div class="card">
-                        <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-title">Polo shirt</p>
-                            <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                    <a href=@Url.Action("ProductDetails", "Product")>
+                        <div class="card">
+                            <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="card-title">Polo shirt</p>
+                                <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
-                <div class="col mb-4">
-                    <div class="card">
-                        <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-title">Polo shirt</p>
-                            <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
-                        </div>
-                    </div>
-                </div>
+
+
             </div>                     
         </div>
     </div>

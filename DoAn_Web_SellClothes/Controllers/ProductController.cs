@@ -13,5 +13,9 @@ namespace DoAn_Web_SellClothes.Controllers
         {
             return View();
         }
+        public ActionResult ProductDetails()
+        {
+            return View();
+        }
     }
 }

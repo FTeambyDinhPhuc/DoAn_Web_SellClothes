@@ -1,5 +1,8 @@
 ﻿:root {
     --text-color-filter-list: #4A453E;
+    --text-black-color-filter-list: #20391B;
+    --select-color:#7E9C78;
+    --select-img-border-color:#FB9600;
     --border-color: #8E867A;
     --text-color: #482B01;
     --primary-color: #FFDFC0;
@@ -14,8 +17,8 @@
     user-select:none;
 }
 
-body{
-    padding:0;
+body {
+    padding: 0;
 }
 
 html {

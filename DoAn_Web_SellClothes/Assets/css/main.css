@@ -97,6 +97,7 @@ a {
 
 
 .body-content {
+    position:relative;
     min-height: 78rem;
 }
 
@@ -146,7 +147,7 @@ a {
     background-color: var(--primary-color);
     font-size: 1.6rem;
     font-weight: 500;
-    border-radius: 3px;
+    border-radius: 6px;
     border-color: transparent;
     width: 11.6rem;
     height: 4rem;
@@ -159,24 +160,27 @@ a {
     opacity:0.8;
 }
 
-
 .name__page {
     color: var(--black-color);
     font-size: 4.2rem;
     font-weight:500;
 }
-
 .card{
+    margin-bottom:1.6rem;
     border-style:none;
     max-width:28.4rem;
     max-height:36.1rem
 
 }
 
+.card-deck .card{
+    margin-bottom:2rem;
+}
+
 .card-title {
     color: var(--black-color);
-    font-size:2.6rem;
-    font-weight:500;
+    font-size: 2.6rem;
+    font-weight: 500;
 }
 
 .price__product {
@@ -194,7 +198,7 @@ a {
 
 
 .bodypage {
-    margin: 0 12.8rem;
+    margin-left: 6.5%;
 }
 
 .bodypage__product {
@@ -204,37 +208,47 @@ a {
 
 
 .sidebar {
-    margin-right: 1.6rem;
-    width: 28.4rem;
+    padding:1.6rem;
+    margin-right: 5%;
+    min-width:21rem;
+    width: 100%;
+    max-width:28.4rem;
     height: 26.2rem;
     border: 2px solid var(--border-color);
     border-radius: 16px;
 }
 
 .sidebar .text{
-    color:white;
-    font-size: 25px;
-    font-weight: 600;
-
-    text-align: center;
-    background: #1e1e1e;
-    letter-spacing:1px;
+    color:var(--text-color-filter-list);
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
 }
 
 .sidebar ul{
     padding:0;
-    background:red;
     width:100%;
 }
 
-.sidebar ul li a{
-    position:relative;
-    padding-left:16px;
+.sidebar ul li{
+    line-height:3.2rem;
 }
 
-.sidebar ul li a:hover{
-    color:cyan;
-    background:blue;
+.sidebar ul li a{
+    border-radius:16px;
+    position:relative;
+    padding-left:16px;
+    padding-right:10rem;
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+    color:var(--text-color-filter-list);
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.sidebar ul li.active a{
+    color:var(--text-black-color-filter-list);
+    background:var(--select-color);
 }
 
 .sidebar ul ul{
@@ -242,34 +256,93 @@ a {
     display:none;
 }
 
-.sidebar ul .feat-show.show{
+.sidebar ul .men-show.show{
+    display:block;
+}
+
+.sidebar ul .women-show.show1{
     display:block;
 }
 
 .sidebar ul ul li{
-    line-height:42px;
+    line-height:3.2rem;
     border-bottom:none;
 }
 
 .sidebar ul ul li a{
-    font-size:17px;
-    padding-left:32px;
+    font-size:1.6rem;
+    padding-left:3.2rem;
+}
+
+.sidebar ul li.active ul li a{
+    color:var(--text-color-filter-list);
+    background-color:transparent;
+}
+
+.sidebar ul ul li a:hover{
+    color:var(--text-black-color-filter-list)!important;
+    background:var(--select-color)!important;
 }
 
 .sidebar ul li a span{
-    position: absolute;
+    position:absolute;
     top:50%;
-    left: 100px;
+    right:2rem;
     transform:translateY(-50%);
-    font-size:22px;
+    font-size:1.6rem;
     transition: transform 0.4s;
     
 }
 
-.sidebar ul li a:hover span{
+.sidebar ul li a span.rotate{
     transform:translateY(-50%) rotate(-180deg);
 }
 
-.product__list {
-   
+.container{
+    margin:5% 0 0 8%;
+    padding:0;
 }
+
+.list__img-small {
+    margin:0;
+    padding: 0;
+    float: left;
+}
+
+.list__img-small li{
+    margin: 1.6rem;
+    width:8.4rem;
+    height:7.7rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.list__img-small li:hover{
+    border-color:var(--select-img-border-color);
+}
+
+.list__img-small li img{
+    width: 100%;
+}
+
+.imgBox {
+    width: 58.4rem;
+    height: 53.6rem;
+    overflow: hidden;
+    float: left;
+}
+
+.imgBox img{
+    width:100%;
+}
+
+.product__information {
+    width: 38.4rem;
+    height: 58.6rem;
+    background-color: red;
+    float:right;
+    margin-right:20%;
+}
+
