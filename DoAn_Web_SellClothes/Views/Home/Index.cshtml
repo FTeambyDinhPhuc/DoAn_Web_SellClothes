@@ -5,69 +5,65 @@
 }
 
 <div>
-    <div class="home">
-        <div class="home__action">
-            <h1 class="home__title">
-                Welcome to Furny
-            </h1>
-            <p class="home__description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing<br />
-                elit. Consequat condimentum sit scelerisque eu morbi<br />
-                faucibus amet, viverra. Porta  mattis nunc.
-            </p>
-            <button class="home__button">
-                @Html.ActionLink("Shop now", "ProductPage", "Product")
-            </button>
+    <div class="landing">
+        <div class="home-wrap">
+            <div class="home-inner">
+            </div>
         </div>
     </div>
-    <div class="featured">
-        <p class="name__page" style="text-align:center"> Hightlight</p>
-        <div class="card-deck" style="margin:0 1.6rem; justify-content:space-evenly">
-            <a href=@Url.Action("ProductDetails", "Product")>
-                <div class="card">
-                    <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title">Polo shirt</p>
-                        <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
-                    </div>
+    <div class="caption text-left">
+        <h1>Welcome to FTeam</h1>
+        <p>Fashion is like the breath of life every day and it always changes with the flow of events. You can even see a revolutionary approach in clothing. You can see and feel everything with fashion.</p>
+        <a class="btn-lg btn-shopnow shadow rounded" href="@Url.Action("ProductPage","Product")">Shop now</a>
+    </div>
+</div>
+
+<div>
+    <div class="jumbotron">
+        <div class="narrow text-center">
+            <div class="col-12">
+                <h3 class="heading">New Product</h3>
+                <div class="heading-underline"></div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <a class="card" href="@Url.Action("ProductDetails","Product")">
+                        <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="name-product card-title">Polo shirt</p>
+                            <p class="price-product card-text">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                        </div>
+                    </a>
                 </div>
-            </a>
-            <a href=@Url.Action("ProductDetails", "Product")>
-                <div class="card">
-                    <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title">Polo shirt</p>
-                        <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
-                    </div>
+                <div class="col-md-3">
+                    <a class="card" href="@Url.Action("ProductDetails","Product")">
+                        <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="name-product card-title">Polo shirt</p>
+                            <p class="price-product card-text">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                        </div>
+                    </a>
                 </div>
-            </a>
-            <a href=@Url.Action("ProductDetails", "Product")>
-                <div class="card">
-                    <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title">Polo shirt</p>
-                        <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
-                    </div>
+                <div class="col-md-3">
+                    <a class="card" href="@Url.Action("ProductDetails","Product")">
+                        <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="name-product card-title">Polo shirt</p>
+                            <p class="price-product card-text">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                        </div>
+                    </a>
                 </div>
-            </a>
-            <a href=@Url.Action("ProductDetails", "Product")>
-                <div class="card">
-                    <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title">Polo shirt</p>
-                        <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
-                    </div>
+                <div class="col-md-3">
+                    <a class="card" href="@Url.Action("ProductDetails","Product")">
+                        <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="name-product card-title">Polo shirt</p>
+                            <p class="price-product card-text">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                        </div>
+                    </a>
                 </div>
-            </a>
-            <a href=@Url.Action("ProductDetails", "Product")>
-                <div class="card">
-                    <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title">Polo shirt</p>
-                        <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
-                    </div>
-                </div>
-            </a>
-        </div>
+            </div>
+         </div>
     </div>
 </div>

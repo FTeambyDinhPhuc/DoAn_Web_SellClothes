@@ -12,54 +12,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="app">
-        <header class="header-customer">
-            <div class="logo">
-                @Html.ActionLink("Furny", "Index", "Home")
+    <!--Navigation-->
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top shadow-sm rounded">
+            <a class="navbar-brand ml-5" href="@Url.Action("Index","Home")">FTeam</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto mr-5">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Home")">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("ProductPage","Product")">Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                  
+                </ul>
+                <ul class="navbar-nav mr-5">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-search"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-bag-shopping"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-user"></i></a>
+                    </li>
+                </ul>
             </div>
-
-            <ul class="navbar__list">
-                <li class="navbar__item navbar__item-link">
-                    @Html.ActionLink("Home", "Index", "Home")
-                </li>
-
-                <li class="navbar__item navbar__item-link">
-                    @Html.ActionLink("Product", "ProductPage", "Product")
-                </li>
-
-                <li class="navbar__item navbar__item-link">
-                    @Html.ActionLink("About", "Index", "Home")
-                </li>
-            </ul>
-
-            <ul class="navbar__list">
-                <li class="navbar__item">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </li>
-                <li class="navbar__item">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                </li>
-                <li class="navbar__item navbar__item-user ">
-                    <img src="~/Assets/img/icons/userIcon.png" />
-                </li>
-            </ul>
-
-        </header>
-
-        <div class="body-content">
-            @RenderBody()
+        </nav>
+    <!--End-Navigation-->
+    <!--Body-->
+    @RenderBody()
+    <!--End-body-->
+    <!--Footer-->
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row">
+                <div class="col-md-4 mx-auto text-center">
+                    <h1>FTeam</h1>
+                    <p>Fashion is like the breath of life every day and it always changes with the flow of events. You can even see a revolutionary approach in clothing. You can see and feel everything with fashion.</p>
+                    <strong>Contact info</strong>
+                    <p>0987694321 <br />blabla@gmail.com</p>
+                    <a href="#" target="_blank"> <i class="fab fa-facebook-square"></i></a>
+                    <a href="#" target="_blank"> <i class="fab fa-twitter-square"></i></a>
+                    <a href="#" target="_blank"> <i class="fab fa-instagram-square"></i></a>
+                </div>
+                <div class="col-10 mx-auto text-center">
+                    <hr class="light" />
+                    <p>Copyright @DateTime.Now.Year All rights Reserved. FTeam</p>
+                </div>
+            </div>
+           
         </div>
+    </footer>
+    <!--End-footer-->
 
-        <footer class="footer-customer">
-            <div class="footer-content">
-
-            </div>
-            <div class="footer-bottom">
-                <hr />
-                <p>copyright @DateTime.Now.Year All rights Reserved. Furny </p>
-            </div>
-        </footer>
-    </div>
 
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/bundles/jquery")

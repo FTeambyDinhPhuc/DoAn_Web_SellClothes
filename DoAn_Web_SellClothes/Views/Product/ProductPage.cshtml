@@ -4,91 +4,89 @@
 }
 <div>
     <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item" style="margin-left: 11.8rem"> <a href="@Url.Action("Index", "Home")">Home</a></li>
+        <ol class="breadcrumb ">
+            <li class="breadcrumb-item ml-5"> <a href="@Url.Action("Index", "Home")">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Product</li>
         </ol>
     </nav>
-    <div class="bodypage">
-        <p class="name__page">Living room</p>
 
-        <div class="bodypage__product">
+    <div class="narrow text-left">
+        <div class="col-12">
+            <h3 class="heading">Living room</h3>
+            <div class="heading-underline mr-auto ml-5"></div>
+        </div>
 
-            <nav class="sidebar">
-                <div class="text" > Category</div>
-                <ul>
-                    <li>
-                        <a href="#" class="men-btn"> Men <span class="fas fa-caret-down first"></span>
+        <div class="row text-center">
+            <div class="col-md-3">
+
+                <nav class="sidebar">
+                    <div class="text">Category</div>
+                    <ul>
+                        <li>
+                            <a href="#" class="men-btn">
+                                Men <span class="fas fa-caret-down first"></span>
+                            </a>
+                            <ul class="men-show">
+                                <li><a href="#"> Top</a></li>
+                                <li><a href="#"> Bottoms</a></li>
+                                <li><a href="#"> Accessories</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="women-btn">
+                                Women
+                                <span class="fas fa-caret-down second"></span>
+                            </a>
+                            <ul class="women-show">
+                                <li><a href="#">Top</a></li>
+                                <li><a href="#">Bottoms</a></li>
+                                <li><a href="#"> Accessories</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <a class="card" href="@Url.Action("ProductDetails","Product")">
+                            <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="name-product card-title">Polo shirt</p>
+                                <p class="price-product card-text">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                            </div>
                         </a>
-                        <ul class="men-show">
-                            <li><a href="#"> Top</a></li>
-                            <li><a href="#"> Bottoms</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="women-btn">
-                            Women
-                            <span class="fas fa-caret-down second"></span>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a class="card" href="@Url.Action("ProductDetails","Product")">
+                            <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="name-product card-title">Polo shirt</p>
+                                <p class="price-product card-text">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                            </div>
                         </a>
-                        <ul class="women-show">
-                            <li><a href="#">Top</a></li>
-                            <li><a href="#">Bottoms</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </nav>
-
-            <div class="product__list row row-cols-1 row-cols-md-3">
-
-                <div class="col mb-4">
-                    <a href=@Url.Action("ProductDetails", "Product")>
-                        <div class="card">
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a class="card" href="@Url.Action("ProductDetails","Product")">
                             <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-title">Polo shirt</p>
-                                <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                                <p class="name-product card-title">Polo shirt</p>
+                                <p class="price-product card-text">150.000 <span class="currency-symbol">&#160;VND</span></p>
                             </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col mb-4">
-                    <a href=@Url.Action("ProductDetails", "Product")>
-                        <div class="card">
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a class="card" href="@Url.Action("ProductDetails","Product")">
                             <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-title">Polo shirt</p>
-                                <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
+                                <p class="name-product card-title">Polo shirt</p>
+                                <p class="price-product card-text">150.000 <span class="currency-symbol">&#160;VND</span></p>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
-                <div class="col mb-4">
-                    <a href=@Url.Action("ProductDetails", "Product")>
-                        <div class="card">
-                            <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-title">Polo shirt</p>
-                                <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col mb-4">
-                    <a href=@Url.Action("ProductDetails", "Product")>
-                        <div class="card">
-                            <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-title">Polo shirt</p>
-                                <p class="price__product">150.000 <span class="currency-symbol">&#160;VND</span></p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-            </div>                     
+            </div>
         </div>
     </div>
 </div>

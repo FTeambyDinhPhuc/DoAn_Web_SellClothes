@@ -1,348 +1,289 @@
-﻿.header-customer {
-    height: 6.4rem;
-    background-color: var(--background-color);
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    padding: 0 9%;
-    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-}
-
-
-.logo {
-    color: var(--black-color);
-    font-size: 2.6rem;
-    font-weight: 500;
-    cursor: pointer;
-    margin-right: auto;
-}
-
-a {
-    color: var(--black-color);
-}
-
-    a:hover {
-        opacity: 0.8;
-        text-decoration: none;
-        color: var(--black-color);
-    }
-
-
-.navbar__list {
-    padding: 0px;
-    margin: 0px;
-}
-
-.navbar__item {
-    cursor: pointer;
-    font-size: 1.6rem;
+﻿
+/*Navigation*/
+.navbar {
+    color:var(--black-color);
     font-weight: 300;
-    display: inline-block;
-    padding: 0.4rem 1.6rem;
-    color: var(--black-color);
+    font-size: 1rem;
+    letter-spacing: .1rem;
+    background: var(--background-color);
 }
 
-.navbar__item-link {
-    text-decoration: none;
-    border-radius: 16px;
-    padding: 0.4rem 1.6rem;
-    color: var(--black-color);
-}
-
-
-    .navbar__item-link:hover {
-        color: var(--black-color);
-        text-decoration: none;
-        background: var(--primary-color);
-        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3), 0 6px 10px 0 rgba(0, 0, 0, 0.15);
-    }
-
-.dropdown-menu {
-    font-size: 1.4rem;
-    font-weight: 300;
-    border-radius: 10px;
-}
-
-.dropdown-item:hover, .dropdown-item:focus {
-    color: #16181b;
-    text-decoration: none;
-    background-color: var(--primary-color);
-}
-
-
-
-.navbar__item-user {
-    width: 0.32rem;
-    height: 0.32rem;
-}
-
-
-
-.footer-customer {
-    margin-top: 4.4rem;
-    position:relative;
-    width: 100%;
-    height: 20rem;
-    background: var(--surface-color);
-}
-
-.footer-bottom {
-    position:absolute;
-    padding: 0 31rem;
-    width: 100%;
-    bottom: 0;
-    font-size: 1.6rem;
-    text-align: center;
-}
-
-
-.body-content {
-    position:relative;
-    min-height: 78rem;
-}
-
-
-
-.home {
-    height: 78rem;
-    background-image: url(/Assets/img/homeImage.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
-
-.home__action {
-    width:fit-content;
-    color: var(--text-color);
-    position: relative;
-    top: 25.6rem;
-    left: 12.8rem;
-}
-
-
-.home__title {
-    font-size: 4.2rem;
-    font-weight: 500;
-    animation: slideInRight ease .5s;
-}
-
-@keyframes slideInRight{
-    from {
-        opacity:0;
-        transform: translateX(calc(-48rem));
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.home__description {
-    font-size: 1.6rem;
-    font-weight: 300;
-    animation: slideInRight ease .65s;
-}
-
-.home__button {
-    background-color: var(--primary-color);
-    font-size: 1.6rem;
-    font-weight: 500;
-    border-radius: 6px;
-    border-color: transparent;
-    width: 11.6rem;
-    height: 4rem;
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3), 0 6px 10px 0 rgba(0, 0, 0, 0.15);
-    animation: slideInRight ease .75s;
-    transition: opacity .2s ease;
-}
-
-.home__button:hover{
-    opacity:0.8;
-}
-
-.name__page {
-    color: var(--black-color);
-    font-size: 4.2rem;
-    font-weight:500;
-}
-.card{
-    margin-bottom:1.6rem;
-    border-style:none;
-    max-width:28.4rem;
-    max-height:36.1rem
-
-}
-
-.card-deck .card{
-    margin-bottom:2rem;
-}
-
-.card-title {
-    color: var(--black-color);
-    font-size: 2.6rem;
+.navbar-brand {
+    font-size: 1.625rem;
     font-weight: 500;
 }
 
-.price__product {
-    color: var(--border-color);
-    font-size:2.6rem;
-    font-weight:500;
+.navbar-brand:hover{
+    opacity:0.7;
 }
 
-.breadcrumb {
-    background-color: var(--surface-color);
-    font-size: 1.2rem;
-    color: var(--text-color);
-    font-weight:400;
+.navbar-nav li{
+    padding-right:1rem;
 }
-
-
-.bodypage {
-    margin-left: 6.5%;
-}
-
-.bodypage__product {
-    display: flex;
-    height:80%;
-}
-
-
-.sidebar {
-    padding:1.6rem;
-    margin-right: 5%;
-    min-width:21rem;
-    width: 100%;
-    max-width:28.4rem;
-    height: 26.2rem;
-    border: 2px solid var(--border-color);
-    border-radius: 16px;
-}
-
-.sidebar .text{
-    color:var(--text-color-filter-list);
-    font-size: 1.6rem;
-    font-weight: 500;
-    margin-bottom: 0.8rem;
-}
-
-.sidebar ul{
-    padding:0;
-    width:100%;
-}
-
-.sidebar ul li{
-    line-height:3.2rem;
-}
-
-.sidebar ul li a{
+.nav-link{
+    padding:.25rem 1rem;
     border-radius:16px;
-    position:relative;
-    padding-left:16px;
-    padding-right:10rem;
-    padding-top:0.5rem;
-    padding-bottom:0.5rem;
-    color:var(--text-color-filter-list);
-    font-size: 1.6rem;
-    font-weight: 500;
 }
 
-.sidebar ul li.active a{
-    color:var(--text-black-color-filter-list);
-    background:var(--select-color);
+.nav-link:hover {
+    background-color:var(--primary-color);
+    color: var(--primary-color);
+}
+/*End-navigation*/
+
+/*--- Fixed Landing Page Section --*/
+.landing {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: table;
+    z-index: -1;
 }
 
-.sidebar ul ul{
-    position:static;
-    display:none;
+.home-wrap {
+    clip: rect(0, auto, auto, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-.sidebar ul .men-show.show{
-    display:block;
+.home-inner {
+    background-image:url(/Assets/img/homeImage.jpg);
+    position: fixed;
+    display: table;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
 }
 
-.sidebar ul .women-show.show1{
-    display:block;
-}
+/*--- end Fixed Landing Page Section --*/
 
-.sidebar ul ul li{
-    line-height:3.2rem;
-    border-bottom:none;
-}
-
-.sidebar ul ul li a{
-    font-size:1.6rem;
-    padding-left:3.2rem;
-}
-
-.sidebar ul li.active ul li a{
-    color:var(--text-color-filter-list);
-    background-color:transparent;
-}
-
-.sidebar ul ul li a:hover{
-    color:var(--text-black-color-filter-list)!important;
-    background:var(--select-color)!important;
-}
-
-.sidebar ul li a span{
+.caption{
+    width:100%;
+    max-width:30%;
     position:absolute;
-    top:50%;
-    right:2rem;
-    transform:translateY(-50%);
-    font-size:1.6rem;
-    transition: transform 0.4s;
+    top:30%;
+    left:3.5%;
+    z-index:1;
+    color:white;
+
+}
+
+.caption h1{
+    color:var(--text-color);
+    font-weight:500;
+    padding-bottom:1rem;
+}
+
+.caption p{
+    color:var(--text-color);
+    font-weight:300;
+    padding-bottom: 1.6rem;
     
 }
 
+.btn-shopnow {
+    border: none;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    padding: .5rem 1.25rem;
+    font-size: 1rem;
+}
+
+.btn-shopnow:hover{
+    background-color:var(--primary-color-hover);
+    color: var(--text-color);
+    text-decoration:none;
+
+}
+
+
+.narrow{
+    width:80%;
+    margin:1.5rem auto;
+}
+
+.jumbotron {
+    background-color: var(--background-color);
+    margin-bottom:0;
+}
+
+h3.heading {
+    font-size: 1.9rem;
+    font-weight:500;
+}
+
+.heading-underline {
+    width: 3rem;
+    height: .2rem;
+    background-color: var(--surface-color);
+    margin: 0 auto 2rem;
+}
+
+.card{
+    border-radius:8px;
+    margin-bottom:1.5rem;
+}
+
+.card:hover {
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+.name-product, .price-product {
+    font-size: 1.625rem;
+    color: var(--black-color);
+    font-weight: 500;
+}
+.price-product {
+    font-size: 1.2rem;
+    color: var(--black-color);
+}
+
+footer {
+    padding-top: 2rem;
+    background-color: var(--surface-color);
+}
+
+footer h1{
+
+}
+
+footer a{
+    color:white;
+    font-size:1.6rem;
+    margin:1.2rem .5rem 0 0
+}
+
+footer a:hover{
+    color:var(--text-color);
+}
+
+/*thanh địa chỉ*/
+.breadcrumb {
+    background-color: var(--surface-color);
+}
+
+.breadcrumb-item, .breadcrumb-item a {
+    font-size: 0.75rem;
+    color: var(--text-color);
+    font-weight: 400;
+}
+
+.breadcrumb-item a:hover{
+    opacity:0.7;
+    text-decoration:none;
+}
+/*hết thanh địa chỉ*/
+
+
+/*Thanh lọc loại đồ*/
+/*khung bên ngoài*/
+.sidebar{
+    border-radius:1rem;
+    border-style:solid;
+    border-width:2px;
+    border-color:var(--border-color);
+  width: 100%;
+  padding:1rem;
+  margin-bottom:1.5rem;
+}
+
+/*chữ tên bảng*/
+.sidebar .text{
+  color: var(--text-color-filter-list);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  text-align: left ;
+  letter-spacing: .1rem;
+  margin-bottom:.5rem;
+}
+
+/*khung bao Lọc cấp 1*/
+.sidebar ul{
+  padding:0;
+  height: 100%;
+  width: 100%;
+  list-style: none;
+}
+
+/*thành phần strong lọc cấp 1*/
+.sidebar ul li{
+  line-height: 1.5rem;
+  margin-bottom:.3rem;
+}
+
+/*Thành phần a trong thành phần của lọc cấp 1*/
+.sidebar ul li a{
+  padding:.3rem 1rem;
+  text-align:left;
+  position: relative;
+  color: var(--black-color);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 300;
+  display: block;
+  width: 100%;
+  border-radius:8px;
+}
+
+/*Thành phần a trong thành phần của lọc cấp 2 khi thành phần lọc cấp 1 active*/
+.sidebar ul li.active a{
+  color: var(--text-black-color-filter-list);
+  background-color:var(--select-color);
+  font-weight: 500;
+}
+.sidebar ul li a:hover{
+  background: var(--hover-color);
+}
+.sidebar ul ul{
+  position: static;
+  display: none;
+}
+.sidebar ul .men-show.show{
+  display: block;
+}
+.sidebar ul .women-show.show1{
+  display: block;
+}
+.sidebar ul ul li{
+  line-height: 1rem;
+  border-top: none;
+}
+.sidebar ul ul li a{
+    padding-left:2rem;
+   padding-top:.5rem;
+    padding-bottom:.5rem;
+  font-size: 1rem;
+  color: var(--black-color);
+}
+.sidebar ul li.active ul li a{
+  color: var(--text-black-color-filter-list);
+  background-color:transparent;
+  font-weight:500;
+}
+.sidebar ul ul li a:hover{
+  color: var(--select-color)!important;
+}
+.sidebar ul li a span{
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  transition: transform 0.4s;
+}
 .sidebar ul li a span.rotate{
-    transform:translateY(-50%) rotate(-180deg);
+  transform: translateY(-50%) rotate(-180deg);
 }
-
-.container{
-    margin:5% 0 0 8%;
-    padding:0;
-}
-
-.list__img-small {
-    margin:0;
-    padding: 0;
-    float: left;
-}
-
-.list__img-small li{
-    margin: 1.6rem;
-    width:8.4rem;
-    height:7.7rem;
-    border: 1px solid var(--primary-color);
-    border-radius: 8px;
-    overflow:hidden;
-    cursor:pointer;
-}
-
-.list__img-small li:hover{
-    border-color:var(--select-img-border-color);
-}
-
-.list__img-small li img{
-    width: 100%;
-}
-
-.imgBox {
-    width: 58.4rem;
-    height: 53.6rem;
-    overflow: hidden;
-    float: left;
-}
-
-.imgBox img{
-    width:100%;
-}
-
-.product__information {
-    width: 38.4rem;
-    height: 58.6rem;
-    background-color: red;
-    float:right;
-    margin-right:20%;
-}
-
+/*hết Thanh lọc loại đồ*/
