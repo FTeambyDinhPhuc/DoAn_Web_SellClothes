@@ -33,7 +33,7 @@
             </ul>
             <ul class="navbar-nav mr-5">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-search"></i></a>
+                    <a class="nav-link" data-toggle="collapse" href="#searchBar" aria-expanded="false" aria-controls="searchBar"><i class="fa fa-search"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fa fa-bag-shopping"></i></a>
@@ -50,10 +50,20 @@
 
         </div>
     </nav>
+    <!--Thanh tiềm kiếm-->
+    <div id="searchBar" class="collapse">
+        <form action="" class="search-bar mx-auto mb-2 mt-1">
+            <input type="text" placeholder="search product" />
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <!--Hết Thanh tiềm kiếm-->
     <!--Menu tài khoản khi đăng nhập-->
-    <div class="collapse text-right py-2 px-5" id="menuAccount">
-        <a>Cài đặt</a>
-        <a>Đăng xuất</a>
+    <div class="collapse " id="menuAccount">
+        <div class="py-2 px-5 text-right">
+            <a>Cài đặt</a>
+            <a>Đăng xuất</a>
+        </div>
     </div>
     <!--Hết Menu tài khoản khi đăng nhập-->
     <!--End-Navigation-->
