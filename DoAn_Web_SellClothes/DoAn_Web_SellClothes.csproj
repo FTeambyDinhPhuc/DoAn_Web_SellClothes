@@ -113,6 +113,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2168,6 +2169,7 @@
     <Content Include="Assets\fonts\fontawesome-free-6.1.1-web\svgs\solid\yen-sign.svg" />
     <Content Include="Assets\fonts\fontawesome-free-6.1.1-web\svgs\solid\yin-yang.svg" />
     <Content Include="Assets\fonts\fontawesome-free-6.1.1-web\svgs\solid\z.svg" />
+    <Content Include="Assets\img\authenbackgroundImage.jpg" />
     <Content Include="Assets\img\homeImage.jpg" />
     <Content Include="Assets\img\icons\userIcon.png" />
     <Content Include="Assets\img\productImage.png" />
@@ -2347,6 +2349,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\ProductPage.cshtml" />
     <Content Include="Views\Product\ProductDetails.cshtml" />
+    <Content Include="Views\Account\Authen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -30,8 +30,24 @@
         background-color: var(--primary-color);
         color: var(--primary-color);
     }
-/*End-navigation*/
 
+
+/*menu khi đã đăng nhập*/
+#menuAccount {
+    width: 100%;
+}
+
+#menuAccount a{
+    margin-left:1rem;
+    cursor:pointer;
+    color:var(--black-color);
+}
+#menuAccount a:hover{
+    opacity:0.7;
+}
+/*hết menu khi đã đăng nhập*/
+
+/*End-navigation*/
 /*--- Fixed Landing Page Section --*/
 .landing {
     position: relative;
@@ -71,7 +87,7 @@
     width: 100%;
     max-width: 30%;
     position: absolute;
-    top: 30%;
+    top: 35%;
     left: 3.5%;
     z-index: 1;
     color: white;
@@ -415,4 +431,201 @@ footer {
     color: var(--gray-color);
 }
 /*hết Phần thông tin chi tiết sản, các chọn lựa đặt hàng*/
+
+/*Màn hình đăng ký - đăng nhập*/
+
+#authenForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:white;
+    padding: 2rem;
+}
+
+.container-authenForm {
+    position: relative;
+    max-width: 53.125rem;
+    width: 100%;
+    background-color: var(--background-color);
+    padding: 2.5rem 2rem;
+    perspective: 2700px;
+    border-radius: 16px;
+}
+
+
+.container-authenForm #flip:checked ~ .cover {
+    transform: rotateY(-180deg);
+}
+
+.container-authenForm #flip{
+    display:none;
+}
+
+.container-authenForm .cover {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 50%;
+    z-index: 100;
+    transition: all 1s ease;
+    transform-origin: left;
+    transform-style: preserve-3d;
+}
+
+
+    .container-authenForm .cover img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-bottom-right-radius: 16px;
+        border-top-right-radius: 16px;
+    }
+
+
+
+
+    .container-authenForm form {
+        height: 100%;
+        width: 100%;
+        background-color: var(--background-color);
+    }
+
+.container-authenForm .form-content{
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-content .login-form,
+.form-content .signup-form {
+    width: calc(100% / 2 - 1.5rem);
+}
+
+form .form-content .title {
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--black-color);
+}
+
+/*thanh gạch chân dưới titel*/
+    form .form-content .title:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 25px;
+        background: var(--surface-color);
+    }
+
+form .signup-form .title:before {
+    width: 20px;
+}
+/*hết thanh gạch chân dưới titel*/
+
+form .form-content .input-boxes {
+    margin-top: 1.875rem;
+}
+
+form .form-content .input-box {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    width: 100%;
+    margin: .5rem 0;
+    position: relative;
+}
+
+.form-content .input-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 0 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: var(--background-color);
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+    .form-content .input-box input:focus,
+    .form-content .input-box input:valid {
+        border-color: var(--surface-color);
+    }
+
+.form-content .input-box i {
+    position: absolute;
+    color: var(--surface-color);
+    font-size: 1rem;
+}
+
+form .form-content .text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--black-color);
+}
+
+form .form-content .text a {
+    text-decoration: none;
+}
+
+form .form-content .text a:hover {
+    text-decoration: underline;
+}
+
+form .form-content .button {
+    color: var(--black-color);
+    margin-top: 2.5rem;
+}
+
+    form .form-content .button input {
+        color: var(--black-color);
+        background: var(--primary-color);
+        border-radius: .5rem;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }
+
+        form .form-content .button input:hover {
+            background: var(--primary-color-hover);
+        }
+
+form .form-content label {
+    color: var(--select-color);
+    cursor: pointer;
+}
+form .form-content label:hover {
+    text-decoration: underline;
+}
+
+form .form-content .login-text,
+form .form-content .sign-up-text {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+@media (max-width:730px){
+    .container-authenForm .cover {
+        display: none;
+    }
+    .form-content .login-form,
+    .form-content .signup-form {
+        width: 100%;
+    }
+    .form-content .signup-form {
+        display:none;
+    }
+    .container-authenForm #flip:checked ~ form .signup-form {
+        display: block;
+    }
+    .container-authenForm #flip:checked ~ form .login-form {
+        display: none;
+    }
+}
+/*Hết Màn hình đăng ký - đăng nhập*/
 
