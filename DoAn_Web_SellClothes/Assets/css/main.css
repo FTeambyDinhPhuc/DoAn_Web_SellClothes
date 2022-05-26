@@ -681,3 +681,76 @@ form .form-content .sign-up-text {
 }
 /*Hết Màn hình đăng ký - đăng nhập*/
 
+/*Màn hình thông tin tài khoản*/
+.bgAccountInformation {
+    background-color: var(--gray-color);
+}
+
+.bgAccountInformation .container {
+    background-color:white;
+    border-radius:16px;
+}
+
+    .bgAccountInformation .container .body-content h2 {
+        color: var(--text-color);
+    }
+
+.group-infor{
+    margin-bottom:1rem;
+}
+
+    .group-infor h6 {
+        font-weight: 600;
+        color: var(--black-color)
+    }
+
+.group-infor .input-box{
+    margin-bottom:.8rem;
+}
+
+    .group-infor input, .group-infor select {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        border: none;
+        padding: 0 1.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        background-color: white;
+        border-bottom: 2px solid rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+    }
+
+
+.group-infor .input-box h6 {
+    font-weight: 300;
+    margin-bottom:.5rem;
+}
+
+
+.group-button{
+    margin-top:3rem;
+}
+.group-button input, .group-button a {
+    border: none;
+    margin-right: 1.1rem;
+    width: 130px;
+    height: 45px;
+    color: var(--black-color);
+    font-size:1rem;
+    font-weight:600;
+    background: var(--primary-color);
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.group-button a {
+    padding: .75rem 3.1rem; 
+}
+
+    .group-button input:hover, .group-button a:hover {
+        background-color: var(--primary-color-hover);
+        text-decoration: none;
+    }
+
+/*Hết Màn hình thông tin tài khoản*/
