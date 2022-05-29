@@ -1,0 +1,16 @@
+﻿
+@foreach (var sanpham in Model)
+{
+    <div class="col-md-6 col-lg-4">
+        <div class="thumbnail">
+            <a class="card" href="@Url.Action("ProductDetails","Product" ,new { id=sanpham.IdProductType})">
+                <img src="~/Assets/img/Clothes/@sanpham.ImageProduct" class="card-img-top" alt="@sanpham.NameProduct">
+                <div class="card-body">
+                    <p class="name-product card-title"> @sanpham.NameProduct</p>
+                    <p class="price-product card-text">@sanpham.PriceProduct<span class="currency-symbol">&#160;VND</span></p>
+                </div>
+            </a>
+        </div>
+    </div>
+}
+

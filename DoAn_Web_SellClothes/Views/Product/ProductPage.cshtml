@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<DoAn_Web_SellClothes.Models.Product>
+@{
     ViewBag.Title = "ProductPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -27,9 +28,7 @@
                                 Men <span class="fas fa-caret-down first"></span>
                             </a>
                             <ul class="men-show">
-                                <li><a href="#"> Top</a></li>
-                                <li><a href="#"> Bottoms</a></li>
-                                <li><a href="#"> Accessories</a></li>
+                                @Html.Action("SanPhamNam", "Product")
                             </ul>
                         </li>
                         <li>
@@ -38,53 +37,15 @@
                                 <span class="fas fa-caret-down second"></span>
                             </a>
                             <ul class="women-show">
-                                <li><a href="#">Top</a></li>
-                                <li><a href="#">Bottoms</a></li>
-                                <li><a href="#"> Accessories</a></li>
+                                @Html.Action("SanPhamNu", "Product")
                             </ul>
                         </li>
                     </ul>
                 </nav>
-
             </div>
             <div class="col-md-9">
                 <div class="row">
-                    <div class="col-md-6 col-lg-4">
-                        <a class="card" href="@Url.Action("ProductDetails","Product")">
-                            <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="name-product card-title">Polo shirt</p>
-                                <p class="price-product card-text">150.000 <span class="currency-symbol">&#160;VND</span></p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <a class="card" href="@Url.Action("ProductDetails","Product")">
-                            <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="name-product card-title">Polo shirt</p>
-                                <p class="price-product card-text">150.000 <span class="currency-symbol">&#160;VND</span></p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <a class="card" href="@Url.Action("ProductDetails","Product")">
-                            <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="name-product card-title">Polo shirt</p>
-                                <p class="price-product card-text">150.000 <span class="currency-symbol">&#160;VND</span></p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <a class="card" href="@Url.Action("ProductDetails","Product")">
-                            <img src="~/Assets/img/productImage.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="name-product card-title">Polo shirt</p>
-                                <p class="price-product card-text">150.000 <span class="currency-symbol">&#160;VND</span></p>
-                            </div>
-                        </a>
-                    </div>
+                    @Html.Action("AllSanPham", "Product")
                 </div>
             </div>
         </div>

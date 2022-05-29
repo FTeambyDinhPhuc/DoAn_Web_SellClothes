@@ -1,15 +1,13 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "ProductDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item ml-5"><a href="@Url.Action("Index", "Home")">Home</a></li>
             <li class="breadcrumb-item"><a href="@Url.Action("ProductPage", "Product")">Product</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Polo shirt</li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.NameProduct</li>
         </ol>
     </nav>
 
@@ -18,25 +16,22 @@
             <div class="col-md-2 col-lg-1 col-4">
                 <ul class="list__img-small">
                     <li>
-                        <img src="~/Assets/img/productImage.png" />
-                    </li>
-                    <li>
-                        <img src="~/Assets/img/productImage2.jpg" />
+                        <img src="~/Assets/img/Clothes/@Model.ImageProduct" />
                     </li>
                 </ul>
             </div>
             <div class="col-md-5 col-lg-4 mx-auto">
                 <div class="imgBox">
-                    <img src="~/Assets/img/productImage.png" />
+                    <img src="~/Assets/img/Clothes/@Model.ImageProduct" />
                 </div>
             </div>
             <div class="col-md-4 mx-auto">
-                <h1 class="tilte-category">Men&nbsp;<span class="name-product">Polo shirt</span></h1>
-                <h1 class="price-product">150.000 <span>&nbsp;VND</span></h1>
+                <h1 class="tilte-category"><span class="name-product">@Model.NameProduct</span></h1>
+                <h1 class="price-product">@Model.PriceProduct <span>&nbsp;VND</span></h1>
                 <hr class="light" />
                 <h5>Describe</h5>
-                <p>Sản phẩm có xuất xứ tại Nga, được công nhận và kiểm duyệt bởi Cục y tế.</p>
-                <h5>Color</h5>
+                <p>@Model.DescribeProduct</p>
+                <h5>@Model.ColorProduct</h5>
                 <div class="btn-group mr-2 btn-group-color" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-secondary" style="background-color: #676D5F "></button>
                     <button type="button" class="btn btn-secondary" style="background-color: #69233C "></button>
@@ -44,10 +39,7 @@
                 </div>
                 <h5>Size</h5>
                 <div class="btn-group mr-2 btn-group-size" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-outline-secondary ">S</button>
-                    <button type="button" class="btn btn-outline-secondary">M</button>
-                    <button type="button" class="btn btn-outline-secondary">L</button>
-                    <button type="button" class="btn btn-outline-secondary">XL</button>
+                <button type="button" class="btn btn-outline-secondary ">@Model.SizeProduct</button>
                 </div>
                 <h5>quantity</h5>
                 <div class="btn-quantity shadow-sm">
@@ -57,9 +49,8 @@
                 </div>
 
                 <button class="btn btn-warning btn-addtocart shadow my-4">Add to cart</button>
-               
+
             </div>
         </div>
     </div>
 </div>
-

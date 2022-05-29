@@ -57,6 +57,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -118,6 +119,11 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataClasses1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2170,6 +2176,46 @@
     <Content Include="Assets\fonts\fontawesome-free-6.1.1-web\svgs\solid\yin-yang.svg" />
     <Content Include="Assets\fonts\fontawesome-free-6.1.1-web\svgs\solid\z.svg" />
     <Content Include="Assets\img\authenbackgroundImage.jpg" />
+    <Content Include="Assets\img\Clothes\AoHaiDayKemAoKhoacVienMau.png" />
+    <Content Include="Assets\img\Clothes\AoHoaNhiCoVuongVienRen.png" />
+    <Content Include="Assets\img\Clothes\AoSoMiNamTayDaiLuaDo.jpg" />
+    <Content Include="Assets\img\Clothes\AoSoMiNamVangKaKi.jpg" />
+    <Content Include="Assets\img\Clothes\AoSoMiPasterMuaHeVaiCottonLua.png" />
+    <Content Include="Assets\img\Clothes\AoSoMiTronMauDen.jpg" />
+    <Content Include="Assets\img\Clothes\AoThunChamBiChatXopPhongCachHanQuoc.png" />
+    <Content Include="Assets\img\Clothes\AoThunDangOmTheuChuSouthwest.png" />
+    <Content Include="Assets\img\Clothes\AoThunGanMinCoBe.png" />
+    <Content Include="Assets\img\Clothes\AoThunNamTayNganMauNauGan.jpg" />
+    <Content Include="Assets\img\Clothes\AoThunSatNachCropCoVuong.png" />
+    <Content Include="Assets\img\Clothes\AoThunSocCoVXeMotBen-Den.png" />
+    <Content Include="Assets\img\Clothes\AoThunSocCoVXeMotBen.png" />
+    <Content Include="Assets\img\Clothes\AoThunTayDaiTreVaiCoGap.png" />
+    <Content Include="Assets\img\Clothes\AoThunTayNganMauXemTronCotton.jpg" />
+    <Content Include="Assets\img\Clothes\CavatCaro.jpg" />
+    <Content Include="Assets\img\Clothes\CavatHoaTietMauDen.jpg" />
+    <Content Include="Assets\img\Clothes\ChanVayMaxiTangLungThun.png" />
+    <Content Include="Assets\img\Clothes\ChanVayMiniXeTron.png" />
+    <Content Include="Assets\img\Clothes\ChanVayNganChuAHoaNhiNhungGan.png" />
+    <Content Include="Assets\img\Clothes\ChanVayXepLyLuaCongSo.png" />
+    <Content Include="Assets\img\Clothes\DamHoaTayPhongXepLyCo.png" />
+    <Content Include="Assets\img\Clothes\DamMaxiBoEoPhoiTayPhongTrang.png" />
+    <Content Include="Assets\img\Clothes\DamMaxiHoaCucCotEoMuaHe.png" />
+    <Content Include="Assets\img\Clothes\DamPoloTayNganCaiNutThunGan.png" />
+    <Content Include="Assets\img\Clothes\DamPoloThunDetCoDenKeONhi.png" />
+    <Content Include="Assets\img\Clothes\QuanJoggerTuiDapMauDen.jpg" />
+    <Content Include="Assets\img\Clothes\QuanShort.jpg" />
+    <Content Include="Assets\img\Clothes\QuanShortKakiTronMauBe.png" />
+    <Content Include="Assets\img\Clothes\QuanTay.jpg" />
+    <Content Include="Assets\img\Clothes\QuanTay1.jpg" />
+    <Content Include="Assets\img\Clothes\ThatLungDauKimDaTron.jpg" />
+    <Content Include="Assets\img\Clothes\ThatLungKhoaTuDongMauDen.jpg" />
+    <Content Include="Assets\img\Clothes\VayMaxiLenGanXeDangOm.png" />
+    <Content Include="Assets\img\Clothes\VayMiDiCaroNauKemNitChatNi.jpg" />
+    <Content Include="Assets\img\Clothes\VayMidiThunXeNutTrang.jpg" />
+    <Content Include="Assets\img\Clothes\VayMiniCaroNapTuiTruoc.jpg" />
+    <Content Include="Assets\img\Clothes\VayMiniDapChatDaNutNgocTrai.png" />
+    <Content Include="Assets\img\Clothes\VayMiniNapTuiNutNgocTrai.png" />
+    <Content Include="Assets\img\Clothes\ViDaNazafuDen.jpg" />
     <Content Include="Assets\img\homeImage.jpg" />
     <Content Include="Assets\img\icons\userIcon.png" />
     <Content Include="Assets\img\productImage.png" />
@@ -2257,6 +2303,14 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Models\DataClasses1.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
@@ -2348,13 +2402,18 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\ProductPage.cshtml" />
-    <Content Include="Views\Product\ProductDetails.cshtml" />
     <Content Include="Views\Account\Authen.cshtml" />
+    <Content Include="Views\Product\SanPhamNam.cshtml" />
+    <Content Include="Views\Product\SanPhamNu.cshtml" />
+    <Content Include="Views\Product\SPTheoLoaiNam.cshtml" />
+    <Content Include="Views\Product\AllSanPham.cshtml" />
+    <Content Include="Views\Product\SPTheoLoaiNu.cshtml" />
+    <Content Include="Views\Product\SanPhamMoi.cshtml" />
+    <Content Include="Views\Product\ProductDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2380,6 +2439,7 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <PropertyGroup>
