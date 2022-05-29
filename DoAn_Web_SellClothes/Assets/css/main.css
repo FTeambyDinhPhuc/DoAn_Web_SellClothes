@@ -193,6 +193,7 @@ h3.heading {
     height: .2rem;
     background-color: var(--surface-color);
     margin: 0 auto 2rem;
+    animation: slideInLeft ease .6s;
 }
 
 .card {
@@ -263,6 +264,7 @@ footer {
     width: 100%;
     padding: 1rem;
     margin-bottom: 1.5rem;
+    animation: slideInLeft ease .6s;
 }
 
     /*chữ tên bảng*/
@@ -475,6 +477,7 @@ footer {
     }
 
 .btn-addtocart {
+    background-color: var(--orange-color);
     width: 17.75rem;
     height: 3.25rem;
     border-radius: .5rem;
@@ -482,17 +485,21 @@ footer {
     font-weight: 500;
     color: var(--gray-color);
 }
-/*hết Phần thông tin chi tiết sản, các chọn lựa đặt hàng*/
 
-/*Màn hình đăng ký - đăng nhập*/
-
-#authenForm {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color:white;
-    padding: 2rem;
-}
+    .btn-addtocart:hover {
+        background-color: var(--orange-color);
+        color: var(--gray-color);
+        opacity: 0.8;
+    }
+    /*hết Phần thông tin chi tiết sản, các chọn lựa đặt hàng*/
+    /*Màn hình đăng ký - đăng nhập*/
+    #authenForm {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        padding: 2rem;
+    }
 
 .container-authenForm {
     position: relative;
@@ -681,3 +688,260 @@ form .form-content .sign-up-text {
 }
 /*Hết Màn hình đăng ký - đăng nhập*/
 
+/*Màn hình thông tin tài khoản*/
+.bgAccountInformation {
+    background-color: var(--gray-color);
+}
+
+.bgAccountInformation .container {
+    background-color:white;
+    border-radius:16px;
+}
+
+    .bgAccountInformation .container .body-content h2 {
+        color: var(--text-color);
+    }
+
+.group-infor{
+    margin-bottom:1rem;
+}
+
+    .group-infor h6 {
+        font-weight: 600;
+        color: var(--black-color)
+    }
+
+.group-infor .input-box{
+    margin-bottom:.8rem;
+}
+
+    .group-infor input, .group-infor select {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        border: none;
+        padding: 0 1.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        background-color: white;
+        border-bottom: 2px solid rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+    }
+
+
+.group-infor .input-box h6 {
+    font-weight: 300;
+    margin-bottom:.5rem;
+}
+
+
+.group-button{
+    margin-top:3rem;
+}
+.group-button input, .group-button a {
+    border: none;
+    margin-right: 1.1rem;
+    width: 130px;
+    height: 45px;
+    color: var(--black-color);
+    font-size:1rem;
+    font-weight:600;
+    background: var(--primary-color);
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.group-button a {
+    padding: .75rem 3.1rem; 
+}
+
+    .group-button input:hover, .group-button a:hover {
+        background-color: var(--primary-color-hover);
+        text-decoration: none;
+    }
+
+/*Hết Màn hình thông tin tài khoản*/
+
+
+/*Màn hình About*/
+
+.spad {
+    padding-top: 6.25rem;
+    padding-bottom: 6.25rem;
+}
+
+
+/*About us*/
+.aboutus h3, .aboutus h5 {
+    font-weight: 600;
+    color: var(--black-color);
+    letter-spacing: 2.5px;
+    animation: slideInLeft ease .6s;
+}
+
+.aboutus p {
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 2rem;
+    animation: slideInLeft ease .8s;
+}
+/*contact*/
+.contact {
+    padding-top: 5rem;
+    padding-bottom: 3.125rem;
+}
+
+.contact__widget {
+    margin-bottom: 1.875rem;
+}
+
+    .contact__widget span {
+        font-size: 2.25rem;
+        color: var(--primary-color);
+    }
+
+    .contact__widget h4 {
+        color: var(--black-color);
+        font-weight: 700;
+        margin-bottom: 0.375rem;
+        margin-top: 1.125rem;
+    }
+
+    .contact__widget p {
+        color: var(--black-color);
+        margin-bottom: 0;
+    }
+/*end contact*/
+
+/*---------------------
+  Map
+-----------------------*/
+
+.map {
+    height: 31.25rem;
+    position: relative;
+}
+
+    .map iframe {
+        width: 100%;
+    }
+
+    .map .map-inside {
+        position: absolute;
+        left: 45%;
+        top: 0;
+        
+    }
+
+        .map .map-inside i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            position: absolute;
+            bottom: -4.6875rem;
+            left: 45%;
+        }
+
+        .map .map-inside .inside-widget {
+            width: 21.875rem;
+            background-color: white;
+            text-align: center;
+            padding: 1.4375rem 0;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 1.25rem 0.3125rem rgba(12, 7, 26, 0.15);
+        }
+
+
+
+            .map .map-inside .inside-widget h4 {
+                font-size: 1.375rem;
+                font-weight: 700;
+                color: var(--black-color);
+                margin-bottom: 0.25rem;
+            }
+
+            .map .map-inside .inside-widget ul li {
+                list-style: none;
+                font-size: 1rem;
+                color: var(--black-color);
+                line-height: 1.625rem;
+            }
+
+
+/*Contact Form*/
+.contact-form {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+    .contact-form form textarea {
+        max-width: none;
+        width: 100%;
+        height: 9.375rem;
+        font-size: 1rem;
+        color: var(--black-color);
+        padding-left: 1.25rem;
+        margin-bottom: 1.5rem;
+        border: 0.0625rem solid #ebebeb;
+        border-radius: 0.25rem;
+        padding-top: 0.75rem;
+        resize: none;
+    }
+
+        .contact-form form textarea::placeholder {
+            color: var(--text-color);
+        }
+
+    .contact-form form input {
+        max-width: none;
+        width: 100%;
+        height: 3.125rem;
+        font-size: 1rem;
+        color: var(--black-color);
+        padding-left: 1.25rem;
+        margin-bottom: 1.875rem;
+        border: 0.0625rem solid #ebebeb;
+        border-radius: 0.25rem;
+    }
+        .contact-form form input::placeholder {
+            color: var(--text-color);
+        }
+
+    .contact-form form button {
+        font-size: 1.125rem;
+        letter-spacing: 0.125rem;
+    }
+
+.contact__form__title {
+    margin-bottom: 3.125rem;
+    text-align: center;
+}
+
+    .contact__form__title h2 {
+        color: var(--black-color);
+        font-weight: 700;
+    }
+
+
+.site-btn {
+    font-size: 0.875rem;
+    color: white;
+    font-weight: 800;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 0.8125rem 1.875rem 0.75rem;
+    background: var(--orange-color);
+    border: none;
+    border-radius:8px;
+}
+
+.site-btn:hover{
+    opacity:0.8;
+}
+
+
+
+/*end Contact Form*/
+
+
+/*hết Màn hình About*/
