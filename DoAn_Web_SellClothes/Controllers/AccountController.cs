@@ -9,12 +9,16 @@ namespace DoAn_Web_SellClothes.Controllers
     public class AccountController : Controller
     {
         // GET: Account
-        public ActionResult Authen()
+        public ActionResult AccountInformation()
         {
             return View();
         }
 
-        public ActionResult AccountInformation()
+        public ActionResult LogIn()
+        {
+            return View();
+        }
+        public ActionResult Register()
         {
             return View();
         }
