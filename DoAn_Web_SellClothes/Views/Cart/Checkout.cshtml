@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row pb--80 pb-md--60 pb-sm--40">
+    <!-- Checkout Area Start -->
+    <div class="col-lg-6">
+        <div class="checkout-title mt--10">
+            <h2>Billing Details</h2>
+        </div>
+        <div class="checkout-form">
+            <form action="#" class="form form--checkout">
+
+            </form>
+        </div>
+    </div>
+    <div class="col-xl-5 offset-xl-1 col-lg-6 mt-md--40">
+        <div class="order-details">
+            <div class="checkout-title mt--10">
+                <h2>Your Order</h2>
+            </div>
+            <div class="table-content table-responsive mb--30">
+                <table class="table order-table order-table-2">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th class="text-end">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                Aliquam lobortis est
+                                <strong><span>&#10005;</span>1</strong>
+                            </th>
+                            <td class="text-end">$80.00</td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Auctor gravida enim
+                                <strong><span>&#10005;</span>1</strong>
+                            </th>
+                            <td class="text-end">$60.00</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="cart-subtotal">
+                            <th>Subtotal</th>
+                            <td class="text-end">$56.00</td>
+                        </tr>
+                        <tr class="shipping">
+                            <th>Shipping</th>
+                            <td class="text-end">
+                                <span>Flat Rate; $20.00</span>
+                            </td>
+                        </tr>
+                        <tr class="order-total">
+                            <th>Order Total</th>
+                            <td class="text-end">
+                                <span class="order-total-ammount">$56.00</span>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="checkout-payment">
+                <form action="#" class="payment-form">
+                    <div class="payment-group mb--10">
+                        <div class="payment-radio">
+                            <input type="radio" value="bank" name="payment-method" id="bank"
+                                   checked>
+                            <label class="payment-label" for="cheque">Direct Bank Transfer</label>
+                        </div>
+                        <div class="payment-info" data-method="bank">
+                            <p>
+                                Make your payment directly into our bank account. Please use your
+                                Order ID as the payment reference. Your order will not be shipped
+                                until the funds have cleared in our account.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="payment-group mb--10">
+                        <div class="payment-radio">
+                            <input type="radio" value="cheque" name="payment-method" id="cheque">
+                            <label class="payment-label" for="cheque">
+                                cheque payments
+                            </label>
+                        </div>
+                        <div class="payment-info cheque hide-in-default" data-method="cheque">
+                            <p>
+                                Please send a check to Store Name, Store Street, Store Town, Store
+                                State / County, Store Postcode.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="payment-group mb--10">
+                        <div class="payment-radio">
+                            <input type="radio" value="cash" name="payment-method" id="cash">
+                            <label class="payment-label" for="cash">
+                                CASH ON DELIVERY
+                            </label>
+                        </div>
+                        <div class="payment-info cash hide-in-default" data-method="cash">
+                            <p>Pay with cash upon delivery.</p>
+                        </div>
+                    </div>
+                    <div class="payment-group mt--20">
+                        <p class="mb--15">
+                            Your personal data will be used to process your order,
+                            support your experience throughout this website, and for other purposes
+                            described in our privacy policy.
+                        </p>
+                        <button type="submit" class="btn btn-fullwidth btn-style-1">
+                            Place
+                            Order
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Checkout Area End -->
+</div>
+

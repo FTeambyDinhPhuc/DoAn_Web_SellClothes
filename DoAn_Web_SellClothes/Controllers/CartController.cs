@@ -6,19 +6,15 @@ using System.Web.Mvc;
 
 namespace DoAn_Web_SellClothes.Controllers
 {
-    public class AccountController : Controller
+    public class CartController : Controller
     {
-        // GET: Account
-        public ActionResult AccountInformation()
+        // GET: Cart
+        public ActionResult Cart()
         {
             return View();
         }
 
-        public ActionResult LogIn()
-        {
-            return View();
-        }
-        public ActionResult Register()
+        public ActionResult Checkout()
         {
             return View();
         }
