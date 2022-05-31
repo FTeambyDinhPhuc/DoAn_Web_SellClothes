@@ -33,21 +33,21 @@ namespace DoAn_Web_SellClothes.Models
     partial void InsertAccount(Account instance);
     partial void UpdateAccount(Account instance);
     partial void DeleteAccount(Account instance);
-    partial void InsertAccountType(AccountType instance);
-    partial void UpdateAccountType(AccountType instance);
-    partial void DeleteAccountType(AccountType instance);
+    partial void InsertAdminAccount(AdminAccount instance);
+    partial void UpdateAdminAccount(AdminAccount instance);
+    partial void DeleteAdminAccount(AdminAccount instance);
     partial void InsertFeedback(Feedback instance);
     partial void UpdateFeedback(Feedback instance);
     partial void DeleteFeedback(Feedback instance);
     partial void InsertInvoice(Invoice instance);
     partial void UpdateInvoice(Invoice instance);
     partial void DeleteInvoice(Invoice instance);
-    partial void InsertInvoiceDetail(InvoiceDetail instance);
-    partial void UpdateInvoiceDetail(InvoiceDetail instance);
-    partial void DeleteInvoiceDetail(InvoiceDetail instance);
     partial void InsertProduct(Product instance);
     partial void UpdateProduct(Product instance);
     partial void DeleteProduct(Product instance);
+    partial void InsertInvoiceDetail(InvoiceDetail instance);
+    partial void UpdateInvoiceDetail(InvoiceDetail instance);
+    partial void DeleteInvoiceDetail(InvoiceDetail instance);
     partial void InsertProductType(ProductType instance);
     partial void UpdateProductType(ProductType instance);
     partial void DeleteProductType(ProductType instance);
@@ -57,7 +57,7 @@ namespace DoAn_Web_SellClothes.Models
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -94,11 +94,11 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<AccountType> AccountTypes
+		public System.Data.Linq.Table<AdminAccount> AdminAccounts
 		{
 			get
 			{
-				return this.GetTable<AccountType>();
+				return this.GetTable<AdminAccount>();
 			}
 		}
 		
@@ -118,19 +118,19 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<InvoiceDetail> InvoiceDetails
-		{
-			get
-			{
-				return this.GetTable<InvoiceDetail>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Product> Products
 		{
 			get
 			{
 				return this.GetTable<Product>();
+			}
+		}
+		
+		public System.Data.Linq.Table<InvoiceDetail> InvoiceDetails
+		{
+			get
+			{
+				return this.GetTable<InvoiceDetail>();
 			}
 		}
 		
@@ -169,13 +169,9 @@ namespace DoAn_Web_SellClothes.Models
 		
 		private string _PasswordUser;
 		
-		private int _StatusAccount;
-		
-		private int _IdAccountType;
+		private System.Nullable<int> _StatusAccount;
 		
 		private EntitySet<Invoice> _Invoices;
-		
-		private EntityRef<AccountType> _AccountType;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -193,16 +189,13 @@ namespace DoAn_Web_SellClothes.Models
     partial void OnAddressUserChanged();
     partial void OnPasswordUserChanging(string value);
     partial void OnPasswordUserChanged();
-    partial void OnStatusAccountChanging(int value);
+    partial void OnStatusAccountChanging(System.Nullable<int> value);
     partial void OnStatusAccountChanged();
-    partial void OnIdAccountTypeChanging(int value);
-    partial void OnIdAccountTypeChanged();
     #endregion
 		
 		public Account()
 		{
 			this._Invoices = new EntitySet<Invoice>(new Action<Invoice>(this.attach_Invoices), new Action<Invoice>(this.detach_Invoices));
-			this._AccountType = default(EntityRef<AccountType>);
 			OnCreated();
 		}
 		
@@ -326,8 +319,8 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusAccount", DbType="Int NOT NULL")]
-		public int StatusAccount
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusAccount", DbType="Int")]
+		public System.Nullable<int> StatusAccount
 		{
 			get
 			{
@@ -346,30 +339,6 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdAccountType", DbType="Int NOT NULL")]
-		public int IdAccountType
-		{
-			get
-			{
-				return this._IdAccountType;
-			}
-			set
-			{
-				if ((this._IdAccountType != value))
-				{
-					if (this._AccountType.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIdAccountTypeChanging(value);
-					this.SendPropertyChanging();
-					this._IdAccountType = value;
-					this.SendPropertyChanged("IdAccountType");
-					this.OnIdAccountTypeChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Account_Invoice", Storage="_Invoices", ThisKey="IdAccount", OtherKey="IdAccount")]
 		public EntitySet<Invoice> Invoices
 		{
@@ -380,40 +349,6 @@ namespace DoAn_Web_SellClothes.Models
 			set
 			{
 				this._Invoices.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AccountType_Account", Storage="_AccountType", ThisKey="IdAccountType", OtherKey="IdAccountType", IsForeignKey=true)]
-		public AccountType AccountType
-		{
-			get
-			{
-				return this._AccountType.Entity;
-			}
-			set
-			{
-				AccountType previousValue = this._AccountType.Entity;
-				if (((previousValue != value) 
-							|| (this._AccountType.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._AccountType.Entity = null;
-						previousValue.Accounts.Remove(this);
-					}
-					this._AccountType.Entity = value;
-					if ((value != null))
-					{
-						value.Accounts.Add(this);
-						this._IdAccountType = value.IdAccountType;
-					}
-					else
-					{
-						this._IdAccountType = default(int);
-					}
-					this.SendPropertyChanged("AccountType");
-				}
 			}
 		}
 		
@@ -450,84 +385,92 @@ namespace DoAn_Web_SellClothes.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AccountType")]
-	public partial class AccountType : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AdminAccount")]
+	public partial class AdminAccount : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _IdAccountType;
+		private int _IdAdminAccount;
 		
-		private string _NameAccountType;
+		private string _UserNameAdmin;
 		
-		private EntitySet<Account> _Accounts;
+		private string _PasswordAdmin;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIdAccountTypeChanging(int value);
-    partial void OnIdAccountTypeChanged();
-    partial void OnNameAccountTypeChanging(string value);
-    partial void OnNameAccountTypeChanged();
+    partial void OnIdAdminAccountChanging(int value);
+    partial void OnIdAdminAccountChanged();
+    partial void OnUserNameAdminChanging(string value);
+    partial void OnUserNameAdminChanged();
+    partial void OnPasswordAdminChanging(string value);
+    partial void OnPasswordAdminChanged();
     #endregion
 		
-		public AccountType()
+		public AdminAccount()
 		{
-			this._Accounts = new EntitySet<Account>(new Action<Account>(this.attach_Accounts), new Action<Account>(this.detach_Accounts));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdAccountType", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int IdAccountType
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdAdminAccount", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int IdAdminAccount
 		{
 			get
 			{
-				return this._IdAccountType;
+				return this._IdAdminAccount;
 			}
 			set
 			{
-				if ((this._IdAccountType != value))
+				if ((this._IdAdminAccount != value))
 				{
-					this.OnIdAccountTypeChanging(value);
+					this.OnIdAdminAccountChanging(value);
 					this.SendPropertyChanging();
-					this._IdAccountType = value;
-					this.SendPropertyChanged("IdAccountType");
-					this.OnIdAccountTypeChanged();
+					this._IdAdminAccount = value;
+					this.SendPropertyChanged("IdAdminAccount");
+					this.OnIdAdminAccountChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameAccountType", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string NameAccountType
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserNameAdmin", DbType="VarChar(50)")]
+		public string UserNameAdmin
 		{
 			get
 			{
-				return this._NameAccountType;
+				return this._UserNameAdmin;
 			}
 			set
 			{
-				if ((this._NameAccountType != value))
+				if ((this._UserNameAdmin != value))
 				{
-					this.OnNameAccountTypeChanging(value);
+					this.OnUserNameAdminChanging(value);
 					this.SendPropertyChanging();
-					this._NameAccountType = value;
-					this.SendPropertyChanged("NameAccountType");
-					this.OnNameAccountTypeChanged();
+					this._UserNameAdmin = value;
+					this.SendPropertyChanged("UserNameAdmin");
+					this.OnUserNameAdminChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AccountType_Account", Storage="_Accounts", ThisKey="IdAccountType", OtherKey="IdAccountType")]
-		public EntitySet<Account> Accounts
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PasswordAdmin", DbType="VarChar(50)")]
+		public string PasswordAdmin
 		{
 			get
 			{
-				return this._Accounts;
+				return this._PasswordAdmin;
 			}
 			set
 			{
-				this._Accounts.Assign(value);
+				if ((this._PasswordAdmin != value))
+				{
+					this.OnPasswordAdminChanging(value);
+					this.SendPropertyChanging();
+					this._PasswordAdmin = value;
+					this.SendPropertyChanged("PasswordAdmin");
+					this.OnPasswordAdminChanged();
+				}
 			}
 		}
 		
@@ -549,18 +492,6 @@ namespace DoAn_Web_SellClothes.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Accounts(Account entity)
-		{
-			this.SendPropertyChanging();
-			entity.AccountType = this;
-		}
-		
-		private void detach_Accounts(Account entity)
-		{
-			this.SendPropertyChanging();
-			entity.AccountType = null;
 		}
 	}
 	
@@ -973,246 +904,6 @@ namespace DoAn_Web_SellClothes.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InvoiceDetails")]
-	public partial class InvoiceDetail : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IdInvoiceDetails;
-		
-		private int _IdInvoice;
-		
-		private int _IdProduct;
-		
-		private int _Quantity;
-		
-		private int _Price;
-		
-		private EntityRef<Invoice> _Invoice;
-		
-		private EntityRef<Product> _Product;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdInvoiceDetailsChanging(int value);
-    partial void OnIdInvoiceDetailsChanged();
-    partial void OnIdInvoiceChanging(int value);
-    partial void OnIdInvoiceChanged();
-    partial void OnIdProductChanging(int value);
-    partial void OnIdProductChanged();
-    partial void OnQuantityChanging(int value);
-    partial void OnQuantityChanged();
-    partial void OnPriceChanging(int value);
-    partial void OnPriceChanged();
-    #endregion
-		
-		public InvoiceDetail()
-		{
-			this._Invoice = default(EntityRef<Invoice>);
-			this._Product = default(EntityRef<Product>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdInvoiceDetails", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int IdInvoiceDetails
-		{
-			get
-			{
-				return this._IdInvoiceDetails;
-			}
-			set
-			{
-				if ((this._IdInvoiceDetails != value))
-				{
-					this.OnIdInvoiceDetailsChanging(value);
-					this.SendPropertyChanging();
-					this._IdInvoiceDetails = value;
-					this.SendPropertyChanged("IdInvoiceDetails");
-					this.OnIdInvoiceDetailsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdInvoice", DbType="Int NOT NULL")]
-		public int IdInvoice
-		{
-			get
-			{
-				return this._IdInvoice;
-			}
-			set
-			{
-				if ((this._IdInvoice != value))
-				{
-					if (this._Invoice.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIdInvoiceChanging(value);
-					this.SendPropertyChanging();
-					this._IdInvoice = value;
-					this.SendPropertyChanged("IdInvoice");
-					this.OnIdInvoiceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdProduct", DbType="Int NOT NULL")]
-		public int IdProduct
-		{
-			get
-			{
-				return this._IdProduct;
-			}
-			set
-			{
-				if ((this._IdProduct != value))
-				{
-					if (this._Product.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIdProductChanging(value);
-					this.SendPropertyChanging();
-					this._IdProduct = value;
-					this.SendPropertyChanged("IdProduct");
-					this.OnIdProductChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
-		public int Quantity
-		{
-			get
-			{
-				return this._Quantity;
-			}
-			set
-			{
-				if ((this._Quantity != value))
-				{
-					this.OnQuantityChanging(value);
-					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int NOT NULL")]
-		public int Price
-		{
-			get
-			{
-				return this._Price;
-			}
-			set
-			{
-				if ((this._Price != value))
-				{
-					this.OnPriceChanging(value);
-					this.SendPropertyChanging();
-					this._Price = value;
-					this.SendPropertyChanged("Price");
-					this.OnPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Invoice_InvoiceDetail", Storage="_Invoice", ThisKey="IdInvoice", OtherKey="IdInvoice", IsForeignKey=true)]
-		public Invoice Invoice
-		{
-			get
-			{
-				return this._Invoice.Entity;
-			}
-			set
-			{
-				Invoice previousValue = this._Invoice.Entity;
-				if (((previousValue != value) 
-							|| (this._Invoice.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Invoice.Entity = null;
-						previousValue.InvoiceDetails.Remove(this);
-					}
-					this._Invoice.Entity = value;
-					if ((value != null))
-					{
-						value.InvoiceDetails.Add(this);
-						this._IdInvoice = value.IdInvoice;
-					}
-					else
-					{
-						this._IdInvoice = default(int);
-					}
-					this.SendPropertyChanged("Invoice");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_InvoiceDetail", Storage="_Product", ThisKey="IdProduct", OtherKey="IdProduct", IsForeignKey=true)]
-		public Product Product
-		{
-			get
-			{
-				return this._Product.Entity;
-			}
-			set
-			{
-				Product previousValue = this._Product.Entity;
-				if (((previousValue != value) 
-							|| (this._Product.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Product.Entity = null;
-						previousValue.InvoiceDetails.Remove(this);
-					}
-					this._Product.Entity = value;
-					if ((value != null))
-					{
-						value.InvoiceDetails.Add(this);
-						this._IdProduct = value.IdProduct;
-					}
-					else
-					{
-						this._IdProduct = default(int);
-					}
-					this.SendPropertyChanged("Product");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Product")]
 	public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1585,6 +1276,246 @@ namespace DoAn_Web_SellClothes.Models
 		{
 			this.SendPropertyChanging();
 			entity.Product = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InvoiceDetails")]
+	public partial class InvoiceDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IdInvoiceDetails;
+		
+		private int _IdInvoice;
+		
+		private int _IdProduct;
+		
+		private int _Quantity;
+		
+		private int _Price;
+		
+		private EntityRef<Product> _Product;
+		
+		private EntityRef<Invoice> _Invoice;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdInvoiceDetailsChanging(int value);
+    partial void OnIdInvoiceDetailsChanged();
+    partial void OnIdInvoiceChanging(int value);
+    partial void OnIdInvoiceChanged();
+    partial void OnIdProductChanging(int value);
+    partial void OnIdProductChanged();
+    partial void OnQuantityChanging(int value);
+    partial void OnQuantityChanged();
+    partial void OnPriceChanging(int value);
+    partial void OnPriceChanged();
+    #endregion
+		
+		public InvoiceDetail()
+		{
+			this._Product = default(EntityRef<Product>);
+			this._Invoice = default(EntityRef<Invoice>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdInvoiceDetails", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int IdInvoiceDetails
+		{
+			get
+			{
+				return this._IdInvoiceDetails;
+			}
+			set
+			{
+				if ((this._IdInvoiceDetails != value))
+				{
+					this.OnIdInvoiceDetailsChanging(value);
+					this.SendPropertyChanging();
+					this._IdInvoiceDetails = value;
+					this.SendPropertyChanged("IdInvoiceDetails");
+					this.OnIdInvoiceDetailsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdInvoice", DbType="Int NOT NULL")]
+		public int IdInvoice
+		{
+			get
+			{
+				return this._IdInvoice;
+			}
+			set
+			{
+				if ((this._IdInvoice != value))
+				{
+					if (this._Invoice.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdInvoiceChanging(value);
+					this.SendPropertyChanging();
+					this._IdInvoice = value;
+					this.SendPropertyChanged("IdInvoice");
+					this.OnIdInvoiceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdProduct", DbType="Int NOT NULL")]
+		public int IdProduct
+		{
+			get
+			{
+				return this._IdProduct;
+			}
+			set
+			{
+				if ((this._IdProduct != value))
+				{
+					if (this._Product.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdProductChanging(value);
+					this.SendPropertyChanging();
+					this._IdProduct = value;
+					this.SendPropertyChanged("IdProduct");
+					this.OnIdProductChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
+		public int Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this.OnQuantityChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int NOT NULL")]
+		public int Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_InvoiceDetail", Storage="_Product", ThisKey="IdProduct", OtherKey="IdProduct", IsForeignKey=true)]
+		public Product Product
+		{
+			get
+			{
+				return this._Product.Entity;
+			}
+			set
+			{
+				Product previousValue = this._Product.Entity;
+				if (((previousValue != value) 
+							|| (this._Product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Product.Entity = null;
+						previousValue.InvoiceDetails.Remove(this);
+					}
+					this._Product.Entity = value;
+					if ((value != null))
+					{
+						value.InvoiceDetails.Add(this);
+						this._IdProduct = value.IdProduct;
+					}
+					else
+					{
+						this._IdProduct = default(int);
+					}
+					this.SendPropertyChanged("Product");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Invoice_InvoiceDetail", Storage="_Invoice", ThisKey="IdInvoice", OtherKey="IdInvoice", IsForeignKey=true)]
+		public Invoice Invoice
+		{
+			get
+			{
+				return this._Invoice.Entity;
+			}
+			set
+			{
+				Invoice previousValue = this._Invoice.Entity;
+				if (((previousValue != value) 
+							|| (this._Invoice.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Invoice.Entity = null;
+						previousValue.InvoiceDetails.Remove(this);
+					}
+					this._Invoice.Entity = value;
+					if ((value != null))
+					{
+						value.InvoiceDetails.Add(this);
+						this._IdInvoice = value.IdInvoice;
+					}
+					else
+					{
+						this._IdInvoice = default(int);
+					}
+					this.SendPropertyChanged("Invoice");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	

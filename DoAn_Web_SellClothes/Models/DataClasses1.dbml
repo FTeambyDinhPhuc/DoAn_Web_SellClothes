@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuanLyBanQuanAo" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-IOCHANQ\SQLEXPRESS;Initial Catalog=QuanLyBanQuanAo;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QuanLyBanQuanAoConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-IOCHANQ\SQLEXPRESS;Initial Catalog=QuanLyBanQuanAo;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QuanLyBanQuanAoConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Account" Member="Accounts">
     <Type Name="Account">
       <Column Name="IdAccount" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -8,17 +8,15 @@
       <Column Name="PhoneNumber" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="AddressUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="PasswordUser" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="StatusAccount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IdAccountType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StatusAccount" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Account_Invoice" Member="Invoices" ThisKey="IdAccount" OtherKey="IdAccount" Type="Invoice" />
-      <Association Name="AccountType_Account" Member="AccountType" ThisKey="IdAccountType" OtherKey="IdAccountType" Type="AccountType" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.AccountType" Member="AccountTypes">
-    <Type Name="AccountType">
-      <Column Name="IdAccountType" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NameAccountType" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="AccountType_Account" Member="Accounts" ThisKey="IdAccountType" OtherKey="IdAccountType" Type="Account" />
+  <Table Name="dbo.AdminAccount" Member="AdminAccounts">
+    <Type Name="AdminAccount">
+      <Column Name="IdAdminAccount" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserNameAdmin" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PasswordAdmin" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Feedback" Member="Feedbacks">
@@ -42,17 +40,6 @@
       <Association Name="Account_Invoice" Member="Account" ThisKey="IdAccount" OtherKey="IdAccount" Type="Account" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.InvoiceDetails" Member="InvoiceDetails">
-    <Type Name="InvoiceDetail">
-      <Column Name="IdInvoiceDetails" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="IdInvoice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IdProduct" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Invoice_InvoiceDetail" Member="Invoice" ThisKey="IdInvoice" OtherKey="IdInvoice" Type="Invoice" IsForeignKey="true" />
-      <Association Name="Product_InvoiceDetail" Member="Product" ThisKey="IdProduct" OtherKey="IdProduct" Type="Product" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Product" Member="Products">
     <Type Name="Product">
       <Column Name="IdProduct" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -68,6 +55,17 @@
       <Association Name="Product_InvoiceDetail" Member="InvoiceDetails" ThisKey="IdProduct" OtherKey="IdProduct" Type="InvoiceDetail" />
       <Association Name="Product_SizeProduct" Member="SizeProducts" ThisKey="IdProduct" OtherKey="IdProduct" Type="SizeProduct" />
       <Association Name="ProductType_Product" Member="ProductType" ThisKey="IdProductType" OtherKey="IdProductType" Type="ProductType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InvoiceDetails" Member="InvoiceDetails">
+    <Type Name="InvoiceDetail">
+      <Column Name="IdInvoiceDetails" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdInvoice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdProduct" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Product_InvoiceDetail" Member="Product" ThisKey="IdProduct" OtherKey="IdProduct" Type="Product" IsForeignKey="true" />
+      <Association Name="Invoice_InvoiceDetail" Member="Invoice" ThisKey="IdInvoice" OtherKey="IdInvoice" Type="Invoice" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ProductType" Member="ProductTypes">

@@ -12,34 +12,44 @@
         <div class="form-content">
             <div class="signup-form">
                 <div class="title">Signup</div>
-                <div class="input-boxes">
-                    <div class="input-box">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Enter your name" required />
+                @using (Html.BeginForm())
+                {
+                    <div class="sub-w3l" style="color:red">
+                        <h6>@ViewData["Error"]</h6>
                     </div>
-                    <div class="input-box">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Enter your email" required />
+                    @Html.ValidationSummary(true)
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="fullname" placeholder="Enter your name" required />
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" name="email" placeholder="Enter your email" required />
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-lock"></i>
+                            <input type="password"
+                                   name="password"
+                                   placeholder="Enter your password"
+                                   required />
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-lock"></i>
+                            <input type="password"
+                                   name="confirmpassword"
+                                   placeholder="Confirm password"
+                                   required />
+                        </div>
+                        <div class="button input-box">
+                            <input type="submit" value="Sumbit" />
+                        </div>
+
+                        <div class="text login-text">
+                            Already have an account? <a href="@Url.Action("LogIn", "Home")">Login now</a>
+                        </div>
                     </div>
-                    <div class="input-box">
-                        <i class="fas fa-lock"></i>
-                        <input type="password"
-                               placeholder="Enter your password"
-                               required />
-                    </div>
-                    <div class="input-box">
-                        <i class="fas fa-lock"></i>
-                        <input type="password"
-                               placeholder="Confirm password"
-                               required />
-                    </div>
-                    <div class="button input-box">
-                        <input type="submit" value="Sumbit" />
-                    </div>
-                    <div class="text login-text">
-                        Already have an account? <a href="@Url.Action("LogIn", "Account")">Login now</a>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
