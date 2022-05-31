@@ -30,22 +30,21 @@
                 <h1 class="price-product">@Model.PriceProduct <span>&nbsp;VND</span></h1>
                 <hr class="light" />
                 <h5>Describe</h5>
-                <p>Sản phẩm có xuất xứ tại Nga, được công nhận và kiểm duyệt bởi Cục y tế.</p>
-               
+                @Model.DescribeProduct
                 <h5>Size</h5>
                 <div class="btn-group mr-2 btn-group-size" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-outline-secondary ">@Model.SizeProduct</button>
+                        @Html.Action("SizeProduct", new { id = Model.IdProduct })
                 </div>
                 <h5>quantity</h5>
                 <div class="btn-quantity shadow-sm">
-                    <span class="minus">-</span>
-                    <span class="num">01</span>
-                    <span class="plus">+</span>
+                        <span class="minus">-</span>
+                        <span class="num">01</span>
+                        <span class="plus">+</span>
+                    </div>
+
+                    <button class="btn btn-warning btn-addtocart shadow my-4">Add to cart</button>
+
                 </div>
-
-                <button class="btn btn-warning btn-addtocart shadow my-4">Add to cart</button>
-
             </div>
-        </div>
     </div>
 </div>

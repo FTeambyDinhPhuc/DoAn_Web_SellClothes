@@ -51,10 +51,13 @@ namespace DoAn_Web_SellClothes.Models
     partial void InsertProductType(ProductType instance);
     partial void UpdateProductType(ProductType instance);
     partial void DeleteProductType(ProductType instance);
+    partial void InsertSizeProduct(SizeProduct instance);
+    partial void UpdateSizeProduct(SizeProduct instance);
+    partial void DeleteSizeProduct(SizeProduct instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -136,6 +139,14 @@ namespace DoAn_Web_SellClothes.Models
 			get
 			{
 				return this.GetTable<ProductType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SizeProduct> SizeProducts
+		{
+			get
+			{
+				return this.GetTable<SizeProduct>();
 			}
 		}
 	}
@@ -1214,10 +1225,6 @@ namespace DoAn_Web_SellClothes.Models
 		
 		private int _PriceProduct;
 		
-		private string _SizeProduct;
-		
-		private string _ColorProduct;
-		
 		private string _ImageProduct;
 		
 		private System.DateTime _CreateDate;
@@ -1234,6 +1241,8 @@ namespace DoAn_Web_SellClothes.Models
 		
 		private EntitySet<InvoiceDetail> _InvoiceDetails;
 		
+		private EntitySet<SizeProduct> _SizeProducts;
+		
 		private EntityRef<ProductType> _ProductType;
 		
     #region Extensibility Method Definitions
@@ -1246,10 +1255,6 @@ namespace DoAn_Web_SellClothes.Models
     partial void OnNameProductChanged();
     partial void OnPriceProductChanging(int value);
     partial void OnPriceProductChanged();
-    partial void OnSizeProductChanging(string value);
-    partial void OnSizeProductChanged();
-    partial void OnColorProductChanging(string value);
-    partial void OnColorProductChanged();
     partial void OnImageProductChanging(string value);
     partial void OnImageProductChanged();
     partial void OnCreateDateChanging(System.DateTime value);
@@ -1269,6 +1274,7 @@ namespace DoAn_Web_SellClothes.Models
 		public Product()
 		{
 			this._InvoiceDetails = new EntitySet<InvoiceDetail>(new Action<InvoiceDetail>(this.attach_InvoiceDetails), new Action<InvoiceDetail>(this.detach_InvoiceDetails));
+			this._SizeProducts = new EntitySet<SizeProduct>(new Action<SizeProduct>(this.attach_SizeProducts), new Action<SizeProduct>(this.detach_SizeProducts));
 			this._ProductType = default(EntityRef<ProductType>);
 			OnCreated();
 		}
@@ -1329,46 +1335,6 @@ namespace DoAn_Web_SellClothes.Models
 					this._PriceProduct = value;
 					this.SendPropertyChanged("PriceProduct");
 					this.OnPriceProductChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SizeProduct", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
-		public string SizeProduct
-		{
-			get
-			{
-				return this._SizeProduct;
-			}
-			set
-			{
-				if ((this._SizeProduct != value))
-				{
-					this.OnSizeProductChanging(value);
-					this.SendPropertyChanging();
-					this._SizeProduct = value;
-					this.SendPropertyChanged("SizeProduct");
-					this.OnSizeProductChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ColorProduct", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string ColorProduct
-		{
-			get
-			{
-				return this._ColorProduct;
-			}
-			set
-			{
-				if ((this._ColorProduct != value))
-				{
-					this.OnColorProductChanging(value);
-					this.SendPropertyChanging();
-					this._ColorProduct = value;
-					this.SendPropertyChanged("ColorProduct");
-					this.OnColorProductChanged();
 				}
 			}
 		}
@@ -1530,6 +1496,19 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_SizeProduct", Storage="_SizeProducts", ThisKey="IdProduct", OtherKey="IdProduct")]
+		public EntitySet<SizeProduct> SizeProducts
+		{
+			get
+			{
+				return this._SizeProducts;
+			}
+			set
+			{
+				this._SizeProducts.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProductType_Product", Storage="_ProductType", ThisKey="IdProductType", OtherKey="IdProductType", IsForeignKey=true)]
 		public ProductType ProductType
 		{
@@ -1591,6 +1570,18 @@ namespace DoAn_Web_SellClothes.Models
 		}
 		
 		private void detach_InvoiceDetails(InvoiceDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = null;
+		}
+		
+		private void attach_SizeProducts(SizeProduct entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = this;
+		}
+		
+		private void detach_SizeProducts(SizeProduct entity)
 		{
 			this.SendPropertyChanging();
 			entity.Product = null;
@@ -1732,6 +1723,157 @@ namespace DoAn_Web_SellClothes.Models
 		{
 			this.SendPropertyChanging();
 			entity.ProductType = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SizeProduct")]
+	public partial class SizeProduct : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IdSizeProduct;
+		
+		private string _NameSizeProduct;
+		
+		private int _IdProduct;
+		
+		private EntityRef<Product> _Product;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdSizeProductChanging(int value);
+    partial void OnIdSizeProductChanged();
+    partial void OnNameSizeProductChanging(string value);
+    partial void OnNameSizeProductChanged();
+    partial void OnIdProductChanging(int value);
+    partial void OnIdProductChanged();
+    #endregion
+		
+		public SizeProduct()
+		{
+			this._Product = default(EntityRef<Product>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdSizeProduct", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int IdSizeProduct
+		{
+			get
+			{
+				return this._IdSizeProduct;
+			}
+			set
+			{
+				if ((this._IdSizeProduct != value))
+				{
+					this.OnIdSizeProductChanging(value);
+					this.SendPropertyChanging();
+					this._IdSizeProduct = value;
+					this.SendPropertyChanged("IdSizeProduct");
+					this.OnIdSizeProductChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameSizeProduct", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string NameSizeProduct
+		{
+			get
+			{
+				return this._NameSizeProduct;
+			}
+			set
+			{
+				if ((this._NameSizeProduct != value))
+				{
+					this.OnNameSizeProductChanging(value);
+					this.SendPropertyChanging();
+					this._NameSizeProduct = value;
+					this.SendPropertyChanged("NameSizeProduct");
+					this.OnNameSizeProductChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdProduct", DbType="Int NOT NULL")]
+		public int IdProduct
+		{
+			get
+			{
+				return this._IdProduct;
+			}
+			set
+			{
+				if ((this._IdProduct != value))
+				{
+					if (this._Product.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdProductChanging(value);
+					this.SendPropertyChanging();
+					this._IdProduct = value;
+					this.SendPropertyChanged("IdProduct");
+					this.OnIdProductChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_SizeProduct", Storage="_Product", ThisKey="IdProduct", OtherKey="IdProduct", IsForeignKey=true)]
+		public Product Product
+		{
+			get
+			{
+				return this._Product.Entity;
+			}
+			set
+			{
+				Product previousValue = this._Product.Entity;
+				if (((previousValue != value) 
+							|| (this._Product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Product.Entity = null;
+						previousValue.SizeProducts.Remove(this);
+					}
+					this._Product.Entity = value;
+					if ((value != null))
+					{
+						value.SizeProducts.Add(this);
+						this._IdProduct = value.IdProduct;
+					}
+					else
+					{
+						this._IdProduct = default(int);
+					}
+					this.SendPropertyChanged("Product");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }
