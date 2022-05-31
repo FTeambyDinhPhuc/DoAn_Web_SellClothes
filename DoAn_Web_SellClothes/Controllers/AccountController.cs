@@ -104,10 +104,22 @@ namespace DoAn_Web_SellClothes.Controllers
             }
             else
             {
-                Session["Taikhoan"] = user;
+                Session["user"] = user;
+                Session["name"] = user.FullName;
                 return RedirectToAction("Index", "Home");
             }
             return View();
         }
+        public ActionResult _User()
+        {
+            return PartialView();
+        }
+        public ActionResult LogOut()
+        {
+            Session["user"] = null;
+            Session["name"] = null;
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

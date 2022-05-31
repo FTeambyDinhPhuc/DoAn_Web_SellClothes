@@ -62,8 +62,9 @@
     <!--Menu tài khoản khi đăng nhập-->
     <div class="collapse " id="menuAccount">
         <div class="py-2 px-5 text-right">
+            <a>@Html.Action("_User", "Account")</a>
             <a href="@Url.Action("AccountInformation","Account")">Account</a>
-            <a>Logout</a>
+            <a href="@Url.Action("LogOut","Account")">Logout</a>
         </div>
     </div>
     <!--Hết Menu tài khoản khi đăng nhập-->

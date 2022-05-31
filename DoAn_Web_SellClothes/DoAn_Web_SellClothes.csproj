@@ -2430,6 +2430,7 @@
     <Content Include="Views\Product\SPTheoLoaiNu.cshtml" />
     <Content Include="Views\Product\SizeProduct.cshtml" />
     <Content Include="Views\Product\AllSanPham.cshtml" />
+    <Content Include="Views\Account\_User.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
