@@ -37,7 +37,7 @@
                     <a class="nav-link" data-toggle="collapse" href="#searchBar" aria-expanded="false" aria-controls="searchBar"><i class="fa fa-search"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Cart", "Cart")"><i class="fa fa-bag-shopping"></i></a>
+                    <a class="nav-link" href="@Url.Action("Cart", "Cart")"><i class="fa fa-bag-shopping"></i><sup>2</sup></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#menuAccount" aria-expanded="false" aria-controls="menuAccount"><i class="fa fa-user"></i></a>
@@ -63,6 +63,7 @@
     <div class="collapse " id="menuAccount">
         <div class="py-2 px-5 text-right">
             <a href="@Url.Action("AccountInformation","Account")">Account</a>
+            <a href="@Url.Action("History","History")">History</a>
             <a>Logout</a>
         </div>
     </div>

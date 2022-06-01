@@ -6,19 +6,15 @@ using System.Web.Mvc;
 
 namespace DoAn_Web_SellClothes.Controllers
 {
-    public class HomeController : Controller
+    public class HistoryController : Controller
     {
-        public ActionResult Index()
+        // GET: History
+        public ActionResult History()
         {
             return View();
         }
 
-        public ActionResult About()
-        {
-            return View();
-        }
-
-        public ActionResult Thanks()
+        public ActionResult HistoryDetails()
         {
             return View();
         }

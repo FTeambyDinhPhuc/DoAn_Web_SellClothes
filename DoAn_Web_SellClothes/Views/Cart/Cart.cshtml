@@ -4,9 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container cart-container py-5 px-5">
+<div class="container-xl cart-container py-5 px-5">
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-7">
             <form class="cart-form" action="#">
                 <div class="row">
                     <div class="col-12">
@@ -34,42 +34,18 @@
                                             <img src="~/Assets/img/productImage.png"
                                                  alt="Product Thumnail">
                                         </td>
-                                        <td class="product-name text-left wide-column">
-                                            <a href="product-details.html">Super skinny blazer</a>
+                                        <td class="product-name text-left">
+                                            <a href="@Url.Action("ProductDetails","Product")">Super skinny blazer</a>
                                         </td>
                                         <td class="product-price">
-                                            $49.00
+                                            49.00<span>đ</span>
                                         </td>
                                         <td class="product-quantity">
                                             <input type="number" class="quantity-input" name="qty"
                                                    id="qty-1" value="1" min="1">
                                         </td>
                                         <td class="product-total-price">
-                                            <strong> $49.00</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="product-remove text-center ">
-                                            <a href="#">
-                                                <i class="fa-solid fa-xmark"></i>
-                                            </a>
-                                        </td>
-                                        <td class="product-thumbnail text-left">
-                                            <img src="~/Assets/img/productImage.png"
-                                                 alt="Product Thumnail">
-                                        </td>
-                                        <td class="product-name text-left wide-column">
-                                            <a href="product-details.html">Super skinny blazer</a>
-                                        </td>
-                                        <td class="product-price">
-                                            $49.00
-                                        </td>
-                                        <td class="product-quantity">
-                                            <input type="number" class="quantity-input" name="qty"
-                                                   id="qty-1" value="1" min="1">
-                                        </td>
-                                        <td class="product-total-price">
-                                            <strong> $49.00</strong>
+                                            <strong> 49.00<span>đ</span></strong>
                                         </td>
                                     </tr>
                                     <tr>
@@ -82,91 +58,73 @@
                                             <img src="~/Assets/img/productImage.png"
                                                  alt="Product Thumnail">
                                         </td>
-                                        <td class="product-name text-left wide-column">
-                                            <a href="product-details.html">Super skinny blazer</a>
+                                        <td class="product-name text-left">
+                                            <a href="@Url.Action("ProductDetails","Product")">Super skinny blazer</a>
                                         </td>
                                         <td class="product-price">
-                                            $49.00
+                                            49.00<span>đ</span>
                                         </td>
                                         <td class="product-quantity">
                                             <input type="number" class="quantity-input" name="qty"
                                                    id="qty-1" value="1" min="1">
                                         </td>
                                         <td class="product-total-price">
-                                            <strong> $49.00</strong>
+                                            <strong> 49.00<span>đ</span></strong>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="product-remove text-center ">
-                                            <a href="#">
-                                                <i class="fa-solid fa-xmark"></i>
-                                            </a>
-                                        </td>
-                                        <td class="product-thumbnail text-left">
-                                            <img src="~/Assets/img/productImage.png"
-                                                 alt="Product Thumnail">
-                                        </td>
-                                        <td class="product-name text-left wide-column">
-                                            <a href="product-details.html">Super skinny blazer</a>
-                                        </td>
-                                        <td class="product-price">
-                                            $49.00
-                                        </td>
-                                        <td class="product-quantity">
-                                            <input type="number" class="quantity-input" name="qty"
-                                                   id="qty-1" value="1" min="1">
-                                        </td>
-                                        <td class="product-total-price">
-                                            <strong> $49.00</strong>
-                                        </td>
-                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
                 <div class="row border-top">
-                    <div class="coupon border-bottom">
-                        <input type="text" id="coupon" name="coupon" class="cart-form__input"
-                               placeholder="Coupon Code">
-                        <button type="submit" class="cart-form__btn">Apply Coupon</button>
+                    @*<div class="col-sm-6 col-xl-7">
+                        <div class="coupon border-bottom">
+                            <input type="text" id="coupon" name="coupon" class="cart-form__input"
+                                   placeholder="Mã giảm giá">
+                            <button type="submit" class="cart-form__btn ml-auto">Áp dụng</button>
+                        </div>
+                    </div>*@
+                    <div class=" col-sm-6 col-xl-5 ml-auto text-md-right text-sm-left py-4">
+                        <button type="submit" class="cart-form__btn">Clear Cart</button>
+                        <button type="submit" class="cart-form__btn">Update Cart</button>
                     </div>
-
                 </div>
             </form>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 offset-xl-1">
             <div class="cart-collaterals">
                 <div class="cart-totals">
-                    <h5 class="mb-5">Cart totals</h5>
+                    <h5 class="mb-4">Cart totals</h5>
                     <div class="table-content table-responsive">
                         <table class="table order-table">
                             <tbody>
                                 <tr>
-                                    <th>Subtotal</th>
-                                    <td>$196.00</td>
+                                    <th>Tổng tiền sản phẩm</th>
+                                    <td>196.00<span>đ</span></td>
                                 </tr>
-                                <tr>
-                                    <th>Discount</th>
+                                @*<tr>
+                                    <th>Giảm giá</th>
                                     <td>
                                         $20.00
                                     </td>
-                                </tr>
+                                </tr>*@
                                 <tr>
-                                    <th>Shipping</th>
-                                    <td>$6.00</td>
+                                    <th>Phí vận chuyển</th>
+                                    <td>6.00<span>đ</span></td>
                                 </tr>
                                 <tr class="order-total border-top">
-                                    <th>Total</th>
+                                    <th>Tổng tiền</th>
                                     <td>
-                                        $182.00
+                                        182.00<span>đ</span>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <a href="@Url.Action("Checkout","Cart")" class="btn btn-oder pt-2">
+                <a href="@Url.Action("Checkout","Cart")" class="btn btn-checkout py-2" type="submit">
                     Proceed To Checkout
                 </a>
             </div>
