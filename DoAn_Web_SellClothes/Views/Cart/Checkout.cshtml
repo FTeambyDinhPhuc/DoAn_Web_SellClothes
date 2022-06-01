@@ -4,69 +4,148 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row pb--80 pb-md--60 pb-sm--40">
-    <!-- Checkout Area Start -->
-    <div class="col-lg-6">
-        <div class="checkout-title mt--10">
-            <h2>Billing Details</h2>
-        </div>
-        <div class="checkout-form">
-            <form action="#" class="form form--checkout">
+<div class="container">
+    <div class="row my-lg-5 my-md-4 my-3">
+        <!-- Checkout Area Start -->
+        <div class="col-lg-6 col-xl-5 mt-4"">
+            <div class="checkout-title mb-5">
+                <h2>Billing Details</h2>
+            </div>
+            <div class="checkout-form">
+                <!--Full name-->
+                <div class="row mb-4">
+                    <div class="form__group col-12">
+                        <label for="billing_name" class="form__label form__label--2">
+                            Full Name
+                            <span class="required">*</span>
+                        </label>
+                        <input readonly type="text" name="billing_name" id="billing_name"
+                               class="form__input form__input--2">
+                    </div>
+                </div>
 
-            </form>
+                <!--province / city-->
+                <div class="row mb-4">
+                    <div class="form__group col-12">
+                        <label for="billing_streetAddress" class="form__label form__label--2">
+                            Province / City
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="text" name="billing_city" id="billing_city"
+                               class="form__input form__input--2 mb--30">
+                    </div>
+                </div>
+                <!--District-->
+                <div class="row mb-4">
+                    <div class="form__group col-12">
+                        <label for="billing_district" class="form__label form__label--2">
+                            District
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" name="billing_district" id="billing_district"
+                               class="form__input form__input--2">
+                    </div>
+                </div>
+                <!--commune / ward / town-->
+                <div class="row mb-4">
+                    <div class="form__group col-12">
+                        <label for="billing_state" class="form__label form__label--2">
+                            Commune/ Ward/ Town
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" name="billing_commune" id="billing_commune"
+                               class="form__input form__input--2">
+                    </div>
+                </div>
+
+                <!--apartment number-->
+                <div class="row mb-4">
+                    <div class="form__group col-12">
+                        <label for="billing_state" class="form__label form__label--2">
+                            Address
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" name="billing_address" id="billing_address"
+                               class="form__input form__input--2">
+                    </div>
+                </div>
+
+                <!--Phone-->
+                <div class="row mb-4">
+                    <div class="form__group col-12">
+                        <label for="billing_phone" class="form__label form__label--2">
+                            Phone <span class="required">*</span>
+                        </label>
+                        <input type="text" name="billing_phone" id="billing_phone"
+                               class="form__input form__input--2">
+                    </div>
+                </div>
+                <!--mail-->
+                <div class="row mb-4">
+                    <div class="form__group col-12">
+                        <label for="billing_email" class="form__label form__label--2">
+                            Email Address
+                            <span class="required">*</span>
+                        </label>
+                        <input type="email" name="billing_email" id="billing_email"
+                               class="form__input form__input--2">
+                    </div>
+                </div>
+
+             
+            </div>
         </div>
-    </div>
-    <div class="col-xl-5 offset-xl-1 col-lg-6 mt-md--40">
-        <div class="order-details">
-            <div class="checkout-title mt--10">
-                <h2>Your Order</h2>
-            </div>
-            <div class="table-content table-responsive mb--30">
-                <table class="table order-table order-table-2">
-                    <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th class="text-end">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>
-                                Aliquam lobortis est
-                                <strong><span>&#10005;</span>1</strong>
-                            </th>
-                            <td class="text-end">$80.00</td>
-                        </tr>
-                        <tr>
-                            <th>
-                                Auctor gravida enim
-                                <strong><span>&#10005;</span>1</strong>
-                            </th>
-                            <td class="text-end">$60.00</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr class="cart-subtotal">
-                            <th>Subtotal</th>
-                            <td class="text-end">$56.00</td>
-                        </tr>
-                        <tr class="shipping">
-                            <th>Shipping</th>
-                            <td class="text-end">
-                                <span>Flat Rate; $20.00</span>
-                            </td>
-                        </tr>
-                        <tr class="order-total">
-                            <th>Order Total</th>
-                            <td class="text-end">
-                                <span class="order-total-ammount">$56.00</span>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <div class="checkout-payment">
-                <form action="#" class="payment-form">
+        <div class="col-xl-6 offset-xl-1 col-lg-6 mt-4">
+            <div class="order-details">
+                <div class="checkout-title mt--10">
+                    <h2>Your Order</h2>
+                </div>
+                <div class="table-content table-responsive mb--30">
+                    <table class="table order-table order-table-2">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th class="text-end">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>
+                                    Aliquam lobortis est
+                                    <strong><span>&#10005;</span>1</strong>
+                                </th>
+                                <td class="text-end">$80.00</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Auctor gravida enim
+                                    <strong><span>&#10005;</span>1</strong>
+                                </th>
+                                <td class="text-end">$60.00</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="cart-subtotal">
+                                <th>Subtotal</th>
+                                <td class="text-end">$56.00</td>
+                            </tr>
+                            <tr class="shipping">
+                                <th>Shipping</th>
+                                <td class="text-end">
+                                    <span> $20.00</span>
+                                </td>
+                            </tr>
+                            <tr class="order-total">
+                                <th>Order Total</th>
+                                <td class="text-end">
+                                    <span class="order-total-ammount">$56.00</span>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="checkout-payment">
                     <div class="payment-group mb--10">
                         <div class="payment-radio">
                             <input type="radio" value="bank" name="payment-method" id="bank"
@@ -78,20 +157,6 @@
                                 Make your payment directly into our bank account. Please use your
                                 Order ID as the payment reference. Your order will not be shipped
                                 until the funds have cleared in our account.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="payment-group mb--10">
-                        <div class="payment-radio">
-                            <input type="radio" value="cheque" name="payment-method" id="cheque">
-                            <label class="payment-label" for="cheque">
-                                cheque payments
-                            </label>
-                        </div>
-                        <div class="payment-info cheque hide-in-default" data-method="cheque">
-                            <p>
-                                Please send a check to Store Name, Store Street, Store Town, Store
-                                State / County, Store Postcode.
                             </p>
                         </div>
                     </div>
@@ -117,10 +182,10 @@
                             Order
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
+        <!-- Checkout Area End -->
     </div>
-    <!-- Checkout Area End -->
 </div>
 
