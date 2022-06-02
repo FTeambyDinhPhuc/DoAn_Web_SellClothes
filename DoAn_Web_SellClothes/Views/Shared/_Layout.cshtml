@@ -37,7 +37,7 @@
                     <a class="nav-link" data-toggle="collapse" href="#searchBar" aria-expanded="false" aria-controls="searchBar"><i class="fa fa-search"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Cart", "Cart")"><i class="fa fa-bag-shopping"></i></a>
+                    <a class="nav-link" href="@Url.Action("Cart", "Cart")"><i class="fa fa-bag-shopping"></i><sup>2</sup></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#menuAccount" aria-expanded="false" aria-controls="menuAccount"><i class="fa fa-user"></i></a>
@@ -65,6 +65,7 @@
             <a>@Html.Action("_User", "Account")</a>
             <a href="@Url.Action("AccountInformation","Account")">Account</a>
             <a href="@Url.Action("LogOut","Account")">Logout</a>
+            <a href="@Url.Action("History","History")">History</a>
         </div>
     </div>
     <!--Hết Menu tài khoản khi đăng nhập-->

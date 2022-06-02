@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xl history-container py-5 px-5">
+    <div class="table-content table-responsive">
+        <h2 class="mb-5">Lịch sử mua hàng</h2>
+        <table class="table text-center">
+            <thead class="border-bottom text-left">
+                <tr>
+                    <th>Mã đơn hàng</th>
+                    <th>Ngày mua</th>
+                    <th>Tên khách hàng</th>
+                    <th>Tổng tiền</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody class="text-left">
+                <tr>
+                    <td class="bill-id">
+                        1
+                    </td>
+                    <td class="bill-date ">
+                        1/1/2022
+                    </td>
+                    <td class="bill-nameCustomer">
+                        bbifgdfgdfgdfgdfgdfgdfgdfg
+                    </td>
+                    <td class="bill-total">
+                        49.00<span> VNĐ</span>
+                    </td>
+                    <td class="bill-details">
+                        <a href="@Url.Action("HistoryDetails","History")">View details</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bill-id">
+                        1
+                    </td>
+                    <td class="bill-date ">
+                        1/1/2022
+                    </td>
+                    <td class="bill-nameCustomer">
+                        bbifgdfgdfgdfgdfgdfgdfgdfg
+                    </td>
+                    <td class="bill-total">
+                        49.00<span> VNĐ</span>
+                    </td>
+                    <td class="bill-details">
+                        <a href="@Url.Action("HistoryDetails","History")">View details</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

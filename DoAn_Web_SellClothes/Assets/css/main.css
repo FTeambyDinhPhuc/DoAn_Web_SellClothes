@@ -1,4 +1,4 @@
-﻿.clear{
+.clear{
     clear:both;
 }
 /*Navigation*/
@@ -207,16 +207,18 @@ h3.heading {
         opacity: 0.7;
         text-decoration: none;
     }
-    .card .card-body p{
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-    .name-product, .price-product {
-        font-size: 1.625rem;
-        color: var(--black-color);
-        font-weight: 500;
-    }
+
+.card-img-top{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.name-product, .price-product {
+    font-size: 1.625rem;
+    color: var(--black-color);
+    font-weight: 500;
+}
 
 .price-product {
     font-size: 1.2rem;
@@ -923,7 +925,9 @@ footer {
 
 /*Màn hình giỏ hàng*/
 
-
+.cart-container{
+    min-height:80vh;
+}
 
 .cart-form .table th,
 .cart-form .table td {
@@ -950,12 +954,11 @@ footer {
 }
 
 .cart-form .product-name{
-    width:25rem;
+    width:20rem;
 }
 .cart-form .product-name a {
     color: var(--black-color);
     font-size: 1.1rem;
-  
 }
     .cart-form .product-name a:hover {
         color: var(--text-color);
@@ -983,7 +986,6 @@ footer {
 .coupon {
     margin: 1.5rem 0;
     display: flex;
-    
     padding-bottom: 1rem;
 }
 
@@ -991,6 +993,7 @@ footer {
  border:none;
  font-size:1rem;
  outline:none;
+ width:60%;
 }
 
 
@@ -1027,7 +1030,7 @@ footer {
         text-align: center;
     }
 
-        .cart-collaterals .btn-oder {
+        .cart-collaterals .btn-checkout {
             margin-top:1rem;
             border-radius:1rem;
             width: 100%;
@@ -1037,12 +1040,128 @@ footer {
         }
 
 
-    .cart-collaterals .btn-oder:hover {
+            .cart-collaterals .btn-checkout:hover {
+                background-color: var(--primary-color-hover);
+                color: var(--black-color);
+            }
+            .cart-collaterals .btn-checkout:focus {
+                box-shadow: none;
+            }
+/*hết Màn hình giỏ hàng*/
+
+/*Màn hình checkout*/
+.checkout-form .form__group {
+    display: flex;
+    flex-direction:column;
+}
+
+    .checkout-form .form__group span{
+        color:red;
+    }
+
+    .checkout-form .form__group input {
+        width: 100%;
+        max-width: none;
+        height: 3.125rem;
+        outline:none;
+        
+    }
+
+.order-details {
+    padding:2rem 1.5rem 1.5rem 1.5rem;
+    border: 1px solid black;
+}
+
+.checkout-title{
+    letter-spacing:2px;
+    font-weight:500;
+}
+
+.order-details thead th {
+    border-top: none;
+    border-bottom: 2px solid rgba(0,0,0,.2);
+}
+
+.order-details th, .order-details td {
+    border-top: 2px solid rgba(0,0,0,.2);
+    border-bottom: 2px solid rgba(0,0,0,.2);
+    letter-spacing: 1px;
+}
+
+.order-details tbody th, .order-details tbody td {
+    border: none;
+}
+    .order-details tbody td .multiply {
+        font-size: .5rem;
+    }
+
+
+        .payment-group .btn-oder {
+            margin-top: 1rem;
+            width: 100%;
+            height: 3rem;
+            background-color: #2e2e2e;
+            color: #fff;
+        }
+
+
+    .payment-group .btn-oder:hover {
         background-color: var(--primary-color-hover);
         color: var(--black-color);
     }
-            .cart-collaterals .btn-oder:focus {
-                box-shadow: none;
-            }
 
-/*hết Màn hình giỏ hàng*/
+.payment-label {
+    letter-spacing: 1px;
+}
+
+
+
+/*hết Màn hình checkout*/
+
+/*Màn hình cảm ơn*/
+.thanks-container{
+    min-height:60vh;
+}
+
+.thanks-container a{
+    width:100%;
+    height:3rem;
+   
+}
+    /*hết Màn hình cảm ơn*/
+
+/*Màn hình lịch sử mua hàng*/
+.history-container {
+    min-height: 80vh;
+}
+
+    .history-container h2{
+        letter-spacing:2px;
+       
+    }
+
+    .history-container thead th {
+        border: none;
+        color: var(--black-color);
+        font-weight: 500;
+        letter-spacing: 1px;
+    }
+
+  .history-container tbody tr td{
+        border:none;
+    }
+
+    .history-container tbody tr .product-name a {
+        color: var(--black-color);
+    }
+
+
+    .history-container .product-thumbnail {
+        width: 5rem;
+        min-width: 5rem;
+    }
+
+        .history-container .product-thumbnail img {
+            width: 100%;
+        }
+/* hết Màn hình lịch sử mua hàng*/
