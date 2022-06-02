@@ -1,5 +1,5 @@
 ﻿:root {
-    --orange-color:#FB9600;
+    --orange-color: #FB9600;
     --text-color-filter-list: #4A453E;
     --text-black-color-filter-list: #20391B;
     --select-color: #7E9C78;
@@ -13,6 +13,7 @@
     --surface-color: #E7E0D6;
     --hover-color: #D2D2D2;
     --gray-color: #F2F2F2;
+    --green-color: #47d864;
 }
 
 * {
@@ -22,6 +23,7 @@
 }
 
 body {
+ 
     overflow-x:hidden;
     padding: 0;
 }
@@ -31,7 +33,6 @@ html {
     font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;
 }
-
 
 
 
