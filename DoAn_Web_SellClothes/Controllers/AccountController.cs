@@ -14,10 +14,6 @@ namespace DoAn_Web_SellClothes.Controllers
         DataClasses1DataContext data = new DataClasses1DataContext();
         // GET: Account
         private static readonly int CHECK_EMAIL = 1;
-        public ActionResult AccountInformation()
-        {
-            return View();
-        }
         public static string MD5Hash(string input)
         {
             StringBuilder hash = new StringBuilder();
@@ -40,9 +36,11 @@ namespace DoAn_Web_SellClothes.Controllers
         {
             var hoten = collection["fullname"];
             var email = collection["email"];
+            var sodienthoai = collection["phone_number"];
+            var diachi = collection["address"];
             var matkhau = collection["password"];
             var matkhaunhaplai = collection["confirmpassword"];
-            if (String.IsNullOrEmpty(hoten) || String.IsNullOrEmpty(email) || String.IsNullOrEmpty(matkhau) || String.IsNullOrEmpty(matkhaunhaplai))
+            if (String.IsNullOrEmpty(hoten) || String.IsNullOrEmpty(email) || String.IsNullOrEmpty(matkhau) || String.IsNullOrEmpty(matkhaunhaplai) || String.IsNullOrEmpty(diachi) || String.IsNullOrEmpty(sodienthoai))
             {
                 ViewData["Error"] = "Vui lòng điền đầy đủ nội dung";
                 return this.Register();
@@ -61,13 +59,14 @@ namespace DoAn_Web_SellClothes.Controllers
             {
                 ac.FullName = hoten;
                 ac.Email = email;
+                ac.PhoneNumber = sodienthoai;
+                ac.AddressUser = diachi;
                 ac.PasswordUser =MD5Hash(matkhau);
                 data.Accounts.InsertOnSubmit(ac);
                 data.SubmitChanges();
                 return RedirectToAction("LogIn");
             }
         }
-
         private bool checkUser(string str, int value)
         {
             if(value==1)
@@ -108,7 +107,6 @@ namespace DoAn_Web_SellClothes.Controllers
                 Session["name"] = user.FullName;
                 return RedirectToAction("Index", "Home");
             }
-            return View();
         }
         public ActionResult _User()
         {
@@ -120,6 +118,85 @@ namespace DoAn_Web_SellClothes.Controllers
             Session["name"] = null;
             return RedirectToAction("Index", "Home");
         }
+        [HttpGet]
+        public ActionResult AccountInformation()
+        {
+            Account ac = (Account)Session["user"];
+            return View(ac);
+        }
+        [HttpPost]
+        public ActionResult AccountInformation(FormCollection collection)
+        {
+            Account ac = (Account)Session["user"];
+            var User = data.Accounts.SingleOrDefault(p => p.IdAccount == p.IdAccount);
+            var fullnameuser = collection["fullname"];
+            var emailuser = collection["email"];
+            var phoneuser = collection["phone_number"];
+            var addressuser = collection["address"];
+            var oldpassuser = collection["oldpass"];
+            var newpassuser = collection["newpass"];
+            var renewpassuser = collection["renewpass"];
+            if(String.IsNullOrEmpty(fullnameuser) || String.IsNullOrEmpty(emailuser) || String.IsNullOrEmpty(phoneuser) ||
+                String.IsNullOrEmpty(addressuser))
+            {
+                ViewBag.Error  = "Thông tin không được để trống";
+                return this.AccountInformation();
+            }
+            else if(String.IsNullOrEmpty(oldpassuser) && String.IsNullOrEmpty(newpassuser) && String.IsNullOrEmpty(renewpassuser))
+            {
 
+                if (!String.IsNullOrEmpty(oldpassuser))
+                {
+                    if (!User.PasswordUser.Equals(MD5Hash(oldpassuser)))
+                    {
+                        ViewBag.Error = "Mật khẩu không đúng!";
+                        return this.AccountInformation();
+                    }
+                    else
+                    {
+                        if (String.IsNullOrEmpty(newpassuser))
+                        {
+                            ViewBag.Error = "Vui lòng nhập mật khấu mới!";
+                            return this.AccountInformation();
+                        }
+                        else if (String.IsNullOrEmpty(renewpassuser))
+                        {
+                            ViewBag.Error = "Vui lòng nhập lại mật khẩu mới!";
+                            return this.AccountInformation();
+                        }
+                        else if (!newpassuser.Equals(renewpassuser))
+                        {
+                            ViewBag.Error = "Mật khẩu mới và mật khẩu cũ không trùng khớp!";
+                            return this.AccountInformation();
+                        }
+                        else
+                        {
+                            User.FullName = fullnameuser;
+                            User.Email = emailuser;
+                            User.PhoneNumber = phoneuser;
+                            User.AddressUser = addressuser;
+                            User.PasswordUser = newpassuser;
+                            Session["user"] = User;
+                            data.SubmitChanges();
+                            ViewData["Info"] = "Cập nhật thành công!";
+                            return this.AccountInformation();
+                        }
+                    }
+                }
+                else
+                {
+                    User.FullName = fullnameuser;
+                    User.Email = emailuser;
+                    User.PhoneNumber = phoneuser;
+                    User.AddressUser = addressuser;
+                    Session["user"] = User;
+                    data.SubmitChanges();
+                    ViewData["Info"] = "Cập nhật thành công!";
+                    return this.AccountInformation();
+                }
+            }
+            return this.AccountInformation();
+
+        }
     }
 }

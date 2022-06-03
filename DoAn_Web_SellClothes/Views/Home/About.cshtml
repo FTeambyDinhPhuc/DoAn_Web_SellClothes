@@ -100,20 +100,25 @@
                     </div>
                 </div>
             </div>
-            <form action="#">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your name">
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <input type="email" placeholder="Your Email">
-                    </div>
-                    <div class="col-lg-12 text-center">
-                        <textarea placeholder="Your message"></textarea>
-                        <button type="submit" class="site-btn shadow-sm">SEND MESSAGE</button>
-                    </div>
+            @using (Html.BeginForm())
+            {
+                <div class="sub-w3l" style="color:red">
+                    <h6>@ViewData["Error"]</h6>
                 </div>
-            </form>
+                @Html.ValidationSummary(true)
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <input type="text" placeholder="Your name" name="fullnamefeedback">
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <input type="email" placeholder="Your Email" name="emailfeedback">
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <textarea placeholder="Your message" name="textfeedback"></textarea>
+                            <button type="submit" class="site-btn shadow-sm" value="submit">SEND MESSAGE</button>
+                        </div>
+                    </div>
+            }
         </div>
     </div>
     <!-- Contact Form End -->
