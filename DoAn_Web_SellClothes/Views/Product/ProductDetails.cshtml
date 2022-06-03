@@ -33,20 +33,16 @@
                 @Model.DescribeProduct
                 <h5>Size</h5>
                 <div class="btn-group mr-2 btn-group-size" role="group" aria-label="Basic example">
-                        @Html.Action("SizeProduct", new { id = Model.IdProduct })
+                    @Html.Action("SizeProduct", new { id = Model.IdProduct })
                 </div>
                 <h5>quantity</h5>
                 <div class="btn-quantity shadow-sm">
-                        <span class="minus">-</span>
-                        <span class="num">01</span>
-                        <span class="plus">+</span>
-                    </div>
-
-                    <button class="btn btn-warning btn-addtocart shadow my-4">Add to cart</button>
-
+                    <span class="minus">-</span>
+                    <span class="num">01</span>
+                    <span class="plus">+</span>
                 </div>
-
                 <button onclick="showSuccessAddToCart()" class="btn btn-warning btn-addtocart shadow my-4">Add to cart</button>
+            </div>
             </div>
     </div>
 </div>

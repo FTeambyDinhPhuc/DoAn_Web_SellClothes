@@ -68,8 +68,7 @@
     <!--Menu tài khoản khi đăng nhập-->
         <div class="collapse " id="menuAccount">
             <div class="py-2 px-5 text-right">
-                <a>Xin chào!, </a>
-                <a href="@Url.Action("AccountInformation","Account")">@Html.Action("_User", "Account")</a>
+                <a href="@Url.Action("AccountInformation","Account")">Xin chào!, @Html.Action("_User", "Account")</a>
                 <a href="@Url.Action("History","History")">History</a>
                 <a href="@Url.Action("LogOut","Account")">Logout</a>
             </div>
