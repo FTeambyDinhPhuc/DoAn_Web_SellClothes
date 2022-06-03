@@ -123,7 +123,7 @@
     color: white;
 }
 
-@keyframes slideInLeft {
+@keyframes slideInRight {
     from {
         opacity: 0;
         transform: translateX(-100%);
@@ -135,30 +135,29 @@
     }
 }
 
-    .caption h1 {
-        color: var(--text-color);
-        font-weight: 500;
-        padding-bottom: 1rem;
-        animation: slideInLeft ease .4s;
-    }
+.caption h1 {
+    color: var(--text-color);
+    font-weight: 500;
+    padding-bottom: 1rem;
+    animation: slideInRight ease .4s;
+}
 
-   
 
-    .caption p {
-        color: var(--text-color);
-        font-weight: 300;
-        padding-bottom: 1.6rem;
-        animation: slideInLeft ease .5s;
-    }
 
-.btn-shopnow{
+.caption p {
+    color: var(--text-color);
+    font-weight: 300;
+    padding-bottom: 1.6rem;
+    animation: slideInRight ease .5s;
+}
+
+.btn-shopnow {
     border: none;
-    
     background-color: var(--primary-color);
     border-radius: 6px;
     padding: .5rem 1.25rem;
     font-size: 1rem;
-    animation: slideInLeft ease .6s;
+    animation: slideInRight ease .6s;
 }
 
     .btn-shopnow:hover{
@@ -195,7 +194,7 @@ h3.heading {
     height: .2rem;
     background-color: var(--surface-color);
     margin: 0 auto 2rem;
-    animation: slideInLeft ease .6s;
+    animation: slideInRight ease .6s;
 }
 
 .card {
@@ -272,7 +271,7 @@ footer {
     width: 100%;
     padding: 1rem;
     margin-bottom: 1.5rem;
-    animation: slideInLeft ease .6s;
+    animation: slideInRight ease .6s;
 }
 
     /*chữ tên bảng*/
@@ -757,14 +756,14 @@ footer {
     font-weight: 600;
     color: var(--black-color);
     letter-spacing: 2.5px;
-    animation: slideInLeft ease .6s;
+    animation: slideInRight ease .6s;
 }
 
 .aboutus p {
     font-size: 1rem;
     color: var(--text-color);
     line-height: 2rem;
-    animation: slideInLeft ease .8s;
+    animation: slideInRight ease .8s;
 }
 /*contact*/
 .contact {
@@ -1165,3 +1164,115 @@ footer {
             width: 100%;
         }
 /* hết Màn hình lịch sử mua hàng*/
+
+/*Thẻ thông báo*/
+#toast {
+  position: fixed;
+  bottom:2rem;
+  top:2rem;
+  right: 2rem;
+  z-index: 999999;
+}
+
+.mytoast {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 2px;
+    padding: 1.25rem 0;
+    min-width: 25rem;
+    max-width: 28.125rem;
+    border-left: 4px solid;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+    transition: all linear 0.3s;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+
+.toast--success {
+    border-color: var(--green-color);
+}
+
+.toast--success .toast__icon {
+  color:  var(--green-color);
+}
+
+/*.toast--info {
+    border-color: #2f86eb;
+}
+
+    .toast--info .toast__icon {
+        color: #2f86eb;
+    }
+
+
+.toast--warning {
+  border-color: #ffc021;
+}
+
+.toast--warning .toast__icon {
+  color: #ffc021;
+}
+
+
+.toast--error {
+  border-color: #ff623d;
+}
+
+.toast--error .toast__icon {
+  color: #ff623d;
+}
+*/
+.mytoast + .mytoast {
+    margin-top: 1.5rem;
+}
+
+.toast__icon {
+  font-size: 1.5rem;
+}
+
+.toast__icon,
+.toast__close {
+  padding: 0 1rem;
+}
+
+.toast__body {
+  flex-grow: 1;
+}
+
+.toast__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.toast__msg {
+  font-size: .875rem;
+  color: #888;
+  margin-top: .375rem;
+  line-height: 1.5;
+}
+
+.toast__close {
+  font-size: 1.25rem;
+  color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+/*hết thẻ thông báo*/
