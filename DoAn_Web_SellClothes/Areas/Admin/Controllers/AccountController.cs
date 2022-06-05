@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class AccountController : Controller
     {
-        // GET: Admin/Home
-        public ActionResult Index()
+        // GET: Admin/Account
+        public ActionResult LogIn()
         {
             return View();
         }
