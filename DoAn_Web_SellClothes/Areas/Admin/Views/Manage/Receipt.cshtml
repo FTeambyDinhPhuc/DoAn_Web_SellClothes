@@ -7,10 +7,12 @@
 <div class="container-fluid px-4">
     <h1 class="my-4">Quản lý hóa đơn</h1>
 
-
+    <div class="mb-3">
+        <button class="btn btn-info" type="submit">Lưu thay đổi</button>
+    </div>
     <div class="card mb-4">
         <div class="card-header">
-            <i class="fas fa-table me-1"></i>
+            <i class="fas fa-table"></i>
             Hóa đơn
         </div>
         <div class="card-body">
@@ -22,6 +24,8 @@
                         <th>Ngày lập</th>
                         <th>Tổng hóa đơn</th>
                         <th>Phương thức thanh toán</th>
+                        <th>Trạng thái</th>
+                        <th>&nbsp;</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -33,20 +37,40 @@
                         <td>320000<span>đ</span></td>
                         <td>Thanh toán khi nhận hàng</td>
                         <td>
-                            <input type="button" value="View details" />
+                            <select class="form-control">
+                                <option>Chờ xác nhận</option>
+                                <option>Đã xác nhận</option>
+                            </select>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>Ê lum mớt</td>
-                        <td>2012/04/25</td>
-                        <td>320000<span>đ</span></td>
-                        <td>Thanh toán khi nhận hàng</td>
                         <td>
                             <input type="button" value="View details" />
                         </td>
+                        <td>
+
+                            <input type="button" class="btn btn-warning w-75" value="Hủy" />
+                        </td>
                     </tr>
-             
+                    <tr>
+                        <td>11</td>
+                        <td>Ê lum mớt</td>
+                        <td>2011/04/25</td>
+                        <td>320000<span>đ</span></td>
+                        <td>Thanh toán khi nhận hàng</td>
+                        <td>
+                            <select class="form-control">
+                                <option>Chờ xác nhận</option>
+                                <option>Đã xác nhận</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="button" value="View details" />
+                        </td>
+                        <td>
+
+                            <input type="button" class="btn btn-warning w-75" value="Hủy" />
+                        </td>
+                    </tr>
+
 
                 </tbody>
             </table>
@@ -55,7 +79,7 @@
 
     <div class="card mb-4">
         <div class="card-header">
-            <i class="fas fa-table me-1"></i>
+            <i class="fas fa-table"></i>
             Chi tiết hóa đơn
         </div>
         <div class="card-body">

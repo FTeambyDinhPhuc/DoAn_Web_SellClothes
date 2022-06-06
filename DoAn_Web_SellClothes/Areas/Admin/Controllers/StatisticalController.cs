@@ -13,5 +13,10 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult Statistical()
+        {
+            return View();
+        }
     }
 }
