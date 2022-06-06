@@ -41,7 +41,14 @@
                     <span class="num">01</span>
                     <span class="plus">+</span>
                 </div>
-                <button onclick="showSuccessAddToCart()" class="btn btn-warning btn-addtocart shadow my-4">Add to cart</button>
+                @if (Session["User"] != null)
+                {
+                    <button onclick="showSuccessAddToCart()" class="btn btn-warning btn-addtocart shadow my-4">Add to cart</button>
+                }
+                else
+                {
+                    <a href="@Url.Action("LogIn", "Account")" class="btn btn-outline-warning my-4">Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng!</a>       
+                }
             </div>
             </div>
     </div>

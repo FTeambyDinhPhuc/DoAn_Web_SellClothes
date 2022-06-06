@@ -79,5 +79,14 @@ namespace DoAn_Web_SellClothes.Controllers
             var sizeproduct = from sp in data.Products join s in data.SizeProducts on sp.IdProduct equals s.IdProduct where sp.IdProduct == id select s.NameSizeProduct;
             return PartialView(sizeproduct);
         }
+        public ActionResult SearchProduct()
+        {
+            String keyword = Request.QueryString["keywordsearch"];
+            if (keyword!=null)
+            {
+               var listProduct = (from sp in data.Products select sp.NameProduct).ToList();
+               return View(listProduct);
+            }
+        }
     }
 }

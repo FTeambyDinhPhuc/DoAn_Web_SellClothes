@@ -1,8 +1,9 @@
-﻿
+﻿@model IEnumerable<DoAn_Web_SellClothes.Models.Product>
 @{
-    ViewBag.Title = "ProductPage";
+    ViewBag.Title = "SearchProduct";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ">
@@ -18,7 +19,7 @@
         </div>
 
         <div class="row text-center">
-            <div class="col-md-4">
+            <div class="col-md-3">
 
                 <nav class="sidebar">
                     <div class="text">Category</div>
@@ -43,12 +44,27 @@
                     </ul>
                 </nav>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="row">
-                        @Html.Action("AllSanPham", "Product")
+                    @foreach (var sanpham in Model)
+                    {
+                        <div class="col-md-6 col-lg-4">
+                            <div class="thumbnail">
+                                <a class="card" href="@Url.Action("ProductDetails","Product",new { id=sanpham.IdProduct})">
+                                    <img src="~/Assets/img/Clothes/@sanpham.ImageProduct" class="card-img-top" alt="@sanpham.NameProduct">
+                                    <div class="card-body">
+                                        <p class="name-product card-title"> @sanpham.NameProduct</p>
+                                        <p class="price-product card-text">@sanpham.PriceProduct<span class="currency-symbol">&#160;VND</span></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 

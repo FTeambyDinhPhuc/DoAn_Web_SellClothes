@@ -14,6 +14,8 @@
                 <br />
                 <div style="color:green">
                     <h6>@ViewData["Info"]</h6>
+                </div>
+                <div style="color:red">
                     <h6>@ViewBag.Error</h6>
                 </div>
                 @Html.ValidationSummary(true)
@@ -58,7 +60,7 @@
                         <div class="group-button">
 
                             <input class="shadow-sm" type="submit" value="Lưu" />
-                            <a class=" shadow-sm" href="@Url.Action("ProductPage","Product")">Hủy</a>
+                            <a class=" shadow-sm" href="@Url.Action("Index","Home")">Màn hình chính</a>
 
                         </div>
                     </div>

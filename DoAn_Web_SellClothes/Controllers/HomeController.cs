@@ -38,7 +38,6 @@ namespace DoAn_Web_SellClothes.Controllers
                 data.SubmitChanges();
                 return RedirectToAction("About");
             }
-
         }
         public ActionResult Thanks()
         {

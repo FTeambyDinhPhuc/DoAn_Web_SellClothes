@@ -59,8 +59,8 @@
     </nav>
     <!--Thanh tiềm kiếm-->
     <div id="searchBar" class="collapse">
-        <form action="" class="search-bar mx-auto mb-2 mt-1">
-            <input type="search" placeholder="Search product" />
+        <form method="get" action="~/Product/ProductPage" class="search-bar mx-auto mb-2 mt-1">
+            <input type="text" placeholder="Search product" name="keywordsearch" required />
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
@@ -76,7 +76,12 @@
         <!--Hết Menu tài khoản khi đăng nhập-->
         <!--End-Navigation-->
         <!--Body-->
-        @RenderBody()
+        <div>
+            <div id="toast">              
+            </div>
+            @RenderBody()
+        </div>
+
         <!--End-body-->
         <!--Footer-->
         <footer>
