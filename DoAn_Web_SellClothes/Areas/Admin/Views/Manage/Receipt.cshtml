@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Receipt";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="my-4">Quản lý hóa đơn</h1>
+
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Hóa đơn
+        </div>
+        <div class="card-body">
+            <table id="datatablesInvoice" class="table-responsive">
+                <thead>
+                    <tr>
+                        <th>Mã hóa đơn</th>
+                        <th>Khách hàng</th>
+                        <th>Ngày lập</th>
+                        <th>Tổng hóa đơn</th>
+                        <th>Phương thức thanh toán</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>11</td>
+                        <td>Ê lum mớt</td>
+                        <td>2011/04/25</td>
+                        <td>320000<span>đ</span></td>
+                        <td>Thanh toán khi nhận hàng</td>
+                        <td>
+                            <input type="button" value="View details" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Ê lum mớt</td>
+                        <td>2012/04/25</td>
+                        <td>320000<span>đ</span></td>
+                        <td>Thanh toán khi nhận hàng</td>
+                        <td>
+                            <input type="button" value="View details" />
+                        </td>
+                    </tr>
+             
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Chi tiết hóa đơn
+        </div>
+        <div class="card-body">
+            <table id="datatablesInvoiceDetail" class="table-responsive">
+                <thead>
+                    <tr>
+                        <th>Mã hóa đơn</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr>
+                        <td>11</td>
+                        <td>Áo polo</td>
+                        <td>5</td>
+                        <td>300000<span>đ</span></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Áo polo</td>
+                        <td>5</td>
+                        <td>300000<span>đ</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
