@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid px-4">
+    <h1 class="my-4">Quản lý sản phẩm</h1>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table "></i>
+            Sản phẩm
+        </div>
+        <div class="card-body">
+            <table id="datatablesProduct" class="table-responsive">
+                <thead>
+                    <tr>
+                        <th>Tên sản phẩm</th>
+                        <th>Hình</th>
+                        <th>Giá</th>
+                        <th>Ngày tạo</th>
+                        <th>Ngày cập nhật</th>
+                        <th>Mô tả</th>
+                        <th>Loại</th>
+                        <th>Trạng thái</th>
+                        <th>&nbsp;</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Áo plo</td>
+                        <td>
+                            <img class="img-thumbnail" style="width:75px" src="~/Assets/img/productImage.png" />
+                        </td>
+                        <td>230000<span>đ</span></td>
+                        <td>01/01/2022</td>
+                        <td>01/01/2022</td>
+                        <td style="max-width:200px">nhí hảo nhí hảo asdasdasdasghdjsagdksabdaskdnbnhí hảo nhí hảo asdasdasdasghdjsagdksabdaskdnbnhí hảo nhí hảo asdasdasdasghdjsagdksabdaskdnbnhí hảo nhí hảo asdasdasdasghdjsagdksabdaskdnb</td>
+                        <td>Top</td>
+                        <td>
+                            Còn hàng
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-info w-75 mb-1" value="Edit" />
+                            <input type="button" class="btn btn-warning w-75" value="Delete" />
+                        </td>
+                    </tr>
+              
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-user"></i>
+            Chi tiết sản phẩm
+        </div>
+        <div class="card-body">
+            <div class="table-Edit table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Tên sản phẩm</th>
+                            <td>
+                                <input type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Hình</th>
+                            <td>
+                                <input type="file" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Giá</th>
+                            <td>
+                                <input type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Ngày cập nhật</th>
+                            <td>
+                                <input type="date" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Mô tả</th>
+                            <td>
+                                <input type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Loại</th>
+                            <td>
+                                <select class="form-control">
+                                    <option>Áo nam</option>
+                                    <option>Quần nữ</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Trạng thái</th>
+                            <td>
+                                <select class="form-control">
+                                    <option>Còn hàng</option>
+                                    <option>Hết hàng</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+        <input type="submit" class="mybtn btn btn-outline-success" value="Thêm" /> <!--nếu chọn Edit thì value = chỉnh sửa-->
+
+    </div>
+
+
+
+
+
+
+</div>

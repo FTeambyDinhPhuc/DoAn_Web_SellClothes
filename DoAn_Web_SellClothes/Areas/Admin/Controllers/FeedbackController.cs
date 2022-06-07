@@ -6,14 +6,12 @@ using System.Web.Mvc;
 
 namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
 {
-    public class AccountController : Controller
+    public class FeedbackController : Controller
     {
-        // GET: Admin/Account
-        public ActionResult LogIn()
+        // GET: Admin/Feedback
+        public ActionResult Feedback()
         {
             return View();
         }
-
-        
     }
 }

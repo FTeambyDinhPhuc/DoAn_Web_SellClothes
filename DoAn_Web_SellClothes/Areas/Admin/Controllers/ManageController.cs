@@ -13,5 +13,25 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult Customer()
+        {
+            return View();
+        }
+
+        public ActionResult Sex()
+        {
+            return View();
+        }
+
+        public ActionResult TypesClothes()
+        {
+            return View();
+        }
+        public ActionResult Product()
+        {
+            return View();
+        }
+
     }
 }

@@ -15,7 +15,7 @@
 <body class="nav-fixed">
     <nav class="topnav navbar navbar-dark navbar-expand bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand" href="index.html">Admin FTeam</a>
+        <a class="navbar-brand" href="@Url.Action("Statistical","Statistical")">Admin FTeam</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 mr-xl-auto" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -32,18 +32,18 @@
                     <i class="fas fa-user fa-fw"></i>
                 </a>
                 <div class="dropdown-menu   dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="@Url.Action("LogIn", "Account")">Logout</a>
                 </div>
             </li>
         </ul>
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
-            <nav class="sidenav" id="sidenavAccordion">
+            <nav class="sidenav">
                 <div class="sidenav-menu">
                     <div class="nav">
                         <div class="sidenav-menu-heading">Thống kê</div>
-                        <a class="nav-link" href="@Url.Action("Index","Statistical")">
+                        <a class="nav-link" href="@Url.Action("Statistical","Statistical")">
                             <div class="nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Thống kê
                         </a>
@@ -55,15 +55,15 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Giới tính</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Loại đồ</a>
+                                <a class="nav-link" href="@Url.Action("Sex","Manage")">Giới tính</a>
+                                <a class="nav-link" href="@Url.Action("TypesClothes","Manage")">Loại đồ</a>
                             </nav>
                         </div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="@Url.Action("Product","Manage")">
                             <div class="nav-link-icon"><i class="fa-solid fa-shirt"></i></div>
                             Sản phẩm
                         </a>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="@Url.Action("Customer","Manage")">
                             <div class="nav-link-icon"><i class="fa-solid fa-users"></i></div>
                             Khách hàng
                         </a>
@@ -111,11 +111,8 @@
                                 </nav>
                             </div>*@
                         <div class="sidenav-menu-heading">Xử lý</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="nav-link-icon"><i class="fa-solid fa-cart-arrow-down"></i></div>
-                            Đơn hàng
-                        </a>
-                        <a class="nav-link" href="tables.html">
+                  
+                        <a class="nav-link" href="@Url.Action("Feedback","Feedback")">
                             <div class="nav-link-icon"><i class="fas fa-table"></i></div>
                             Feedback
                         </a>
