@@ -27,6 +27,7 @@ namespace DoAn_Web_SellClothes.Controllers
             //Lấy ra sessionm  
             List<Giohang> listgiohang = LayGioHang();
             //K
+            return View();
         }
     
     }
