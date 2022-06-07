@@ -1276,3 +1276,8 @@ footer {
 }
 
 /*hết thẻ thông báo*/
+
+/*Menu trang*/
+.MenuTrang li{
+    display:inline;
+}

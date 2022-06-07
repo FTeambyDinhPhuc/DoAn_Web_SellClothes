@@ -1,4 +1,6 @@
-﻿@model IEnumerable<DoAn_Web_SellClothes.Models.Product>
+﻿@using DoAn_Web_SellClothes.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<Product>
 @{
     ViewBag.Title = "SPTheoLoaiNam";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -63,6 +65,13 @@
                 </div>
             </div>
         </div>
+        <div class="MenuPage">
+            Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+            <div class="MenuTrang">
+                @Html.PagedListPager(Model, page => Url.Action("SPTheoLoaiNam", new { page = page }))
+            </div>
+        </div>
     </div>
 </div>
+
 

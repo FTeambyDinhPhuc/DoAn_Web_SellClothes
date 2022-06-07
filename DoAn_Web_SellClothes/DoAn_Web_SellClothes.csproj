@@ -124,6 +124,7 @@
     <Compile Include="Areas\Admin\Controllers\StatisticalController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -135,6 +136,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Giohang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2434,18 +2436,17 @@
     <Content Include="Views\Product\SPTheoLoaiNam.cshtml" />
     <Content Include="Views\Product\SPTheoLoaiNu.cshtml" />
     <Content Include="Views\Product\SizeProduct.cshtml" />
-    <Content Include="Views\Product\AllSanPham.cshtml" />
     <Content Include="Views\Account\_User.cshtml" />
     <Content Include="Views\Home\Thanks.cshtml" />
     <Content Include="Views\History\History.cshtml" />
     <Content Include="Views\History\HistoryDetails.cshtml" />
-    <Content Include="Views\Product\SearchProduct.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Views\About\" />
+    <Folder Include="Views\GioHang\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,4 +1,6 @@
-﻿
+﻿@using DoAn_Web_SellClothes.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<Product>
 @{
     ViewBag.Title = "ProductPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -45,7 +47,28 @@
             </div>
             <div class="col-md-8 col-xl-9">
                 <div class="row">
-                        @Html.Action("AllSanPham", "Product")
+                        <div style="display:flex" class="flex-wrap">
+                            @foreach (var sanpham in Model)
+                            {
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="thumbnail">
+                                        <a class="card" href="@Url.Action("ProductDetails","Product" ,new { id=sanpham.IdProduct})">
+                                            <img src="~/Assets/img/Clothes/@sanpham.ImageProduct" class="card-img-top" alt="@sanpham.NameProduct">
+                                            <div class="card-body">
+                                                <p class="name-product card-title"> @sanpham.NameProduct</p>
+                                                <p class="price-product card-text">@sanpham.PriceProduct<span class="currency-symbol">&#160;VND</span></p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                </div>
+            </div>
+            <div class="MenuPage">
+                Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+                <div class="MenuTrang">
+                        @Html.PagedListPager(Model, page => Url.Action("ProductPage", new { page = page }))
                 </div>
             </div>
         </div>
