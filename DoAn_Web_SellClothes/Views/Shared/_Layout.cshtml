@@ -33,12 +33,12 @@
             </ul>
             <ul class="navbar-nav mr-5">
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#searchBar" aria-expanded="false" aria-controls="searchBar"><i class="fa fa-search"></i></a>
+                    <a class="nav-link search-icon" data-toggle="collapse" href="#searchBar" aria-expanded="false" aria-controls="searchBar"><i class="fa fa-search"></i></a>
                 </li>
                 @if (Session["user"] != null)
                 {
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Cart", "Cart")"><i class="fa fa-bag-shopping"></i><sup>2</sup></a>
+                        <a class="nav-link" href="@Url.Action("Cart", "Cart")"><i class="fa fa-bag-shopping"></i><sup>@HttpContext.Current.Session["QuantityCart"]</sup></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#menuAccount" aria-expanded="false" aria-controls="menuAccount"><i class="fa fa-user"></i></a>
@@ -52,7 +52,7 @@
                         <a class="nav-link" href="@Url.Action("Login", "Account")">Login</a>
                     </li>
                 }
-                </ul>
+            </ul>
 
 
         </div>
@@ -65,46 +65,53 @@
         </form>
     </div>
     <!--Hết Thanh tiềm kiếm-->
+
+    <!--Nút scroll ont top-->
+    <div id="progress">
+        <span id="progress-value">&#x1F815;</span>
+    </div>
+    <!--Hết nút scroll on top-->
+
     <!--Menu tài khoản khi đăng nhập-->
-        <div class="collapse " id="menuAccount">
-            <div class="py-2 px-5 text-right">
-                <a href="@Url.Action("AccountInformation","Account")">Xin chào!, @Html.Action("_User", "Account")</a>
-                <a href="@Url.Action("History","History")">History</a>
-                <a href="@Url.Action("LogOut","Account")">Logout</a>
-            </div>
+    <div class="collapse " id="menuAccount">
+        <div class="py-2 px-5 text-right">
+            <a href="@Url.Action("AccountInformation","Account")">Xin chào!, @Html.Action("_User", "Account")</a>
+            <a href="@Url.Action("History","History")">History</a>
+            <a href="@Url.Action("LogOut","Account")">Logout</a>
         </div>
-        <!--Hết Menu tài khoản khi đăng nhập-->
-        <!--End-Navigation-->
-        <!--Body-->
-        <div>
-            <div id="toast">              
-            </div>
-            @RenderBody()
+    </div>
+    <!--Hết Menu tài khoản khi đăng nhập-->
+    <!--End-Navigation-->
+    <!--Body-->
+    <div>
+        <div id="toast">
         </div>
+        @RenderBody()
+    </div>
 
-        <!--End-body-->
-        <!--Footer-->
-        <footer>
-            <div class="container-fluid padding">
-                <div class="row">
-                    <div class="col-md-4 mx-auto text-center">
-                        <h1>FTeam</h1>
-                        <p>Fashion is like the breath of life every day and it always changes with the flow of events. You can even see a revolutionary approach in clothing. You can see and feel everything with fashion.</p>
-                        <strong>Contact info</strong>
-                        <p>+84-399-128-713<br />fteam@gmail.com</p>
-                        <a href="#" target="_blank"> <i class="fab fa-facebook-square"></i></a>
-                        <a href="#" target="_blank"> <i class="fab fa-twitter-square"></i></a>
-                        <a href="#" target="_blank"> <i class="fab fa-instagram-square"></i></a>
-                    </div>
-                    <div class="col-10 mx-auto text-center">
-                        <hr class="light" />
-                        <p>Copyright @DateTime.Now.Year All rights Reserved. Design by FTeam</p>
-                    </div>
+    <!--End-body-->
+    <!--Footer-->
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row">
+                <div class="col-md-4 mx-auto text-center">
+                    <h1>FTeam</h1>
+                    <p>Fashion is like the breath of life every day and it always changes with the flow of events. You can even see a revolutionary approach in clothing. You can see and feel everything with fashion.</p>
+                    <strong>Contact info</strong>
+                    <p>+84-399-128-713<br />fteam@gmail.com</p>
+                    <a href="#" target="_blank"> <i class="fab fa-facebook-square"></i></a>
+                    <a href="#" target="_blank"> <i class="fab fa-twitter-square"></i></a>
+                    <a href="#" target="_blank"> <i class="fab fa-instagram-square"></i></a>
                 </div>
-
+                <div class="col-10 mx-auto text-center">
+                    <hr class="light" />
+                    <p>Copyright @DateTime.Now.Year All rights Reserved. Design by FTeam</p>
+                </div>
             </div>
-        </footer>
-        <!--End-footer-->
+
+        </div>
+    </footer>
+    <!--End-footer-->
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

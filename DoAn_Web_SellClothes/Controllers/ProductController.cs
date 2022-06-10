@@ -56,7 +56,7 @@ namespace DoAn_Web_SellClothes.Controllers
             var sizeproduct = from sp in data.Products join s in data.SizeProducts on sp.IdProduct equals s.IdProduct where sp.IdProduct == id select s.NameSizeProduct;
             return PartialView(sizeproduct);
         }
-        public ActionResult ProductPage(int?page)
+        public ActionResult ProductPage(int? page)
         {
             string keyword = Request.QueryString["keyword"];
             Session["keysearch"] = keyword;
@@ -65,10 +65,8 @@ namespace DoAn_Web_SellClothes.Controllers
             var listProduct = from sp in data.Products.OrderByDescending(p => p.IdProduct) select sp;
             if (!String.IsNullOrEmpty(keyword))
             {
-                var listProduct1 = listProduct.Where(p => p.NameProduct.Contains(keyword));
-                return PartialView(listProduct1.ToPagedList(1,9999));
+                listProduct = listProduct.Where(p => p.NameProduct.Contains(keyword)).Take(9);
             }
-            else
             return PartialView(listProduct.ToPagedList(pageNum,pageSize));
         }
     }

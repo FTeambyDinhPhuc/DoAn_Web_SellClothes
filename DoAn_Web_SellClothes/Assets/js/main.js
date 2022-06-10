@@ -1,4 +1,36 @@
-﻿//trạng thái nút ở thanh lọc sản phẩm theo loại
+﻿//srcoll on top
+let calcScrollValue = () => {
+    let scrollProgress = document.getElementById("progress");
+    let pos = document.documentElement.scrollTop;
+    let calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+    let scrollValue = Math.round((pos * 100) / calcHeight);
+
+    if (pos > 100) {
+        scrollProgress.style.display = "grid";
+    } else {
+        scrollProgress.style.display = "none";
+    }
+    scrollProgress.addEventListener("click", () => {
+        document.documentElement.scrollTop = 0;
+    });
+    scrollProgress.style.background = `conic-gradient(#FFDFC0 ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
+};
+
+window.onscroll = calcScrollValue;
+
+//scroll on top khi nhấn icon tìm kiếm
+$(document).ready(function () {
+    $('.search-icon').mousedown(function () {
+        $('html').animate({
+            scrollTop: 0
+        }, 400);
+        return false;
+    });
+});
+
+
+//trạng thái nút ở thanh lọc sản phẩm theo loại
 $('.men-btn').click(function () {
     $('.sidebar ul .men-show').toggleClass("show");
     $('.sidebar ul .first').toggleClass("rotate");
@@ -90,7 +122,7 @@ function toast({ title = "", message = "", type = "info", duration = 3000 }) {
 }
 
 //thêm giỏ hàng thành công
- function showSuccessAddToCart() {
+    object.onclick = function showSuccessAddToCart() {
     toast({
       title: "Thành công!",
       message: "Bạn đã thêm sản phẩm thành công vào giỏ hàng.",

@@ -1,4 +1,5 @@
-﻿
+﻿@using DoAn_Web_SellClothes.Models
+@model List<Giohang>
 @{
     ViewBag.Title = "Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,14 +18,43 @@
                                         <th>&nbsp;</th>
                                         <th>&nbsp;</th>
                                         <th class="text-left">Product</th>
-                                        <th>price</th>
-                                        <th >quantity</th>
-                                        <th>total</th>
+                                        <th>Price</th>
+                                        <th >Quantity</th>
+                                        <th>Total</th>
                                     </tr>
 
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="product-remove text-center">
+                                                <a href="#">
+                                                    <i class="fa-solid fa-xmark"></i>
+                                                </a>
+                                            </td>
+                                            <td class="product-thumbnail text-left">
+                                                <img src="~/Assets/img/Clothes/@item.iImageProduct"
+                                                     alt="@item.iImageProduct">
+                                            </td>
+                                            <td class="product-name text-left">
+                                                <a href="@Url.Action("ProductDetails","Product")">@item.iNameProduct</a>
+                                            </td>
+                                            <td class="product-price">
+                                                @item.iPriceProduct<span>đ</span>
+                                            </td>
+                                            <td class="product-quantity">
+
+                                                <input type="number" class="quantity-input" name="qty"
+                                                       id="qty-1" value="@item.iQuantityProduct" min="1">
+                                            </td>
+                                            <td class="product-total-price">
+                                                <strong> @item.iThanhTien<span>đ</span></strong>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                    @*<tr>
                                         <td class="product-remove text-center">
                                             <a href="#">
                                                 <i class="fa-solid fa-xmark"></i>
@@ -47,31 +77,7 @@
                                         <td class="product-total-price">
                                             <strong> 49.00<span>đ</span></strong>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="product-remove text-center">
-                                            <a href="#">
-                                                <i class="fa-solid fa-xmark"></i>
-                                            </a>
-                                        </td>
-                                        <td class="product-thumbnail text-left">
-                                            <img src="~/Assets/img/productImage.png"
-                                                 alt="Product Thumnail">
-                                        </td>
-                                        <td class="product-name text-left">
-                                            <a href="@Url.Action("ProductDetails","Product")">Super skinny blazer</a>
-                                        </td>
-                                        <td class="product-price">
-                                            49.00<span>đ</span>
-                                        </td>
-                                        <td class="product-quantity">
-                                            <input type="number" class="quantity-input" name="qty"
-                                                   id="qty-1" value="1" min="1">
-                                        </td>
-                                        <td class="product-total-price">
-                                            <strong> 49.00<span>đ</span></strong>
-                                        </td>
-                                    </tr>
+                                    </tr>*@
 
                                 </tbody>
                             </table>
@@ -102,7 +108,7 @@
                             <tbody>
                                 <tr>
                                     <th>Tổng tiền sản phẩm</th>
-                                    <td>196.00<span>đ</span></td>
+                                    <td>@ViewBag.TongTien<span>đ</span></td>
                                 </tr>
                                 @*<tr>
                                     <th>Giảm giá</th>
@@ -112,12 +118,12 @@
                                 </tr>*@
                                 <tr>
                                     <th>Phí vận chuyển</th>
-                                    <td>6.00<span>đ</span></td>
+                                    <td>25.000<span>đ</span></td>
                                 </tr>
                                 <tr class="order-total border-top">
                                     <th>Tổng tiền</th>
                                     <td>
-                                        182.00<span>đ</span>
+                                        @ViewBag.TongTienShip<span>đ</span>
                                     </td>
                                 </tr>
                             </tbody>

@@ -113,6 +113,34 @@
 
 /*--- end Fixed Landing Page Section --*/
 
+/*Nút scroll on top*/
+#progress {
+    position: fixed;
+    z-index:2;
+    bottom: 2rem;
+    right: 1rem;
+    height: 4rem;
+    width: 4rem;
+    display: none;
+    place-items: center;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+#progress-value {
+    display: block;
+    height: calc(100% - 1rem);
+    width: calc(100% - 1rem);
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 35px;
+    color: #001a2e;
+}
+/*Hết nút scroll on top*/
+
 /*nội dung hiện thị ở màn hình chính chổ hình vàng */
 .caption {
     width: 100%;
@@ -198,6 +226,7 @@ h3.heading {
 }
 
 .card {
+    width: 100%;
     border-radius: 1rem;
     margin-bottom: 1.5rem;
 }
@@ -207,10 +236,17 @@ h3.heading {
         text-decoration: none;
     }
 
-.card-img-top{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+    .card img {
+        height: 25rem;
+        object-fit: cover;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+
+.name-product {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .name-product, .price-product {
@@ -221,7 +257,7 @@ h3.heading {
 
 .price-product {
     font-size: 1.2rem;
-    color: var(--black-color);
+    font-weight: 300;
 }
 
 footer {
@@ -374,19 +410,33 @@ footer {
             }
 /*hết Thanh lọc loại đồ*/
 
-
-/*Hình chi tiết sản phẩm*/
-
-.product-details{
-    padding:1rem;
+/*Phân trang*/
+.MenuTrang{
+    margin-top:1.5rem;
 }
 
+.MenuTrang li a {
+    border: 1px solid black;
+   color:var(--text-color);
+    padding: .5rem 1rem;
+    margin:.5rem;
+}
+.MenuTrang li.active a{
+    background-color: var(--primary-color-hover);
+}
+.MenuTrang li a:hover {
+    background-color: var(--primary-color-hover);
+}
+    /*hết phân trang*/
+    /*Hình chi tiết sản phẩm*/
+    .product-details {
+        padding: 1rem;
+    }
 
 
 .list__img-small li {
     margin: 1rem;
     width: 100%;
-    height: 100%;
     border: 1px solid var(--primary-color);
     border-radius: 8px;
     overflow: hidden;
@@ -402,14 +452,15 @@ footer {
     }
 
 .imgBox {
-    width: 100%;
-    height: 100%;
+    max-width:30rem;
     overflow: hidden;
     float: left;
+    border-radius:1rem;
 }
 
     .imgBox img {
         width: 100%;
+        object-fit:cover;
     }
 /*hết Hình chi tiết sản phẩm*/
 
@@ -484,20 +535,15 @@ footer {
     }
 
 .btn-addtocart {
-    background-color: var(--orange-color);
     width: 17.75rem;
     height: 3.25rem;
     border-radius: .5rem;
     font-size: 1.625rem;
     font-weight: 500;
-    color: var(--gray-color);
+    
 }
 
-    .btn-addtocart:hover {
-        background-color: var(--orange-color);
-        color: var(--gray-color);
-        opacity: 0.8;
-    }
+    
     /*hết Phần thông tin chi tiết sản, các chọn lựa đặt hàng*/
     /*Màn hình đăng ký - đăng nhập*/
     #authenForm {
@@ -979,8 +1025,7 @@ footer {
     appearance: none;
     border-color: #a3a3a3;
     border-width: 1px;
-    outline:none;
-}
+    outline:none;}
 
 .coupon {
     margin: 1.5rem 0;
