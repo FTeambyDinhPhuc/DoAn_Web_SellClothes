@@ -14,6 +14,11 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult DetailReceipt()
+        {
+            return View();
+        }
+
         public ActionResult Customer()
         {
             return View();
@@ -28,7 +33,27 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult AddTypesClothes()
+        {
+            return View();
+        }
+
+        public ActionResult EditTypesClothes()
+        {
+            return View();
+        }
+
         public ActionResult Product()
+        {
+            return View();
+        }
+
+        public ActionResult AddProduct()
+        {
+            return View();
+        }
+        public ActionResult EditProduct()
         {
             return View();
         }
