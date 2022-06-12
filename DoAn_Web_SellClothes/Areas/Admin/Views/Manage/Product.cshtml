@@ -28,7 +28,6 @@
                         <th>Mô tả</th>
                         <th>Loại</th>
                         <th>Trạng thái</th>
-                        <th>Kích thước</th>
                         <th>&nbsp;</th>
 
                     </tr>
@@ -47,7 +46,6 @@
                             <td style="max-width:200px">@Html.DisplayFor(modelItem => item.DescribeProduct)</td>
                             <td>@Html.DisplayFor(modelItem => item.ProductType.NameProductType)</td>
                             <td>@Html.DisplayFor(modelItem => item.StatusProduct)
-                            <td>@Html.DisplayFor(modelItem => item.NameProduct)
                             <td>
                                 <input type="button" class="btn btn-info w-75 mb-1" value="Edit" />
                                 <input type="button" class="btn btn-warning w-75" value="Delete" />
@@ -82,6 +80,7 @@
                                 <th>Hình</th>
                                 <td>
                                     <input type="file" name="image" />
+                                    @ViewBag.ThongBaoAnh
                                 </td>
                             </tr>
                             <tr>
@@ -102,21 +101,20 @@
                                     <input type="text" name="describe" />
                                 </td>
                             </tr>
-                            <tr>
+                            @*<tr>
                                 <th>Size</th>
                                 <td>
-                                    <input type="text" name="size" />
+                                    @Html.DropDownList("Size")
                                 </td>
-                            </tr>
-                            <tr>
+                            </tr>*@
+                            @*<tr>
                                 <th>Loại</th>
                                 <td>
                                     <select class="form-control">
-                                        <option>Áo nam</option>
-                                        <option>Quần nữ</option>
+                                        @Html.DropDownList("type")
                                     </select>
                                 </td>
-                            </tr>
+                            </tr>*@
                         </tbody>
                     </table>
                 </div>

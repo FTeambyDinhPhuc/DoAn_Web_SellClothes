@@ -54,7 +54,60 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             var list = db.Products.OrderByDescending(s => s.IdProduct).ToList();
             return View(list.ToPagedList(pageNum, pagesize));
         }
-        
+        [HttpGet]
+        public ActionResult AddProduct()
+        {
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("LogIn", "Account");
+            }
+            ViewBag.type = new SelectList(db.ProductTypes.ToList().OrderBy(n => n.IdProductType), "IdProductType", "NameProductType");
+            ViewBag.size = new SelectList(db.SizeProducts.ToList().OrderBy(n => n.NameSizeProduct), "IdSizeProduct", "NameSizeProduct");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult AddProduct(Product sp, FormCollection collection, HttpPostedFileBase fileUpload)
+        {
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("LogIn", "Account");
+            }
+            ViewBag.type = new SelectList(db.ProductTypes.ToList().OrderBy(n => n.IdProductType), "IdProductType", "NameProductType");
+            ViewBag.size = new SelectList(db.SizeProducts.ToList().OrderBy(n => n.NameSizeProduct), "IdSizeProduct", "NameSizeProduct");
+
+            var ten = collection["name"];
+            var gia = collection["price"];
+            var Date = collection["update"];
+            var mota = collection["describe"];            
+            var loai = collection["type"];
+            //var size = collection["Size"];
+
+
+            var image = Path.GetFileName(fileUpload.FileName);
+            var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes)"), image);
+            if (System.IO.File.Exists(path))
+            {
+                ViewBag.ThongBaoAnh = "Hình Ảnh Đã Tồn Tại";
+                return View();
+            }
+            else
+            {
+                fileUpload.SaveAs(path);
+            }          
+
+            sp.NameProduct = ten;
+            sp.ImageProduct = image;
+            sp.PriceProduct = int.Parse(gia);
+            sp.DescribeProduct = mota;
+            sp.UpdateDate = DateTime.Parse(Date);
+            sp.IdProductType = Int32.Parse(loai);
+            //sp.id = string.Parse(size);
+            db.Products.InsertOnSubmit(sp);
+            db.SubmitChanges();
+            return RedirectToAction("Product", "Manage");
+        }
 
     }
 }
