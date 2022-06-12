@@ -1,4 +1,6 @@
-﻿
+﻿@model PagedList.PagedList<produt>
+@using PagedList.Mvc;
+
 @{
     ViewBag.Title = "TypesClothes";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -25,30 +27,18 @@
 
                             </tr>
                         </thead>
-                        <tbody>
+                        @foreach (var item in Model)
+                        {
                             <tr>
-                                <td>1</td>
-                                <td>Đầm</td>
-                                <td>Nữ</td>
+                                <td>@Html.DisplayFor(modelItem => item.IdProductType)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NameProductType)</td>
+                                <td>@Html.DisplayFor(modelItem => item.IdSex)</td>
                                 <td>
                                     <input type="button" class="btn btn-info w-75 mb-1" value="Edit" />
                                     <input type="button" class="btn btn-warning w-75" value="Delete" />
                                 </td>
-
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Áo thun</td>
-                                <td>Nam</td>
-                                <td>
-                                    <input type="button" class="btn btn-info w-75 mb-1" value="Edit" />
-                                    <input type="button" class="btn btn-warning w-75" value="Delete" />
-                                </td>
-
-                            </tr>
-
-
-                        </tbody>
+                        }
                     </table>
                 </div>
             </div>
@@ -79,7 +69,7 @@
 
                                     </td>
                                 </tr>
-                                
+
                             </tbody>
 
                         </table>
@@ -90,11 +80,5 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
 </div>
 

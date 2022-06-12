@@ -57,7 +57,7 @@ namespace DoAn_Web_SellClothes.Models
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
