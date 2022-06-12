@@ -19,6 +19,11 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult DetailReceipt()
+        {
+            return View();
+        }
+
         public ActionResult Customer()
         {
             return View();
@@ -66,9 +71,17 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult AddProduct(Product sp, FormCollection collection, HttpPostedFileBase fileUpload)
+        public ActionResult AddTypesClothes()
+        {
+            return View();
+        }
+
+        public ActionResult EditTypesClothes()
+        {
+            return View();
+        }
+
+        public ActionResult Product()
         {
             if (Session["admin"] == null)
             {
@@ -107,6 +120,15 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             db.Products.InsertOnSubmit(sp);
             db.SubmitChanges();
             return RedirectToAction("Product", "Manage");
+        }
+
+        public ActionResult AddProduct()
+        {
+            return View();
+        }
+        public ActionResult EditProduct()
+        {
+            return View();
         }
 
     }

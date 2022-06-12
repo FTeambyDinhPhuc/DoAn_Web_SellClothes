@@ -2324,7 +2324,6 @@
     <Content Include="Assets\fonts\elegantlicons\ElegantIcons.ttf" />
     <Content Include="Assets\fonts\elegantlicons\ElegantIcons.woff" />
     <Content Include="Areas\Admin\Views\Account\ChangePassword.cshtml" />
-    <Content Include="Areas\Admin\Views\Statistical\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Account\LogIn.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\Receipt.cshtml" />
     <Content Include="Areas\Admin\Views\Statistical\Statistical.cshtml" />
@@ -2338,6 +2337,11 @@
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Areas\Admin\Views\Manage\AddTypesClothes.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\EditTypesClothes.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\AddProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\EditProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\DetailReceipt.cshtml" />
     <None Include="Models\DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>

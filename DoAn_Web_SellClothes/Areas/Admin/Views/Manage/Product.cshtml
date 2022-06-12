@@ -10,7 +10,9 @@
 }
 <div class="container-fluid px-4">
     <h1 class="my-4">Quản lý sản phẩm</h1>
-
+    <div class="mb-3">
+        <a class="btn btn-success" href="@Url.Action("AddProduct","Manage")">Thêm sản phẩm</a>
+    </div>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table "></i>
@@ -33,93 +35,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.NameProduct)</td>
-                            <td>
-                                <img src="~/Assets/img/Clothes/@Html.DisplayFor(modelItem => item.ImageProduct)" class="img-thumbnail" style="width:75px" alt="Alternate Text" />
-                            </td>
-                            <td>@Html.DisplayFor(modelItem => item.PriceProduct)<span>đ</span></td>
-                            <td>@String.Format("{0:dd/MM/yyyy}", item.CreateDate)</td>
-                            <td>@String.Format("{0:dd/MM/yyyy}", item.UpdateDate)</td>
-                            <td style="max-width:200px">@Html.DisplayFor(modelItem => item.DescribeProduct)</td>
-                            <td>@Html.DisplayFor(modelItem => item.ProductType.NameProductType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.StatusProduct)
-                            <td>
-                                <input type="button" class="btn btn-info w-75 mb-1" value="Edit" />
-                                <input type="button" class="btn btn-warning w-75" value="Delete" />
-                            </td>
-                        </tr>
-                     }
+                    <tr>
+                        <td>Áo plo</td>
+                        <td>
+                            <img class="img-thumbnail" style="width:75px" src="~/Assets/img/productImage.png" />
+                        </td>
+                        <td>230000<span>đ</span></td>
+                        <td>01/01/2022</td>
+                        <td>01/01/2022</td>
+                        <td style="max-width:200px">nhí hảo nhí hảo asdasdasdasghdjsagdksabdaskdnbnhí hảo nhí hảo asdasdasdasghdjsagdksabdaskdnbnhí hảo nhí hảo asdasdasdasghdjsagdksabdaskdnbnhí hảo nhí hảo asdasdasdasghdjsagdksabdaskdnb</td>
+                        <td>Top</td>
+                        <td>
+                            Còn hàng
+                        </td>
+                        <td>
+                            <a href="@Url.Action("EditProduct","Manage")" class="btn btn-info w-75 mb-1">Edit</a>
+                            <a href="#" class="btn btn-warning w-75">Delete</a>
+
+                        </td>
+                    </tr>
+
                 </tbody>
             </table>
         </div>
-    </div>  
-    <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-user"></i>
-            Chi tiết sản phẩm
-        </div>
-        @using (Html.BeginForm("AddProduct", "Manage", FormMethod.Post, new { @enctype = "multipart/form-data" }))
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="card-body">
-                <div class="table-Edit table-responsive">
-                    <table class="table">
-                        <tbody>
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <tr>
-                                <th>Tên sản phẩm</th>
-                                <td>
-                                    <input type="text" name="name" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Hình</th>
-                                <td>
-                                    <input type="file" name="image" />
-                                    @ViewBag.ThongBaoAnh
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Giá</th>
-                                <td>
-                                    <input type="text" name="price" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Ngày cập nhật</th>
-                                <td>
-                                    <input type="date" name="update" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Mô tả</th>
-                                <td>
-                                    <input type="text" name="describe" />
-                                </td>
-                            </tr>
-                            @*<tr>
-                                <th>Size</th>
-                                <td>
-                                    @Html.DropDownList("Size")
-                                </td>
-                            </tr>*@
-                            @*<tr>
-                                <th>Loại</th>
-                                <td>
-                                    <select class="form-control">
-                                        @Html.DropDownList("type")
-                                    </select>
-                                </td>
-                            </tr>*@
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <input type="submit" class="mybtn btn btn-outline-success" value="Thêm" /> <!--nếu chọn Edit thì value = chỉnh sửa-->
-        }
     </div>
+
+
 </div>
