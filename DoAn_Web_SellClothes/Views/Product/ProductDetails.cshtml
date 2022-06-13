@@ -29,12 +29,45 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 mx-auto">
-                    <h1 class="tilte-category"><span class="name-product">@item.NameProduct</span></h1>
-                    <h1 class="price-product">@item.PriceProduct <span>&nbsp;VND</span></h1>
-                    <hr class="light" />
-                    <h5>Describe</h5>
-                    @item.DescribeProduct
+    <div class="product-details">
+        <div class="row">
+            <div class="col-md-2 col-lg-1 col-4">
+                <ul class="list__img-small">
+                    <li>
+                        <img src="~/Assets/img/Clothes/@Model.ImageProduct" />
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-5 col-lg-4 mx-auto">
+                <div class="imgBox">
+                    <img src="~/Assets/img/Clothes/@Model.ImageProduct" />
+                </div>
+            </div>
+            <div class="col-md-4 mx-auto">
+                <h1 class="name-product" style="word-wrap: break-word; white-space:normal" title="@Model.NameProduct">@Model.NameProduct</h1>
+                <h2 class="price-product">@Model.PriceProduct <span>&nbsp;VND</span></h2>
+                <hr class="light" />
+                <h5>Describe</h5>
+                @Model.DescribeProduct
+                <h5 class="mt-4">Size</h5>
+                <div class="btn-group mr-2 btn-group-size" role="group" aria-label="Basic example">
+                    @*@Html.Action("SizeProduct", new { id = Model.IdProduct })*@
+                </div>
+                <h5>quantity</h5>
+                <div class="btn-quantity shadow-sm">
+                    <span class="minus">-</span>
+                    <span class="num">01</span>
+                    <span class="plus">+</span>
+                    @*<input type="number" class="quantity-input" name="qty" style="width: 100px;" id="qty-1" value="" min="1" />*@
+                </div>
+                @if (Session["User"] != null)
+                {
+                <a href="@Url.Action("ThemGioHang","Cart",new {@idProduct=Model.IdProduct,strURL=Request.Url.ToString() })" class="btn btn-outline-dark btn-addtocart shadow my-4" onclick="javascript:showSuccessAddToCart()" >
+                    Add to cart
+                </a>
+              
+                    @*<button onclick="showSuccessAddToCart()" class="btn btn-warning btn-addtocart shadow my-4">
+                        <a href="@Url.Action("ThemGioHang","Cart",new {@idProduct=Model.IdProduct,strURL=Request.Url.ToString() })>
 
                     <h5 class="mt-4">Size</h5>
                     <div class="btn-group mr-2 btn-group-size" role="group" aria-label="Basic example">
