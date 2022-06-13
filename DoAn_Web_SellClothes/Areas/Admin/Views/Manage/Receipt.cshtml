@@ -8,7 +8,7 @@
     <h1 class="my-4">Quản lý hóa đơn</h1>
 
     <div class="mb-3">
-        <button class="btn btn-info" type="submit">Lưu thay đổi</button>
+        <button class="btn btn-success" type="submit">Lưu trạng thái</button>
     </div>
     <div class="card mb-4">
         <div class="card-header">
@@ -21,18 +21,23 @@
                     <tr>
                         <th>Mã hóa đơn</th>
                         <th>Khách hàng</th>
+                        <th>Địa chỉ</th>
+                        <th>Số điện thoại</th>
                         <th>Ngày lập</th>
                         <th>Tổng hóa đơn</th>
                         <th>Phương thức thanh toán</th>
                         <th>Trạng thái</th>
                         <th>&nbsp;</th>
-                        <th>&nbsp;</th>
+
                     </tr>
                 </thead>
                 <tbody>
+           
                     <tr>
                         <td>11</td>
                         <td>Ê lum mớt</td>
+                        <td>5412D</td>
+                        <td>098875</td>
                         <td>2011/04/25</td>
                         <td>320000<span>đ</span></td>
                         <td>Thanh toán khi nhận hàng</td>
@@ -40,35 +45,14 @@
                             <select class="form-control">
                                 <option>Chờ xác nhận</option>
                                 <option>Đã xác nhận</option>
+                                <option>Đã hủy</option>
                             </select>
                         </td>
                         <td>
-                            <input type="button" value="View details" />
-                        </td>
-                        <td>
+                            <a class="btn btn-info" href="@Url.Action("DetailReceipt","Manage")">View details</a>
 
-                            <input type="button" class="btn btn-warning w-75" value="Hủy" />
                         </td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>Ê lum mớt</td>
-                        <td>2011/04/25</td>
-                        <td>320000<span>đ</span></td>
-                        <td>Thanh toán khi nhận hàng</td>
-                        <td>
-                            <select class="form-control">
-                                <option>Chờ xác nhận</option>
-                                <option>Đã xác nhận</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="button" value="View details" />
-                        </td>
-                        <td>
 
-                            <input type="button" class="btn btn-warning w-75" value="Hủy" />
-                        </td>
                     </tr>
 
 
@@ -77,40 +61,6 @@
         </div>
     </div>
 
-    <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-table"></i>
-            Chi tiết hóa đơn
-        </div>
-        <div class="card-body">
-            <table id="datatablesInvoiceDetail" class="table-responsive">
-                <thead>
-                    <tr>
-                        <th>Mã hóa đơn</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Số lượng</th>
-                        <th>Giá</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-
-                    <tr>
-                        <td>11</td>
-                        <td>Áo polo</td>
-                        <td>5</td>
-                        <td>300000<span>đ</span></td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>Áo polo</td>
-                        <td>5</td>
-                        <td>300000<span>đ</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
 
 
 

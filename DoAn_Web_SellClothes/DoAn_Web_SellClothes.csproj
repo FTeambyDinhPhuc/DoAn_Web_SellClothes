@@ -2323,16 +2323,7 @@
     <Content Include="Assets\fonts\elegantlicons\ElegantIcons.eot" />
     <Content Include="Assets\fonts\elegantlicons\ElegantIcons.ttf" />
     <Content Include="Assets\fonts\elegantlicons\ElegantIcons.woff" />
-    <Content Include="Models\DataClasses1.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Areas\Admin\Views\Account\ChangePassword.cshtml" />
-    <None Include="Models\DataClasses1.dbml.layout">
-      <DependentUpon>DataClasses1.dbml</DependentUpon>
-    </None>
-    <Content Include="Areas\Admin\Views\Statistical\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Account\LogIn.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\Receipt.cshtml" />
     <Content Include="Areas\Admin\Views\Statistical\Statistical.cshtml" />
@@ -2341,6 +2332,19 @@
     <Content Include="Areas\Admin\Views\Manage\TypesClothes.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\Product.cshtml" />
     <Content Include="Areas\Admin\Views\Feedback\Feedback.cshtml" />
+    <Content Include="Models\DataClasses1.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Admin\Views\Manage\AddTypesClothes.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\EditTypesClothes.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\AddProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\EditProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\DetailReceipt.cshtml" />
+    <None Include="Models\DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
@@ -2452,6 +2456,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\About\" />
   </ItemGroup>
   <ItemGroup>

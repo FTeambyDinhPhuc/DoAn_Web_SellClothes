@@ -6,95 +6,53 @@
 
 <div class="container-fluid px-4">
     <h1 class="my-4">Quản lý loại đồ</h1>
-
-    <div class="row">
-        <div class="col-xl-8">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table "></i>
-                    Loại đồ
-                </div>
-                <div class="card-body">
-                    <table id="datatablesTypesClothes" class="table-responsive">
-                        <thead>
-                            <tr>
-                                <th>Mã loại</th>
-                                <th>Tên loại</th>
-                                <th>Mã giới tính</th>
-                                <th>&nbsp;</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Đầm</td>
-                                <td>Nữ</td>
-                                <td>
-                                    <input type="button" class="btn btn-info w-75 mb-1" value="Edit" />
-                                    <input type="button" class="btn btn-warning w-75" value="Delete" />
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Áo thun</td>
-                                <td>Nam</td>
-                                <td>
-                                    <input type="button" class="btn btn-info w-75 mb-1" value="Edit" />
-                                    <input type="button" class="btn btn-warning w-75" value="Delete" />
-                                </td>
-
-                            </tr>
-
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <div class="mb-3">
+        <a class="btn btn-success" href="@Url.Action("AddTypesClothes","Manage")">Thêm loại sản phẩm</a>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table "></i>
+            Loại đồ
         </div>
-        <div class="col-xl-4">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-shirt"></i>
-                    Chi tiết loại đồ
-                </div>
-                <div class="card-body">
-                    <div class="table-Edit table-responsive">
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <th>Tên loại</th>
-                                    <td>
-                                        <input type="text" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Giới tính</th>
-                                    <td>
-                                        <select class="form-control">
-                                            <option>Nam</option>
-                                            <option>Nữ</option>
-                                        </select>
+        <div class="card-body">
+            <table id="datatablesTypesClothes" class="table-responsive">
+                <thead>
+                    <tr>
+                        <th>Mã loại</th>
+                        <th>Tên loại</th>
+                        <th>Mã giới tính</th>
+                        <th>&nbsp;</th>
 
-                                    </td>
-                                </tr>
-                                
-                            </tbody>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Đầm</td>
+                        <td>Nữ</td>
+                        <td>
+                            <a href="@Url.Action("EditTypesClothes","manage")" class="btn btn-info mb-1 mb-lg-0"> Edit</a>
+                            <a class="btn btn-warning"> Delete</a>
 
-                        </table>
-                    </div>
-                </div>
-                <input type="submit" class="mybtn btn btn-outline-success" value="Thêm" /> <!--nếu chọn Edit thì value = chỉnh sửa-->
+                        </td>
 
-            </div>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Đầm</td>
+                        <td>Nữ</td>
+                        <td>
+                            <a href="@Url.Action("EditTypesClothes","manage")" class="btn btn-info mb-1 mb-lg-0"> Edit</a>
+                            <a class="btn btn-warning"> Delete</a>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
         </div>
     </div>
-
-
-
-
-
 
 </div>
 

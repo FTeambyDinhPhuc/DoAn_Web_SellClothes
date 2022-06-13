@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "DetailReceipt";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="my-4">Chi tiết hóa đơn: <span>11</span></h1>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Chi tiết hóa đơn
+        </div>
+        <div class="card-body">
+            <table id="datatablesInvoiceDetail" class="table-responsive">
+                <thead>
+                    <tr>
+                        <th>Mã hóa đơn</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr>
+                        <td>11</td>
+                        <td>Áo polo</td>
+                        <td>5</td>
+                        <td>300000<span>đ</span></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Áo polo</td>
+                        <td>5</td>
+                        <td>300000<span>đ</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
+
+
+</div>
+

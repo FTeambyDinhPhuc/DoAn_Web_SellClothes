@@ -13,21 +13,6 @@ body {
     height: 100%;
 }
 
-/*#layoutAuthentication {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}*/
-
-/*    #layoutAuthentication #layoutAuthentication_content {
-        min-width: 0;
-        flex-grow: 1;
-    }
-
-    #layoutAuthentication #layoutAuthentication_footer {
-        min-width: 0;
-    }*/
-/**/
 
     #layoutSidenav #layoutSidenav_nav {
         transition: transform 0.15s ease-in-out;
@@ -107,25 +92,6 @@ body {
     padding-left: 225px;
     top: 56px;
 }
-
-/*#layoutError {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-    #layoutError #layoutError_content {
-        min-width: 0;
-        flex-grow: 1;
-    }
-
-    #layoutError #layoutError_footer {
-        min-width: 0;
-    }*/
-
-/*.img-error {
-    max-width: 20rem;
-}*/
 
 
 .sidenav-menu .nav-link .nav-link-icon {
@@ -288,12 +254,15 @@ body {
 
 /*Hết màn hình login*/
 
+/*table dữ liệu*/
+
+/*Hết table dữ liệu*/
 /*Màn hình thông tin khách hàng*/
 /*Bảng chỉnh sửa thông tin*/
-.table-Edit .table tbody tr td input{
-   width:100%;
-   padding:.5rem 1rem;
-    max-width:none;
+.table-Edit .table tbody tr td input {
+    width: 100%;
+    padding: .5rem 1rem;
+    max-width: none;
 }
 
 .mybtn{
