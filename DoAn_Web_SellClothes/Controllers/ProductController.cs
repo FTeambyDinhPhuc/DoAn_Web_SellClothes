@@ -51,11 +51,11 @@ namespace DoAn_Web_SellClothes.Controllers
             var sanpham = from sp in data.Products where sp.IdProduct == id select sp;
             return View(sanpham.Single());
         }
-        public ActionResult SizeProduct(int id)
-        {
-            var sizeproduct = from sp in data.Products join s in data.SizeProducts on sp.IdProduct equals s.IdProduct where sp.IdProduct == id select s.NameSizeProduct;
-            return PartialView(sizeproduct);
-        }
+        //public ActionResult SizeProduct(int id)
+        //{
+        //    var sizeproduct = from sp in data.Products join s in data.SizeProducts on sp.IdProduct equals s.IdProduct where sp.IdProduct == id select s.NameSizeProduct;
+        //    return PartialView(sizeproduct);
+        //}
         public ActionResult ProductPage(int? page)
         {
             string keyword = Request.QueryString["keyword"];
