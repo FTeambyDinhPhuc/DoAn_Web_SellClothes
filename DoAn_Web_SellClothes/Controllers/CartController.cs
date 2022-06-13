@@ -27,17 +27,56 @@ namespace DoAn_Web_SellClothes.Controllers
             }
             return listgiohang;
         }
-        //Thêm vào giỏ hàng
-        public ActionResult ThemGioHang(int idProduct, string strURL)
+        //Tổng số lượng
+        private int TongSoLuong()
         {
-            //Lấy ra session 
+            int tong = 0;
+            List<Giohang> listgiohang = Session["Giohang"] as List<Giohang>;
+            if (listgiohang != null)
+            {
+                tong = (int)listgiohang.Sum(n => n.iQuantityProduct);
+            }
+            Session["QuantityCart"] = tong;
+            return tong;
+        }
+        //Tính tổng tiền
+        private int TongTien()
+        {
+            int tongtien = 0;
+            List<Giohang> listgiohang = Session["Giohang"] as List<Giohang>;
+            if (listgiohang != null)
+            {
+                tongtien = listgiohang.Sum(n => n.iThanhTien);
+            }
+            return tongtien;
+        }
+        //Cập nhật số lượng tồn của mỗi giày
+        private void updateSoLuong(InvoiceDetail cthd)
+        {
+            var sp = data.ProductDetails.Single(p => p.IdProduct == cthd.IdProduct && p.IdSizeProduct == cthd.IdSizeProduct);
+            sp.SoLuongTon = sp.SoLuongTon - cthd.Quantity;
+            data.ProductDetails.InsertOnSubmit(sp);
+            data.SubmitChanges();
+        }
+        //Thêm sản phẩm vào giỏ hàng
+        [HttpPost]
+        public ActionResult ThemGioHang(int? idProduct, string strURL, FormCollection collection) 
+        {
+            string sizeid = null;
+            //Lấy ra session    
             List<Giohang> listgiohang = LayGioHang();
+            if(Request.Form["nameSize"]==null)
+            {
+                ViewBag.ChooseSize = "Vui lòng chọn Size giày";
+                return Redirect(strURL);
+            }
+            sizeid = Request.Form["nameSize"].ToString();
             //Kiểm tra sản phẩm này tồn tại trong Session["Giohang"] chưa?
-            Giohang giohang = listgiohang.Find(n => n.iIdProduct == idProduct);
+            Giohang giohang = listgiohang.Find(n => n.iIdProduct == idProduct && n.iSizeProduct==sizeid);
             if(giohang==null)
             {
               
-                giohang = new Giohang(idProduct,1,"s");
+                giohang = new Giohang((int)idProduct,sizeid);
                 listgiohang.Add(giohang);
                 return Redirect(strURL);
             }
@@ -46,29 +85,6 @@ namespace DoAn_Web_SellClothes.Controllers
                 giohang.iQuantityProduct++;
                 return Redirect(strURL);
             }
-        }
-        //Tổng số lượng
-        private int TongSoLuong()
-        {
-            int tong = 0;
-            List<Giohang> listgiohang = Session["Giohang"] as List<Giohang>;
-            if(listgiohang!=null)
-            {
-                tong = listgiohang.Sum(n => n.iQuantityProduct);
-            }
-            Session["QuantityCart"] = tong;
-            return tong;
-        }
-        //Tính tổng tiền
-        private int TongTien()
-        {
-            int tongtien=0;
-            List<Giohang> listgiohang = Session["Giohang"] as List<Giohang>;
-            if(listgiohang!=null)
-            {
-                tongtien = listgiohang.Sum(n => n.iThanhTien);
-            }
-            return tongtien;
         }
         public ActionResult Cart()
         {

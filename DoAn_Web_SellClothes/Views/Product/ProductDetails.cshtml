@@ -1,7 +1,8 @@
-﻿
+﻿@model DoAn_Web_SellClothes.Models.Product
 @{
     ViewBag.Title = "ProductDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var item = Model;
 }
 <div>
     <nav aria-label="breadcrumb">
@@ -11,69 +12,73 @@
             <li class="breadcrumb-item active" aria-current="page">@Model.NameProduct</li>
         </ol>
     </nav>
-
-    <div class="product-details">
-        <div class="row">
-            <div class="col-md-2 col-lg-1 col-4">
-                <ul class="list__img-small">
-                    <li>
-                        <img src="~/Assets/img/Clothes/@Model.ImageProduct" />
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-5 col-lg-4 mx-auto">
-                <div class="imgBox">
-                    <img src="~/Assets/img/Clothes/@Model.ImageProduct" />
+    @using (Html.BeginForm("ThemGioHang", "Cart", new { @idProduct = item.IdProduct, @strURL = Request.Url.ToString() }, FormMethod.Post))
+    {
+        <div class="product-details">
+            <div class="row">
+                <div class="col-md-2 col-lg-1 col-4">
+                    <ul class="list__img-small">
+                        <li>
+                            <img src="~/Assets/img/Clothes/@item.ImageProduct" />
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            <div class="col-md-4 mx-auto">
-                <h1 class="tilte-category"><span class="name-product">@Model.NameProduct</span></h1>
-                <h1 class="price-product">@Model.PriceProduct <span>&nbsp;VND</span></h1>
-                <hr class="light" />
-                <h5>Describe</h5>
-                @Model.DescribeProduct
-                <h5 class="mt-4">Size</h5>
-                <div class="btn-group mr-2 btn-group-size" role="group" aria-label="Basic example">
-                    <select style="width:100px ;height:40px;padding-left:0.5rem ;font-size:1rem;font-weight:500" id="size" name="size" runat="server">
-                        @Html.Action("SizeProduct", new { id = Model.IdProduct })
-                    </select>
-                    <span class="ml-3 pt-1 text-center" style="font-size:1.5rem">@Model.QuantityProduct <span style="font-size:1rem">Sản phẩm</span></span>
+                <div class="col-md-5 col-lg-4 mx-auto">
+                    <div class="imgBox">
+                        <img src="~/Assets/img/Clothes/@item.ImageProduct" />
+                    </div>
                 </div>
-                <h1 id="demo"></h1>
-                @Session["size"]=<h1 id="demo"></h1>
-                <h5>quantity</h5>
-                <div class="btn-quantity shadow-sm">
-                    <span class="minus">-</span>
-                    <span class="num">01</span>
-                    <span class="plus">+</span>
+
+                <div class="col-md-4 mx-auto">
+                    <h1 class="tilte-category"><span class="name-product">@item.NameProduct</span></h1>
+                    <h1 class="price-product">@item.PriceProduct <span>&nbsp;VND</span></h1>
+                    <hr class="light" />
+                    <h5>Describe</h5>
+                    @item.DescribeProduct
+
+                    <h5 class="mt-4">Size</h5>
+                    <div class="btn-group mr-2 btn-group-size" role="group" aria-label="Basic example">
+                        <select style="width:100px ;height:40px;padding-left:0.5rem ;font-size:1rem;font-weight:500" id="size" name="size" runat="server">
+                            @*@Html.Action("SizeProduct", new { id = Model.IdProduct })*@
+                        </select>
+                        <span class="ml-3 pt-1 text-center" style="font-size:1.5rem">@item.QuantityProduct <span style="font-size:1rem">Sản phẩm</span></span>
+                    </div>
+                    <h1 id="demo"></h1>
+                    <h5>quantity</h5>
+                    <div class="btn-quantity shadow-sm">
+                        <span class="minus">-</span>
+                        <span class="num">01</span>
+                        <span class="plus">+</span>
+                    </div>
+                    <input type="hidden" value="" />
+                    @if (Session["User"] != null)
+                    {
+                        <a href="@Url.Action("ThemGioHang","Cart",new {@idProduct=Model.IdProduct,strURL=Request.Url.ToString() })" class="btn btn-outline-dark btn-addtocart shadow my-4" onclick="myFunction()">
+                            Add to cart
+                        </a>
+
+                        @*<button onclick="showSuccessAddToCart()" class="btn btn-warning btn-addtocart shadow my-4">
+                                <a href="@Url.Action("ThemGioHang","Cart",new {@idProduct=Model.IdProduct,strURL=Request.Url.ToString() })>
+
+                                </a>
+                                Add to cart
+                            </button>*@
+                        <script>
+                            function myFunction() {
+                                var x = document.getElementById("size").value;
+                                document.getElementById("demo").innerHTML = x;
+
+                            }
+
+                        </script>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("LogIn", "Account")" class="btn btn-outline-warning my-4">Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng!</a>
+                    }
                 </div>
-                <input type="hidden" value="" />
-                @if (Session["User"] != null)
-                {
-                    <a href="@Url.Action("ThemGioHang","Cart",new {@idProduct=Model.IdProduct,strURL=Request.Url.ToString() })" class="btn btn-outline-dark btn-addtocart shadow my-4" onclick="myFunction()">
-                        Add to cart
-                    </a>
-
-                    @*<button onclick="showSuccessAddToCart()" class="btn btn-warning btn-addtocart shadow my-4">
-                <a href="@Url.Action("ThemGioHang","Cart",new {@idProduct=Model.IdProduct,strURL=Request.Url.ToString() })>
-
-                </a>
-                Add to cart
-            </button>*@
-                    <script>
-                        function myFunction() {
-                            var x = document.getElementById("size").value;
-                            document.getElementById("demo").innerHTML = x;
-
-                        }
-
-                    </script>
-                }
-                else
-                {
-                    <a href="@Url.Action("LogIn", "Account")" class="btn btn-outline-warning my-4">Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng!</a>
-                }
+              
             </div>
-            </div>
+        </div>
+    }
     </div>
-</div>
