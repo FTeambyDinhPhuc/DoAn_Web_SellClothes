@@ -2456,6 +2456,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\About\" />
     <Folder Include="Views\GioHang\" />
   </ItemGroup>
