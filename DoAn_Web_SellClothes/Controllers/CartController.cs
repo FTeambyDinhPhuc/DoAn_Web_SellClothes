@@ -30,7 +30,6 @@ namespace DoAn_Web_SellClothes.Controllers
         //Thêm vào giỏ hàng
         public ActionResult ThemGioHang(int idProduct, string strURL)
         {
-
             //Lấy ra session 
             List<Giohang> listgiohang = LayGioHang();
             //Kiểm tra sản phẩm này tồn tại trong Session["Giohang"] chưa?
@@ -38,7 +37,7 @@ namespace DoAn_Web_SellClothes.Controllers
             if(giohang==null)
             {
               
-                giohang = new Giohang(idProduct);
+                giohang = new Giohang(idProduct,1,"s");
                 listgiohang.Add(giohang);
                 return Redirect(strURL);
             }
@@ -47,7 +46,6 @@ namespace DoAn_Web_SellClothes.Controllers
                 giohang.iQuantityProduct++;
                 return Redirect(strURL);
             }
-
         }
         //Tổng số lượng
         private int TongSoLuong()
@@ -84,6 +82,5 @@ namespace DoAn_Web_SellClothes.Controllers
             ViewBag.TongTienShip = TongTien() + 25000;
             return View(listgiohang);
         }
-
     }
 }

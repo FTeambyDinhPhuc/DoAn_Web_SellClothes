@@ -18,8 +18,9 @@
                                         <th>&nbsp;</th>
                                         <th>&nbsp;</th>
                                         <th class="text-left">Product</th>
+                                        <th>Size</th>
                                         <th>Price</th>
-                                        <th >Quantity</th>
+                                        <th>Quantity</th>
                                         <th>Total</th>
                                     </tr>
 
@@ -27,31 +28,34 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                        <tr>
-                                            <td class="product-remove text-center">
-                                                <a href="#">
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </a>
-                                            </td>
-                                            <td class="product-thumbnail text-left">
-                                                <img src="~/Assets/img/Clothes/@item.iImageProduct"
-                                                     alt="@item.iImageProduct">
-                                            </td>
-                                            <td class="product-name text-left">
-                                                <a href="@Url.Action("ProductDetails","Product")">@item.iNameProduct</a>
-                                            </td>
-                                            <td class="product-price">
-                                                @item.iPriceProduct<span>đ</span>
-                                            </td>
-                                            <td class="product-quantity">
+                                    <tr>
+                                        <td class="product-remove text-center">
+                                            <a href="#">
+                                                <i class="fa-solid fa-xmark"></i>
+                                            </a>
+                                        </td>
+                                        <td class="product-thumbnail text-left">
+                                            <img src="~/Assets/img/Clothes/@item.iImageProduct"
+                                                 alt="@item.iImageProduct">
+                                        </td>
+                                        <td class="product-name text-left">
+                                            <a href="@Url.Action("ProductDetails","Product",new { id=item.iIdProduct})">@item.iNameProduct</a>
+                                        </td>
+                                        <td class="product-name text-left">
+                                            @item.iSizeProduct 
+                                        </td>
+                                        <td class="product-price">
+                                            @item.iPriceProduct<span>đ</span>
+                                        </td>
+                                        <td class="product-quantity">
 
-                                                <input type="number" class="quantity-input" name="qty"
-                                                       id="qty-1" value="@item.iQuantityProduct" min="1">
-                                            </td>
-                                            <td class="product-total-price">
-                                                <strong> @item.iThanhTien<span>đ</span></strong>
-                                            </td>
-                                        </tr>
+                                            <input type="number" class="quantity-input" name="qty"
+                                                   id="qty-1" value="@item.iQuantityProduct" min="1">
+                                        </td>
+                                        <td class="product-total-price">
+                                            <strong> @item.iThanhTien<span>đ</span></strong>
+                                        </td>
+                                    </tr>
                                     }
 
                                     @*<tr>

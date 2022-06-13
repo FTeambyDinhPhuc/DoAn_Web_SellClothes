@@ -32,33 +32,46 @@
                 <hr class="light" />
                 <h5>Describe</h5>
                 @Model.DescribeProduct
-                <h5>Size</h5>
+                <h5 class="mt-4">Size</h5>
                 <div class="btn-group mr-2 btn-group-size" role="group" aria-label="Basic example">
-                    @Html.Action("SizeProduct", new { id = Model.IdProduct })
+                    <select style="width:100px ;height:40px;padding-left:0.5rem ;font-size:1rem;font-weight:500" id="size" name="size" runat="server">
+                        @Html.Action("SizeProduct", new { id = Model.IdProduct })
+                    </select>
+                    <span class="ml-3 pt-1 text-center" style="font-size:1.5rem">@Model.QuantityProduct <span style="font-size:1rem">Sản phẩm</span></span>
                 </div>
+                <h1 id="demo"></h1>
+                @Session["size"]=<h1 id="demo"></h1>
                 <h5>quantity</h5>
                 <div class="btn-quantity shadow-sm">
                     <span class="minus">-</span>
                     <span class="num">01</span>
                     <span class="plus">+</span>
-                    @*<input type="number" class="quantity-input" name="qty" style="width: 100px;" id="qty-1" value="" min="1" />*@
                 </div>
+                <input type="hidden" value="" />
                 @if (Session["User"] != null)
                 {
-                <a href="@Url.Action("ThemGioHang","Cart",new {@idProduct=Model.IdProduct,strURL=Request.Url.ToString() })" class="btn btn-outline-dark btn-addtocart shadow my-4" onclick="javascript:showSuccessAddToCart()" >
-                    Add to cart
-                </a>
-              
-                    @*<button onclick="showSuccessAddToCart()" class="btn btn-warning btn-addtocart shadow my-4">
-                        <a href="@Url.Action("ThemGioHang","Cart",new {@idProduct=Model.IdProduct,strURL=Request.Url.ToString() })>
-
-                        </a>
+                    <a href="@Url.Action("ThemGioHang","Cart",new {@idProduct=Model.IdProduct,strURL=Request.Url.ToString() })" class="btn btn-outline-dark btn-addtocart shadow my-4" onclick="myFunction()">
                         Add to cart
-                    </button>*@
+                    </a>
+
+                    @*<button onclick="showSuccessAddToCart()" class="btn btn-warning btn-addtocart shadow my-4">
+                <a href="@Url.Action("ThemGioHang","Cart",new {@idProduct=Model.IdProduct,strURL=Request.Url.ToString() })>
+
+                </a>
+                Add to cart
+            </button>*@
+                    <script>
+                        function myFunction() {
+                            var x = document.getElementById("size").value;
+                            document.getElementById("demo").innerHTML = x;
+
+                        }
+
+                    </script>
                 }
                 else
                 {
-                    <a href="@Url.Action("LogIn", "Account")" class="btn btn-outline-warning my-4">Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng!</a>       
+                    <a href="@Url.Action("LogIn", "Account")" class="btn btn-outline-warning my-4">Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng!</a>
                 }
             </div>
             </div>
