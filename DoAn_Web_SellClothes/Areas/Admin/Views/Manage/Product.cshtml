@@ -35,26 +35,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Áo plo</td>
-                        <td>
-                            <img class="img-thumbnail" style="width:75px" src="~/Assets/img/productImage.png" />
-                        </td>
-                        <td>230000<span>đ</span></td>
-                        <td>01/01/2022</td>
-                        <td>01/01/2022</td>
-                        <td style="max-width:200px">nhí hảo nhí hảo asdasdasdasghdjsagdksabdaskdnbnhí hảo nhí hảo asdasdasdasghdjsagdksabdaskdnbnhí hảo nhí hảo asdasdasdasghdjsagdksabdaskdnbnhí hảo nhí hảo asdasdasdasghdjsagdksabdaskdnb</td>
-                        <td>Top</td>
-                        <td>
-                            Còn hàng
-                        </td>
-                        <td>
-                            <a href="@Url.Action("EditProduct","Manage")" class="btn btn-info w-75 mb-1">Edit</a>
-                            <a href="#" class="btn btn-warning w-75">Delete</a>
-
-                        </td>
-                    </tr>
-
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.NameProduct)</td>
+                            <td>
+                                <img src="~/Assets/img/Clothes/@Html.DisplayFor(modelItem => item.ImageProduct)" class="img-thumbnail" style="width:75px" alt="Alternate Text" />
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.PriceProduct)<span>đ</span></td>
+                            <td>@String.Format("{0:dd/MM/yyyy}", item.CreateDate)</td>
+                            <td>@String.Format("{0:dd/MM/yyyy}", item.UpdateDate)</td>
+                            <td style="max-width:200px">@Html.DisplayFor(modelItem => item.DescribeProduct)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ProductType.NameProductType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.StatusProduct)
+                            <td>
+                                <input type="button" class="btn btn-info w-75 mb-1" value="Delete"/>
+                                <input type="button" class="btn btn-warning w-75" value="Delete" />
+                                @Html.ActionLink("Delete", "DeleteProduct", new { id = item.IdProduct })
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

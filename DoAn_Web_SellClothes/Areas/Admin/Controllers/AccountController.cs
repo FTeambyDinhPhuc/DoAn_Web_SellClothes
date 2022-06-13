@@ -48,7 +48,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             else if (!String.Equals(MD5Hash(pass), ad.PasswordAdmin))
             {
                 ViewData["2"] = "Sai Mật khẩu !";             
-            }
+            }           
             else
             {
                 Session["admin"] = ad;
