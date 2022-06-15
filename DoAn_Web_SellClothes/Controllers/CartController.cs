@@ -60,23 +60,24 @@ namespace DoAn_Web_SellClothes.Controllers
         }
         //Thêm sản phẩm vào giỏ hàng
         [HttpPost]
-        public ActionResult ThemGioHang(int? idProduct, string strURL, FormCollection collection) 
+        public ActionResult ThemGioHang(int? idProduct, string strURL) 
         {
-            string sizeid = null;
+            int? sizeid = null;
             //Lấy ra session    
             List<Giohang> listgiohang = LayGioHang();
-            if(Request.Form["nameSize"]==null)
+            Session["Size"] = Request.Form["nameSize"];
+            if (Request.Form["nameSize"] == null)
             {
-                ViewBag.ChooseSize = "Vui lòng chọn Size giày";
+                Session["Error"]= "Vui lòng chọn Size sản phẩm!";
                 return Redirect(strURL);
             }
-            sizeid = Request.Form["nameSize"].ToString();
+            else sizeid = Int32.Parse(Request.Form["nameSize"].ToString());
             //Kiểm tra sản phẩm này tồn tại trong Session["Giohang"] chưa?
-            Giohang giohang = listgiohang.Find(n => n.iIdProduct == idProduct && n.iSizeProduct==sizeid);
+            Giohang giohang = listgiohang.Find(n => n.iIdProduct == idProduct && n.iSize==sizeid);
             if(giohang==null)
             {
               
-                giohang = new Giohang((int)idProduct,sizeid);
+                giohang = new Giohang(idProduct,sizeid);
                 listgiohang.Add(giohang);
                 return Redirect(strURL);
             }

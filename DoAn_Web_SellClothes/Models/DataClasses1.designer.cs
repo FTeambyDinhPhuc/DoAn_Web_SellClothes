@@ -25,7 +25,7 @@ namespace DoAn_Web_SellClothes.Models
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QuanLyBanQuanAo")]
 	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
-
+		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
 		
     #region Extensibility Method Definitions
@@ -1265,8 +1265,9 @@ namespace DoAn_Web_SellClothes.Models
 		//Giá trị ngoài
 		public List<string> sizeProduct;
 		public List<int> idSize;
-		public List<int> soluongton;
-		public bool tinhtrangsanpham;
+		public List<int?> soluongton;
+		public bool tinhtrangsanpham; // hết hàng hoặc còn hàng => số lượng tồn = 0
+		public string urlBack;
 
 		#region Extensibility Method Definitions
 		partial void OnLoaded();
@@ -1595,7 +1596,7 @@ namespace DoAn_Web_SellClothes.Models
 		
 		private int _IdProduct;
 		
-		private int _SoLuongTon;
+		private System.Nullable<int> _SoLuongTon;
 		
 		private EntitySet<InvoiceDetail> _InvoiceDetails;
 		
@@ -1611,7 +1612,7 @@ namespace DoAn_Web_SellClothes.Models
     partial void OnIdSizeProductChanged();
     partial void OnIdProductChanging(int value);
     partial void OnIdProductChanged();
-    partial void OnSoLuongTonChanging(int value);
+    partial void OnSoLuongTonChanging(System.Nullable<int> value);
     partial void OnSoLuongTonChanged();
     #endregion
 		
@@ -1671,8 +1672,8 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuongTon", DbType="Int NOT NULL")]
-		public int SoLuongTon
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuongTon", DbType="Int")]
+		public System.Nullable<int> SoLuongTon
 		{
 			get
 			{

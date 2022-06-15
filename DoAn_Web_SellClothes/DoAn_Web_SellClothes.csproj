@@ -2447,7 +2447,6 @@
     <Content Include="Views\Product\SanPhamNu.cshtml" />
     <Content Include="Views\Product\SPTheoLoaiNam.cshtml" />
     <Content Include="Views\Product\SPTheoLoaiNu.cshtml" />
-    <Content Include="Views\Product\SizeProduct.cshtml" />
     <Content Include="Views\Account\_User.cshtml" />
     <Content Include="Views\Home\Thanks.cshtml" />
     <Content Include="Views\History\History.cshtml" />
