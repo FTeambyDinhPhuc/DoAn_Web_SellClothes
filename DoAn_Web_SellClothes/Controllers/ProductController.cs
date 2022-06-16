@@ -35,14 +35,14 @@ namespace DoAn_Web_SellClothes.Controllers
         public ActionResult SPTheoLoaiNam(int? id,int?page)
         {          
             var sanphamloainam = (from spln in data.Products where spln.IdProductType == id select spln).OrderByDescending(p=>p.IdProduct);
-            int pageSize = 9; // mỗi trang 8 sản phẩm
+            int pageSize = 9; // mỗi trang 9 sản phẩm
             int pageNum = (page ?? 1); // nếu page = null => pageNum = 1
             return View(sanphamloainam.ToPagedList(pageNum,pageSize));
         }
         public ActionResult SPTheoLoaiNu(int?id, int?page)
         {
             var sanphamloainu = (from spln in data.Products where spln.IdProductType == id select spln).OrderByDescending(p=>p.IdProduct);
-            int pageSize = 9; // mỗi trang 8 sản phẩm
+            int pageSize = 9; // mỗi trang 9 sản phẩm
             int pageNum = (page ?? 1); // nếu page = null => pageNum = 1
             return View(sanphamloainu.ToPagedList(pageNum,pageSize));
         }

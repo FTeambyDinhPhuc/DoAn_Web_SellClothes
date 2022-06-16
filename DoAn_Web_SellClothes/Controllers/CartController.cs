@@ -72,12 +72,14 @@ namespace DoAn_Web_SellClothes.Controllers
                 return Redirect(strURL);
             }
             else sizeid = Int32.Parse(Request.Form["nameSize"].ToString());
+            int sl = Int32.Parse(Request.Form["quantity"].ToString());
+            Session["sl"] = sl;
             //Kiểm tra sản phẩm này tồn tại trong Session["Giohang"] chưa?
             Giohang giohang = listgiohang.Find(n => n.iIdProduct == idProduct && n.iSize==sizeid);
             if(giohang==null)
             {
-              
-                giohang = new Giohang(idProduct,sizeid);
+
+                giohang = new Giohang(idProduct, sizeid, sl); ;
                 listgiohang.Add(giohang);
                 return Redirect(strURL);
             }

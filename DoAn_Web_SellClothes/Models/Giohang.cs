@@ -21,17 +21,17 @@ namespace DoAn_Web_SellClothes.Models
             get { return (int)(iQuantityProduct * iPriceProduct); }
         }
         //Khởi tạo giỏ hành theo Mã sản phẩm truyền vào với số lượng mạc định là 1
-        public Giohang(int? idProduct, int? sizeProduct)
+        public Giohang(int? idProduct, int? sizeProduct, int? quantity)
         {
             iIdProduct = idProduct;
             iSize = sizeProduct;
+            iQuantityProduct = quantity;
             Product product = data.Products.Single(n => n.IdProduct == iIdProduct);
             iImageProduct = product.ImageProduct;
             iNameProduct = product.NameProduct;
             iPriceProduct = product.PriceProduct;
             var sizeproduct = data.SizeProducts.FirstOrDefault(p => p.IdSizeProduct == iSize);
             iSizeProduct = sizeproduct.NameSizeProduct;           
-            iQuantityProduct = 1;
  
         }
 
