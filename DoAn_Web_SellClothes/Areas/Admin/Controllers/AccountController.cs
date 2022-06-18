@@ -66,8 +66,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult ChangePassword()
         {
-            AdminAccount ac = (AdminAccount)Session["admin"];
-            return this.ChangePassword();
+            return View();
         }
         [HttpPost]
         public ActionResult ChangePassword(FormCollection collection)
@@ -109,12 +108,11 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                 }
                 else
                 {
-                    admin.UserNameAdmin = po;
                     admin.PasswordAdmin = MD5Hash(pn);
                     Session["admin"] = admin;
                     db.SubmitChanges();
-                    ViewData["Info"] = "Cập nhật thành công!";
-                    return this.ChangePassword();
+                    ViewData["3"] = "Cập nhật thành công!";
+                    return RedirectToAction("Statistical", "Statistical");
                 }
             }
             return this.ChangePassword();
