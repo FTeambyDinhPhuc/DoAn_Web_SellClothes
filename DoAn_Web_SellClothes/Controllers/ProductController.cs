@@ -46,16 +46,29 @@ namespace DoAn_Web_SellClothes.Controllers
             int pageNum = (page ?? 1); // nếu page = null => pageNum = 1
             return View(sanphamloainu.ToPagedList(pageNum,pageSize));
         }
-        public ActionResult ProductDetails(int id)
+        [HttpGet]
+        public ActionResult ProductDetails(int? id,string url)
         {
-            var sanpham = from sp in data.Products where sp.IdProduct == id select sp;
-            return View(sanpham.Single());
+            //var sanpham = from sp in data.Products where sp.IdProduct == id select sp;
+            var sanPham = data.Products.FirstOrDefault(p => p.IdProduct == id);
+            var maSize = data.ProductDetails.Where(p => p.IdProduct == id).Select(p => p.IdSizeProduct).ToList();
+            var soLuongTon = data.ProductDetails.Where(p => p.IdProduct == id).Select(p => p.SoLuongTon).ToList();
+            var sizeSanPham = data.SizeProducts.Select(p => p.NameSizeProduct).ToList();
+            var demsanpham = soLuongTon.Sum(p => p.Value);
+            sanPham.idSize = maSize;
+            sanPham.soluongton = soLuongTon;
+            sanPham.sizeProduct = sizeSanPham;
+            if (demsanpham == 0)
+            {
+                sanPham.tinhtrangsanpham = false;
+            }
+            else
+            {
+                sanPham.tinhtrangsanpham = true;
+            }
+            if (!String.IsNullOrEmpty(url)) sanPham.urlBack = url;
+            return View(sanPham);
         }
-        //public ActionResult SizeProduct(int id)
-        //{
-        //    var sizeproduct = from sp in data.Products join s in data.SizeProducts on sp.IdProduct equals s.IdProduct where sp.IdProduct == id select s.NameSizeProduct;
-        //    return PartialView(sizeproduct);
-        //}
         public ActionResult ProductPage(int? page)
         {
             string keyword = Request.QueryString["keyword"];
