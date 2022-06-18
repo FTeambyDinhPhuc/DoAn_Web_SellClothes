@@ -60,7 +60,7 @@ namespace DoAn_Web_SellClothes.Models
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -993,64 +993,92 @@ namespace DoAn_Web_SellClothes.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _IdInvoiceDetails;
-		
-		private int _IdInvoice;
+		private int _IdSizeProduct;
 		
 		private int _IdProduct;
 		
+		private int _IdInvoice;
+		
 		private int _Quantity;
 		
-		private int _Price;
+		private int _UnitPrice;
 		
 		private EntityRef<Invoice> _Invoice;
 		
-		private EntityRef<Product> _Product;
+		private EntityRef<ProductDetail> _ProductDetail;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIdInvoiceDetailsChanging(int value);
-    partial void OnIdInvoiceDetailsChanged();
-    partial void OnIdInvoiceChanging(int value);
-    partial void OnIdInvoiceChanged();
+    partial void OnIdSizeProductChanging(int value);
+    partial void OnIdSizeProductChanged();
     partial void OnIdProductChanging(int value);
     partial void OnIdProductChanged();
+    partial void OnIdInvoiceChanging(int value);
+    partial void OnIdInvoiceChanged();
     partial void OnQuantityChanging(int value);
     partial void OnQuantityChanged();
-    partial void OnPriceChanging(int value);
-    partial void OnPriceChanged();
+    partial void OnUnitPriceChanging(int value);
+    partial void OnUnitPriceChanged();
     #endregion
 		
 		public InvoiceDetail()
 		{
 			this._Invoice = default(EntityRef<Invoice>);
-			this._Product = default(EntityRef<Product>);
+			this._ProductDetail = default(EntityRef<ProductDetail>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdInvoiceDetails", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int IdInvoiceDetails
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdSizeProduct", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IdSizeProduct
 		{
 			get
 			{
-				return this._IdInvoiceDetails;
+				return this._IdSizeProduct;
 			}
 			set
 			{
-				if ((this._IdInvoiceDetails != value))
+				if ((this._IdSizeProduct != value))
 				{
-					this.OnIdInvoiceDetailsChanging(value);
+					if (this._ProductDetail.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdSizeProductChanging(value);
 					this.SendPropertyChanging();
-					this._IdInvoiceDetails = value;
-					this.SendPropertyChanged("IdInvoiceDetails");
-					this.OnIdInvoiceDetailsChanged();
+					this._IdSizeProduct = value;
+					this.SendPropertyChanged("IdSizeProduct");
+					this.OnIdSizeProductChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdInvoice", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdProduct", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IdProduct
+		{
+			get
+			{
+				return this._IdProduct;
+			}
+			set
+			{
+				if ((this._IdProduct != value))
+				{
+					if (this._ProductDetail.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdProductChanging(value);
+					this.SendPropertyChanging();
+					this._IdProduct = value;
+					this.SendPropertyChanged("IdProduct");
+					this.OnIdProductChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdInvoice", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int IdInvoice
 		{
 			get
@@ -1070,30 +1098,6 @@ namespace DoAn_Web_SellClothes.Models
 					this._IdInvoice = value;
 					this.SendPropertyChanged("IdInvoice");
 					this.OnIdInvoiceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdProduct", DbType="Int NOT NULL")]
-		public int IdProduct
-		{
-			get
-			{
-				return this._IdProduct;
-			}
-			set
-			{
-				if ((this._IdProduct != value))
-				{
-					if (this._Product.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIdProductChanging(value);
-					this.SendPropertyChanging();
-					this._IdProduct = value;
-					this.SendPropertyChanged("IdProduct");
-					this.OnIdProductChanged();
 				}
 			}
 		}
@@ -1118,22 +1122,22 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int NOT NULL")]
-		public int Price
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitPrice", DbType="Int NOT NULL")]
+		public int UnitPrice
 		{
 			get
 			{
-				return this._Price;
+				return this._UnitPrice;
 			}
 			set
 			{
-				if ((this._Price != value))
+				if ((this._UnitPrice != value))
 				{
-					this.OnPriceChanging(value);
+					this.OnUnitPriceChanging(value);
 					this.SendPropertyChanging();
-					this._Price = value;
-					this.SendPropertyChanged("Price");
-					this.OnPriceChanged();
+					this._UnitPrice = value;
+					this.SendPropertyChanged("UnitPrice");
+					this.OnUnitPriceChanged();
 				}
 			}
 		}
@@ -1172,36 +1176,38 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_InvoiceDetail", Storage="_Product", ThisKey="IdProduct", OtherKey="IdProduct", IsForeignKey=true)]
-		public Product Product
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProductDetail_InvoiceDetail", Storage="_ProductDetail", ThisKey="IdSizeProduct,IdProduct", OtherKey="IdSizeProduct,IdProduct", IsForeignKey=true)]
+		public ProductDetail ProductDetail
 		{
 			get
 			{
-				return this._Product.Entity;
+				return this._ProductDetail.Entity;
 			}
 			set
 			{
-				Product previousValue = this._Product.Entity;
+				ProductDetail previousValue = this._ProductDetail.Entity;
 				if (((previousValue != value) 
-							|| (this._Product.HasLoadedOrAssignedValue == false)))
+							|| (this._ProductDetail.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Product.Entity = null;
+						this._ProductDetail.Entity = null;
 						previousValue.InvoiceDetails.Remove(this);
 					}
-					this._Product.Entity = value;
+					this._ProductDetail.Entity = value;
 					if ((value != null))
 					{
 						value.InvoiceDetails.Add(this);
+						this._IdSizeProduct = value.IdSizeProduct;
 						this._IdProduct = value.IdProduct;
 					}
 					else
 					{
+						this._IdSizeProduct = default(int);
 						this._IdProduct = default(int);
 					}
-					this.SendPropertyChanged("Product");
+					this.SendPropertyChanged("ProductDetail");
 				}
 			}
 		}
@@ -1253,8 +1259,6 @@ namespace DoAn_Web_SellClothes.Models
 		
 		private int _IdProductType;
 		
-		private EntitySet<InvoiceDetail> _InvoiceDetails;
-		
 		private EntitySet<ProductDetail> _ProductDetails;
 		
 		private EntityRef<ProductType> _ProductType;
@@ -1287,7 +1291,6 @@ namespace DoAn_Web_SellClothes.Models
 		
 		public Product()
 		{
-			this._InvoiceDetails = new EntitySet<InvoiceDetail>(new Action<InvoiceDetail>(this.attach_InvoiceDetails), new Action<InvoiceDetail>(this.detach_InvoiceDetails));
 			this._ProductDetails = new EntitySet<ProductDetail>(new Action<ProductDetail>(this.attach_ProductDetails), new Action<ProductDetail>(this.detach_ProductDetails));
 			this._ProductType = default(EntityRef<ProductType>);
 			OnCreated();
@@ -1497,19 +1500,6 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_InvoiceDetail", Storage="_InvoiceDetails", ThisKey="IdProduct", OtherKey="IdProduct")]
-		public EntitySet<InvoiceDetail> InvoiceDetails
-		{
-			get
-			{
-				return this._InvoiceDetails;
-			}
-			set
-			{
-				this._InvoiceDetails.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ProductDetail", Storage="_ProductDetails", ThisKey="IdProduct", OtherKey="IdProduct")]
 		public EntitySet<ProductDetail> ProductDetails
 		{
@@ -1577,18 +1567,6 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		private void attach_InvoiceDetails(InvoiceDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = this;
-		}
-		
-		private void detach_InvoiceDetails(InvoiceDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = null;
-		}
-		
 		private void attach_ProductDetails(ProductDetail entity)
 		{
 			this.SendPropertyChanging();
@@ -1614,6 +1592,8 @@ namespace DoAn_Web_SellClothes.Models
 		
 		private int _SoLuongTon;
 		
+		private EntitySet<InvoiceDetail> _InvoiceDetails;
+		
 		private EntityRef<Product> _Product;
 		
 		private EntityRef<SizeProduct> _SizeProduct;
@@ -1632,6 +1612,7 @@ namespace DoAn_Web_SellClothes.Models
 		
 		public ProductDetail()
 		{
+			this._InvoiceDetails = new EntitySet<InvoiceDetail>(new Action<InvoiceDetail>(this.attach_InvoiceDetails), new Action<InvoiceDetail>(this.detach_InvoiceDetails));
 			this._Product = default(EntityRef<Product>);
 			this._SizeProduct = default(EntityRef<SizeProduct>);
 			OnCreated();
@@ -1702,6 +1683,19 @@ namespace DoAn_Web_SellClothes.Models
 					this.SendPropertyChanged("SoLuongTon");
 					this.OnSoLuongTonChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProductDetail_InvoiceDetail", Storage="_InvoiceDetails", ThisKey="IdSizeProduct,IdProduct", OtherKey="IdSizeProduct,IdProduct")]
+		public EntitySet<InvoiceDetail> InvoiceDetails
+		{
+			get
+			{
+				return this._InvoiceDetails;
+			}
+			set
+			{
+				this._InvoiceDetails.Assign(value);
 			}
 		}
 		
@@ -1791,6 +1785,18 @@ namespace DoAn_Web_SellClothes.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_InvoiceDetails(InvoiceDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.ProductDetail = this;
+		}
+		
+		private void detach_InvoiceDetails(InvoiceDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.ProductDetail = null;
 		}
 	}
 	

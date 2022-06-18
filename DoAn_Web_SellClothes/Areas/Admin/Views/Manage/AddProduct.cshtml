@@ -60,11 +60,25 @@
                                 </td>
                             </tr>
                             <tr>
-                                 <th>Trạng thái</th>
-                                 <td>
-                                     <input type="text" name="status" />
-                                  </td>
-                              </tr>
+                                <th>Kích thước</th>
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("Size")
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Số lượng</th>
+                                <td>
+                                    <input type="text" name="quality" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Trạng thái</th>
+                                <td>
+                                    <input type="text" name="status" />
+                                </td>
+                            </tr>
 
                         </tbody>
 
@@ -73,7 +87,6 @@
             </div>
             <input type="submit" class="mybtn btn btn-outline-success" value="Xác nhận" />
         }
-
     </div>
 
     <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>

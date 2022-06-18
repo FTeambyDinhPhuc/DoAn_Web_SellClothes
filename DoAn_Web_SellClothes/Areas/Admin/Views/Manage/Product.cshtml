@@ -1,8 +1,6 @@
 ﻿@using DoAn_Web_SellClothes.Models;
 @using PagedList.Mvc;
-@model PagedList.PagedList<Product>
-
-    
+@model PagedList.PagedList<Product>    
 
 @{
     ViewBag.Title = "Product";
@@ -48,10 +46,9 @@
                             <td style="max-width:200px">@Html.DisplayFor(modelItem => item.DescribeProduct)</td>
                             <td>@Html.DisplayFor(modelItem => item.ProductType.NameProductType)</td>
                             <td>@Html.DisplayFor(modelItem => item.StatusProduct)
-                            <td>
-                                <input type="button" class="btn btn-info w-75 mb-1" value="Delete"/>
-                                <input type="button" class="btn btn-warning w-75" value="Delete" />
-                                @Html.ActionLink("Delete", "DeleteProduct", new { id = item.IdProduct })
+                            <td>              
+                                <a class="btn btn-info w-75 mb-1" @Html.ActionLink("Edit", "EditProduct", new { id = item.IdProduct })></a>
+                                <a class="btn btn-warning w-75" @Html.ActionLink("Delete", "DeleteProduct", new { id = item.IdProduct })></a>
                             </td>
                         </tr>
                     }
@@ -59,6 +56,5 @@
             </table>
         </div>
     </div>
-
-
 </div>
+

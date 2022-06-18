@@ -34,62 +34,90 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult LogIn(FormCollection collection)
         {
-            var name = collection["username"];
-            var pass = collection["password"];
-            
-            var ad = db.AdminAccounts.SingleOrDefault(n => n.UserNameAdmin == name);
-            if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(pass))
-            {                               
-            }
-            else if (!String.Equals(name, ad.UserNameAdmin))
+            var tendangnhap = collection["username"];
+            var matkhau = collection["password"];
+            var user = db.AdminAccounts.SingleOrDefault(p => p.UserNameAdmin == tendangnhap);
+            if (String.IsNullOrEmpty(tendangnhap) || String.IsNullOrEmpty(matkhau))
             {
-                ViewData["1"] = "Sai tài khoản";            
+                ViewData["1"] = "Vui lòng điền đầy đủ nội dung";
+                return this.LogIn();
             }
-            else if (!String.Equals(MD5Hash(pass), ad.PasswordAdmin))
+            else if (user == null)
             {
-                ViewData["2"] = "Sai Mật khẩu !";             
-            }           
+                ViewData["1"] = "Sai tài khoản";
+                return this.LogIn();
+            }
+            else if (!String.Equals(MD5Hash(matkhau), user.PasswordAdmin))
+            {
+                ViewData["2"] = "Sai mật khẩu";
+                return this.LogIn();
+            }
             else
             {
-                Session["admin"] = ad;
+                Session["admin"] = user;
                 return RedirectToAction("Statistical", "Statistical");
             }
-            return View();
-            
         }
         public ActionResult LogOut()
         {
             Session["admin"] = null;
             return RedirectToAction("LogIn", "Account");
         }
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            AdminAccount ac = (AdminAccount)Session["admin"];
+            return this.ChangePassword();
+        }
+        [HttpPost]
         public ActionResult ChangePassword(FormCollection collection)
         {
+            AdminAccount ac = (AdminAccount)Session["admin"];
+            var admin = db.AdminAccounts.SingleOrDefault(p => p.IdAdminAccount == p.IdAdminAccount);           
             var po = collection["passold"];
             var pn = collection["passnew"];
             var pa = collection["passagain"];
-            var ad = db.AdminAccounts.SingleOrDefault(n => n.PasswordAdmin == po);
             if (String.IsNullOrEmpty(po) || String.IsNullOrEmpty(pn) || String.IsNullOrEmpty(pa))
             {
-            }                  
-            //else if (!String.Equals(MD5Hash(po), ad.PasswordAdmin))
-            //{
-            //    ViewData["1"] = "Sai Mật khẩu !";
-            //}
-            else if (!String.Equals(MD5Hash(pn), MD5Hash(pa)))
-            {
-                ViewData["3"] = "Xác nhận mật khẩu chưa đúng !";
+                ViewData["1"] = "Thông tin không được để trống";
             }
-            else if(String.Equals(MD5Hash(po), MD5Hash(pn)))
+            else if (String.IsNullOrEmpty(po) && String.IsNullOrEmpty(pn) && String.IsNullOrEmpty(pa))
             {
-                ViewData["2"] = "Không được đặt lại mật khẩu củ!";
-            }
-            else
-            {                 
-                ad.PasswordAdmin = MD5Hash(po);
+                admin.UserNameAdmin = po;
+                admin.PasswordAdmin = MD5Hash(pn);                
+                Session["admin"] = admin;
                 db.SubmitChanges();
-                return RedirectToAction("Statistical", "Statistical");
+                ViewData["3"] = "Cập nhật thành công!";
+                return this.ChangePassword();
             }
-            return View();
+            else if (String.IsNullOrEmpty(po) && String.IsNullOrEmpty(pn) && !String.IsNullOrEmpty(pa))
+            {
+                ViewData["3"] = "Vui lòng nhập mật khẩu mới!";
+                return this.ChangePassword();
+            }            
+            else if (!String.IsNullOrEmpty(po) && !String.IsNullOrEmpty(pn) && !String.IsNullOrEmpty(pa))
+            {
+                if (!String.Equals(MD5Hash(po), admin.PasswordAdmin))
+                {
+                    ViewData["1"] = "Mật khẩu không đúng!";
+                    return this.ChangePassword();
+                }
+                else if (!String.Equals(pn, pa))
+                {
+                    ViewData["3"] = "Mật khẩu mới và mật khẩu cũ không trùng khớp!";
+                    return this.ChangePassword();
+                }
+                else
+                {
+                    admin.UserNameAdmin = po;
+                    admin.PasswordAdmin = MD5Hash(pn);
+                    Session["admin"] = admin;
+                    db.SubmitChanges();
+                    ViewData["Info"] = "Cập nhật thành công!";
+                    return this.ChangePassword();
+                }
+            }
+            return this.ChangePassword();
         }
     }
 }

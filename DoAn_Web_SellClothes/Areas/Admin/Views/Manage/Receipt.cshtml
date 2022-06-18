@@ -30,6 +30,7 @@
                         <th>Phương thức thanh toán</th>
                         <th>Trạng thái</th>
                         <th>Lưu ý</th>
+                        <th>Mã tài khoản</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -44,8 +45,9 @@
                             <td>@Html.DisplayFor(modelItem => item.PaymentsInvoice)</td>
                             <td>@Html.DisplayFor(modelItem => item.StatusInvoice)</td>
                             <td>@Html.DisplayFor(modelItem => item.NoteInvoice)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Account.IdAccount)</td>
                             <td>
-                                <a class="btn btn-info" href="@Url.Action("DetailReceipt","Manage")">View details</a>
+                                <a class="btn btn-info" href="@Html.ActionLink("DetailReceipt","Manage", new {id=item.IdInvoice})">View details</a>
                             </td>
                         </tr>
                     }

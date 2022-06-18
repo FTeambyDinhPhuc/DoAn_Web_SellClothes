@@ -1,81 +1,109 @@
-﻿
+﻿@model DoAn_Web_SellClothes.Models.Product
+
 @{
     ViewBag.Title = "EditProduct";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container-fluid px-4">
-    <h1 class="my-4">Chỉnh sửa sản phẩm</h1>
+    <h1 class="my-4">Sửa sản phẩm</h1>
 
     <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-user"></i>
-            Chỉnh sửa sản phẩm
-        </div>
-        <div class="card-body">
-            <div class="table-Edit table-responsive">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <th>Tên sản phẩm</th>
-                            <td>
-                                <input type="text" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Hình</th>
-                            <td>
-                                <input type="file" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Giá</th>
-                            <td>
-                                <input type="text" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Ngày cập nhật</th>
-                            <td>
-                                <input type="date" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Mô tả</th>
-                            <td>
-                                <input type="text" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Loại</th>
-                            <td>
-                                <select class="form-control">
-                                    <option>Áo nam</option>
-                                    <option>Quần nữ</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Trạng thái</th>
-                            <td>
-                                <select class="form-control">
-                                    <option>Còn hàng</option>
-                                    <option>Hết hàng</option>
-                                </select>
-                            </td>
-                        </tr>
 
-                    </tbody>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="card-body">
+                <div class="table-Edit table-responsive">
+                    <table class="table">
+                        <tbody>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.IdProduct)
+                            <tr>
+                                <th>Tên sản phẩm</th>
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.NameProduct, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.NameProduct, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Hình</th>
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.ImageProduct, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ImageProduct, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Giá</th>
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.PriceProduct, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PriceProduct, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Ngày lập</th>
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.CreateDate, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>                               
+                            </tr>
+                            <tr>
+                                <th>Mô tả</th>
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.DescribeProduct, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.DescribeProduct, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Mã loại</th>
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("Loai")
+                                    </div>
+                                </td>
+                            </tr>                            
+                            <tr>
+                                <th>Số lượng</th>
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.QuantityProduct, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.QuantityProduct, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Trạng thái</th>
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.StatusProduct, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.StatusProduct, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                            </tr>
 
-                </table>
+                        </tbody>
+
+                    </table>
+                </div>
             </div>
-        </div>
-        <input type="submit" class="mybtn btn btn-outline-success" value="Xác nhận" />
-
+            <input type="submit" class="mybtn btn btn-outline-success" value="Save" />
+        }
     </div>
-
     <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
-
-
 </div>
 
+
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

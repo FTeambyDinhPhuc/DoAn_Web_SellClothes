@@ -1,4 +1,4 @@
-﻿@model DoAn_Web_SellClothes.Models.Product
+﻿@model DoAn_Web_SellClothes.Models.InvoiceDetail
 @{
     ViewBag.Title = "DetailReceipt";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -19,25 +19,19 @@
                     <tr>
                         <th>Mã hóa đơn</th>
                         <th>Tên sản phẩm</th>
+                        <th>Kích thước</th>
                         <th>Số lượng</th>
                         <th>Giá</th>
                     </tr>
                 </thead>
                 <tbody>
-
-
                     <tr>
-                        <td>11</td>
-                        <td>Áo polo</td>
-                        <td>5</td>
-                        <td>300000<span>đ</span></td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>Áo polo</td>
-                        <td>5</td>
-                        <td>300000<span>đ</span></td>
-                    </tr>
+                        <td>@Html.DisplayFor(model => model.IdInvoice)</td>
+                        <td>@Html.DisplayFor(model => model.ProductDetail.Product.NameProduct)</td>
+                        <td>@Html.DisplayFor(model => model.ProductDetail.SizeProduct.NameSizeProduct)</td>
+                        <td>@Html.DisplayFor(model => model.Quantity)</td>
+                        <td>@Html.DisplayFor(model => model.UnitPrice)<span>đ</span></td>
+                    </tr>                    
                 </tbody>
             </table>
         </div>
