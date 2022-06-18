@@ -1,4 +1,4 @@
-﻿
+﻿@model DoAn_Web_SellClothes.Models.ProductType
 @{
     ViewBag.Title = "AddTypesClothes";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -12,33 +12,37 @@
             <i class="fas fa-shirt"></i>
             Thêm loại đồ
         </div>
-        <div class="card-body">
-            <div class="table-Edit table-responsive">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <th>Tên loại</th>
-                            <td>
-                                <input type="text" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Giới tính</th>
-                            <td>
-                                <select class="form-control">
-                                    <option>Nam</option>
-                                    <option>Nữ</option>
-                                </select>
-
-                            </td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
+        @using (Html.BeginForm(@*"AddProduct", "Manage", FormMethod.Post, new { @enctype = "multipart/form-data" }*@))
+        {
+            @*@Html.AntiForgeryToken()*@
+            <div class="card-body">
+                <div class="table-Edit table-responsive">
+                    <table class="table">
+                        <tbody>
+                            @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                            <tr>
+                                <th>Tên loại</th>
+                                <td>
+                                    <input type="text" name="name" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Giới tính</th>
+                                <td>
+                                    <div class="col-md-10">
+                                        <input type="number" name="sex" />
+                                        <span>"0" : Nữ</span>
+                                        <span>"1" : Nam</span>
+                                        @ViewData["1"]
+                                    </div>                                   
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <input type="submit" class="mybtn btn btn-outline-success" value="Thêm" />
+            <input type="submit" class="mybtn btn btn-outline-success" value="Thêm" />
+        }
 
     </div>
     <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>

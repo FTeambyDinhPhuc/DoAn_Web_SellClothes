@@ -60,7 +60,7 @@ namespace DoAn_Web_SellClothes.Models
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1597,6 +1597,8 @@ namespace DoAn_Web_SellClothes.Models
 		private int _IdProduct;
 		
 		private System.Nullable<int> _SoLuongTon;
+		
+		private EntitySet<InvoiceDetail> _InvoiceDetails;
 		
 		private EntitySet<InvoiceDetail> _InvoiceDetails;
 		

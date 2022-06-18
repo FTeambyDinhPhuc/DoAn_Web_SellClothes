@@ -1,4 +1,6 @@
-﻿
+﻿@using DoAn_Web_SellClothes.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Invoice>
 @{
     ViewBag.Title = "Receipt";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -27,43 +29,32 @@
                         <th>Tổng hóa đơn</th>
                         <th>Phương thức thanh toán</th>
                         <th>Trạng thái</th>
+                        <th>Lưu ý</th>
+                        <th>Mã tài khoản</th>
                         <th>&nbsp;</th>
-
                     </tr>
                 </thead>
                 <tbody>
-           
-                    <tr>
-                        <td>11</td>
-                        <td>Ê lum mớt</td>
-                        <td>5412D</td>
-                        <td>098875</td>
-                        <td>2011/04/25</td>
-                        <td>320000<span>đ</span></td>
-                        <td>Thanh toán khi nhận hàng</td>
-                        <td>
-                            <select class="form-control">
-                                <option>Chờ xác nhận</option>
-                                <option>Đã xác nhận</option>
-                                <option>Đã hủy</option>
-                            </select>
-                        </td>
-                        <td>
-                            <a class="btn btn-info" href="@Url.Action("DetailReceipt","Manage")">View details</a>
-
-                        </td>
-
-                    </tr>
-
-
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.IdInvoice)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Account.FullName)</td>
+                            <td>@String.Format("{0:dd/MM/yyyy}", item.InvoiceDate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TotalInvoice)<span>đ</span></td>
+                            <td>@Html.DisplayFor(modelItem => item.PaymentsInvoice)</td>
+                            <td>@Html.DisplayFor(modelItem => item.StatusInvoice)</td>
+                            <td>@Html.DisplayFor(modelItem => item.NoteInvoice)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Account.IdAccount)</td>
+                            <td>
+                                <a class="btn btn-info" href="@Html.ActionLink("DetailReceipt","Manage", new {id=item.IdInvoice})">View details</a>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
     </div>
-
-
-
-
 </div>
 
 
