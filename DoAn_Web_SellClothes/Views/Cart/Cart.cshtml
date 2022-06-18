@@ -8,100 +8,70 @@
 <div class="container-xl cart-container py-5 px-5">
     <div class="row">
         <div class="col-lg-7">
-            <form class="cart-form" action="#">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="table-content table-responsive">
-                            <table class="table text-center">
-                                <thead>
-                                    <tr>
-                                        <th>&nbsp;</th>
-                                        <th>&nbsp;</th>
-                                        <th class="text-left">Product</th>
-                                        <th>Size</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
-                                    </tr>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-content table-responsive">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
+                                    <th class="text-left">Product</th>
+                                    <th>Size</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    int subtotal = item.iQuantityProduct * item.iPriceProduct;
+                                    <form action="/Cart/UpdateItemInCart?iProductId=@item.iIdProduct&iSizeId=@item.iSize" method="post" name="product_@item.iIdProduct">
+                                        <tr>
+                                            <td class="product-remove text-center">
+                                                <a href="/Cart/RemoveItemInCart?iProductId=@item.iIdProduct&iSizeId=@item.iSize">
+                                                    <i class="fa-solid fa-xmark"></i>
+                                                </a>
+                                            </td>
+                                            <td class="product-thumbnail text-left">
+                                                <img src="/Assets/img/Clothes/@item.iImageProduct"
+                                                     alt="AoSoMiNamTayDaiLuaDo.jpg" style="width: 100%">
+                                            </td>
+                                            <td class="product-name text-left">
+                                                <a href="/Product/ProductDetails/@item.iIdProduct">@item.iNameProduct</a>
+                                            </td>
+                                            <td class="product-name text-left">
+                                                @item.iSizeProduct
+                                            </td>
+                                            <td class="product-price">
+                                                @item.iPriceProduct<span>đ</span>
+                                            </td>
 
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model)
-                                    {
-                                    <tr>
-                                        <td class="product-remove text-center">
-                                            <a href="#">
-                                                <i class="fa-solid fa-xmark"></i>
-                                            </a>
-                                        </td>
-                                        <td class="product-thumbnail text-left">
-                                            <img src="~/Assets/img/Clothes/@item.iImageProduct"
-                                                 alt="@item.iImageProduct">
-                                        </td>
-                                        <td class="product-name text-left">
-                                            <a href="@Url.Action("ProductDetails","Product",new { id=item.iIdProduct})">@item.iNameProduct</a>
-                                        </td>
-                                        <td class="product-name text-left">
-                                            @item.iSizeProduct 
-                                        </td>
-                                        <td class="product-price">
-                                            @item.iPriceProduct<span>đ</span>
-                                        </td>
-                                        <td class="product-quantity">
+                                            <td class="product-quantity">
+                                                <input type="number" name="quantity1" class="quantity-input" value="@item.iQuantityProduct" min="1" max="@item.iMaxAmount">
+                                                <input type="submit" value="Update Cart" class="cart-form__btn" />
+                                            </td>
 
-                                            <input type="number" class="quantity-input" name="qty"
-                                                   id="qty-1" value="@item.iQuantityProduct" min="1">
-                                        </td>
-                                        <td class="product-total-price">
-                                            <strong> @item.iThanhTien<span>đ</span></strong>
-                                        </td>
-                                    </tr>
-                                    }
-
-                                    @*<tr>
-                                        <td class="product-remove text-center">
-                                            <a href="#">
-                                                <i class="fa-solid fa-xmark"></i>
-                                            </a>
-                                        </td>
-                                        <td class="product-thumbnail text-left">
-                                            <img src="~/Assets/img/productImage.png"
-                                                 alt="Product Thumnail">
-                                        </td>
-                                        <td class="product-name text-left">
-                                            <a href="@Url.Action("ProductDetails","Product")">Super skinny blazer</a>
-                                        </td>
-                                        <td class="product-price">
-                                            49.00<span>đ</span>
-                                        </td>
-                                        <td class="product-quantity">
-                                            <input type="number" class="quantity-input" name="qty"
-                                                   id="qty-1" value="1" min="1">
-                                        </td>
-                                        <td class="product-total-price">
-                                            <strong> 49.00<span>đ</span></strong>
-                                        </td>
-                                    </tr>*@
-
-                                </tbody>
-                            </table>
-                        </div>
+                                            <td class="product-total-price">
+                                                <strong>@subtotal<span>đ</span></strong>
+                                            </td>
+                                        </tr>
+                                    </form>
+                                }
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+            </div>
+            <form class="cart-form">
                 <div class="row border-top">
-                    @*<div class="col-sm-6 col-xl-7">
-                        <div class="coupon border-bottom">
-                            <input type="text" id="coupon" name="coupon" class="cart-form__input"
-                                   placeholder="Mã giảm giá">
-                            <button type="submit" class="cart-form__btn ml-auto">Áp dụng</button>
-                        </div>
-                    </div>*@
                     <div class=" col-sm-6 col-xl-5 ml-auto text-md-right text-sm-left py-4">
-                        <button type="submit" class="cart-form__btn">Clear Cart</button>
-                        <button type="submit" class="cart-form__btn">Update Cart</button>
+                        <a href="@Url.Action("RemoveCart","Cart")">Clear Cart</a>
                     </div>
                 </div>
             </form>
+
         </div>
         <div class="col-lg-4 offset-xl-1">
             <div class="cart-collaterals">

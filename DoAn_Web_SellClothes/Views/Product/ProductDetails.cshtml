@@ -48,7 +48,6 @@
         using (Html.BeginForm("ThemGioHang", "Cart", new { @idProduct = Model.IdProduct, strURL = Request.Url.ToString() }))
         {
             <form>
-
                 <div class="product-details">
                     <div class="row">
                         <div class="col-md-2 col-lg-1 col-4">
@@ -87,7 +86,6 @@
                                             }
                                         }
                                     }
-                                    @*<h5>Số lượng hiện có: <span class="ml-3 pt-1 text-center" style="font-size:1.5rem">@Model.demSanPham <span style="font-size:1rem">Sản phẩm</span></span></h5>*@
                                 </div>
                             </div>
 
@@ -98,6 +96,7 @@
                                 <span class="num">01</span>
                                 <span class="plus">+</span>
                             </div>
+                            <input id="num" type="hidden" value="1" name="quantity" />
                             @if (Session["size"] == null)
                             {
                                 <div class="sub-w3l" style="color:red">
@@ -107,9 +106,6 @@
                             @if (Session["User"] != null)
                             {
                                 <input class="btn btn-outline-dark btn-addtocart shadow my-4" id="ThemGioHang" type="submit" value="Add to cart" />
-                                @*<a href="@Url.Action("ThemGioHang", "Cart", new { @idProduct = Model.IdProduct, strURL = Request.Url.ToString() })" class="btn btn-outline-dark btn-addtocart shadow my-4">
-                Add to cart
-            </a>*@
                             }
                             else
                             {
