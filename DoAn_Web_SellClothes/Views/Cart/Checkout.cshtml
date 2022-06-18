@@ -1,189 +1,159 @@
-﻿
+﻿@using DoAn_Web_SellClothes.Models
+@model List<Giohang>
 @{
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <div class="container">
-    <div class="row my-lg-5 my-md-4 my-3">
-        <!-- Checkout Area Start -->
-        <div class="col-lg-6 col-xl-5 mt-4"">
-            <div class="checkout-title mb-5">
-                <h2>Billing Details</h2>
-            </div>
-            <div class="checkout-form">
-                <!--Full name-->
-                <div class="row mb-4">
-                    <div class="form__group col-12">
-                        <label for="billing_name">
-                            Tên khách hàng
-                            <span class="required">*</span>
-                        </label>
-                        <input type="text" name="billing_name" id="billing_name">
-                    </div>
-                </div>
+    @using (Html.BeginForm())
+    {
+        <div class="row my-lg-5 my-md-4 my-3">
 
-                <!--province / city-->
-                @*<div class="row mb-4">
-                    <div class="form__group col-12">
-                        <label for="billing_streetAddress">
-                            Tỉnh/ Thành phố
-                            <span class="required">*</span>
-                        </label>
-
-                        <input type="text" name="billing_city" id="billing_city">
-                    </div>
-                </div>*@
-                <!--District-->
-                @*<div class="row mb-4">
-                    <div class="form__group col-12">
-                        <label for="billing_district">
-                            Quận/ Huyện
-                            <span class="required">*</span>
-                        </label>
-                        <input type="text" name="billing_district" id="billing_district">
-                    </div>
-                </div>*@
-                <!--commune / ward / town-->
-                @*<div class="row mb-4">
-                    <div class="form__group col-12">
-                        <label for="billing_state">
-                            Xã/ Phường/ Thị trấn
-                            <span class="required">*</span>
-                        </label>
-                        <input type="text" name="billing_commune" id="billing_commune">
-                    </div>
-                </div>*@
-
-                <!--apartment number-->
-                <div class="row mb-4">
-                    <div class="form__group col-12">
-                        <label for="billing_state" >
-                            Địa chỉ
-                            <span class="required">*</span>
-                        </label>
-                        <input type="text" name="billing_address" id="billing_address">
-                    </div>
-                </div>
-
-                <!--Phone-->
-                <div class="row mb-4">
-                    <div class="form__group col-12">
-                        <label for="billing_phone" >
-                            Số điện thoại <span class="required">*</span>
-                        </label>
-                        <input type="text" name="billing_phone" id="billing_phone">
-                    </div>
-                </div>
-                <!--mail-->
-                @*<div class="row mb-4">
-                    <div class="form__group col-12">
-                        <label for="billing_email">
-                            Mail
-                            <span class="required">*</span>
-                        </label>
-                        <input type="email" name="billing_email" id="billing_email">
-                    </div>
-                </div>*@
-
-             
-            </div>
-        </div>
-        <div class="col-xl-6 offset-xl-1 col-lg-6 mt-4">
-            <div class="order-details">
+            <!-- Checkout Area Start -->
+            <div class="col-lg-6 col-xl-5 mt-4">
                 <div class="checkout-title mb-5">
-                    <h2>Your Order</h2>
+                    <h2>Billing Details</h2>
                 </div>
-                <div class="table-content table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Sản phẩm</th>
-                                <th>Giá</th>
-                                <th>Tổng</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    Aliquam lobortis est
-                                    <strong><span class="multiply">&#10005;</span>1</strong>
-                                </td>
-                                <td>80.00<span>đ</span></td>
-                                <td>80.00<span>đ</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Auctor gravida enim
-                                    <strong><span class="multiply">&#10005;</span>1</strong>
-                                </td>
-                                <td>60.00<span>đ</span></td>
-                                <td>60.00<span>đ</span></td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr class="cart-subtotal">
-                                <th>Tổng tiền</th>
-                                <td></td>
-                                <td>56.00<span>đ</span></td>
-                            </tr>
-                            <tr class="shipping">
-                                <th>Vận chuyển</th>
-                                <td></td>
-                                <td>
-                                    20.00<span>đ</span>
-
-                                </td>
-                            </tr>
-                            <tr class="order-total">
-                                <th>Tổng đơn</th>
-                                <td></td>
-                                <td>
-                                    56.00<span>đ</span>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                <div class="checkout-payment">
-                    <div class="payment-group mt-3">
-                        <div class="payment-radio">
-                            <input type="radio" name="payment-method" checked>
-                            <label class="payment-label ml-3">THANH TOÁN TRỰC TUYẾN</label>
-                        </div>
-                        <div class="payment-info">
-                            <p>
-                                Thực hiện thanh toán của bạn trực tiếp vào tài khoản ngân hàng của chúng tôi. Hãy sử dụng momo của bạn
-                                để thanh toán. Đơn đặt hàng của bạn sẽ không được giao,
-                               cho đến khi bạn thanh toán cho chúng tôi.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="payment-group mt-3">
-                        <div class="payment-radio">
-                            <input type="radio" name="payment-method">
-                            <label class="payment-label ml-3">
-                                THANH TOÁN KHI GIAO HÀNG
+                <div class="checkout-form">
+                    <!--Full name-->
+                    <div class="row mb-4">
+                        <div class="form__group col-12">
+                            <label for="billing_name">
+                                Tên khách hàng
+                                <span class="required">*</span>
                             </label>
-                        </div>
-                        <div class="payment-info">
-                            <p>Thanh toán bằng tiền mặt khi giao hàng.</p>
+                            <input type="text" name="billing_name" value="@Session["name"]">
                         </div>
                     </div>
-                    <div class="payment-group mt-2">
-                        <p class="mb-2">
-                            Dữ liệu cá nhân của bạn sẽ được sử dụng để xử lý đơn đặt hàng của bạn,
-                            hỗ trợ trải nghiệm của bạn trên toàn bộ trang web này và cho các mục đích khác
-                        </p>
-                        <a href="@Url.Action("Thanks","Home")" type="submit" class="btn btn-oder py-2">
-                            Place Order
-                        </a>
-                       
+                    <!--Địa chỉ-->
+                    <div class="row mb-4">
+                        <div class="form__group col-12">
+                            <label for="billing_state">
+                                Địa chỉ
+                                <span class="required">*</span>
+                            </label>
+                            <input type="text" name="billing_address" value="@Session["address"]">
+                        </div>
+                    </div>
+                    <!--Phone-->
+                    <div class="row mb-4">
+                        <div class="form__group col-12">
+                            <label for="billing_phone">
+                                Số điện thoại <span class="required">*</span>
+                            </label>
+                            <input type="text" name="billing_phone" value="@Session["phone"]">
+                        </div>
+                    </div>
+                    <!--Ghi chú cho đơn hàng-->
+                    <div class="row mb-4">
+                        <div class="form__group col-12">
+                            <label for="billing_email">
+                                Ghi chú:
+                                <span class="required">*</span>
+                            </label>
+                            <input type="text" name="billing_note" id="billing_note">
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="col-xl-6 offset-xl-1 col-lg-6 mt-4">
+                <div class="order-details">
+                    <div class="checkout-title mb-5">
+                        <h2>Your Order</h2>
+                    </div>
+                    <div class="table-content table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Size</th>
+                                    <th>Giá</th>
+                                    <th>Tổng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.iNameProduct
+                                            <strong><span class="multiply">&#10005;</span>@item.iQuantityProduct</strong>
+                                        </td>
+                                        <td>@item.iSizeProduct</td>
+                                        <td>@item.iPriceProduct<span>đ</span></td>
+                                        <td>@ViewBag.TongTien<span>đ</span></td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr class="cart-subtotal">
+                                    <th>Tổng tiền</th>
+                                    <td></td>
+                                    <td>@ViewBag.TongTien<span>đ</span></td>
+                                </tr>
+                                <tr class="shipping">
+                                    <th>Vận chuyển</th>
+                                    <td></td>
+                                    <td>
+                                        25000<span>đ</span>
+
+                                    </td>
+                                </tr>
+                                <tr class="order-total">
+                                    <th>Tổng đơn</th>
+                                    <td></td>
+                                    <td>
+                                        @ViewBag.TongTienShip<span>đ</span>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="checkout-payment">
+                        <div class="payment-group mt-3">
+                            <div class="payment-radio">
+                                <input type="radio" name="payment-method" checked>
+                                <label class="payment-label ml-3">THANH TOÁN TRỰC TUYẾN</label>
+                            </div>
+                            <div class="payment-info">
+                                <p>
+                                    Thực hiện thanh toán của bạn trực tiếp vào tài khoản ngân hàng của chúng tôi. Hãy sử dụng momo của bạn
+                                    để thanh toán. Đơn đặt hàng của bạn sẽ không được giao,
+                                    cho đến khi bạn thanh toán cho chúng tôi.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="payment-group mt-3">
+                            <div class="payment-radio">
+                                <input type="radio" name="payment-method">
+                                <label class="payment-label ml-3">
+                                    THANH TOÁN KHI GIAO HÀNG
+                                </label>
+                            </div>
+                            <div class="payment-info">
+                                <p>Thanh toán bằng tiền mặt khi giao hàng.</p>
+                            </div>
+                        </div>
+                        <div class="payment-group mt-2">
+                            <p class="mb-2">
+                                Dữ liệu cá nhân của bạn sẽ được sử dụng để xử lý đơn đặt hàng của bạn,
+                                hỗ trợ trải nghiệm của bạn trên toàn bộ trang web này và cho các mục đích khác
+                            </p>
+                            <a href="@Url.Action("Pay", "Cart", new { strURL = Request.Url.ToString() })" type="submit" class="btn btn-oder py-2">
+                                Place Order
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Checkout Area End -->        
         </div>
-        <!-- Checkout Area End -->
+    }
     </div>
-</div>
+
 

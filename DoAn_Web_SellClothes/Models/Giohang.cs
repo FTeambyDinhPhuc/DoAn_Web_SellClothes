@@ -13,15 +13,15 @@ namespace DoAn_Web_SellClothes.Models
         public string iImageProduct { get; set; }
         public string iNameProduct { get; set; }
         public int iPriceProduct { get; set; }
-        public int? iQuantityProduct { get; set; }
-
+        public int iQuantityProduct { get; set; }
         public string iSizeProduct  { get; set; }
+        public int? iMaxAmount { get; set; }//Số lượng tồn
         public int iThanhTien
         {
             get { return (int)(iQuantityProduct * iPriceProduct); }
         }
         //Khởi tạo giỏ hành theo Mã sản phẩm truyền vào với số lượng mạc định là 1
-        public Giohang(int? idProduct, int? sizeProduct, int? quantity)
+        public Giohang(int? idProduct, int? sizeProduct, int quantity)
         {
             iIdProduct = idProduct;
             iSize = sizeProduct;
@@ -31,8 +31,9 @@ namespace DoAn_Web_SellClothes.Models
             iNameProduct = product.NameProduct;
             iPriceProduct = product.PriceProduct;
             var sizeproduct = data.SizeProducts.FirstOrDefault(p => p.IdSizeProduct == iSize);
-            iSizeProduct = sizeproduct.NameSizeProduct;           
- 
+            iSizeProduct = sizeproduct.NameSizeProduct;
+            var maxAmount = data.ProductDetails.FirstOrDefault(p => p.IdProduct == idProduct && p.SizeProduct == sizeproduct);
+            iMaxAmount = maxAmount.SoLuongTon;
         }
 
     }

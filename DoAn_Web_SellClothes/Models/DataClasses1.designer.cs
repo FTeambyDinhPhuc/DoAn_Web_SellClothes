@@ -660,7 +660,9 @@ namespace DoAn_Web_SellClothes.Models
 		
 		private string _PaymentsInvoice;
 		
-		private int _StatusInvoice;
+		private bool _StatusInvoice;
+		
+		private bool _Paid;
 		
 		private string _NoteInvoice;
 		
@@ -688,8 +690,10 @@ namespace DoAn_Web_SellClothes.Models
     partial void OnTotalInvoiceChanged();
     partial void OnPaymentsInvoiceChanging(string value);
     partial void OnPaymentsInvoiceChanged();
-    partial void OnStatusInvoiceChanging(int value);
+    partial void OnStatusInvoiceChanging(bool value);
     partial void OnStatusInvoiceChanged();
+    partial void OnPaidChanging(bool value);
+    partial void OnPaidChanged();
     partial void OnNoteInvoiceChanging(string value);
     partial void OnNoteInvoiceChanged();
     partial void OnIdAccountChanging(int value);
@@ -843,8 +847,8 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusInvoice", DbType="Int NOT NULL")]
-		public int StatusInvoice
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusInvoice", DbType="Bit NOT NULL")]
+		public bool StatusInvoice
 		{
 			get
 			{
@@ -859,6 +863,26 @@ namespace DoAn_Web_SellClothes.Models
 					this._StatusInvoice = value;
 					this.SendPropertyChanged("StatusInvoice");
 					this.OnStatusInvoiceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paid", DbType="Bit NOT NULL")]
+		public bool Paid
+		{
+			get
+			{
+				return this._Paid;
+			}
+			set
+			{
+				if ((this._Paid != value))
+				{
+					this.OnPaidChanging(value);
+					this.SendPropertyChanging();
+					this._Paid = value;
+					this.SendPropertyChanged("Paid");
+					this.OnPaidChanged();
 				}
 			}
 		}
@@ -1263,11 +1287,10 @@ namespace DoAn_Web_SellClothes.Models
 		
 		private EntityRef<ProductType> _ProductType;
 		//Giá trị ngoài
-		public List<string> sizeProduct;
 		public List<int> idSize;
+		public List<string> sizeProduct;
 		public List<int?> soluongton;
 		public bool tinhtrangsanpham; // hết hàng hoặc còn hàng => số lượng tồn = 0
-		public string urlBack;
 
 		#region Extensibility Method Definitions
 		partial void OnLoaded();

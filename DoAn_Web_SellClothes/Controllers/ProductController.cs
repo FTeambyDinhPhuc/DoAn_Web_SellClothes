@@ -66,7 +66,6 @@ namespace DoAn_Web_SellClothes.Controllers
             {
                 sanPham.tinhtrangsanpham = true;
             }
-            if (!String.IsNullOrEmpty(url)) sanPham.urlBack = url;
             return View(sanPham);
         }
         public ActionResult ProductPage(int? page)
