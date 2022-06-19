@@ -47,7 +47,7 @@
                             <td>@Html.DisplayFor(modelItem => item.NoteInvoice)</td>
                             <td>@Html.DisplayFor(modelItem => item.Account.IdAccount)</td>
                             <td>
-                                <a class="btn btn-info" href="@Html.ActionLink("DetailReceipt","Manage", new {id=item.IdInvoice})">View details</a>
+                              @Html.ActionLink("DetailReceipt","Manage", new { id = item.IdInvoice }, new {@class="btn btn-info"})
                             </td>
                         </tr>
                     }

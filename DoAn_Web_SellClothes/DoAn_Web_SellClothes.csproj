@@ -2336,14 +2336,14 @@
     <Content Include="Areas\Admin\Views\Manage\EditTypesClothes.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\AddProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\DetailReceipt.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\DeleteProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\EditProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\DeleteProductType.cshtml" />
     <Content Include="Models\DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Areas\Admin\Views\Manage\DeleteProduct.cshtml" />
-    <Content Include="Areas\Admin\Views\Manage\EditProduct.cshtml" />
-    <Content Include="Areas\Admin\Views\Manage\DeleteProductType.cshtml" />
     <None Include="Models\DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>

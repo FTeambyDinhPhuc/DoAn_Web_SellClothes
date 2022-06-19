@@ -227,6 +227,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             return View(list.ToPagedList(pageNum, pagesize));
         }
 
+        // hiển thị màn hình thêm sản phẩm
         [HttpGet]
         public ActionResult AddProduct()
         {
@@ -239,6 +240,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             return View();
         }
 
+        //action thêm sản phẩm
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult AddProduct(Product pr, ProductDetail dt, FormCollection collection, HttpPostedFileBase fileUpload)
@@ -257,11 +259,10 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             var mota = collection["describe"];            
             var loai = collection["Loai"];
             var size = collection["Size"];
-            //var sl = collection["quality"];
+            var sl = collection["quality"];
             var status = collection["status"]; 
-            //var size = collection["Size"];
 
-            var filename = Path.GetFileName(fileUpload.FileName);
+            var filename = Path.GetFileName(fileUpload.FileName); 
             var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);
             if (System.IO.File.Exists(path))
             {
@@ -280,14 +281,16 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             pr.UpdateDate = DateTime.Parse(Date);
             pr.IdProductType = Int32.Parse(loai);
             pr.StatusProduct = int.Parse(status);
-            //dt.IdSizeProduct = Int32.Parse(size);
-            //dt.SoLuongTon = int.Parse(sl);
+            dt.IdSizeProduct = Int32.Parse(size);
+            dt.IdProduct = pr.IdProduct;
+            dt.SoLuongTon = int.Parse(sl);
             db.Products.InsertOnSubmit(pr);
-            //db.Products.InsertOnSubmit(dt);
+            db.SubmitChanges();
+            db.ProductDetails.InsertOnSubmit(dt);
             db.SubmitChanges();
             return RedirectToAction("Product", "Manage");
         }
-
+        //hiển thị màn hình chỉnh sửa sản phẩm
         [HttpGet]
         public ActionResult EditProduct(int id)
         {
@@ -308,7 +311,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                 return View(sp);
             }
         }
-
+        //action sửa sản phẩm
         [HttpPost, ActionName("EditProduct")]
         public ActionResult eEditProduct(FormCollection collection, int id, HttpPostedFileBase fileUpload)
         {
