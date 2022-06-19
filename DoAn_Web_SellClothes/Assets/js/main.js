@@ -62,6 +62,7 @@ plus.addEventListener("click", () => {
     a++;
     a = (a < 10) ? "0" + a : a;
     num.innerText = a;
+    $('#num').val($('.num').text());
 });
 
 minus.addEventListener("click", () => {
@@ -69,6 +70,7 @@ minus.addEventListener("click", () => {
         a--;
         a = (a < 10) ? "0" + a : a;
         num.innerText = a;
+        $('#num').val($('.num').text());
     }
 });
 

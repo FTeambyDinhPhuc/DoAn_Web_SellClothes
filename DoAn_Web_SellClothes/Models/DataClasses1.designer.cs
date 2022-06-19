@@ -60,7 +60,7 @@ namespace DoAn_Web_SellClothes.Models
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1286,9 +1286,14 @@ namespace DoAn_Web_SellClothes.Models
 		private EntitySet<ProductDetail> _ProductDetails;
 		
 		private EntityRef<ProductType> _ProductType;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
+		//Giá trị ngoài
+		public List<int> idSize;
+		public List<string> sizeProduct;
+		public List<int?> soluongton;
+		public bool tinhtrangsanpham; // hết hàng hoặc còn hàng => số lượng tồn = 0
+
+		#region Extensibility Method Definitions
+		partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void OnIdProductChanging(int value);
