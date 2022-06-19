@@ -281,11 +281,12 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             pr.UpdateDate = DateTime.Parse(Date);
             pr.IdProductType = Int32.Parse(loai);
             pr.StatusProduct = int.Parse(status);
+            
+            db.Products.InsertOnSubmit(pr);
+            db.SubmitChanges();
             dt.IdSizeProduct = Int32.Parse(size);
             dt.IdProduct = pr.IdProduct;
             dt.SoLuongTon = int.Parse(sl);
-            db.Products.InsertOnSubmit(pr);
-            db.SubmitChanges();
             db.ProductDetails.InsertOnSubmit(dt);
             db.SubmitChanges();
             return RedirectToAction("Product", "Manage");
