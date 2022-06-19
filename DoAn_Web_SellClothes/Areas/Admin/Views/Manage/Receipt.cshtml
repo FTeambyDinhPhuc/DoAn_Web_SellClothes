@@ -9,9 +9,6 @@
 <div class="container-fluid px-4">
     <h1 class="my-4">Quản lý hóa đơn</h1>
 
-    <div class="mb-3">
-        <button class="btn btn-success" type="submit">Lưu trạng thái</button>
-    </div>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table"></i>
@@ -22,20 +19,34 @@
                 <thead>
                     <tr>
                         <th>Mã hóa đơn</th>
-                        <th>Khách hàng</th>
-                        <th>Địa chỉ</th>
-                        <th>Số điện thoại</th>
+                        <th>khách hàng</th>
+                        <th>Địa chỉ nhận hàng</th>
+                        <th>Số điện thoại người nhận</th>
                         <th>Ngày lập</th>
                         <th>Tổng hóa đơn</th>
                         <th>Phương thức thanh toán</th>
                         <th>Trạng thái</th>
-                        <th>Lưu ý</th>
-                        <th>Mã tài khoản</th>
+                        @*<th>Lưu ý</th>
+                        <th>Mã tài khoản</th>*@
                         <th>&nbsp;</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    <tr>
+                        <td>1</td>
+                        <td>Tài khoản user</td>
+                        <td>Địa chỉ nhận hàng</td>
+                        <td>Số điện thoại nhận hàng</td>
+                        <td>8/8/2022</td>
+                        <td>1900000<span>đ</span></td>
+                        <td>thanh toán khi nhận hàng</td>
+                        <td>đã xác nhận</td>
+                        <td>
+                            <a class="btn btn-info" href="#">View details</a>
+                        </td>
+                    </tr>
+                    @*@foreach (var item in Model)
                     {
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.IdInvoice)</td>
@@ -50,7 +61,7 @@
                                 <a class="btn btn-info" href="@Html.ActionLink("DetailReceipt","Manage", new {id=item.IdInvoice})">View details</a>
                             </td>
                         </tr>
-                    }
+                    }*@
                 </tbody>
             </table>
         </div>
