@@ -283,11 +283,9 @@ body {
 
 /*In*/
 @media print{
-    nav, footer, #layoutSidenav_nav{
+    nav, footer, #layoutSidenav_nav, #groupBtnStatus {
         display: none;
     }
-
-   
 }
 /*Hết in*/
 

@@ -24,7 +24,6 @@
                         <th>Số điện thoại người nhận</th>
                         <th>Ngày lập</th>
                         <th>Tổng hóa đơn</th>
-                        <th>Phương thức thanh toán</th>
                         <th>Trạng thái</th>
                         @*<th>Lưu ý</th>
                         <th>Mã tài khoản</th>*@
@@ -40,10 +39,9 @@
                         <td>Số điện thoại nhận hàng</td>
                         <td>8/8/2022</td>
                         <td>1900000<span>đ</span></td>
-                        <td>thanh toán khi nhận hàng</td>
                         <td>đã xác nhận</td>
                         <td>
-                            <a class="btn btn-info" href="#">View details</a>
+                            <a class="btn btn-info" href="@Url.Action("DetailReceipt","Manage")">View details</a>
                         </td>
                     </tr>
                     @*@foreach (var item in Model)
