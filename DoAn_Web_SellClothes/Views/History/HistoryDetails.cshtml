@@ -1,4 +1,5 @@
-﻿
+﻿@using DoAn_Web_SellClothes.Models;
+@model IEnumerable<DoAn_Web_SellClothes.Models.InvoiceDetails>
 @{
     ViewBag.Title = "HistoryDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,24 +19,27 @@
                 </tr>
             </thead>
             <tbody class="text-left">
-                <tr>
-                    <td class="product-thumbnail">
-                        <img src="~/Assets/img/productImage.png" />
-                    </td>
-                    <td class="product-name">
-                        <a href="@Url.Action("ProductDetails","Product")">bbifgdfgdfgdfgdfgdfgdfgdfg</a>
-                    </td>
-                    <td class="bill-total">
-                        3
-                    </td>
-                    <td class="product-quantity">
-                        49.00<span> VNĐ</span>
-                    </td>
-                    <td class="product-total-price">
-                        49.00<span> VNĐ</span>
-                    </td>
-                </tr>
-             
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="product-thumbnail">
+                            <img src="~/Assets/img/Clothes/@item.ImageProduct" />
+                        </td>
+                        <td class="product-name">
+                            <a href="@Url.Action("ProductDetails","Product")">@item.NameProduct</a>
+                        </td>
+                        <td class="bill-total">
+                            @item.Quantity
+                        </td>
+                        <td class="product-quantity">
+                            @item.UnitPrice<span> VNĐ</span>
+                        </td>
+                        <td class="product-total-price">
+                            @item.ThanhTienInvoiceDetails<span> VNĐ</span>
+                        </td>
+                    </tr>
+                }
+
             </tbody>
         </table>
         <a href="@Url.Action("History","History")" class="btn btn-outline-dark mt-5">Quay lại lịch sử đơn hàng</a>
