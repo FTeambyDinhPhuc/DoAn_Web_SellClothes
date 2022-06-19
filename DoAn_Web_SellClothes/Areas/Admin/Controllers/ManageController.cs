@@ -45,12 +45,14 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             var list = db.Invoices.OrderByDescending(s => s.IdInvoice).ToList();
             return View(list.ToPagedList(pageNum, pagesize));
         }
-        //public ActionResult DetailReceipt(int id)
-        //{ n
-        //    InvoiceDetail ct = db.InvoiceDetails.SingleOrDefault(n => n.IdInvoice == id);
-        //    ViewBag.IdInvoice = Invoice.IdInvoice;
-        //    if()
-        //}
+        public ActionResult DetailReceipt()
+        {
+            //n
+            //  InvoiceDetail ct = db.InvoiceDetails.SingleOrDefault(n => n.IdInvoice == id);
+            //ViewBag.IdInvoice = Invoice.IdInvoice;
+            //if ()
+            return View();
+        }
 
         private List<Account> Customer(int count)
         {
