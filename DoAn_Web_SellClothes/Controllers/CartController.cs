@@ -175,7 +175,7 @@ namespace DoAn_Web_SellClothes.Controllers
             ddh.Paid = false;
             data.Invoices.InsertOnSubmit(ddh);
             data.SubmitChanges();
-
+            Session["idInvoice"] = ddh.IdInvoice;
             foreach (var item in gh)
             {
                 InvoiceDetail ctdh = new InvoiceDetail();

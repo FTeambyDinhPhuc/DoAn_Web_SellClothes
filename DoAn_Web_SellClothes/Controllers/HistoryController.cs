@@ -39,6 +39,7 @@ namespace DoAn_Web_SellClothes.Controllers
         public ActionResult HistoryDetails()
         {
             int idInvoice = Int32.Parse(Request.QueryString["idInvoice"]);
+            ViewBag.idInvoice = idInvoice;
             var invoicedetail = from ind in data.InvoiceDetails
                                 join i in data.Invoices on ind.IdInvoice equals i.IdInvoice
                                 join s in data.SizeProducts on ind.IdSizeProduct equals s.IdSizeProduct
