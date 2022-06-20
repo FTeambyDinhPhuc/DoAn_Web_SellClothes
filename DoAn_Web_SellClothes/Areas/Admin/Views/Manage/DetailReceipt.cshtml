@@ -5,13 +5,82 @@
 }
 
 
-<div class="container-fluid px-4 row">
+<div class="container-fluid px-4 mt-5 row">
+    <div class="col-xl-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h1>FTeam</h1>
+                    <div>
+                        <h2>Hóa đơn #<span>1</span></h2>
+                        <p>ngày lập: <span>12/12/2022</span></p>
+                    </div>
+                </div>
+                <hr />
+                <div class="formto d-flex justify-content-between">
+                    <div>
+                        <h4>Từ:</h4>
+                        <p>FTeam store colthes</p>
+                        <p>Long Thạnh Mỹ, Quận 9</p>
+                        <p>Thành phố Hồ Chí Minh</p>
+                    </div>
+                    <div>
+                        <h4>Đến:</h4>
+                        <p>Nguyễn khuyết danh</p>
+                        <p>0392301230</p>
+                        <p>Long Thạnh Mỹ, Quận 9,Thành phố Hồ Chí Minh</p>
+                    </div>
+                </div>
+                <div>
+                    <h4>Ghi chú:</h4>
+                    <p>hihihihihihihihidhskfbnsdkfn</p>
+                </div>
 
-    <div class="col-xl-8 bg-dark" style="height:100">
+                <hr />
+                <table class="table table-borderless">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th> Tên sản phẩm</th>
+                            <th> Size </th>
+                            <th> Số lượng</th>
+                            <th> Giá </th>
+                            <th>Tổng tiền</th>
+                        </tr>
 
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td> Áo plo</td>
+                            <td>x</td>
+                            <td>2</td>
+                            <td>30000<span>đ</span></td>
+                            <td>60000<span>đ</span></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" align="right"><b>Tổng tiền</b></td>
+                            <td>60000<span>đ</span></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <hr />
+                <p>Phương thức thanh toán: <span>COD</span></p>
+            </div>
+        </div>
+     
     </div>
-    <div class="col-xl-4 bg-info" style="height:100">
 
+    <div class="col-xl-4" id="groupBtnStatus">
+        <div class="card" >
+            <div class="card-body d-xl-flex flex-column justify-content-between">
+                <button class="btn btn-success mb-xl-2">Xác nhận đơn hàng</button>
+                <button class="btn btn-warning mb-xl-2">Hủy đơn hàng</button>
+                <button id="btnPrintBill" class="btn btn-info mb-xl-2">In hóa đơn</button>
+                <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
+            </div>
+        </div>
     </div>
 
     @*<h1 class="my-4">Chi tiết hóa đơn: <span>11</span></h1>
