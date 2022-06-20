@@ -97,12 +97,21 @@
                                 <span class="plus">+</span>
                             </div>
                             <input id="num" type="hidden" value="1" name="quantity" />
+                            @if (Session["sl"] != null)
+                            {
+                                <div class="sub-w3l" style="color:red">
+                                    <h6> @Session["Error1"]</h6>
+                                </div>
+                            }
                             @if (Session["size"] == null)
                             {
                                 <div class="sub-w3l" style="color:red">
                                     <h6> @Session["Error"]</h6>
                                 </div>
                             }
+                            <div>
+                                <h3>@ViewData["Error"]</h3>
+                            </div>
                             @if (Session["User"] != null)
                             {
                                 <input class="btn btn-outline-dark btn-addtocart shadow my-4" id="ThemGioHang" type="submit" value="Add to cart" />

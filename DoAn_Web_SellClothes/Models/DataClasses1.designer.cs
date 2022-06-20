@@ -787,7 +787,7 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceDate", DbType="Date NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceDate", DbType="DateTime NOT NULL")]
 		public System.DateTime InvoiceDate
 		{
 			get
