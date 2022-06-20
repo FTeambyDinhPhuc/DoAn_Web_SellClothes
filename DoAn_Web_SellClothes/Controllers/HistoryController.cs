@@ -14,6 +14,25 @@ namespace DoAn_Web_SellClothes.Controllers
         {
             Account ac = (Account)Session["user"];
             var history = from h in data.Invoices where h.IdAccount == ac.IdAccount select h;
+            foreach(var item in history)
+            {
+                if (item.StatusInvoice == false)
+                {
+                    ViewBag.StatusInvoice = "Chưa giao hàng";
+                }
+                else if(item.StatusInvoice==true)
+                {
+                    ViewBag.StatusInvoice = "Đã giao hàng";
+                }
+                if (item.Paid == false)
+                {
+                    ViewBag.Paid = "Chưa thanh toán";
+                }
+                else if(item.Paid==true)
+                {
+                    ViewBag.Paid = "Đã thanh toán";
+                }
+            }
             return View(history);
         }
 
@@ -28,10 +47,12 @@ namespace DoAn_Web_SellClothes.Controllers
                                 select new InvoiceDetails {
                                     ImageProduct = p.ImageProduct,
                                     NameProduct = p.NameProduct,
+                                    SizeProduct = s.NameSizeProduct,
                                     Quantity = ind.Quantity,
                                     UnitPrice = ind.UnitPrice,
                                     ThanhTienInvoiceDetails = ind.Quantity * ind.UnitPrice
                                 };
+            
             return View(invoicedetail);
         }
     }

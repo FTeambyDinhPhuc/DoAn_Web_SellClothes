@@ -165,6 +165,11 @@ namespace DoAn_Web_SellClothes.Controllers
             data.Invoices.InsertOnSubmit(ddh);
             ddh.InvoiceDate = DateTime.Now;
             ddh.TotalInvoice = TongTien() + 25000;
+            if(collection["Payment"]==null)
+            {
+                ViewBag.ChoosePayment = "Vui lòng chọn hình thức thanh toán!";
+                return this.Checkout();
+            }
             ddh.PaymentsInvoice = collection["Payment"];
             ddh.StatusInvoice = false;
             ddh.Paid = false;
@@ -186,39 +191,5 @@ namespace DoAn_Web_SellClothes.Controllers
             Session["Giohang"] = null;
             return RedirectToAction("Thanks", "Home");
         }
-        //public ActionResult Pay(string strURL)
-        //{
-        //    Account ac = (Account)Session["user"];
-        //    Invoice ddh = new Invoice();
-        //    List<Giohang> gh = LayGioHang();
-        //    //List<InfoCustomerBill> info = null;
-        //    ddh.IdAccount = ac.IdAccount;
-        //    ddh.InvoiceNameReceiver = ac.FullName;
-        //    ddh.InvoicePhoneReceiver = ac.PhoneNumber;
-        //    ddh.InvoiceAddressReceiver = ac.AddressUser;
-        //    ddh.NoteInvoice = Request.QueryString["billing_note"];
-        //    data.Invoices.InsertOnSubmit(ddh);
-        //    ddh.InvoiceDate = DateTime.Now;
-        //    ddh.TotalInvoice = TongTien() + 25000;
-        //    ddh.PaymentsInvoice = "Đã thanh toán";
-        //    ddh.StatusInvoice = false;
-        //    ddh.Paid = false;
-        //    data.Invoices.InsertOnSubmit(ddh);
-        //    data.SubmitChanges();
-        //    foreach (var item in gh)
-        //    {
-        //        InvoiceDetail ctdh = new InvoiceDetail();
-        //        ctdh.IdSizeProduct = (int)item.iSize;
-        //        ctdh.IdProduct = (int)item.iIdProduct;
-        //        ctdh.IdInvoice = ddh.IdInvoice;
-        //        ctdh.Quantity = item.iQuantityProduct;
-        //        ctdh.UnitPrice = item.iPriceProduct;
-        //        updateSoLuong(ctdh);
-        //        data.InvoiceDetails.InsertOnSubmit(ctdh);
-        //    }
-        //    data.SubmitChanges();
-        //    Session["Giohang"] = null;
-        //    return RedirectToAction("Thanks", "Home");
-        //}
     }
 }

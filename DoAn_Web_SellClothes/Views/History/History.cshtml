@@ -23,6 +23,7 @@
                     <th>&nbsp;</th>
                 </tr>
             </thead>
+
             <tbody class="text-left">
                 @foreach (var item in Model)
                 {
@@ -43,22 +44,22 @@
                             @item.InvoicePhoneReceiver
                         </td>
                         <td class="bill-payment">
-                            @item.StatusInvoice
+                            @ViewBag.StatusInvoice
                         </td>
                         <td class="bill-payment">
                             @item.PaymentsInvoice
                         </td>
                         <td class="bill-statusPayment">
-                            @item.Paid
+                            @ViewBag.Paid
                         </td>
                         <td class="bill-total">
-                            49.00<span> VNĐ</span>
+                            @item.TotalInvoice<span> VNĐ</span>
                         </td>
                         <td class="bill-details">
                             <a href="@Url.Action("HistoryDetails", "History",new {idInvoice=item.IdInvoice })">View details</a>
                         </td>
                     </tr>
-                }            
+                }
             </tbody>
         </table>
     </div>

@@ -9,6 +9,7 @@ namespace DoAn_Web_SellClothes.Models
     {
         public string ImageProduct { get; set; }
         public string NameProduct { get; set; }
+        public string SizeProduct { get; set; }
         public int Quantity { get; set; }
         public int UnitPrice { get; set; }
         public int ThanhTienInvoiceDetails { get; set; }
