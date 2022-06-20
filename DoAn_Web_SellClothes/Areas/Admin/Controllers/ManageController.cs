@@ -244,8 +244,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
 
         //action thêm sản phẩm
         [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult AddProduct(Product pr, ProductDetail dt, FormCollection collection, HttpPostedFileBase fileUpload)
+        public ActionResult AddProduct(Product pr/*, ProductDetail dt*/, FormCollection collection, HttpPostedFileBase fileUpload)
         {
             
             if (Session["admin"] == null)
@@ -257,42 +256,43 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
 
             var ten = collection["name"];
             var gia = collection["price"];
-            var Date = collection["update"];
+            var date = DateTime.UtcNow.Date;
             var mota = collection["describe"];            
             var loai = collection["Loai"];
             var size = collection["Size"];
-            var sl = collection["quality"];
-            var status = collection["status"]; 
+            //var sl = collection["quality"];
+            //var status = collection["status"]; 
 
             var filename = Path.GetFileName(fileUpload.FileName); 
             var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);
-            if (System.IO.File.Exists(path))
-            {
-                ViewBag.ThongBaoAnh = "Hình Ảnh Đã Tồn Tại";
-                return View();  
-            }
-            else
-            {
-                fileUpload.SaveAs(path);
-            }
-
+            //if (System.IO.File.Exists(path))
+            //{
+            //    ViewBag.ThongBaoAnh = "Hình Ảnh Đã Tồn Tại";
+            //    return this.AddProduct();
+            //}
+            
+            fileUpload.SaveAs(path);
             pr.NameProduct = ten;
             pr.ImageProduct = filename;
             pr.PriceProduct = int.Parse(gia);
             pr.DescribeProduct = mota;
-            pr.UpdateDate = DateTime.Parse(Date);
+            pr.UpdateDate = date;
             pr.IdProductType = Int32.Parse(loai);
-            pr.StatusProduct = int.Parse(status);
-            
+            //pr.StatusProduct = int.Parse(status);
+            //pr.QuantityProduct = int.Parse(sl);
             db.Products.InsertOnSubmit(pr);
             db.SubmitChanges();
-            dt.IdSizeProduct = Int32.Parse(size);
-            dt.IdProduct = pr.IdProduct;
-            dt.SoLuongTon = int.Parse(sl);
-            db.ProductDetails.InsertOnSubmit(dt);
-            db.SubmitChanges();
+            
+;
+
+            //dt.IdSizeProduct = Int32.Parse(size);
+            //dt.IdProduct = pr.IdProduct;
+            //dt.SoLuongTon = int.Parse(sl);
+            //db.ProductDetails.InsertOnSubmit(dt);
+            //db.SubmitChanges();
             return RedirectToAction("Product", "Manage");
         }
+
         //hiển thị màn hình chỉnh sửa sản phẩm
         [HttpGet]
         public ActionResult EditProduct(int id)

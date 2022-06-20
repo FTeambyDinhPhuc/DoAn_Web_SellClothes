@@ -1256,63 +1256,69 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Product")]
+
+	[global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.Product")]
 	public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-		
+
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
+
 		private int _IdProduct;
-		
+
 		private string _NameProduct;
-		
+
 		private int _PriceProduct;
-		
+
 		private string _ImageProduct;
-		
+
 		private System.DateTime _CreateDate;
-		
+
 		private System.DateTime _UpdateDate;
-		
+
 		private string _DescribeProduct;
-		
+
 		private System.Nullable<int> _QuantityProduct;
-		
+
 		private int _StatusProduct;
-		
+
 		private int _IdProductType;
-		
+
 		private EntitySet<ProductDetail> _ProductDetails;
-		
+
 		private EntityRef<ProductType> _ProductType;
+		public List<int> idSize;
+		public List<string> sizeProduct;
+		public List<int?> soluongton;
+        public bool tinhtrangsanpham;
+
+        #region Extensibility Method Definitions
+        partial void OnLoaded();
+		partial void OnValidate(System.Data.Linq.ChangeAction action);
+		partial void OnCreated();
+		partial void OnIdProductChanging(int value);
+		partial void OnIdProductChanged();
+		partial void OnNameProductChanging(string value);
+		partial void OnNameProductChanged();
+		partial void OnPriceProductChanging(int value);
+		partial void OnPriceProductChanged();
+		partial void OnImageProductChanging(string value);
+		partial void OnImageProductChanged();
+		partial void OnCreateDateChanging(System.DateTime value);
+		partial void OnCreateDateChanged();
+		partial void OnUpdateDateChanging(System.DateTime value);
+		partial void OnUpdateDateChanged();
+		partial void OnDescribeProductChanging(string value);
+		partial void OnDescribeProductChanged();
+		partial void OnQuantityProductChanging(System.Nullable<int> value);
+		partial void OnQuantityProductChanged();
+		partial void OnStatusProductChanging(int value);
+		partial void OnStatusProductChanged();
+		partial void OnIdProductTypeChanging(int value);
+		partial void OnIdProductTypeChanged();
+		#endregion
+	
 		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdProductChanging(int value);
-    partial void OnIdProductChanged();
-    partial void OnNameProductChanging(string value);
-    partial void OnNameProductChanged();
-    partial void OnPriceProductChanging(int value);
-    partial void OnPriceProductChanged();
-    partial void OnImageProductChanging(string value);
-    partial void OnImageProductChanged();
-    partial void OnCreateDateChanging(System.DateTime value);
-    partial void OnCreateDateChanged();
-    partial void OnUpdateDateChanging(System.DateTime value);
-    partial void OnUpdateDateChanged();
-    partial void OnDescribeProductChanging(string value);
-    partial void OnDescribeProductChanged();
-    partial void OnQuantityProductChanging(System.Nullable<int> value);
-    partial void OnQuantityProductChanged();
-    partial void OnStatusProductChanging(int value);
-    partial void OnStatusProductChanged();
-    partial void OnIdProductTypeChanging(int value);
-    partial void OnIdProductTypeChanged();
-    #endregion
-		
+
 		public Product()
 		{
 			this._ProductDetails = new EntitySet<ProductDetail>(new Action<ProductDetail>(this.attach_ProductDetails), new Action<ProductDetail>(this.detach_ProductDetails));
@@ -1570,8 +1576,9 @@ namespace DoAn_Web_SellClothes.Models
 				}
 			}
 		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
+
+
+        public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
 		
