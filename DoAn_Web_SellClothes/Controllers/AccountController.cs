@@ -106,6 +106,7 @@ namespace DoAn_Web_SellClothes.Controllers
             {
                 Session["user"] = user;
                 Session["name"] = user.FullName;
+                Session["idAccount"] = user.IdAccount;
                 return RedirectToAction("Index", "Home");
             }
         }
@@ -129,7 +130,7 @@ namespace DoAn_Web_SellClothes.Controllers
         public ActionResult AccountInformation(FormCollection collection)
         {
             Account ac = (Account)Session["user"];
-            var User = data.Accounts.SingleOrDefault(p => p.IdAccount == p.IdAccount);
+            var User = data.Accounts.SingleOrDefault(p => p.IdAccount == ac.IdAccount);
             var fullnameuser = collection["fullname"];
             var emailuser = collection["email"];
             var phoneuser = collection["phone_number"];
