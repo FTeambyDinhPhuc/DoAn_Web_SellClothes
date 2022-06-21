@@ -53,7 +53,7 @@
                             @ViewBag.Paid
                         </td>
                         <td class="bill-total">
-                            @item.TotalInvoice<span> VNĐ</span>
+                            @String.Format("{0:0,0}", @item.TotalInvoice)<span> VNĐ</span>
                         </td>
                         <td class="bill-details">
                             <a href="@Url.Action("HistoryDetails", "History",new {idInvoice=item.IdInvoice })">View details</a>

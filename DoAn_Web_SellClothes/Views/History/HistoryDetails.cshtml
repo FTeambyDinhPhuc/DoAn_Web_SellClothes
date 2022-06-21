@@ -36,10 +36,10 @@
                             @item.Quantity
                         </td>
                         <td class="product-quantity">
-                            @item.UnitPrice<span> VNĐ</span>
+                            @String.Format("{0:0,0}", @item.UnitPrice)<span> VNĐ</span>
                         </td>
                         <td class="product-total-price">
-                            @item.ThanhTienInvoiceDetails<span> VNĐ</span>
+                            @String.Format("{0:0,0}", @item.ThanhTienInvoiceDetails)<span> VNĐ</span>
                         </td>
                     </tr>
                 }
