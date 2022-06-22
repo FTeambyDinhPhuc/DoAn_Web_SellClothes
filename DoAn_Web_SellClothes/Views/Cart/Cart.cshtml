@@ -7,10 +7,10 @@
 
 <div class="cart-container py-5 px-5">
     <div class="row">
-        <div class="col-lg-7">
+        <div class="col-lg-8">
             <div class="row">
                 <div class="col-12">
-                    <div class="table-content table-responsive">
+                    <div class="table-cart table-responsive">
                         <table class="table text-center">
                             <thead>
                                 <tr>
@@ -41,7 +41,7 @@
                                             <td class="product-name text-left">
                                                 <a href="/Product/ProductDetails/@item.iIdProduct">@item.iNameProduct</a>
                                             </td>
-                                            <td class="product-name text-left">
+                                            <td class="product-size text-center">
                                                 @item.iSizeProduct
                                             </td>
                                             <td class="product-price">
@@ -50,7 +50,7 @@
 
                                             <td class="product-quantity">
                                                 <input type="number" name="quantity1" class="quantity-input" value="@item.iQuantityProduct" min="1" max="@item.iMaxAmount">
-                                                <input type="submit" value="Update Cart" class="cart-form__btn" />
+                                                <input type="submit" value="Update Cart" class="btn-updatecart" />
                                             </td>
 
                                             <td class="product-total-price">
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <form class="cart-form">
-                <div class="row border-top">
+                <div class="row">
                     <div class=" col-sm-6 col-xl-5 ml-auto text-md-right text-sm-left py-4">
                         <a href="@Url.Action("RemoveCart","Cart")">Clear Cart</a>
                     </div>
@@ -73,10 +73,10 @@
             </form>
 
         </div>
-        <div class="col-lg-4 offset-xl-1">
+        <div class="col-lg-4">
             <div class="cart-collaterals">
                 <div class="cart-totals">
-                    <h5 class="mb-4">Cart totals</h5>
+                    <h5 class="mb-4">Thành tiền</h5>
                     <div class="table-content table-responsive">
                         <table class="table order-table">
                             <tbody>
@@ -104,7 +104,7 @@
                         </table>
                     </div>
                 </div>
-                <a href="@Url.Action("Checkout","Cart")" class="btn btn-checkout py-2" type="submit">
+                <a href="@Url.Action("Checkout","Cart")" class="btn btn-checkout" type="submit">
                     Proceed To Checkout
                 </a>
             </div>
