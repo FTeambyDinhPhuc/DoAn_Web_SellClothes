@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-md-4 mx-auto">
                     <h1 class="name-product" style="word-wrap: break-word; white-space:normal" title="@Model.NameProduct">@Model.NameProduct</h1>
-                    <h2 class="price-product">@Model.PriceProduct <span>&nbsp;VND</span></h2>
+                    <h2 class="price-product">@String.Format("{0:0,0}", @Model.PriceProduct) <span>&nbsp;VND</span></h2>
                     <hr class="light" />
                     <h5>Describe</h5>
                     <p> @Model.DescribeProduct</p>
@@ -64,7 +64,7 @@
                         <div class="col-md-4 mx-auto">
 
                             <h1 class="name-product" style="word-wrap: break-word; white-space:normal" title="@Model.NameProduct">@Model.NameProduct</h1>
-                            <h2 class="price-product">@Model.PriceProduct <span>&nbsp;VND</span></h2>
+                            <h2 class="price-product">@String.Format("{0:0,0}", @Model.PriceProduct)<span>&nbsp;VND</span></h2>
                             <hr class="light" />
                             <h5>Describe</h5>
                             @Model.DescribeProduct
@@ -139,6 +139,15 @@
                             @if (Session["User"] != null)
                             {
                                 <input class="btn btn-addtocart my-4" id="ThemGioHang" type="submit" value="Add to cart" />
+                                <input class="btn btn-outline-dark btn-addtocart shadow my-4" id="ThemGioHang" type="submit" value="Add to cart" />
+                                if(!String.IsNullOrEmpty(item.urlBack))
+                                {
+                                    <a href="@item.urlBack" class="btn btn-outline-dark btn-addtocart shadow my-4" id="ThemGioHang">Trở Lại</a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("ProductPage","Product")" class="btn btn-outline-dark btn-addtocart shadow my-4" id="ThemGioHang">Trở Lại</a>
+                                }
                             }
                             else
                             {

@@ -162,7 +162,6 @@ namespace DoAn_Web_SellClothes.Controllers
             ddh.InvoicePhoneReceiver = collection["billing_phone"];
             ddh.InvoiceAddressReceiver = collection["billing_address"];
             ddh.NoteInvoice = collection["billing_note"];
-            data.Invoices.InsertOnSubmit(ddh);
             ddh.InvoiceDate = DateTime.Now;
             ddh.TotalInvoice = TongTien() + 25000;
             if(collection["Payment"]==null)
@@ -175,7 +174,7 @@ namespace DoAn_Web_SellClothes.Controllers
             ddh.Paid = false;
             data.Invoices.InsertOnSubmit(ddh);
             data.SubmitChanges();
-
+            Session["idInvoice"] = ddh.IdInvoice;
             foreach (var item in gh)
             {
                 InvoiceDetail ctdh = new InvoiceDetail();
@@ -184,6 +183,15 @@ namespace DoAn_Web_SellClothes.Controllers
                 ctdh.IdInvoice = ddh.IdInvoice;
                 ctdh.Quantity = item.iQuantityProduct;
                 ctdh.UnitPrice = item.iPriceProduct;
+                int soLuongTon = data.ProductDetails.SingleOrDefault(p => p.IdProduct == item.iIdProduct && p.IdSizeProduct == item.iSize).SoLuongTon.Value;
+                if(soLuongTon<ctdh.Quantity)
+                {
+                    ViewBag.SoLuongTon = "Sản phẩm hết hàng, sản phẩm hết hàng sẽ được xóa khỏi gio hàng!";
+                    List<Giohang> listProductInCart = LayGioHang();
+                    Giohang sp = listProductInCart.SingleOrDefault(n => n.iIdProduct == item.iIdProduct && n.iSize == item.iSize);
+                    listProductInCart.Remove(sp);
+                    return this.Checkout();
+                }
                 updateSoLuong(ctdh);
                 data.InvoiceDetails.InsertOnSubmit(ctdh);
             }
