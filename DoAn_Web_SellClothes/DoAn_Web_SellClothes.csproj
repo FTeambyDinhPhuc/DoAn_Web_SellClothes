@@ -2334,6 +2334,9 @@
     <Content Include="Areas\Admin\Views\Manage\DeleteProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\EditProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\DeleteProductType.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\DetailProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\AddProductDetailSize.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\DeleteProductDetail.cshtml" />
     <Content Include="Models\DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>

@@ -1,0 +1,46 @@
+﻿@model DoAn_Web_SellClothes.Models.ProductDetail
+@{
+    ViewBag.Title = "DeleteProductDetail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="my-4">Xóa chi tiết kích thước sản phẩm</h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="table-Edit table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Tên sản phẩm</th>
+                            <td>
+                                @Html.DisplayFor(model => model.Product.NameProduct)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Size</th>
+                            <td>
+                                @Html.DisplayFor(model => model.SizeProduct.NameSizeProduct)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Số lượng</th>
+                            <td>
+                                @Html.DisplayFor(model => model.SoLuongTon)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" class="mybtn btn btn-outline-success" />
+        }
+    </div>
+    <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
+
+
+</div>
+
