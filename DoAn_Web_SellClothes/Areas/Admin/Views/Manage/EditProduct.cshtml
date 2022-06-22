@@ -50,7 +50,7 @@
                                 <th>Ngày lập</th>
                                 <td>
                                     <div class="col-md-10">
-                                        @Html.EditorFor(model => model.CreateDate, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.EditorFor(model => model.UpdateDate, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
                                     </div>
                                 </td>                               
@@ -73,20 +73,14 @@
                                 </td>
                             </tr>                            
                             <tr>
-                                <th>Số lượng</th>
-                                <td>
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.QuantityProduct, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.QuantityProduct, "", new { @class = "text-danger" })
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
                                 <th>Trạng thái</th>
                                 <td>
                                     <div class="col-md-10">
                                         @Html.EditorFor(model => model.StatusProduct, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.StatusProduct, "", new { @class = "text-danger" })
+                                        <span>"0" : Hết Hàng</span><br />
+                                        <span>"1" : Còn Hàng</span>
+                                        @ViewData["1"]
                                     </div>
                                 </td>
                             </tr>

@@ -12,8 +12,8 @@
                 <div class="d-flex justify-content-between">
                     <h1>FTeam</h1>
                     <div>
-                        <h2>Hóa đơn #<span>1</span></h2>
-                        <p>ngày lập: <span>12/12/2022</span></p>
+                        <h2>Hóa đơn #<span>@Html.DisplayFor(model => model.Invoice.IdAccount)</span></h2>
+                        <p>ngày lập: <span>@Html.DisplayFor(model => model.Invoice.InvoiceDate)</span></p>
                     </div>
                 </div>
                 <hr />
@@ -26,14 +26,14 @@
                     </div>
                     <div>
                         <h4>Đến:</h4>
-                        <p>Nguyễn khuyết danh</p>
-                        <p>0392301230</p>
-                        <p>Long Thạnh Mỹ, Quận 9,Thành phố Hồ Chí Minh</p>
+                        <p>@Html.DisplayFor(model => model.Invoice.Account.FullName)</p>
+                        <p>@Html.DisplayFor(model => model.Invoice.InvoicePhoneReceiver)</p>
+                        <p>@Html.DisplayFor(model => model.Invoice.InvoiceAddressReceiver)</p>
                     </div>
                 </div>
                 <div>
                     <h4>Ghi chú:</h4>
-                    <p>hihihihihihihihidhskfbnsdkfn</p>
+                    <p>@Html.DisplayFor(model => model.Invoice.NoteInvoice)</p>
                 </div>
 
                 <hr />
@@ -51,25 +51,24 @@
 
                     <tbody>
                         <tr>
-                            <td> Áo plo</td>
-                            <td>x</td>
-                            <td>2</td>
-                            <td>30000<span>đ</span></td>
-                            <td>60000<span>đ</span></td>
+                            <td>@Html.DisplayFor(model => model.ProductDetail.Product.NameProduct)</td>
+                            <td>@Html.DisplayFor(model => model.ProductDetail.SizeProduct.NameSizeProduct)</td>
+                            <td>@Html.DisplayFor(model => model.Quantity)</td>
+                            <td>@String.Format("{0:0,0 }",Model.UnitPrice )<sub>đ</sub></td>
+                            <td>@String.Format("{0:0,0 }", Model.Invoice.TotalInvoice)<sub>đ</sub></td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colspan="4" align="right"><b>Tổng tiền</b></td>
-                            <td>60000<span>đ</span></td>
+                            <td>@String.Format("{0:0,0 }", Model.Invoice.TotalInvoice)<sub>đ</sub></td>
                         </tr>
                     </tfoot>
                 </table>
                 <hr />
-                <p>Phương thức thanh toán: <span>COD</span></p>
+                <p>Phương thức thanh toán: <span>@Html.DisplayFor(model => model.Invoice.PaymentsInvoice)</span></p>
             </div>
-        </div>
-     
+        </div> 
     </div>
 
     <div class="col-xl-4" id="groupBtnStatus">
@@ -82,40 +81,6 @@
             </div>
         </div>
     </div>
-
-    @*<h1 class="my-4">Chi tiết hóa đơn: <span>11</span></h1>
-
-        <div class="card mb-4">
-            <div class="card-header">
-                <i class="fas fa-table"></i>
-                Chi tiết hóa đơn
-            </div>
-            <div class="card-body">
-                <table id="datatablesInvoiceDetail" class="table-responsive">
-                    <thead>
-                        <tr>
-                            <th>Mã hóa đơn</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Kích thước</th>
-                            <th>Số lượng</th>
-                            <th>Giá</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>@Html.DisplayFor(model => model.IdInvoice)</td>
-                            <td>@Html.DisplayFor(model => model.ProductDetail.Product.NameProduct)</td>
-                            <td>@Html.DisplayFor(model => model.ProductDetail.SizeProduct.NameSizeProduct)</td>
-                            <td>@Html.DisplayFor(model => model.Quantity)</td>
-                            <td>@Html.DisplayFor(model => model.UnitPrice)<span>đ</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>*@
-
-
 </div>
 
 @*<div class="container-fluid px-4">

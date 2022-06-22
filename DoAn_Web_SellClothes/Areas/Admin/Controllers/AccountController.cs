@@ -72,7 +72,8 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         public ActionResult ChangePassword(FormCollection collection)
         {
             AdminAccount ac = (AdminAccount)Session["admin"];
-            var admin = db.AdminAccounts.SingleOrDefault(p => p.IdAdminAccount == p.IdAdminAccount);           
+           
+            var admin = db.AdminAccounts.SingleOrDefault(p => p.IdAdminAccount == ac.IdAdminAccount);           
             var po = collection["passold"];
             var pn = collection["passnew"];
             var pa = collection["passagain"];
@@ -80,16 +81,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             {
                 ViewData["1"] = "Thông tin không được để trống";
             }
-            else if (String.IsNullOrEmpty(po) && String.IsNullOrEmpty(pn) && String.IsNullOrEmpty(pa))
-            {
-                admin.UserNameAdmin = po;
-                admin.PasswordAdmin = MD5Hash(pn);                
-                Session["admin"] = admin;
-                db.SubmitChanges();
-                ViewData["3"] = "Cập nhật thành công!";
-                return this.ChangePassword();
-            }
-            else if (String.IsNullOrEmpty(po) && String.IsNullOrEmpty(pn) && !String.IsNullOrEmpty(pa))
+            else if (!String.IsNullOrEmpty(po) && String.IsNullOrEmpty(pn) && !String.IsNullOrEmpty(pa))
             {
                 ViewData["3"] = "Vui lòng nhập mật khẩu mới!";
                 return this.ChangePassword();
@@ -103,7 +95,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                 }
                 else if (!String.Equals(pn, pa))
                 {
-                    ViewData["3"] = "Mật khẩu mới và mật khẩu cũ không trùng khớp!";
+                    ViewData["3"] = "Mật khẩu nhập lại không trùng khớp!";
                     return this.ChangePassword();
                 }
                 else

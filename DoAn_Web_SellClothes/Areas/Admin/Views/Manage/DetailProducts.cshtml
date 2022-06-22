@@ -1,17 +1,18 @@
 ﻿@model DoAn_Web_SellClothes.Models.Product
-
 @{
-    ViewBag.Title = "DeleteProduct";
+    ViewBag.Title = "DetailProducts";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container-fluid px-4">
-    <h1 class="my-4">Xóa sản phẩm</h1>
-
+    <h1 class="my-4">Chi tiết sản phẩm</h1>
     <div class="card mb-4">
         <div class="card-body">
             <div class="table-Edit table-responsive">
-                <table class="table">
+                <div class="row">
+
+                </div>
+                <table class="table">                   
                     <tbody>
                         <tr>
                             <th>Tên sản phẩm</th>
@@ -20,15 +21,15 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>Giá sản phẩm</th>
+                            <th>Hình</th>
                             <td>
-                                @Html.DisplayFor(model => model.PriceProduct)
+                                <img src="~/Assets/img/Clothes/@Html.DisplayFor(model => model.ImageProduct)" class="img-thumbnail" style="width:75px" alt="Alternate Text" />
                             </td>
                         </tr>
                         <tr>
-                            <th>Hình</th>
+                            <th>Giá</th>
                             <td>
-                                @Html.DisplayFor(model => model.ImageProduct)
+                                @String.Format("{0:0,0 }", Model.PriceProduct)<sub>đ</sub>
                             </td>
                         </tr>
                         <tr>
@@ -46,7 +47,13 @@
                         <tr>
                             <th>Mô tả</th>
                             <td>
-                                @Html.DisplayFor(model => model.DescribeProduct)
+                                <p>@Html.DisplayFor(model => model.DescribeProduct)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Loại</th>
+                            <td>
+                                @Html.DisplayFor(model => model.ProductType.NameProductType)
                             </td>
                         </tr>
                         <tr>
@@ -55,25 +62,12 @@
                                 @Html.DisplayFor(model => model.StatusProduct)
                             </td>
                         </tr>
-                        <tr>
-                            <th>Mã loại</th>
-                            <td>
-                                @Html.DisplayFor(model => model.IdProductType)
-                            </td>
-                        </tr>
 
                     </tbody>
-
                 </table>
             </div>
         </div>
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-            <input type="submit" class="mybtn btn btn-outline-success"/>
-        }
     </div>
     <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
-
-
 </div>
+

@@ -19,47 +19,38 @@
                 <thead>
                     <tr>
                         <th>Mã hóa đơn</th>
-                        <th>khách hàng</th>
+                        <th>Khách hàng</th>
                         <th>Địa chỉ nhận hàng</th>
                         <th>Số điện thoại người nhận</th>
                         <th>Ngày lập</th>
                         <th>Tổng hóa đơn</th>
-                        <th>Trạng thái</th>
-                        @*<th>Lưu ý</th>
-                        <th>Mã tài khoản</th>*@
+                        <th>Phương thức thanh toán</th>
+                        <th>Trạng thái hóa đơn</th>
+                        <th>Trạng thái vận chuyển</th>
+                        <th>Lưu ý</th>
                         <th>&nbsp;</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Tài khoản user</td>
-                        <td>Địa chỉ nhận hàng</td>
-                        <td>Số điện thoại nhận hàng</td>
-                        <td>8/8/2022</td>
-                        <td>1900000<span>đ</span></td>
-                        <td>đã xác nhận</td>
-                        <td>
-                            <a class="btn btn-info" href="@Url.Action("DetailReceipt","Manage")">View details</a>
-                        </td>
-                    </tr>
-                    @*@foreach (var item in Model)
+                    @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.IdInvoice)</td>
+                            <td>@Html.DisplayFor(modelItem => item.IdAccount)</td>
                             <td>@Html.DisplayFor(modelItem => item.Account.FullName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.InvoiceAddressReceiver)</td>
+                            <td>@Html.DisplayFor(modelItem => item.InvoicePhoneReceiver)</td>
                             <td>@String.Format("{0:dd/MM/yyyy}", item.InvoiceDate)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TotalInvoice)<span>đ</span></td>
+                            <td>@String.Format("{0:0,0 }", item.TotalInvoice)<sub>đ</sub></td>
                             <td>@Html.DisplayFor(modelItem => item.PaymentsInvoice)</td>
                             <td>@Html.DisplayFor(modelItem => item.StatusInvoice)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Paid)</td>
                             <td>@Html.DisplayFor(modelItem => item.NoteInvoice)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Account.IdAccount)</td>
                             <td>
-                                <a class="btn btn-info" href="@Html.ActionLink("DetailReceipt","Manage", new {id=item.IdInvoice})">View details</a>
+                                @Html.ActionLink("Detail", "DetailReceipt", new { id = item.IdInvoice }, new { @class = "btn btn-info" })
                             </td>
                         </tr>
-                    }*@
+                    }                  
                 </tbody>
             </table>
         </div>

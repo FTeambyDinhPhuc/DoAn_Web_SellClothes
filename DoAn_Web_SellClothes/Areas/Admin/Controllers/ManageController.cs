@@ -28,7 +28,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             }
             return hash.ToString();
         }
-
+        //========================================================================================
         private List<Invoice> Receipt(int count)
         {
             return db.Invoices.OrderByDescending(s => s.IdInvoice).Take(count).ToList();
@@ -45,15 +45,13 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             var list = db.Invoices.OrderByDescending(s => s.IdInvoice).ToList();
             return View(list.ToPagedList(pageNum, pagesize));
         }
-        public ActionResult DetailReceipt()
+        public ActionResult DetailReceipt(int id)
         {
-            //n
-            //  InvoiceDetail ct = db.InvoiceDetails.SingleOrDefault(n => n.IdInvoice == id);
-            //ViewBag.IdInvoice = Invoice.IdInvoice;
-            //if ()
-            return View();
+            
+              InvoiceDetail ct = db.InvoiceDetails.SingleOrDefault(n => n.IdInvoice == id);           
+              return View(ct);
         }
-
+        //========================================================================================
         private List<Account> Customer(int count)
         {
             return db.Accounts.OrderByDescending(s => s.IdAccount).Take(count).ToList();
@@ -71,7 +69,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             var list = db.Accounts.OrderByDescending(s => s.IdAccount ).ToList();
             return View(list.ToPagedList(pageNum, pagesize));
         }
-
+        //========================================================================================
         public ActionResult Sex()
         {
             return View();
@@ -88,6 +86,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         {
             return db.ProductDetails.OrderByDescending(s => s.IdProduct).Take(count).ToList();
         }
+        //========================================================================================
         public ActionResult TypesClothes(int ? page)
         {
             if (Session["admin"] == null)
@@ -99,6 +98,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             var list = db.ProductTypes.OrderByDescending(s => s.IdProductType ).ToList();
             return View(list.ToPagedList(pageNum, pagesize));
         }
+        
         [HttpGet]
         public ActionResult AddTypesClothes()
         {
@@ -211,7 +211,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                 return RedirectToAction("TypesClothes");
             }
         }
-
+        //============================================================================================
         private List<Product> produdt(int count)
         {
             return db.Products.OrderByDescending(s => s.IdProduct).Take(count).ToList();
@@ -229,6 +229,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             return View(list.ToPagedList(pageNum, pagesize));
         }
 
+        // hiển thị màn hình thêm sản phẩm
         [HttpGet]
         public ActionResult AddProduct()
         {
@@ -241,8 +242,8 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             return View();
         }
 
+        //action thêm sản phẩm
         [HttpPost]
-        [ValidateInput(false)]
         public ActionResult AddProduct(Product pr, ProductDetail dt, FormCollection collection, HttpPostedFileBase fileUpload)
         {
             
@@ -255,41 +256,44 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
 
             var ten = collection["name"];
             var gia = collection["price"];
-            var Date = collection["update"];
+            var date = DateTime.UtcNow.Date;
             var mota = collection["describe"];            
             var loai = collection["Loai"];
             var size = collection["Size"];
-            //var sl = collection["quality"];
-            var status = collection["status"]; 
-            //var size = collection["Size"];
+            var sl = collection["quality"];
+            var status = collection["status"];
 
-            var filename = Path.GetFileName(fileUpload.FileName);
+            var filename = Path.GetFileName(fileUpload.FileName); 
             var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);
-            if (System.IO.File.Exists(path))
-            {
-                ViewBag.ThongBaoAnh = "Hình Ảnh Đã Tồn Tại";
-                return View();  
-            }
-            else
-            {
-                fileUpload.SaveAs(path);
-            }
-
+            //if (System.IO.File.Exists(path))
+            //{
+            //    ViewBag.ThongBaoAnh = "Hình Ảnh Đã Tồn Tại";
+            //    return this.AddProduct();
+            //}
+            
+            fileUpload.SaveAs(path);
             pr.NameProduct = ten;
             pr.ImageProduct = filename;
             pr.PriceProduct = int.Parse(gia);
             pr.DescribeProduct = mota;
-            pr.UpdateDate = DateTime.Parse(Date);
+            pr.CreateDate = date;
             pr.IdProductType = Int32.Parse(loai);
-            pr.StatusProduct = int.Parse(status);
-            //dt.IdSizeProduct = Int32.Parse(size);
-            //dt.SoLuongTon = int.Parse(sl);
+            //pr.StatusProduct = int.Parse(status);
+            //pr.QuantityProduct = int.Parse(sl);
             db.Products.InsertOnSubmit(pr);
-            //db.Products.InsertOnSubmit(dt);
+            db.SubmitChanges();
+            
+;
+
+            dt.IdSizeProduct = Int32.Parse(size);
+            dt.IdProduct = pr.IdProduct;
+            dt.SoLuongTon = int.Parse(sl);
+            db.ProductDetails.InsertOnSubmit(dt);
             db.SubmitChanges();
             return RedirectToAction("Product", "Manage");
         }
 
+        //hiển thị màn hình chỉnh sửa sản phẩm
         [HttpGet]
         public ActionResult EditProduct(int id)
         {
@@ -310,7 +314,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                 return View(sp);
             }
         }
-
+        //action sửa sản phẩm
         [HttpPost, ActionName("EditProduct")]
         public ActionResult eEditProduct(FormCollection collection, int id, HttpPostedFileBase fileUpload)
         {
@@ -339,6 +343,9 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             {
                 Response.StatusCode = 404;
                 return null;
+            }else if(sp.StatusProduct !=1 || sp.StatusProduct != 0)
+            {
+                ViewData["1"] = "Bạn đã nhập sai !";
             }
             UpdateModel(sp);
             db.SubmitChanges();
@@ -383,6 +390,69 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                 db.SubmitChanges();
                 return RedirectToAction("Product");
             }
+        }
+        //========================================================================================
+        public ActionResult DetailProduct( int id)
+        {
+            //var ct = db.ProductDetails.SingleOrDefault(n => n.IdProduct == id);
+            var ct = from c in db.ProductDetails where c.IdProduct == id select c;
+            int idp = (from i in db.ProductDetails where i.IdProduct == id select i.IdProduct).FirstOrDefault();
+            Session["idp"]=id;
+            return View(ct);
+        }
+        [HttpGet]
+        public ActionResult AddProductDetailSize()
+        {
+            ViewBag.Size = new SelectList(db.SizeProducts.ToList().OrderBy(n => n.NameSizeProduct), "IdSizeProduct", "NameSizeProduct");
+            ViewBag.IdProduct = Session["idp"];
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult AddProductDetailSize( ProductDetail pr, FormCollection collection, string url)
+        {
+            ViewBag.Size = new SelectList(db.SizeProducts.ToList().OrderBy(n => n.NameSizeProduct), "IdSizeProduct", "NameSizeProduct");
+            var sl = collection["Sl"];
+            var size = collection["Size"];
+            int idpd = (int)Session["idp"];
+            int idsize = Int32.Parse(size);
+            var idsizeProduct = (from s in db.ProductDetails where s.IdProduct == idpd select s).ToList();
+            foreach(var item in idsizeProduct)
+            {
+                if (idsize == item.IdSizeProduct)
+                {
+                    pr.IdProduct = idpd;
+                    pr.IdSizeProduct = idsize;
+                    item.SoLuongTon += int.Parse(sl);
+                    pr.SoLuongTon = item.SoLuongTon;
+                    db.SubmitChanges();
+                    return RedirectToAction("DetailProduct", new {id = idpd});
+                }
+            }
+            pr.IdProduct = idpd;
+            pr.IdSizeProduct = idsize;
+            pr.SoLuongTon = int.Parse(sl);
+            db.ProductDetails.InsertOnSubmit(pr);
+            db.SubmitChanges();
+            return RedirectToAction("DetailProduct", new { id = idpd});
+        }
+
+        public ActionResult DeleteProductDetail(int id)
+        {
+            int size = int.Parse(Request.QueryString["size"]);
+
+            ProductDetail sp = db.ProductDetails.Where(n => n.IdProduct == id && n.IdSizeProduct == size).SingleOrDefault();
+
+            db.ProductDetails.DeleteOnSubmit(sp);
+            db.SubmitChanges();
+            return RedirectToAction("Product");
+        }
+
+        public ActionResult DetailProducts(int id)
+        {
+            Product ct = db.Products.SingleOrDefault(n => n.IdProduct == id);
+            return View(ct);
         }
     }
 }
