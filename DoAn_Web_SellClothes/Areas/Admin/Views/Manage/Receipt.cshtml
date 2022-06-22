@@ -41,13 +41,13 @@
                             <td>@Html.DisplayFor(modelItem => item.InvoiceAddressReceiver)</td>
                             <td>@Html.DisplayFor(modelItem => item.InvoicePhoneReceiver)</td>
                             <td>@String.Format("{0:dd/MM/yyyy}", item.InvoiceDate)</td>
-                            <td>@Html.DisplayFor(modelItem => item.TotalInvoice)<span>đ</span></td>
+                            <td>@String.Format("{0:0,0 }", item.TotalInvoice)<sub>đ</sub></td>
                             <td>@Html.DisplayFor(modelItem => item.PaymentsInvoice)</td>
                             <td>@Html.DisplayFor(modelItem => item.StatusInvoice)</td>
                             <td>@Html.DisplayFor(modelItem => item.Paid)</td>
                             <td>@Html.DisplayFor(modelItem => item.NoteInvoice)</td>
                             <td>
-                                <a class="btn btn-info" href="@Url.Action("DetailReceipt","Manage")">View details</a>
+                                @Html.ActionLink("Detail", "DetailReceipt", new { id = item.IdInvoice }, new { @class = "btn btn-info" })
                             </td>
                         </tr>
                     }                  

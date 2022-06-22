@@ -51,17 +51,17 @@
 
                     <tbody>
                         <tr>
-                            <td>@Html.DisplayFor(model => model.Invoice.InvoiceNameReceiver)</td>
+                            <td>@Html.DisplayFor(model => model.ProductDetail.Product.NameProduct)</td>
                             <td>@Html.DisplayFor(model => model.ProductDetail.SizeProduct.NameSizeProduct)</td>
                             <td>@Html.DisplayFor(model => model.Quantity)</td>
-                            <td>@Html.DisplayFor(model => model.UnitPrice)<span>đ</span></td>
-                            <td>@Html.DisplayFor(model => model.Invoice.TotalInvoice)<span>đ</span></td>
+                            <td>@String.Format("{0:0,0 }",Model.UnitPrice )<sub>đ</sub></td>
+                            <td>@String.Format("{0:0,0 }", Model.Invoice.TotalInvoice)<sub>đ</sub></td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colspan="4" align="right"><b>Tổng tiền</b></td>
-                            <td>@Html.DisplayFor(model => model.Invoice.TotalInvoice)<span>đ</span></td>
+                            <td>@String.Format("{0:0,0 }", Model.Invoice.TotalInvoice)<sub>đ</sub></td>
                         </tr>
                     </tfoot>
                 </table>

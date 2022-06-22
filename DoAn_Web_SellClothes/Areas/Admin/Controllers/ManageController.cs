@@ -49,7 +49,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         {
             
               InvoiceDetail ct = db.InvoiceDetails.SingleOrDefault(n => n.IdInvoice == id);           
-              return View();
+              return View(ct);
         }
         //========================================================================================
         private List<Account> Customer(int count)

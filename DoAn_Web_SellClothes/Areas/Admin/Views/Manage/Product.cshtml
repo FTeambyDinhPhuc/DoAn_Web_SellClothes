@@ -50,12 +50,12 @@
                                 <td>
                                     <img src="~/Assets/img/Clothes/@Html.DisplayFor(modelItem => item.ImageProduct)" class="img-thumbnail" style="width:75px" alt="Alternate Text" />
                                 </td>
-                                <td>@Html.DisplayFor(modelItem => item.PriceProduct)<span>đ</span></td>
+                                <td>@String.Format("{0:0,0 }", item.PriceProduct)<sub>đ</sub></td>
                                 <td>@String.Format("{0:dd/MM/yyyy}", item.CreateDate)</td>
                                 <td>@String.Format("{0:dd/MM/yyyy}", item.UpdateDate)</td>
                                 <td style="max-width:200px">@trumcate(item.DescribeProduct ,40)</td>
                                 <td>@Html.DisplayFor(modelItem => item.ProductType.NameProductType)</td>
-                                <td>@Html.DisplayFor(modelItem => item.StatusProduct)
+                                <td>@Html.DisplayFor(modelItem => item.StatusProduct)</td>
                                 <td>
                                     @Html.ActionLink("Edit", "EditProduct", new { id = item.IdProduct }, new { @class = "btn btn-info w-75 mb-1" })
                                     @Html.ActionLink("Delete", "DeleteProduct", new { id = item.IdProduct }, new { @class = "btn btn-warning w-75" })
