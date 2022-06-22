@@ -2336,12 +2336,12 @@
     <Content Include="Areas\Admin\Views\Manage\DeleteProductType.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\DetailProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\AddProductDetailSize.cshtml" />
-    <Content Include="Areas\Admin\Views\Manage\DeleteProductDetail.cshtml" />
     <Content Include="Models\DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Areas\Admin\Views\Manage\DetailProducts.cshtml" />
     <None Include="Models\DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>

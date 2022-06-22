@@ -40,7 +40,6 @@
                             <th>Loại</th>
                             <th>Trạng thái</th>
                             <th>&nbsp;</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -54,13 +53,14 @@
                                 <td>@Html.DisplayFor(modelItem => item.PriceProduct)<span>đ</span></td>
                                 <td>@String.Format("{0:dd/MM/yyyy}", item.CreateDate)</td>
                                 <td>@String.Format("{0:dd/MM/yyyy}", item.UpdateDate)</td>
-                                <td style="max-width:200px">@Html.DisplayFor(modelItem => item.DescribeProduct)</td>
+                                <td style="max-width:200px">@trumcate(item.DescribeProduct ,40)</td>
                                 <td>@Html.DisplayFor(modelItem => item.ProductType.NameProductType)</td>
                                 <td>@Html.DisplayFor(modelItem => item.StatusProduct)
                                 <td>
                                     @Html.ActionLink("Edit", "EditProduct", new { id = item.IdProduct }, new { @class = "btn btn-info w-75 mb-1" })
                                     @Html.ActionLink("Delete", "DeleteProduct", new { id = item.IdProduct }, new { @class = "btn btn-warning w-75" })
-                                    @Html.ActionLink("Detail", "DetailProduct", new { id = item.IdProduct }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Size", "DetailProduct", new { id = item.IdProduct }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Detail", "DetailProducts", new { id = item.IdProduct }, new { @class = "btn btn-primary" })
                                 </td>
                             </tr>
                         }

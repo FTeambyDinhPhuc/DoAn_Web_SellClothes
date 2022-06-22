@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<DoAn_Web_SellClothes.Models.ProductDetail>
-@using DoAn_Web_SellClothes.Models
+    @*@model DoAn_Web_SellClothes.Models.Product*@
 @{
     ViewBag.Title = "DetailProduct";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -11,27 +11,32 @@
     <div class="mb-3">
         @Html.ActionLink("Thêm size cho sản phẩm", "AddProductDetailSize", new { @class = "btn btn - success" })
     </div>
-    <table class="table">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">Mã sản phẩm</th>
-                <th scope="col">Loại sản phẩm</th>
-                <th scope="col">Số lượng</th>
-                <th scope="col">&nbsp;</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-             {
-                <tr>
-                    <td>@item.IdProduct</td>
-                    <td>@item.SizeProduct.NameSizeProduct</td>
-                    <td>@item.SoLuongTon</td>
-                    <td>
-                        @Html.ActionLink("Delete", "DeleteProductDetail", new { id = item.IdProduct, size = item.IdSizeProduct }, new { @class = "btn btn-warning w-75" })
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="row">       
+        <div class="col-xl-12">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Mã sản phẩm</th>
+                        <th scope="col">Loại sản phẩm</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.IdProduct</td>
+                            <td>@item.SizeProduct.NameSizeProduct</td>
+                            <td>@item.SoLuongTon</td>
+                            <td>
+                                @Html.ActionLink("Delete", "DeleteProductDetail", new { id = item.IdProduct, size = item.IdSizeProduct }, new { @class = "btn btn-warning w-75" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
