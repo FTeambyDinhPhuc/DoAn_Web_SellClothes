@@ -7,7 +7,7 @@
             <img src="~/Assets/img/Clothes/@item.ImageProduct" alt="@item.NameProduct">
             <div class="card-body">
                 <p title="@item.NameProduct" class="name-product card-title">@item.NameProduct</p>
-                <p class="price-product card-text">@item.PriceProduct <span class="currency-symbol">&#160;VND</span></p>
+                <p class="price-product card-text">@String.Format("{0:0,0}", @item.PriceProduct) <span class="currency-symbol">&#160;VND</span></p>
             </div>
         </a>
     </div>

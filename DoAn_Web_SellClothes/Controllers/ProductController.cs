@@ -58,7 +58,7 @@ namespace DoAn_Web_SellClothes.Controllers
             sanPham.idSize = maSize;
              sanPham.soluongton = soLuongTon;
             sanPham.sizeProduct = sizeSanPham;
-            if (demsanpham == 0)
+            if (demsanpham <= 0)
             {
                 sanPham.tinhtrangsanpham = false;
             }
@@ -66,6 +66,7 @@ namespace DoAn_Web_SellClothes.Controllers
             {
                 sanPham.tinhtrangsanpham = true;
             }
+            if (!String.IsNullOrEmpty(url)) sanPham.urlBack = url;
             return View(sanPham);
         }
         public ActionResult ProductPage(int? page)

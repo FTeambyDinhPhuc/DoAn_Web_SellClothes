@@ -65,6 +65,17 @@ namespace DoAn_Web_SellClothes.Controllers
             }
             else sizeid = Int32.Parse(Request.Form["nameSize"].ToString());
             int sl = Int32.Parse(Request.Form["quantity"].ToString());
+            int soLuongTon = data.ProductDetails.SingleOrDefault(p => p.IdProduct == idProduct && p.IdSizeProduct == sizeid).SoLuongTon.Value;
+            if(sl>soLuongTon)
+            {
+                Session["sl"] = 1;
+                Session["Error1"] = "Số lượng mua lớn hơn số lượng tồn! Vui lòng chọn lại!";
+                return Redirect(strURL);
+            }
+            else
+            {
+                Session["sl"] = null;
+            }
             //Kiểm tra sản phẩm này tồn tại trong Session["Giohang"] chưa?
             Giohang giohang = listgiohang.Find(n => n.iIdProduct == idProduct && n.iSize==sizeid);
             if(giohang==null)
@@ -126,64 +137,67 @@ namespace DoAn_Web_SellClothes.Controllers
             listProductInCart.Clear();
             return RedirectToAction("ProductPage", "Product");
         }
-        //public ActionResult Checkout()
-        //{
-        //    Account ac = (Account)Session["user"];
-        //    Session["name"] = ac.FullName;
-        //    Session["phone"] = ac.PhoneNumber;
-        //    Session["address"] = ac.AddressUser;
-        //    List<Giohang> listgiohang = LayGioHang();
-        //    ViewBag.TongSoLuong = TongSoLuong();
-        //    ViewBag.TongTien = TongTien();
-        //    ViewBag.TongTienShip = TongTien() + 25000;
-        //    List<InfoCustomerBill> listInfo = new List<InfoCustomerBill>();
-        //    string billing_name = Request.Form["billing_name"];
-        //    string billing_address = Request.Form["billing_address"];
-        //    string billing_phone = Request.Form["billing_phone"];
-        //    string billing_note = Request.Form["billing_note"];
-        //    if (String.IsNullOrEmpty(billing_name) || String.IsNullOrEmpty(billing_address) || String.IsNullOrEmpty(billing_phone) || String.IsNullOrEmpty(billing_note))
-        //    {
-        //        InfoCustomerBill info;
-        //        info = new InfoCustomerBill(billing_name, billing_address, billing_phone, billing_note);
-        //        listInfo.Add(info);
-        //    }
-        //    return View(listgiohang);
-        //}
-
-        //public ActionResult Pay(string strURL)
-        //{
-        //    Account ac = (Account)Session["user"];
-        //    Invoice ddh = new Invoice();
-        //    List<Giohang> gh = LayGioHang();
-        //    List<InfoCustomerBill> info = null;
-        //    ddh.IdAccount = ac.IdAccount;
-        //    foreach(var item in info)
-        //    {
-        //        ddh.InvoiceNameReceiver = item.billing_name;
-        //        ddh.InvoicePhoneReceiver = item.billing_phone;
-        //        ddh.InvoiceAddressReceiver = item.billing_address;
-        //        ddh.NoteInvoice = item.billing_note;
-        //        data.Invoices.InsertOnSubmit(ddh);
-        //    }
-        //    ddh.InvoiceDate = DateTime.Now;
-        //    ddh.TotalInvoice = TongTien() + 25000;
-        //    //ddh.PaymentsInvoice =
-        //    ddh.StatusInvoice = false;
-        //    ddh.Paid = false;
-        //    data.Invoices.InsertOnSubmit(ddh);
-        //    foreach (var item in gh)
-        //    {
-        //        InvoiceDetail ctdh = new InvoiceDetail();
-        //        ctdh.IdSizeProduct = (int)item.iSize;
-        //        ctdh.IdProduct = (int)item.iIdProduct;
-        //        ctdh.IdInvoice = ddh.IdInvoice;
-        //        ctdh.Quantity = item.iQuantityProduct;
-        //        ctdh.UnitPrice = item.iPriceProduct;
-        //        updateSoLuong(ctdh);
-        //        data.InvoiceDetails.InsertOnSubmit(ctdh);
-        //    }
-        //    data.SubmitChanges();
-        //    return RedirectToAction("Thanks", "Home");
-        //}
+        [HttpGet]
+        public ActionResult Checkout()
+        {
+            Account ac = (Account)Session["user"];
+            Session["name"] = ac.FullName;
+            Session["phone"] = ac.PhoneNumber;
+            Session["address"] = ac.AddressUser;
+            List<Giohang> listgiohang = LayGioHang();
+            ViewBag.TongSoLuong = TongSoLuong();
+            ViewBag.TongTien = TongTien();
+            ViewBag.TongTienShip = TongTien() + 25000;
+            return View(listgiohang);
+        }
+        [HttpPost]
+        public ActionResult Checkout(string strURL, FormCollection collection)
+        {
+            Account ac = (Account)Session["user"];
+            Invoice ddh = new Invoice();
+            List<Giohang> gh = LayGioHang();
+            //List<InfoCustomerBill> info = null;
+            ddh.IdAccount = ac.IdAccount;
+            ddh.InvoiceNameReceiver = collection["billing_name"];
+            ddh.InvoicePhoneReceiver = collection["billing_phone"];
+            ddh.InvoiceAddressReceiver = collection["billing_address"];
+            ddh.NoteInvoice = collection["billing_note"];
+            ddh.InvoiceDate = DateTime.Now;
+            ddh.TotalInvoice = TongTien() + 25000;
+            if(collection["Payment"]==null)
+            {
+                ViewBag.ChoosePayment = "Vui lòng chọn hình thức thanh toán!";
+                return this.Checkout();
+            }
+            ddh.PaymentsInvoice = collection["Payment"];
+            ddh.StatusInvoice = false;
+            ddh.Paid = false;
+            data.Invoices.InsertOnSubmit(ddh);
+            data.SubmitChanges();
+            Session["idInvoice"] = ddh.IdInvoice;
+            foreach (var item in gh)
+            {
+                InvoiceDetail ctdh = new InvoiceDetail();
+                ctdh.IdSizeProduct = (int)item.iSize;
+                ctdh.IdProduct = (int)item.iIdProduct;
+                ctdh.IdInvoice = ddh.IdInvoice;
+                ctdh.Quantity = item.iQuantityProduct;
+                ctdh.UnitPrice = item.iPriceProduct;
+                int soLuongTon = data.ProductDetails.SingleOrDefault(p => p.IdProduct == item.iIdProduct && p.IdSizeProduct == item.iSize).SoLuongTon.Value;
+                if(soLuongTon<ctdh.Quantity)
+                {
+                    ViewBag.SoLuongTon = "Sản phẩm hết hàng, sản phẩm hết hàng sẽ được xóa khỏi gio hàng!";
+                    List<Giohang> listProductInCart = LayGioHang();
+                    Giohang sp = listProductInCart.SingleOrDefault(n => n.iIdProduct == item.iIdProduct && n.iSize == item.iSize);
+                    listProductInCart.Remove(sp);
+                    return this.Checkout();
+                }
+                updateSoLuong(ctdh);
+                data.InvoiceDetails.InsertOnSubmit(ctdh);
+            }
+            data.SubmitChanges();
+            Session["Giohang"] = null;
+            return RedirectToAction("Thanks", "Home");
+        }
     }
 }

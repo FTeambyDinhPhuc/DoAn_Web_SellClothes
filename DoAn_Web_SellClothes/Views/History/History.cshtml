@@ -1,4 +1,5 @@
-﻿
+﻿@using DoAn_Web_SellClothes.Models
+@model IEnumerable<DoAn_Web_SellClothes.Models.Invoice>
 @{
     ViewBag.Title = "History";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,58 +15,51 @@
                     <th>Ngày mua</th>
                     <th>Tên khách hàng</th>
                     <th>Địa chỉ giao hàng</th>
+                    <th>Số điện thoại</th>
+                    <th>Trạng thái đơn hàng</th>
+                    <th>Hình thức thanh toán</th>
+                    <th>Trạng thái thanh toán</th>
                     <th>Tổng tiền</th>
-                    <th>Trạng thái</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
+
             <tbody class="text-left">
-                <tr>
-                    <td class="bill-id">
-                        1
-                    </td>
-                    <td class="bill-date ">
-                        1/1/2022
-                    </td>
-                    <td class="bill-nameCustomer">
-                        bbifgdfgdfgdfgdfgdfgdfgdfg
-                    </td>
-                    <td class="bill-addressCustomer">
-                       5412d
-                    </td>
-                    <td class="bill-total">
-                        49.00<span> VNĐ</span>
-                    </td>
-                    <td class="bill-status">
-                        Đã xác nhận
-                    </td>
-                    <td class="bill-details">
-                        <a href="@Url.Action("HistoryDetails","History")">View details</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="bill-id">
-                        1
-                    </td>
-                    <td class="bill-date ">
-                        1/1/2022
-                    </td>
-                    <td class="bill-nameCustomer">
-                        bbifgdfgdfgdfgdfgdfgdfgdfg
-                    </td>
-                    <td class="bill-addressCustomer">
-                        5412d
-                    </td>
-                    <td class="bill-total">
-                        49.00<span> VNĐ</span>
-                    </td>
-                    <td class="bill-status">
-                        Đã xác nhận
-                    </td>
-                    <td class="bill-details">
-                        <a href="@Url.Action("HistoryDetails","History")">View details</a>
-                    </td>
-                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="bill-id">
+                            @item.IdInvoice
+                        </td>
+                        <td class="bill-date ">
+                            @item.InvoiceDate
+                        </td>
+                        <td class="bill-nameCustomer">
+                            @item.InvoiceNameReceiver
+                        </td>
+                        <td class="bill-addressCustomer">
+                            @item.InvoiceAddressReceiver
+                        </td>
+                        <td class="bill-phone">
+                            @item.InvoicePhoneReceiver
+                        </td>
+                        <td class="bill-payment">
+                            @ViewBag.StatusInvoice
+                        </td>
+                        <td class="bill-payment">
+                            @item.PaymentsInvoice
+                        </td>
+                        <td class="bill-statusPayment">
+                            @ViewBag.Paid
+                        </td>
+                        <td class="bill-total">
+                            @String.Format("{0:0,0}", @item.TotalInvoice)<span> VNĐ</span>
+                        </td>
+                        <td class="bill-details">
+                            <a href="@Url.Action("HistoryDetails", "History",new {idInvoice=item.IdInvoice })">View details</a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

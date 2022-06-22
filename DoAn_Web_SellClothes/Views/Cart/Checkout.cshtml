@@ -4,11 +4,9 @@
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-<div class="container">
-    @using (Html.BeginForm())
-    {
+@using(Html.BeginForm())
+{ 
+    <div class="container">
         <div class="row my-lg-5 my-md-4 my-3">
 
             <!-- Checkout Area Start -->
@@ -17,6 +15,7 @@
                     <h2>Billing Details</h2>
                 </div>
                 <div class="checkout-form">
+
                     <!--Full name-->
                     <div class="row mb-4">
                         <div class="form__group col-12">
@@ -24,7 +23,7 @@
                                 Tên khách hàng
                                 <span class="required">*</span>
                             </label>
-                            <input type="text" name="billing_name" value="@Session["name"]">
+                            <input type="text" name="billing_name" id="billing_name" value="@Session["name"]">
                         </div>
                     </div>
                     <!--Địa chỉ-->
@@ -34,7 +33,7 @@
                                 Địa chỉ
                                 <span class="required">*</span>
                             </label>
-                            <input type="text" name="billing_address" value="@Session["address"]">
+                            <input type="text" name="billing_address" id="billing_address" value="@Session["address"]">
                         </div>
                     </div>
                     <!--Phone-->
@@ -43,20 +42,21 @@
                             <label for="billing_phone">
                                 Số điện thoại <span class="required">*</span>
                             </label>
-                            <input type="text" name="billing_phone" value="@Session["phone"]">
+                            <input type="text" name="billing_phone" id="billing_phone" value="@Session["phone"]">
                         </div>
                     </div>
                     <!--Ghi chú cho đơn hàng-->
                     <div class="row mb-4">
                         <div class="form__group col-12">
-                            <label for="billing_email">
+                            <label for="billing_note">
                                 Ghi chú:
-                                <span class="required">*</span>
+                                <span class="required"></span>
                             </label>
                             <input type="text" name="billing_note" id="billing_note">
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="col-xl-6 offset-xl-1 col-lg-6 mt-4">
@@ -75,7 +75,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach(var item in Model)
+                                @foreach (var item in Model)
                                 {
                                     <tr>
                                         <td>
@@ -117,7 +117,8 @@
                     <div class="checkout-payment">
                         <div class="payment-group mt-3">
                             <div class="payment-radio">
-                                <input type="radio" name="payment-method" checked>
+                                @*<input type="radio" name="payment-method" checked>*@
+                                @Html.RadioButton("Payment", "Thanh toán trực tuyến")
                                 <label class="payment-label ml-3">THANH TOÁN TRỰC TUYẾN</label>
                             </div>
                             <div class="payment-info">
@@ -130,7 +131,8 @@
                         </div>
                         <div class="payment-group mt-3">
                             <div class="payment-radio">
-                                <input type="radio" name="payment-method">
+                                @*<input type="radio" name="payment-method">*@
+                                @Html.RadioButton("Payment", "Thanh toán khi nhận hàng")
                                 <label class="payment-label ml-3">
                                     THANH TOÁN KHI GIAO HÀNG
                                 </label>
@@ -139,21 +141,24 @@
                                 <p>Thanh toán bằng tiền mặt khi giao hàng.</p>
                             </div>
                         </div>
-                        <div class="payment-group mt-2">
+                        <div class= "payment-group mt-2">
                             <p class="mb-2">
                                 Dữ liệu cá nhân của bạn sẽ được sử dụng để xử lý đơn đặt hàng của bạn,
                                 hỗ trợ trải nghiệm của bạn trên toàn bộ trang web này và cho các mục đích khác
                             </p>
-                            <a href="@Url.Action("Pay", "Cart", new { strURL = Request.Url.ToString() })" type="submit" class="btn btn-oder py-2">
-                                Place Order
-                            </a>
+                            <input type="submit" class="btn btn-oder py-2" value="Place Order" />
+                            <br />
+                            <div class="sub-w3l" style="color:red">
+                                <h6>@ViewBag.ChoosePayment</h6>
+                                <h6>@ViewBag.SoLuongTon</h6>
+                                <h6>@ViewBag.sphethan</h6>
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Checkout Area End -->        
+            <!-- Checkout Area End -->
         </div>
-    }
     </div>
-
-
+}
