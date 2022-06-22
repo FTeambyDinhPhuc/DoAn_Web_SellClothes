@@ -464,6 +464,7 @@ footer {
     }
 /*hết Hình chi tiết sản phẩm*/
 
+
 /*Phần thông tin chi tiết sản, các chọn lựa đặt hàng*/
 
 .product-details .name-product, .product-details .tilte-category {
@@ -490,7 +491,7 @@ footer {
 }
 
 
-.btn-group button{
+/*.btn-group button{
     width:3.375rem;
     height:3.375rem;
     margin-right:1rem;
@@ -506,8 +507,33 @@ footer {
         background-color: var(--gray-color);
         font-size: 1.625rem;
         font-weight: 500;
+    }*/
+
+
+
+
+/*Bảng chọn size */
+.card-TableSize {
+    max-width: 350px;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+    .card-TableSize .title {
+        font-size: 1.5rem;
+        font-weight: 500;
+       
     }
 
+   .card-TableSize .GroupBtnSizecontent {
+        margin-top: 1rem;
+       
+    }
+
+    
+/* hết Bảng chọn size */
 /*Nút tăng giảm số lượng*/
 .btn-quantity {
     height: 3.375rem;
@@ -717,6 +743,11 @@ footer {
 /*Màn hình thông tin tài khoản*/
 .bgAccountInformation {
     background-color: var(--gray-color);
+    
+}
+
+.bgAccountInformation input{
+   max-width:none;
 }
 
 .bgAccountInformation .container {
@@ -765,6 +796,7 @@ footer {
     margin-top:3rem;
 }
 .group-button input, .group-button a {
+    flex:1;
     border: none;
     margin-right: 1.1rem;
     width: 130px;
@@ -775,10 +807,11 @@ footer {
     background: var(--primary-color);
     border-radius: .5rem;
     cursor: pointer;
-    transition: all 0.4s ease;
+    
 }
 .group-button a {
-    padding: .75rem 3.1rem; 
+    text-align:center;
+    padding-top:.6rem;
 }
 
     .group-button input:hover, .group-button a:hover {
