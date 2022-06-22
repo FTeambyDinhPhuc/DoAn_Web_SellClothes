@@ -13,5 +13,6 @@ namespace DoAn_Web_SellClothes.Models
         public int Quantity { get; set; }
         public int UnitPrice { get; set; }
         public int ThanhTienInvoiceDetails { get; set; }
+        public int idProduct { get; set; }
     }
 }

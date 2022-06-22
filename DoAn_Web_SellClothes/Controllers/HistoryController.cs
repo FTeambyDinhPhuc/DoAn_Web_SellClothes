@@ -13,7 +13,7 @@ namespace DoAn_Web_SellClothes.Controllers
         public ActionResult History()
         {
             Account ac = (Account)Session["user"];
-            var history = from h in data.Invoices where h.IdAccount == ac.IdAccount select h;
+            var history = from h in data.Invoices where h.IdAccount == ac.IdAccount orderby h.IdInvoice descending select h;
             foreach(var item in history)
             {
                 if (item.StatusInvoice == false)
@@ -46,6 +46,7 @@ namespace DoAn_Web_SellClothes.Controllers
                                 join p in data.Products on ind.IdProduct equals p.IdProduct
                                 where ind.IdInvoice == idInvoice
                                 select new InvoiceDetails {
+                                    idProduct = p.IdProduct,
                                     ImageProduct = p.ImageProduct,
                                     NameProduct = p.NameProduct,
                                     SizeProduct = s.NameSizeProduct,
