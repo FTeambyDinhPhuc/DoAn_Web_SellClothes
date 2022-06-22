@@ -1286,9 +1286,13 @@ namespace DoAn_Web_SellClothes.Models
 		private EntitySet<ProductDetail> _ProductDetails;
 		
 		private EntityRef<ProductType> _ProductType;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
+        public List<int> idSize;
+        public List<int?> soluongton;
+        public List<string> sizeProduct;
+        public bool tinhtrangsanpham;
+
+        #region Extensibility Method Definitions
+        partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void OnIdProductChanging(int value);

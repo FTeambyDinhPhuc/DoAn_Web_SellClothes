@@ -28,7 +28,7 @@
                     <td>@item.SizeProduct.NameSizeProduct</td>
                     <td>@item.SoLuongTon</td>
                     <td>
-                        @Html.ActionLink("Delete", "DeleteProductDetail", new { id = item.IdSizeProduct }, new { @class = "btn btn-warning w-75" })
+                        @Html.ActionLink("Delete", "DeleteProductDetail", new { id = item.IdProduct, size = item.IdSizeProduct }, new { @class = "btn btn-warning w-75" })
                     </td>
                 </tr>
             }

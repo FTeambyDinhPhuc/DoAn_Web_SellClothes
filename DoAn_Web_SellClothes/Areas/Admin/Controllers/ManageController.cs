@@ -438,53 +438,52 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             return RedirectToAction("DetailProduct", new { id = idpd});
         }
 
-        [HttpGet]
-        public ActionResult DeleteProductDetail()
-        {
-            ViewBag.Size = new SelectList(db.SizeProducts.ToList().OrderBy(n => n.NameSizeProduct), "IdSizeProduct", "NameSizeProduct");
-            ViewBag.IdProduct = Session["idp"];
-            return View();
-        }
-
-        //[HttpPost, ActionName("DeleteProductDetail")]
-        //public ActionResult dDeleteProductDetail(int id, FormCollection collection)
+        //[HttpGet]
+        //public ActionResult DeleteProductDetail()
         //{
-        //    int idpd = (int)Session["idp"];
         //    ViewBag.Size = new SelectList(db.SizeProducts.ToList().OrderBy(n => n.NameSizeProduct), "IdSizeProduct", "NameSizeProduct");
-        //    ;
-        //    ProductDetail sp = db.ProductDetails.SingleOrDefault(n => n.IdProduct == idpd );
-
-            
-
-        //    var idsizeProduct = (from s in db.ProductDetails 
-        //                         where s.IdProduct == idpd  
-        //                         where s.IdSizeProduct == idsize select s).ToList();
-        //    int idpd = (int)Session["idp"];
-        //    int idsize = Int32.Parse(size);
-        //    var idsizeProduct = (from s in db.ProductDetails where s.IdProduct == idpd select s).ToList();
-
-        //    foreach (var item in idsizeProduct)
-        //    {
-        //        if (idsize == item.IdSizeProduct)
-        //        {
-        //            pr.IdProduct = idpd;
-        //            pr.IdSizeProduct = idsize;
-        //            item.SoLuongTon += int.Parse(sl);
-        //            pr.SoLuongTon = item.SoLuongTon;
-        //            db.SubmitChanges();
-        //            return RedirectToAction("DetailProduct", new { id = idpd });
-        //        }
-        //    }
-        //    foreach (var item in idsizeProduct)
-        //    {
-        //        if (idpd == item.IdSizeProduct)
-        //        {
-        //            db.ProductDetails.DeleteOnSubmit();
-        //            db.SubmitChanges();
-        //            return RedirectToAction("Product");
-        //        }
-        //    }
-        //    return RedirectToAction("Product");
+        //    ViewBag.IdProduct = Session["idp"];
+        //    return View();
         //}
+
+        //[HttpPost]
+        public ActionResult DeleteProductDetail(int id)
+        {
+            int size = int.Parse(Request.QueryString["size"]);
+            //ViewBag.Size = new SelectList(db.SizeProducts.ToList().OrderBy(n => n.NameSizeProduct), "IdSizeProduct", "NameSizeProduct");
+            ProductDetail sp = db.ProductDetails.Where(n => n.IdProduct == id && n.IdSizeProduct == size).SingleOrDefault();
+
+
+
+            //var idsizeProduct = (from s in db.ProductDetails
+            //                     where s.IdProduct == id
+            //                     where s.IdSizeProduct == size
+            //                     select s).SingleOrDefault();
+
+            //foreach (var item in idsizeProduct)
+            //{
+            //    if (idsize == item.IdSizeProduct)
+            //    {
+            //        pr.IdProduct = idpd;
+            //        pr.IdSizeProduct = idsize;
+            //        item.SoLuongTon += int.Parse(sl);
+            //        pr.SoLuongTon = item.SoLuongTon;
+            //        db.SubmitChanges();
+            //        return RedirectToAction("DetailProduct", new { id = idpd });
+            //    }
+            //}
+            //foreach (var item in idsizeProduct)
+            //{
+            //    if (idpd == item.IdSizeProduct)
+            //    {
+            //        db.ProductDetails.DeleteOnSubmit();
+            //        db.SubmitChanges();
+            //        return RedirectToAction("Product");
+            //    }
+            //}
+            db.ProductDetails.DeleteOnSubmit(sp);
+            db.SubmitChanges();
+            return RedirectToAction("Product");
+        }
     }
 }
