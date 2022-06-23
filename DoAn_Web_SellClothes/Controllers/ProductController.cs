@@ -47,7 +47,7 @@ namespace DoAn_Web_SellClothes.Controllers
             return View(sanphamloainu.ToPagedList(pageNum,pageSize));
         }
         [HttpGet]
-        public ActionResult ProductDetails(int? id,string url)
+        public ActionResult ProductDetails(int? id)
         {
             //var sanpham = from sp in data.Products where sp.IdProduct == id select sp;
             var sanPham = data.Products.FirstOrDefault(p => p.IdProduct == id);
@@ -66,7 +66,7 @@ namespace DoAn_Web_SellClothes.Controllers
             {
                 sanPham.tinhtrangsanpham = true;
             }
-            if (!String.IsNullOrEmpty(url)) sanPham.urlBack = url;
+           
             return View(sanPham);
         }
         public ActionResult ProductPage(int? page)

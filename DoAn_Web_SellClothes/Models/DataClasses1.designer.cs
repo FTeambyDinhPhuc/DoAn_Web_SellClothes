@@ -60,7 +60,7 @@ namespace DoAn_Web_SellClothes.Models
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1277,8 +1277,6 @@ namespace DoAn_Web_SellClothes.Models
 		
 		private string _DescribeProduct;
 		
-		private System.Nullable<int> _QuantityProduct;
-		
 		private int _StatusProduct;
 		
 		private int _IdProductType;
@@ -1286,12 +1284,10 @@ namespace DoAn_Web_SellClothes.Models
 		private EntitySet<ProductDetail> _ProductDetails;
 		
 		private EntityRef<ProductType> _ProductType;
-		//Giá trị ngoài
-		public List<int> idSize;
-		public List<string> sizeProduct;
-		public List<int?> soluongton;
-		public bool tinhtrangsanpham; // hết hàng hoặc còn hàng => số lượng tồn = 0
-		public string urlBack;
+        public List<int> idSize;
+        public List<int?> soluongton;
+        public List<string> sizeProduct;
+        public bool tinhtrangsanpham;
 
         #region Extensibility Method Definitions
         partial void OnLoaded();
@@ -1311,8 +1307,6 @@ namespace DoAn_Web_SellClothes.Models
     partial void OnUpdateDateChanged();
     partial void OnDescribeProductChanging(string value);
     partial void OnDescribeProductChanged();
-    partial void OnQuantityProductChanging(System.Nullable<int> value);
-    partial void OnQuantityProductChanged();
     partial void OnStatusProductChanging(int value);
     partial void OnStatusProductChanged();
     partial void OnIdProductTypeChanging(int value);
@@ -1462,26 +1456,6 @@ namespace DoAn_Web_SellClothes.Models
 					this._DescribeProduct = value;
 					this.SendPropertyChanged("DescribeProduct");
 					this.OnDescribeProductChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuantityProduct", DbType="Int")]
-		public System.Nullable<int> QuantityProduct
-		{
-			get
-			{
-				return this._QuantityProduct;
-			}
-			set
-			{
-				if ((this._QuantityProduct != value))
-				{
-					this.OnQuantityProductChanging(value);
-					this.SendPropertyChanging();
-					this._QuantityProduct = value;
-					this.SendPropertyChanged("QuantityProduct");
-					this.OnQuantityProductChanged();
 				}
 			}
 		}

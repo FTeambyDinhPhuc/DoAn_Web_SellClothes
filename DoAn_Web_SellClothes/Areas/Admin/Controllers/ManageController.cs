@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PagedList;
 using DoAn_Web_SellClothes.Models;
-using PagedList.Mvc;
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
@@ -29,21 +27,16 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             return hash.ToString();
         }
         //========================================================================================
-        private List<Invoice> Receipt(int count)
-        {
-            return db.Invoices.OrderByDescending(s => s.IdInvoice).Take(count).ToList();
-        }
 
-        public ActionResult Receipt(int? page)
+        public ActionResult Receipt()
         {
             if (Session["admin"] == null)
             {
                 return RedirectToAction("LogIn", "Account");
             }
-            int pagesize = 25;
-            int pageNum = (page ?? 1);
+           
             var list = db.Invoices.OrderByDescending(s => s.IdInvoice).ToList();
-            return View(list.ToPagedList(pageNum, pagesize));
+            return View(list);
         }
         public ActionResult DetailReceipt(int id)
         {
@@ -52,51 +45,31 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
               return View(ct);
         }
         //========================================================================================
-        private List<Account> Customer(int count)
-        {
-            return db.Accounts.OrderByDescending(s => s.IdAccount).Take(count).ToList();
-        }
 
-        public ActionResult Customer(int? page)
+        public ActionResult Customer()
         {
             if (Session["admin"] == null)
             {
                 return RedirectToAction("LogIn", "Account");
             }
-            
-            int pagesize = 25;
-            int pageNum = (page ?? 1);
             var list = db.Accounts.OrderByDescending(s => s.IdAccount ).ToList();
-            return View(list.ToPagedList(pageNum, pagesize));
+            return View(list);
         }
         //========================================================================================
         public ActionResult Sex()
         {
             return View();
         }
-        private List<SizeProduct> size(int count)
-        {
-            return db.SizeProducts.OrderByDescending(s => s.IdSizeProduct).Take(count).ToList();
-        }
-        private List<ProductType> type(int count)
-        {
-            return db.ProductTypes.OrderByDescending(s => s.IdProductType).Take(count).ToList();
-        }
-        private List<ProductDetail> detail(int count)
-        {
-            return db.ProductDetails.OrderByDescending(s => s.IdProduct).Take(count).ToList();
-        }
         //========================================================================================
-        public ActionResult TypesClothes(int ? page)
+        public ActionResult TypesClothes()
         {
             if (Session["admin"] == null)
             {
                 return RedirectToAction("LogIn", "Account");
             }
-            int pagesize = 25;
-            int pageNum = (page ?? 1);
+      
             var list = db.ProductTypes.OrderByDescending(s => s.IdProductType ).ToList();
-            return View(list.ToPagedList(pageNum, pagesize));
+            return View(list);
         }
         
         [HttpGet]
@@ -151,8 +124,8 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             }
         }
 
-        [HttpPost, ActionName("EditTypesClothes")]
-        public ActionResult eEditTypesClothes(FormCollection collection, int id)
+        [HttpPost]
+        public ActionResult EditTypesClothes(FormCollection collection, int id)
         {
             if (Session["admin"] == null)
             {
@@ -212,21 +185,17 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             }
         }
         //============================================================================================
-        private List<Product> produdt(int count)
-        {
-            return db.Products.OrderByDescending(s => s.IdProduct).Take(count).ToList();
-        }
-               
-        public ActionResult Product(int ? page)
+
+        //Hiển thị danh sách sản phẩm
+        public ActionResult Product()
         {
             if (Session["admin"] == null)
             {
                 return RedirectToAction("LogIn", "Account");
             }
-            int pagesize = 25;
-            int pageNum = (page ?? 1);
+         
             var list = db.Products.OrderByDescending(s => s.IdProduct).ToList();
-            return View(list.ToPagedList(pageNum, pagesize));
+            return View(list);
         }
 
         // hiển thị màn hình thêm sản phẩm
