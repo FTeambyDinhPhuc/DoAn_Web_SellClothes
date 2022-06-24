@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-xl-4 col-md-6">
             <div class="card bg-primary text-white mb-4">
-                <div class="card-body">Tổng đơn hàng: <span>100</span></div>
+                <div class="card-body">Tổng đơn hàng: <span>@ViewBag.Receiptcount</span></div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
                     <a class="small text-white stretched-link" href="@Url.Action("Receipt","Manage")">View Details</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -18,7 +18,7 @@
         </div>
         <div class="col-xl-4 col-md-6">
             <div class="card bg-warning text-white mb-4">
-                <div class="card-body">Tổng sản phẩm: <span>50</span></div>
+                <div class="card-body">Tổng sản phẩm: <span>@ViewBag.Productcount</span></div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
                     <a class="small text-white stretched-link" href="@Url.Action("Product","Manage")">View Details</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -27,7 +27,7 @@
         </div>
         <div class="col-xl-4 col-md-6">
             <div class="card bg-success text-white mb-4">
-                <div class="card-body">Tổng khách hàng: <span>30</span></div>
+                <div class="card-body">Tổng khách hàng: <span>@ViewBag.Customercount</span></div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
                     <a class="small text-white stretched-link" href="@Url.Action("Customer","Manage")">View Details</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>

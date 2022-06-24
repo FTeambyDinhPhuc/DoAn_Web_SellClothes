@@ -64,7 +64,6 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="UpdateDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="DescribeProduct" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="QuantityProduct" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="StatusProduct" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="IdProductType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Product_ProductDetail" Member="ProductDetails" ThisKey="IdProduct" OtherKey="IdProduct" Type="ProductDetail" />
@@ -81,19 +80,19 @@
       <Association Name="SizeProduct_ProductDetail" Member="SizeProduct" ThisKey="IdSizeProduct" OtherKey="IdSizeProduct" Type="SizeProduct" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.SizeProduct" Member="SizeProducts">
+    <Type Name="SizeProduct">
+      <Column Name="IdSizeProduct" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NameSizeProduct" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Association Name="SizeProduct_ProductDetail" Member="ProductDetails" ThisKey="IdSizeProduct" OtherKey="IdSizeProduct" Type="ProductDetail" />
+    </Type>
+  </Table>
   <Table Name="dbo.ProductType" Member="ProductTypes">
     <Type Name="ProductType">
       <Column Name="IdProductType" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="NameProductType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="IdSex" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="ProductType_Product" Member="Products" ThisKey="IdProductType" OtherKey="IdProductType" Type="Product" />
-    </Type>
-  </Table>
-  <Table Name="dbo.SizeProduct" Member="SizeProducts">
-    <Type Name="SizeProduct">
-      <Column Name="IdSizeProduct" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NameSizeProduct" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Association Name="SizeProduct_ProductDetail" Member="ProductDetails" ThisKey="IdSizeProduct" OtherKey="IdSizeProduct" Type="ProductDetail" />
     </Type>
   </Table>
 </Database>
