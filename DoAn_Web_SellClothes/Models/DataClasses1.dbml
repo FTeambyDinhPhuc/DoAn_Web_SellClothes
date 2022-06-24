@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuanLyBanQuanAo" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DINHPHUCDESKTOP\SQLEXPRESS;Initial Catalog=QuanLyBanQuanAo;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QuanLyBanQuanAoConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=HOANGPC;Initial Catalog=QuanLyBanQuanAo;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QuanLyBanQuanAoConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Account" Member="Accounts">
     <Type Name="Account">
       <Column Name="IdAccount" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -10,6 +10,13 @@
       <Column Name="PasswordUser" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="StatusAccount" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Account_Invoice" Member="Invoices" ThisKey="IdAccount" OtherKey="IdAccount" Type="Invoice" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SizeProduct" Member="SizeProducts">
+    <Type Name="SizeProduct">
+      <Column Name="IdSizeProduct" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NameSizeProduct" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Association Name="SizeProduct_ProductDetail" Member="ProductDetails" ThisKey="IdSizeProduct" OtherKey="IdSizeProduct" Type="ProductDetail" />
     </Type>
   </Table>
   <Table Name="dbo.AdminAccount" Member="AdminAccounts">
@@ -86,13 +93,6 @@
       <Column Name="NameProductType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="IdSex" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="ProductType_Product" Member="Products" ThisKey="IdProductType" OtherKey="IdProductType" Type="Product" />
-    </Type>
-  </Table>
-  <Table Name="dbo.SizeProduct" Member="SizeProducts">
-    <Type Name="SizeProduct">
-      <Column Name="IdSizeProduct" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NameSizeProduct" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Association Name="SizeProduct_ProductDetail" Member="ProductDetails" ThisKey="IdSizeProduct" OtherKey="IdSizeProduct" Type="ProductDetail" />
     </Type>
   </Table>
 </Database>
