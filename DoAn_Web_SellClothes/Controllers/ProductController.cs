@@ -56,7 +56,7 @@ namespace DoAn_Web_SellClothes.Controllers
             var sizeSanPham = data.SizeProducts.Select(p => p.NameSizeProduct).ToList();
             var demsanpham = soLuongTon.Sum(p => p.Value);
             sanPham.idSize = maSize;
-             sanPham.soluongton = soLuongTon;
+            sanPham.soluongton = soLuongTon;
             sanPham.sizeProduct = sizeSanPham;
             if (demsanpham <= 0)
             {
