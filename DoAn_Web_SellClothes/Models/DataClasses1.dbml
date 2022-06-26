@@ -55,6 +55,16 @@
       <Association Name="ProductDetail_InvoiceDetail" Member="ProductDetail" ThisKey="IdSizeProduct,IdProduct" OtherKey="IdSizeProduct,IdProduct" Type="ProductDetail" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ProductDetail" Member="ProductDetails">
+    <Type Name="ProductDetail">
+      <Column Name="IdSizeProduct" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdProduct" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoLuongTon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ProductDetail_InvoiceDetail" Member="InvoiceDetails" ThisKey="IdSizeProduct,IdProduct" OtherKey="IdSizeProduct,IdProduct" Type="InvoiceDetail" />
+      <Association Name="Product_ProductDetail" Member="Product" ThisKey="IdProduct" OtherKey="IdProduct" Type="Product" IsForeignKey="true" />
+      <Association Name="SizeProduct_ProductDetail" Member="SizeProduct" ThisKey="IdSizeProduct" OtherKey="IdSizeProduct" Type="SizeProduct" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Product" Member="Products">
     <Type Name="Product">
       <Column Name="IdProduct" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -64,21 +74,10 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="UpdateDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="DescribeProduct" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="QuantityProduct" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="StatusProduct" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="IdProductType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Product_ProductDetail" Member="ProductDetails" ThisKey="IdProduct" OtherKey="IdProduct" Type="ProductDetail" />
       <Association Name="ProductType_Product" Member="ProductType" ThisKey="IdProductType" OtherKey="IdProductType" Type="ProductType" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ProductDetail" Member="ProductDetails">
-    <Type Name="ProductDetail">
-      <Column Name="IdSizeProduct" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="IdProduct" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="SoLuongTon" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="ProductDetail_InvoiceDetail" Member="InvoiceDetails" ThisKey="IdSizeProduct,IdProduct" OtherKey="IdSizeProduct,IdProduct" Type="InvoiceDetail" />
-      <Association Name="Product_ProductDetail" Member="Product" ThisKey="IdProduct" OtherKey="IdProduct" Type="Product" IsForeignKey="true" />
-      <Association Name="SizeProduct_ProductDetail" Member="SizeProduct" ThisKey="IdSizeProduct" OtherKey="IdSizeProduct" Type="SizeProduct" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ProductType" Member="ProductTypes">
