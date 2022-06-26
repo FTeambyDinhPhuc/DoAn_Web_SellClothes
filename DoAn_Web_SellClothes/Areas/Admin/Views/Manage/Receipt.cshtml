@@ -41,8 +41,8 @@
                             <td>@String.Format("{0:dd/MM/yyyy}", item.InvoiceDate)</td>
                             <td>@String.Format("{0:0,0 }", item.TotalInvoice)<sub>đ</sub></td>
                             <td>@Html.DisplayFor(modelItem => item.PaymentsInvoice)</td>
-                            <td>@Html.DisplayFor(modelItem => item.StatusInvoice)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Paid)</td>
+                            <td>@ViewBag.Paid</td>
+                            <td>@ViewBag.StatusInvoice</td>
                             <td>@Html.DisplayFor(modelItem => item.NoteInvoice)</td>
                             <td>
                                 @Html.ActionLink("Detail", "DetailReceipt", new { id = item.IdInvoice }, new { @class = "btn btn-info" })

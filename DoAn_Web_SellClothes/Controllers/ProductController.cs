@@ -66,7 +66,7 @@ namespace DoAn_Web_SellClothes.Controllers
             {
                 sanPham.tinhtrangsanpham = true;
             }
-           
+      
             return View(sanPham);
         }
         public ActionResult ProductPage(int? page)

@@ -1,7 +1,9 @@
-﻿@model DoAn_Web_SellClothes.Models.InvoiceDetail
+﻿@*@model DoAn_Web_SellClothes.Models.InvoiceDetail*@
+@model IEnumerable<DoAn_Web_SellClothes.Models.InvoiceDetail>
 @{
     ViewBag.Title = "DetailReceipt";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var hd = ViewBag.ma;
 }
 
 
@@ -12,8 +14,8 @@
                 <div class="d-flex justify-content-between">
                     <h1>FTeam</h1>
                     <div>
-                        <h2>Hóa đơn #<span>@Html.DisplayFor(model => model.Invoice.IdAccount)</span></h2>
-                        <p>ngày lập: <span>@Html.DisplayFor(model => model.Invoice.InvoiceDate)</span></p>
+                        <h2>Hóa đơn #<span>@hd.IdInvoice</span></h2>
+                        <p>ngày lập: <span>@hd.InvoiceDate.ToString()</span></p>
                     </div>
                 </div>
                 <hr />
@@ -26,14 +28,14 @@
                     </div>
                     <div>
                         <h4>Đến:</h4>
-                        <p>@Html.DisplayFor(model => model.Invoice.Account.FullName)</p>
-                        <p>@Html.DisplayFor(model => model.Invoice.InvoicePhoneReceiver)</p>
-                        <p>@Html.DisplayFor(model => model.Invoice.InvoiceAddressReceiver)</p>
+                        <p>@hd.InvoiceNameReceiver</p>
+                        <p>@hd.InvoicePhoneReceiver</p>
+                        <p>@hd.InvoiceAddressReceiver</p>
                     </div>
                 </div>
                 <div>
                     <h4>Ghi chú:</h4>
-                    <p>@Html.DisplayFor(model => model.Invoice.NoteInvoice)</p>
+                    <p>@hd.NoteInvoice</p>
                 </div>
 
                 <hr />
@@ -50,29 +52,33 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>@Html.DisplayFor(model => model.ProductDetail.Product.NameProduct)</td>
-                            <td>@Html.DisplayFor(model => model.ProductDetail.SizeProduct.NameSizeProduct)</td>
-                            <td>@Html.DisplayFor(model => model.Quantity)</td>
-                            <td>@String.Format("{0:0,0 }",Model.UnitPrice )<sub>đ</sub></td>
-                            <td>@String.Format("{0:0,0 }", Model.Invoice.TotalInvoice)<sub>đ</sub></td>
-                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ProductDetail.Product.NameProduct</td>
+                                <td>@item.ProductDetail.SizeProduct.NameSizeProduct</td>
+                                <td>@item.Quantity</td>
+                                <td>@String.Format("{0:0,0 }", item.UnitPrice)<sub>đ</sub></td>
+                                <td>@String.Format("{0:0,0 }", item.UnitPrice * item.Quantity)<sub>đ</sub></td>
+                            </tr>
+                        }
+
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colspan="4" align="right"><b>Tổng tiền</b></td>
-                            <td>@String.Format("{0:0,0 }", Model.Invoice.TotalInvoice)<sub>đ</sub></td>
+                            <td>@String.Format("{0:0,0 }", @hd.TotalInvoice)<sub>đ</sub></td>
                         </tr>
                     </tfoot>
                 </table>
                 <hr />
-                <p>Phương thức thanh toán: <span>@Html.DisplayFor(model => model.Invoice.PaymentsInvoice)</span></p>
+                <p>Phương thức thanh toán: <span>@hd.PaymentsInvoice</span></p>
             </div>
-        </div> 
+        </div>
     </div>
 
     <div class="col-xl-4" id="groupBtnStatus">
-        <div class="card" >
+        <div class="card">
             <div class="card-body d-xl-flex flex-column justify-content-between">
                 <button class="btn btn-success mb-xl-2">Xác nhận đơn hàng</button>
                 <button class="btn btn-warning mb-xl-2">Hủy đơn hàng</button>

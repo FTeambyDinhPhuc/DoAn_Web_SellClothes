@@ -34,15 +34,42 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             {
                 return RedirectToAction("LogIn", "Account");
             }
-           
             var list = db.Invoices.OrderByDescending(s => s.IdInvoice).ToList();
+            foreach (var item in list)
+            {
+                if (item.StatusInvoice == false)
+                {
+                    ViewBag.StatusInvoice = "Chưa giao hàng";
+                }
+                else if (item.StatusInvoice == true)
+                {
+                    ViewBag.StatusInvoice = "Đã giao hàng";
+                }
+                if (item.Paid == false)
+                {
+                    ViewBag.Paid = "Chưa thanh toán";
+                }
+                else if (item.Paid == true)
+                {
+                    ViewBag.Paid = "Đã thanh toán";
+                }
+            }
             return View(list);
         }
         public ActionResult DetailReceipt(int id)
         {
+            //InvoiceDetail ct = db.InvoiceDetails.Where(n => n.IdInvoice == id).;
+            ViewBag.ma = db.Invoices.SingleOrDefault(n => n.IdInvoice == id);
+            var ct = (from s in db.InvoiceDetails where s.IdInvoice == id select s).ToList();
+            return View(ct);
+        }
+        public ActionResult xacnhan(int id)
+        {
+            //InvoiceDetail ct = db.InvoiceDetails.Where(n => n.IdInvoice == id).;
+
+            Invoice xn = db.Invoices.SingleOrDefault(n => n.IdInvoice == id);
             
-              InvoiceDetail ct = db.InvoiceDetails.SingleOrDefault(n => n.IdInvoice == id);           
-              return View(ct);
+            return View(xn);
         }
         //========================================================================================
 
@@ -51,7 +78,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             if (Session["admin"] == null)
             {
                 return RedirectToAction("LogIn", "Account");
-            }
+            }                   
             var list = db.Accounts.OrderByDescending(s => s.IdAccount ).ToList();
             return View(list);
         }
@@ -67,7 +94,6 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             {
                 return RedirectToAction("LogIn", "Account");
             }
-      
             var list = db.ProductTypes.OrderByDescending(s => s.IdProductType ).ToList();
             return View(list);
         }
@@ -102,7 +128,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             db.ProductTypes.InsertOnSubmit(pr);
             db.SubmitChanges();
             return RedirectToAction("TypesClothes", "Manage");
-        }
+        } 
 
         [HttpGet]
         public ActionResult EditTypesClothes(int id)
@@ -192,8 +218,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             if (Session["admin"] == null)
             {
                 return RedirectToAction("LogIn", "Account");
-            }
-         
+            }           
             var list = db.Products.OrderByDescending(s => s.IdProduct).ToList();
             return View(list);
         }
