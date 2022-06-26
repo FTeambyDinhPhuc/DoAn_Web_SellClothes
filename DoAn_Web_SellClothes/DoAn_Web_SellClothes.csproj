@@ -142,10 +142,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\base.css" />
-    <Content Include="Assets\css\elegant-icons.css" />
     <Content Include="Assets\css\main.css" />
     <Content Include="Assets\css\style-admin.css" />
-    <Content Include="Assets\fonts\elegantlicons\ElegantIcons.svg" />
     <Content Include="Assets\fonts\fontawesome-free-6.1.1-web\css\all.css" />
     <Content Include="Assets\fonts\fontawesome-free-6.1.1-web\css\all.min.css" />
     <Content Include="Assets\fonts\fontawesome-free-6.1.1-web\css\brands.css" />
@@ -2321,9 +2319,6 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="Assets\fonts\elegantlicons\ElegantIcons.eot" />
-    <Content Include="Assets\fonts\elegantlicons\ElegantIcons.ttf" />
-    <Content Include="Assets\fonts\elegantlicons\ElegantIcons.woff" />
     <Content Include="Areas\Admin\Views\Account\ChangePassword.cshtml" />
     <Content Include="Areas\Admin\Views\Account\LogIn.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\Receipt.cshtml" />
@@ -2336,8 +2331,13 @@
     <Content Include="Areas\Admin\Views\Manage\AddTypesClothes.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\EditTypesClothes.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\AddProduct.cshtml" />
-    <Content Include="Areas\Admin\Views\Manage\EditProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\DetailReceipt.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\DeleteProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\EditProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\DeleteProductType.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\DetailProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\AddProductDetailSize.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\DetailProducts.cshtml" />
     <Content Include="Models\DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>

@@ -280,3 +280,12 @@ body {
     width:20px;
 }
 /*Hết màn hình quản lý sản phẩm*/
+
+/*In*/
+@media print{
+    nav, footer, #layoutSidenav_nav, #groupBtnStatus {
+        display: none;
+    }
+}
+/*Hết in*/
+

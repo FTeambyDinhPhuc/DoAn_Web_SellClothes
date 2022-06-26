@@ -1,48 +1,145 @@
-﻿
+﻿@*@model DoAn_Web_SellClothes.Models.InvoiceDetail*@
+@model IEnumerable<DoAn_Web_SellClothes.Models.InvoiceDetail>
 @{
     ViewBag.Title = "DetailReceipt";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var hd = ViewBag.ma;
 }
 
-<div class="container-fluid px-4">
-    <h1 class="my-4">Chi tiết hóa đơn: <span>11</span></h1>
 
-    <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-table"></i>
-            Chi tiết hóa đơn
-        </div>
-        <div class="card-body">
-            <table id="datatablesInvoiceDetail" class="table-responsive">
-                <thead>
-                    <tr>
-                        <th>Mã hóa đơn</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Số lượng</th>
-                        <th>Giá</th>
-                    </tr>
-                </thead>
-                <tbody>
+<div class="container-fluid px-4 mt-5 row">
+    <div class="col-xl-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h1>FTeam</h1>
+                    <div>
+                        <h2>Hóa đơn #<span>@hd.IdInvoice</span></h2>
+                        <p>ngày lập: <span>@hd.InvoiceDate.ToString()</span></p>
+                    </div>
+                </div>
+                <hr />
+                <div class="formto d-flex justify-content-between">
+                    <div>
+                        <h4>Từ:</h4>
+                        <p>FTeam store colthes</p>
+                        <p>Long Thạnh Mỹ, Quận 9</p>
+                        <p>Thành phố Hồ Chí Minh</p>
+                    </div>
+                    <div>
+                        <h4>Đến:</h4>
+                        <p>@hd.InvoiceNameReceiver</p>
+                        <p>@hd.InvoicePhoneReceiver</p>
+                        <p>@hd.InvoiceAddressReceiver</p>
+                    </div>
+                </div>
+                <div>
+                    <h4>Ghi chú:</h4>
+                    <p>@hd.NoteInvoice</p>
+                </div>
 
+                <hr />
+                <table class="table table-borderless">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th> Tên sản phẩm</th>
+                            <th> Size </th>
+                            <th> Số lượng</th>
+                            <th> Giá </th>
+                            <th>Tổng tiền</th>
+                        </tr>
 
-                    <tr>
-                        <td>11</td>
-                        <td>Áo polo</td>
-                        <td>5</td>
-                        <td>300000<span>đ</span></td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>Áo polo</td>
-                        <td>5</td>
-                        <td>300000<span>đ</span></td>
-                    </tr>
-                </tbody>
-            </table>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ProductDetail.Product.NameProduct</td>
+                                <td>@item.ProductDetail.SizeProduct.NameSizeProduct</td>
+                                <td>@item.Quantity</td>
+                                <td>@String.Format("{0:0,0 }", item.UnitPrice)<sub>đ</sub></td>
+                                <td>@String.Format("{0:0,0 }", item.UnitPrice * item.Quantity)<sub>đ</sub></td>
+                            </tr>
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" align="right"><b>Tổng tiền</b></td>
+                            <td>@String.Format("{0:0,0 }", @hd.TotalInvoice)<sub>đ</sub></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <hr />
+                <p>Phương thức thanh toán: <span>@hd.PaymentsInvoice</span></p>
+            </div>
         </div>
     </div>
-    <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
 
-
+    <div class="col-xl-4" id="groupBtnStatus">
+        <div class="card">
+            <div class="card-body d-xl-flex flex-column justify-content-between">
+                <button class="btn btn-success mb-xl-2">Xác nhận đơn hàng</button>
+                <button class="btn btn-warning mb-xl-2">Hủy đơn hàng</button>
+                <button id="btnPrintBill" class="btn btn-info mb-xl-2">In hóa đơn</button>
+                <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+@*<div class="container-fluid px-4">
+        <h1 class="my-4">Chi tiết hóa đơn: <span>11</span></h1>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Chi tiết hóa đơn
+            </div>
+            <div class="card-body">
+                <table id="datatablesInvoiceDetail" class="table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Mã sản phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá</th>
+                            <th>HÌnh</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày cập nhật</th>
+                            <th>Mô tả</th>
+                            <th>Số lượng</th>
+                            <th>Trạng thái</th>
+                            <th>Loại sản phẩm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr>
+                            <td> @Html.DisplayFor(model => model.IdProduct)</td>
+                            <td> @Html.DisplayFor(model => model.NameProduct)</td>
+                            <td> @Html.DisplayFor(model => model.PriceProduct)</td>
+                            <td> @Html.DisplayFor(model => model.IdProduct)</td>
+                            <td> @String.Format("{0:dd/MM/yyyy}", Model.UpdateDate)</td>
+                            <td> @String.Format("{0:dd/MM/yyyy}", Model.CreateDate)</td>
+                            <td> @Html.DisplayFor(model => model.DescribeProduct)</td>
+                            <td> @Html.DisplayFor(model => model.QuantityProduct)</td>
+                            <td> @Html.DisplayFor(model => model.StatusProduct)</td>
+                            <td> @Html.DisplayFor(model => model.ProductType.NameProductType)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <div style="text-align:center"><a class="btn" href="@Url.Action("DSsanpham","ChucNang")"> Trở về</a></div>
+            </div>
+        }
+        <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
+    </div>*@
 

@@ -105,3 +105,10 @@ var sexStatistics = {
     },
 };
 // hết bảng thống kê theo giới tính
+
+//in hóa đơn
+$('#btnPrintBill').click(function () {
+    window.print();
+})
+// hết in hóa đơn
+

@@ -1,4 +1,4 @@
-﻿
+﻿@model DoAn_Web_SellClothes.Models.ProductType
 @{
     ViewBag.Title = "EditTypesClothes";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -8,40 +8,37 @@
     <h1 class="my-4">Chỉnh sửa loại đồ</h1>
 
     <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-shirt"></i>
-            Chỉnh sửa loại đồ
-        </div>
-        <div class="card-body">
-            <div class="table-Edit table-responsive">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <th>Tên loại</th>
-                            <td>
-                                <input type="text" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Giới tính</th>
-                            <td>
-                                <select class="form-control">
-                                    <option>Nam</option>
-                                    <option>Nữ</option>
-                                </select>
-
-                            </td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="card-body">
+                <div class="table-Edit table-responsive">
+                    <table class="table">
+                        <tbody>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.IdProductType)
+                            <tr>
+                                <th>Tên loại</th>
+                                <td>
+                                    @Html.EditorFor(model => model.NameProductType, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NameProductType, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Giới tính</th>
+                                <td>
+                                    @Html.EditorFor(model => model.IdSex, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.IdSex, "", new { @class = "text-danger" })
+                                    <h7>0: Nữ</h7><br />
+                                    <h7>1: Nam</h7>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <input type="submit" class="mybtn btn btn-outline-success" value="Xác nhận" />
-
+            <input type="submit" class="mybtn btn btn-outline-success" value="Xác nhận" />
+        }
     </div>
     <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
-
 </div>
-

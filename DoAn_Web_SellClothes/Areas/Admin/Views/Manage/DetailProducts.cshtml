@@ -1,0 +1,73 @@
+﻿@model DoAn_Web_SellClothes.Models.Product
+@{
+    ViewBag.Title = "DetailProducts";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="my-4">Chi tiết sản phẩm</h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="table-Edit table-responsive">
+                <div class="row">
+
+                </div>
+                <table class="table">                   
+                    <tbody>
+                        <tr>
+                            <th>Tên sản phẩm</th>
+                            <td>
+                                @Html.DisplayFor(model => model.NameProduct)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Hình</th>
+                            <td>
+                                <img src="~/Assets/img/Clothes/@Html.DisplayFor(model => model.ImageProduct)" class="img-thumbnail" style="width:75px" alt="Alternate Text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Giá</th>
+                            <td>
+                                @String.Format("{0:0,0 }", Model.PriceProduct)<sub>đ</sub>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Ngày tạo</th>
+                            <td>
+                                @Html.DisplayFor(model => model.CreateDate)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Ngày cập nhật</th>
+                            <td>
+                                @Html.DisplayFor(model => model.UpdateDate)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Mô tả</th>
+                            <td>
+                                <p>@Html.DisplayFor(model => model.DescribeProduct)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Loại</th>
+                            <td>
+                                @Html.DisplayFor(model => model.ProductType.NameProductType)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Trạng thái</th>
+                            <td>
+                                @Html.DisplayFor(model => model.StatusProduct)
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
+</div>
+
