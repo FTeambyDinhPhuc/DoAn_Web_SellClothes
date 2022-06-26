@@ -19,14 +19,6 @@
       <Column Name="PasswordAdmin" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Feedback" Member="Feedbacks">
-    <Type Name="Feedback">
-      <Column Name="IdFeedback" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FullNameUserFeedback" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="EmailUserFeedback" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DescribeFeedback" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.Invoice" Member="Invoices">
     <Type Name="Invoice">
       <Column Name="IdInvoice" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -44,6 +36,14 @@
       <Association Name="Account_Invoice" Member="Account" ThisKey="IdAccount" OtherKey="IdAccount" Type="Account" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Feedback" Member="Feedbacks">
+    <Type Name="Feedback">
+      <Column Name="IdFeedback" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FullNameUserFeedback" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailUserFeedback" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DescribeFeedback" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.InvoiceDetails" Member="InvoiceDetails">
     <Type Name="InvoiceDetail">
       <Column Name="IdSizeProduct" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -53,22 +53,6 @@
       <Column Name="UnitPrice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Invoice_InvoiceDetail" Member="Invoice" ThisKey="IdInvoice" OtherKey="IdInvoice" Type="Invoice" IsForeignKey="true" />
       <Association Name="ProductDetail_InvoiceDetail" Member="ProductDetail" ThisKey="IdSizeProduct,IdProduct" OtherKey="IdSizeProduct,IdProduct" Type="ProductDetail" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Product" Member="Products">
-    <Type Name="Product">
-      <Column Name="IdProduct" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NameProduct" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="PriceProduct" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ImageProduct" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="UpdateDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="DescribeProduct" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="QuantityProduct" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StatusProduct" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IdProductType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Product_ProductDetail" Member="ProductDetails" ThisKey="IdProduct" OtherKey="IdProduct" Type="ProductDetail" />
-      <Association Name="ProductType_Product" Member="ProductType" ThisKey="IdProductType" OtherKey="IdProductType" Type="ProductType" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ProductDetail" Member="ProductDetails">
@@ -87,6 +71,21 @@
       <Column Name="NameProductType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="IdSex" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="ProductType_Product" Member="Products" ThisKey="IdProductType" OtherKey="IdProductType" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="IdProduct" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NameProduct" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PriceProduct" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageProduct" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DescribeProduct" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="StatusProduct" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdProductType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Product_ProductDetail" Member="ProductDetails" ThisKey="IdProduct" OtherKey="IdProduct" Type="ProductDetail" />
+      <Association Name="ProductType_Product" Member="ProductType" ThisKey="IdProductType" OtherKey="IdProductType" Type="ProductType" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.SizeProduct" Member="SizeProducts">
