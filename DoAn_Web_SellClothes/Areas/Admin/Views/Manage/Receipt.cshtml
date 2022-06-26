@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<DoAn_Web_SellClothes.Models.Invoice>
 @{
     ViewBag.Title = "Receipt";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -7,9 +7,6 @@
 <div class="container-fluid px-4">
     <h1 class="my-4">Quản lý hóa đơn</h1>
 
-    <div class="mb-3">
-        <button class="btn btn-success" type="submit">Lưu trạng thái</button>
-    </div>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table"></i>
@@ -21,49 +18,41 @@
                     <tr>
                         <th>Mã hóa đơn</th>
                         <th>Khách hàng</th>
-                        <th>Địa chỉ</th>
-                        <th>Số điện thoại</th>
+                        <th>Địa chỉ nhận hàng</th>
+                        <th>Số điện thoại người nhận</th>
                         <th>Ngày lập</th>
                         <th>Tổng hóa đơn</th>
                         <th>Phương thức thanh toán</th>
-                        <th>Trạng thái</th>
+                        <th>Trạng thái hóa đơn</th>
+                        <th>Trạng thái vận chuyển</th>
+                        <th>Lưu ý</th>
                         <th>&nbsp;</th>
 
                     </tr>
                 </thead>
                 <tbody>
-           
-                    <tr>
-                        <td>11</td>
-                        <td>Ê lum mớt</td>
-                        <td>5412D</td>
-                        <td>098875</td>
-                        <td>2011/04/25</td>
-                        <td>320000<span>đ</span></td>
-                        <td>Thanh toán khi nhận hàng</td>
-                        <td>
-                            <select class="form-control">
-                                <option>Chờ xác nhận</option>
-                                <option>Đã xác nhận</option>
-                                <option>Đã hủy</option>
-                            </select>
-                        </td>
-                        <td>
-                            <a class="btn btn-info" href="@Url.Action("DetailReceipt","Manage")">View details</a>
-
-                        </td>
-
-                    </tr>
-
-
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.IdAccount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Account.FullName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.InvoiceAddressReceiver)</td>
+                            <td>@Html.DisplayFor(modelItem => item.InvoicePhoneReceiver)</td>
+                            <td>@String.Format("{0:dd/MM/yyyy}", item.InvoiceDate)</td>
+                            <td>@String.Format("{0:0,0 }", item.TotalInvoice)<sub>đ</sub></td>
+                            <td>@Html.DisplayFor(modelItem => item.PaymentsInvoice)</td>
+                            <td>@ViewBag.Paid</td>
+                            <td>@ViewBag.StatusInvoice</td>
+                            <td>@Html.DisplayFor(modelItem => item.NoteInvoice)</td>
+                            <td>
+                                @Html.ActionLink("Detail", "DetailReceipt", new { id = item.IdInvoice }, new { @class = "btn btn-info" })
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
     </div>
-
-
-
-
 </div>
 
 

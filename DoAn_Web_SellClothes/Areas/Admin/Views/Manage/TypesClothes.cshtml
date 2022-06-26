@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<DoAn_Web_SellClothes.Models.ProductType>
+
 @{
     ViewBag.Title = "TypesClothes";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -26,33 +27,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Đầm</td>
-                        <td>Nữ</td>
-                        <td>
-                            <a href="@Url.Action("EditTypesClothes","manage")" class="btn btn-info mb-1 mb-lg-0"> Edit</a>
-                            <a class="btn btn-warning"> Delete</a>
 
-                        </td>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.IdProductType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.NameProductType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.IdSex)</td>
+                            <td>
+                                @Html.ActionLink("Edit", "EditTypesClothes", new { id = item.IdProductType }, new { @class = "btn btn-info mb-1 mb-lg-0" })
+                                @Html.ActionLink("Delete", "DeleteProductType", new { id = item.IdProductType }, new { @class = "btn btn-warning" })
 
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Đầm</td>
-                        <td>Nữ</td>
-                        <td>
-                            <a href="@Url.Action("EditTypesClothes","manage")" class="btn btn-info mb-1 mb-lg-0"> Edit</a>
-                            <a class="btn btn-warning"> Delete</a>
-
-                        </td>
-
-                    </tr>
-
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
     </div>
-
 </div>
 

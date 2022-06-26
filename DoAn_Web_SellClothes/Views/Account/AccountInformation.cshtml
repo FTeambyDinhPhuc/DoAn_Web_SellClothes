@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="bgAccountInformation py-4">
+<div class="bgAccountInformation ">
     <div class="container mx-auto shadow py-4 px-4">
         <div class="body-content">
             <h2 class="text-left">Account information</h2>
@@ -58,12 +58,13 @@
                             </div>
                         </div>
 
-                        <div class="group-button">
+                        <div class="group-button d-flex justify-content-between">
 
                             <input class="shadow-sm" type="submit" value="Lưu" />
-                            <a class=" shadow-sm" href="@Url.Action("Index","Home")">Màn hình chính</a>
+                            <a class="shadow-sm " href="@Url.Action("Index","Home")">Home</a>
 
                         </div>
+                        
                     </div>
                 </div>
             }

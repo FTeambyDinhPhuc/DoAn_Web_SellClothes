@@ -1,4 +1,5 @@
-﻿
+@model IEnumerable<DoAn_Web_SellClothes.Models.Account>
+
 @{
     ViewBag.Title = "Customer";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -21,31 +22,19 @@
                         <th>Số điện thoại</th>
                         <th>Địa chỉ</th>
                         <th>Mật khẩu</th>
-                       
-
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>lê đình phúc</td>
-                        <td>khuyetdanh@gmail.com</td>
-                        <td>0683537854</td>
-                        <td>123 nguyễn văn việt, quận 7, Hà nội</td>
-                        <td>123456</td>
-                       
-
-                    </tr>
-                    <tr>
-                        <td>Nguyễn Khuyết Danh</td>
-                        <td>khuyetdanh@gmail.com</td>
-                        <td>0683537854</td>
-                        <td>123 nguyễn văn việt, quận 7, Hà nội</td>
-                        <td>123456</td>
-                      
-
-                    </tr>
-
-
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                            <td>@Html.DisplayFor(modelItem => item.AddressUser)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PasswordUser)</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

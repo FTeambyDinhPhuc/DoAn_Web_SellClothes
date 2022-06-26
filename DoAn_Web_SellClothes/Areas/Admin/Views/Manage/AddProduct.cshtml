@@ -1,4 +1,5 @@
-﻿
+﻿@model DoAn_Web_SellClothes.Models.Product
+
 @{
     ViewBag.Title = "AddProduct";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -6,76 +7,76 @@
 
 <div class="container-fluid px-4">
     <h1 class="my-4">Thêm sản phẩm</h1>
-
     <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-user"></i>
-            Thêm sản phẩm
-        </div>
-        <div class="card-body">
-            <div class="table-Edit table-responsive">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <th>Tên sản phẩm</th>
-                            <td>
-                                <input type="text" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Hình</th>
-                            <td>
-                                <input type="file" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Giá</th>
-                            <td>
-                                <input type="text" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Ngày cập nhật</th>
-                            <td>
-                                <input type="date" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Mô tả</th>
-                            <td>
-                                <input type="text" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Loại</th>
-                            <td>
-                                <select class="form-control">
-                                    <option>Áo nam</option>
-                                    <option>Quần nữ</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Trạng thái</th>
-                            <td>
-                                <select class="form-control">
-                                    <option>Còn hàng</option>
-                                    <option>Hết hàng</option>
-                                </select>
-                            </td>
-                        </tr>
+        @using (Html.BeginForm("AddProduct","Manage", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
 
-                    </tbody>
-
-                </table>
+            <div class="card-body">
+                <div class="table-Edit table-responsive">
+                    <table class="table">
+                        <tbody>
+                            
+                            <tr>
+                                <th>Tên sản phẩm</th>
+                                <td>
+                                    <input type="text" name="name" required/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Hình</th>
+                                <td>
+                                    <input type="file" name="fileupload"required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Giá</th>
+                                <td>
+                                    <input type="text" name="price"required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Mô tả</th>
+                                <td>
+                                    <input type="text" name="describe"required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Loại</th>
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("Loai")
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Kích thước</th>
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("Size")
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Số lượng</th>
+                                <td>
+                                    <input type="text" name="quality"required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Trạng thái</th>
+                                <td>
+                                    <input type="text" name="status" required />
+                                    <span>"0" : Hết Hàng</span><br />
+                                    <span>"1" : Còn Hàng</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <input type="submit" class="mybtn btn btn-outline-success" value="Xác nhận" />
-
+            <input type="submit" class="mybtn btn btn-outline-success" value="Xác nhận" />
+         }
     </div>
-
     <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
-
-
 </div>
 

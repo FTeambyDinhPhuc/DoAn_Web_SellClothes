@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DoAn_Web_SellClothes.Models;
+using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +11,20 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
     public class FeedbackController : Controller
     {
         // GET: Admin/Feedback
+        DataClasses1DataContext db = new DataClasses1DataContext();
         public ActionResult Feedback()
         {
-            return View();
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("LogIn", "Account");
+            }
+
+            var list = db.Feedbacks.OrderByDescending(s => s.IdFeedback).ToList();
+            return View(list);
         }
+        private List<Feedback> Feedback(int count)
+        {
+            return db.Feedbacks.OrderByDescending(s => s.IdFeedback).Take(count).ToList();
+        }      
     }
 }

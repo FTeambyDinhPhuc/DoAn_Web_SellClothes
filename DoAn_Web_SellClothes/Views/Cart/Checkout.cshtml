@@ -6,11 +6,11 @@
 }
 @using(Html.BeginForm())
 { 
-    <div class="container">
+    <div class="checkoutscreen px-2 px-md-4 px-xl-5">
         <div class="row my-lg-5 my-md-4 my-3">
 
             <!-- Checkout Area Start -->
-            <div class="col-lg-6 col-xl-5 mt-4">
+            <div class="col-xl-6 mt-4">
                 <div class="checkout-title mb-5">
                     <h2>Billing Details</h2>
                 </div>
@@ -59,7 +59,7 @@
 
             </div>
 
-            <div class="col-xl-6 offset-xl-1 col-lg-6 mt-4">
+            <div class="col-xl-6 mt-4">
                 <div class="order-details">
                     <div class="checkout-title mb-5">
                         <h2>Your Order</h2>
@@ -83,32 +83,36 @@
                                             <strong><span class="multiply">&#10005;</span>@item.iQuantityProduct</strong>
                                         </td>
                                         <td>@item.iSizeProduct</td>
-                                        <td>@item.iPriceProduct<span>đ</span></td>
-                                        <td>@ViewBag.TongTien<span>đ</span></td>
+                                        <td>@String.Format("{0:0,0}", @item.iPriceProduct)<span>đ</span></td>
+                                        <td>@String.Format("{0:0,0}", @ViewBag.TongTien)<span>đ</span></td>
                                     </tr>
                                 }
 
 
                             </tbody>
                             <tfoot>
+                               
                                 <tr class="cart-subtotal">
                                     <th>Tổng tiền</th>
                                     <td></td>
-                                    <td>@ViewBag.TongTien<span>đ</span></td>
+                                    <td></td>
+                                    <td> @String.Format("{0:0,0}", @ViewBag.TongTien)<span>đ</span></td>
                                 </tr>
                                 <tr class="shipping">
                                     <th>Vận chuyển</th>
                                     <td></td>
+                                    <td></td>
                                     <td>
-                                        25000<span>đ</span>
+                                        25,000<span>đ</span>
 
                                     </td>
                                 </tr>
                                 <tr class="order-total">
                                     <th>Tổng đơn</th>
                                     <td></td>
+                                    <td></td>
                                     <td>
-                                        @ViewBag.TongTienShip<span>đ</span>
+                                        @String.Format("{0:0,0}", @ViewBag.TongTienShip) <span>đ</span>
                                     </td>
                                 </tr>
                             </tfoot>
@@ -142,17 +146,19 @@
                             </div>
                         </div>
                         <div class= "payment-group mt-2">
-                            <p class="mb-2">
+                            <p>
                                 Dữ liệu cá nhân của bạn sẽ được sử dụng để xử lý đơn đặt hàng của bạn,
                                 hỗ trợ trải nghiệm của bạn trên toàn bộ trang web này và cho các mục đích khác
                             </p>
-                            <input type="submit" class="btn btn-oder py-2" value="Place Order" />
-                            <br />
-                            <div class="sub-w3l" style="color:red">
-                                <h6>@ViewBag.ChoosePayment</h6>
-                                <h6>@ViewBag.SoLuongTon</h6>
-                                <h6>@ViewBag.sphethan</h6>
-                                
+                            <div class="text-center mt-5">
+                                <input type="submit" class="btn btn-oder py-2" value="Place Order" />
+
+                                <div class="sub-w3l" style="color:red">
+                                    <h6>@ViewBag.ChoosePayment</h6>
+                                    <h6>@ViewBag.SoLuongTon</h6>
+                                    <h6>@ViewBag.sphethan</h6>
+
+                                </div>
                             </div>
                         </div>
                     </div>
