@@ -122,8 +122,8 @@
                         <div class="payment-group mt-3">
                             <div class="payment-radio">
                                 @*<input type="radio" name="payment-method" checked>*@
-                                @Html.RadioButton("Payment", "Thanh toán trực tuyến")
-                                <label class="payment-label ml-3">THANH TOÁN TRỰC TUYẾN</label>
+                                @Html.RadioButton("Payment", "Thanh toán MoMo")
+                                <label class="payment-label ml-3">THANH TOÁN MOMO</label>
                             </div>
                             <div class="payment-info">
                                 <p>
@@ -136,7 +136,7 @@
                         <div class="payment-group mt-3">
                             <div class="payment-radio">
                                 @*<input type="radio" name="payment-method">*@
-                                @Html.RadioButton("Payment", "Thanh toán khi nhận hàng")
+                                @Html.RadioButton("Payment", "Thanh toán khi nhận hàng" ,checked(true))
                                 <label class="payment-label ml-3">
                                     THANH TOÁN KHI GIAO HÀNG
                                 </label>

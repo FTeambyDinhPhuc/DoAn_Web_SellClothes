@@ -20,7 +20,7 @@ namespace DoAn_Web_SellClothes.Controllers
                 {
                     ViewBag.StatusInvoice = "Chưa giao hàng";
                 }
-                else if(item.StatusInvoice==true)
+                else if (item.StatusInvoice == true)
                 {
                     ViewBag.StatusInvoice = "Đã giao hàng";
                 }

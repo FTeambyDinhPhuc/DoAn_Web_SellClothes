@@ -39,9 +39,5 @@ namespace DoAn_Web_SellClothes.Controllers
                 return RedirectToAction("About");
             }
         }
-        public ActionResult Thanks()
-        {
-            return View();
-        }
     }
 }
