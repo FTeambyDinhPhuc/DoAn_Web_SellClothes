@@ -537,7 +537,10 @@ footer {
        
     }
 
-    
+.size {
+    width: 70%;
+   
+}
 /* hết Bảng chọn size */
 /*Nút tăng giảm số lượng*/
 .btn-quantity {
