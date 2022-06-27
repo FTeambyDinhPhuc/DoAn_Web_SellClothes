@@ -44,13 +44,27 @@
                             @item.InvoicePhoneReceiver
                         </td>
                         <td class="bill-payment">
-                            @ViewBag.StatusInvoice
+                        @if (item.StatusInvoice == false)
+                        {
+                            <p>Chưa giao hàng</p>
+                        }
+                        else if (item.StatusInvoice == true)
+                        {
+                            <p>Đã giao hàng</p>
+                        }
                         </td>
                         <td class="bill-payment">
                             @item.PaymentsInvoice
                         </td>
                         <td class="bill-statusPayment">
-                            @ViewBag.Paid
+                        @if (item.Paid == false)
+                        {
+                            <p>Chưa thanh toán</p>
+                        }
+                        else if(item.Paid==true)
+                        {
+                            <p>Đã thanh toán</p>
+                        }
                         </td>
                         <td class="bill-total">
                             @String.Format("{0:0,0}", @item.TotalInvoice)<span> VNĐ</span>

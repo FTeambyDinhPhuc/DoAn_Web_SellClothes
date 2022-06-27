@@ -48,6 +48,9 @@ namespace DoAn_Web_SellClothes.Models
     partial void InsertProduct(Product instance);
     partial void UpdateProduct(Product instance);
     partial void DeleteProduct(Product instance);
+    partial void InsertProductType(ProductType instance);
+    partial void UpdateProductType(ProductType instance);
+    partial void DeleteProductType(ProductType instance);
     partial void InsertProductDetail(ProductDetail instance);
     partial void UpdateProductDetail(ProductDetail instance);
     partial void DeleteProductDetail(ProductDetail instance);
@@ -60,7 +63,7 @@ namespace DoAn_Web_SellClothes.Models
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QuanLyBanQuanAoConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -134,6 +137,14 @@ namespace DoAn_Web_SellClothes.Models
 			get
 			{
 				return this.GetTable<Product>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ProductType> ProductTypes
+		{
+			get
+			{
+				return this.GetTable<ProductType>();
 			}
 		}
 		
@@ -1583,6 +1594,144 @@ namespace DoAn_Web_SellClothes.Models
 		{
 			this.SendPropertyChanging();
 			entity.Product = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ProductType")]
+	public partial class ProductType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IdProductType;
+		
+		private string _NameProductType;
+		
+		private int _IdSex;
+		
+		private EntitySet<Product> _Products;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdProductTypeChanging(int value);
+    partial void OnIdProductTypeChanged();
+    partial void OnNameProductTypeChanging(string value);
+    partial void OnNameProductTypeChanged();
+    partial void OnIdSexChanging(int value);
+    partial void OnIdSexChanged();
+    #endregion
+		
+		public ProductType()
+		{
+			this._Products = new EntitySet<Product>(new Action<Product>(this.attach_Products), new Action<Product>(this.detach_Products));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdProductType", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int IdProductType
+		{
+			get
+			{
+				return this._IdProductType;
+			}
+			set
+			{
+				if ((this._IdProductType != value))
+				{
+					this.OnIdProductTypeChanging(value);
+					this.SendPropertyChanging();
+					this._IdProductType = value;
+					this.SendPropertyChanged("IdProductType");
+					this.OnIdProductTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameProductType", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string NameProductType
+		{
+			get
+			{
+				return this._NameProductType;
+			}
+			set
+			{
+				if ((this._NameProductType != value))
+				{
+					this.OnNameProductTypeChanging(value);
+					this.SendPropertyChanging();
+					this._NameProductType = value;
+					this.SendPropertyChanged("NameProductType");
+					this.OnNameProductTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdSex", DbType="Int NOT NULL")]
+		public int IdSex
+		{
+			get
+			{
+				return this._IdSex;
+			}
+			set
+			{
+				if ((this._IdSex != value))
+				{
+					this.OnIdSexChanging(value);
+					this.SendPropertyChanging();
+					this._IdSex = value;
+					this.SendPropertyChanged("IdSex");
+					this.OnIdSexChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProductType_Product", Storage="_Products", ThisKey="IdProductType", OtherKey="IdProductType")]
+		public EntitySet<Product> Products
+		{
+			get
+			{
+				return this._Products;
+			}
+			set
+			{
+				this._Products.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Products(Product entity)
+		{
+			this.SendPropertyChanging();
+			entity.ProductType = this;
+		}
+		
+		private void detach_Products(Product entity)
+		{
+			this.SendPropertyChanging();
+			entity.ProductType = null;
 		}
 	}
 	
