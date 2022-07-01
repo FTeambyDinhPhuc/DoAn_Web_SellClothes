@@ -34,15 +34,29 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.IdAccount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.IdInvoice)</td>
                             <td>@Html.DisplayFor(modelItem => item.Account.FullName)</td>
                             <td>@Html.DisplayFor(modelItem => item.InvoiceAddressReceiver)</td>
                             <td>@Html.DisplayFor(modelItem => item.InvoicePhoneReceiver)</td>
                             <td>@String.Format("{0:dd/MM/yyyy}", item.InvoiceDate)</td>
                             <td>@String.Format("{0:0,0 }", item.TotalInvoice)<sub>đ</sub></td>
                             <td>@Html.DisplayFor(modelItem => item.PaymentsInvoice)</td>
-                            <td>@ViewBag.Paid</td>
-                            <td>@ViewBag.StatusInvoice</td>
+                            @if (@item.StatusInvoice)
+                            {
+                                <td>Đã xác nhận</td>
+                            }
+                            else
+                            {
+                                <td>Chưa xác nhận</td>
+                            }
+                            @if (@item.Paid)
+                            {
+                                <td>Đã vận chuyển</td>
+                            }
+                            else
+                            {
+                                <td>Chưa vận chuyển</td>
+                            }
                             <td>@Html.DisplayFor(modelItem => item.NoteInvoice)</td>
                             <td>
                                 @Html.ActionLink("Detail", "DetailReceipt", new { id = item.IdInvoice }, new { @class = "btn btn-info" })

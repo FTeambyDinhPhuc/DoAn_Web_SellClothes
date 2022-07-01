@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "AddSex";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid px-4">
+    <h1 class="my-4">Thêm size</h1>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-shirt"></i>
+            Thêm size
+        </div>
+        @using (Html.BeginForm())
+{
+<div class="card-body">
+    <div class="table-Edit table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Tên loại</th>
+                    <td>
+                        <input type="text" name="name" />
+                    </td>
+                </tr>            
+            </tbody>
+        </table>
+    </div>
+</div>
+<input type="submit" class="mybtn btn btn-outline-success" value="Thêm" />
+}
+    </div>
+    <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
+</div>
+
+
+

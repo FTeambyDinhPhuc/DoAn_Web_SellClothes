@@ -7,10 +7,11 @@ using DoAn_Web_SellClothes.Models;
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
+using DoAn_Web_SellClothes.Assets.csharp;
 
 namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
 {
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         DataClasses1DataContext db =new DataClasses1DataContext();
         // GET: Admin/Manage
@@ -35,41 +36,73 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                 return RedirectToAction("LogIn", "Account");
             }
             var list = db.Invoices.OrderByDescending(s => s.IdInvoice).ToList();
-            foreach (var item in list)
-            {
-                if (item.StatusInvoice == false)
-                {
-                    ViewBag.StatusInvoice = "Chưa giao hàng";
-                }
-                else if (item.StatusInvoice == true)
-                {
-                    ViewBag.StatusInvoice = "Đã giao hàng";
-                }
-                if (item.Paid == false)
-                {
-                    ViewBag.Paid = "Chưa thanh toán";
-                }
-                else if (item.Paid == true)
-                {
-                    ViewBag.Paid = "Đã thanh toán";
-                }
-            }
+            
             return View(list);
         }
         public ActionResult DetailReceipt(int id)
         {
-            //InvoiceDetail ct = db.InvoiceDetails.Where(n => n.IdInvoice == id).;
+            //InvoiceDetail ct = db.InvoiceDetails.Where(n => n.IdInvoice == id);
             ViewBag.ma = db.Invoices.SingleOrDefault(n => n.IdInvoice == id);
             var ct = (from s in db.InvoiceDetails where s.IdInvoice == id select s).ToList();
             return View(ct);
         }
-        public ActionResult xacnhan(int id)
-        {
-            //InvoiceDetail ct = db.InvoiceDetails.Where(n => n.IdInvoice == id).;
 
-            Invoice xn = db.Invoices.SingleOrDefault(n => n.IdInvoice == id);
-            
-            return View(xn);
+       
+        public ActionResult ConfilmInvoice(int id, string TrangThai)
+        {
+            //bool a = true;
+            bool a = bool.Parse(TrangThai);
+            var ct = db.Invoices.SingleOrDefault(n => n.IdInvoice == id);
+            //var ct = from c in db.Invoices where c.IdInvoice == id select c;
+            int idp = (from i in db.InvoiceDetails where i.IdInvoice == id select i.IdInvoice).FirstOrDefault();
+            Session["idp"] = id; 
+
+            ct.StatusInvoice = a;
+            UpdateModel(ct);
+            db.SubmitChanges();
+            return RedirectToAction("DetailReceipt", "Manage", new { id = idp });
+        }
+        public ActionResult CloseInvoice(int id, string TrangThai)
+        {
+            //bool a = true;
+            bool a = bool.Parse(TrangThai);
+            var ct = db.Invoices.SingleOrDefault(n => n.IdInvoice == id);
+            //var ct = from c in db.Invoices where c.IdInvoice == id select c;
+            int idp = (from i in db.InvoiceDetails where i.IdInvoice == id select i.IdInvoice).FirstOrDefault();
+            Session["idp"] = id;
+
+            ct.StatusInvoice = a;
+            UpdateModel(ct);
+            db.SubmitChanges();
+            return RedirectToAction("DetailReceipt", "Manage", new { id = idp });
+        }
+        public ActionResult Dagiao(int id, string TrangThai)
+        {
+            //bool a = true;
+            bool a = bool.Parse(TrangThai);
+            var ct = db.Invoices.SingleOrDefault(n => n.IdInvoice == id);
+            //var ct = from c in db.Invoices where c.IdInvoice == id select c;
+            int idp = (from i in db.InvoiceDetails where i.IdInvoice == id select i.IdInvoice).FirstOrDefault();
+            Session["idp"] = id;
+
+            ct.Paid = a;
+            UpdateModel(ct);
+            db.SubmitChanges();
+            return RedirectToAction("DetailReceipt", "Manage", new { id = idp });
+        }
+        public ActionResult Chugiao(int id, string TrangThai)
+        {
+            //bool a = true;
+            bool a = bool.Parse(TrangThai);
+            var ct = db.Invoices.SingleOrDefault(n => n.IdInvoice == id);
+            //var ct = from c in db.Invoices where c.IdInvoice == id select c;
+            int idp = (from i in db.InvoiceDetails where i.IdInvoice == id select i.IdInvoice).FirstOrDefault();
+            Session["idp"] = id;
+
+            ct.Paid = a;
+            UpdateModel(ct);
+            db.SubmitChanges();
+            return RedirectToAction("DetailReceipt", "Manage", new { id = idp });
         }
         //========================================================================================
 
@@ -85,7 +118,83 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         //========================================================================================
         public ActionResult Sex()
         {
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("LogIn", "Account");
+            }
+            var list = db.SizeProducts.OrderByDescending(s => s.IdSizeProduct).ToList();
+
+            return View(list);
+        }
+
+        [HttpGet]
+        public ActionResult AddSex()
+        {
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("LogIn", "Account");
+            }
+
             return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult AddSex(SizeProduct pr, FormCollection collection)
+        {
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("LogIn", "Account");
+            }
+            var ten = collection["name"];
+
+            pr.NameSizeProduct = ten;
+            db.SizeProducts.InsertOnSubmit(pr);
+            db.SubmitChanges();
+            return RedirectToAction("Sex", "Manage");
+        }       
+
+
+        public ActionResult DeleteSex(int id)
+        {
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("Product", "Manage");
+            }
+            else
+            {
+                var sex = db.SizeProducts.SingleOrDefault(n => n.IdSizeProduct == id);
+                if (sex == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                try
+                {
+                    db.SizeProducts.DeleteOnSubmit(sex);
+                    db.SubmitChanges();
+                    SetAlert("Xóa size thành công", "success");
+                }
+                catch
+                {
+                    SetAlert("Không xóa được size", "error");
+                }
+               
+                return RedirectToAction("Sex");
+            }
+        }       
+        //========================================================================================
+        private List<SizeProduct> size(int count)
+        {
+            return db.SizeProducts.OrderByDescending(s => s.IdSizeProduct).Take(count).ToList();
+        }
+        private List<ProductType> type(int count)
+        {
+            return db.ProductTypes.OrderByDescending(s => s.IdProductType).Take(count).ToList();
+        }
+        private List<ProductDetail> detail(int count)
+        {
+            return db.ProductDetails.OrderByDescending(s => s.IdProduct).Take(count).ToList();
         }
         //========================================================================================
         public ActionResult TypesClothes()
@@ -205,23 +314,48 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                     Response.StatusCode = 404;
                     return null;
                 }
-                db.ProductTypes.DeleteOnSubmit(type);
-                db.SubmitChanges();
+                try
+                {
+                    db.ProductTypes.DeleteOnSubmit(type);
+                    db.SubmitChanges();
+                    SetAlert("Xóa loại sản phẩm thành công", "success");
+                }
+                catch
+                {
+                    SetAlert("Không xóa được loại sản phẩm", "error");
+                }
+              
                 return RedirectToAction("TypesClothes");
             }
         }
         //============================================================================================
 
-        //Hiển thị danh sách sản phẩm
         public ActionResult Product()
         {
             if (Session["admin"] == null)
             {
                 return RedirectToAction("LogIn", "Account");
-            }           
+            }
             var list = db.Products.OrderByDescending(s => s.IdProduct).ToList();
+            foreach (var item in list)
+            {
+                var soLuongTon = db.ProductDetails.Where(p => p.IdProduct == item.IdProduct).Select(p => p.SoLuongTon).ToList();
+                var demsanpham = soLuongTon.Sum(p => p.Value);
+                if (demsanpham > 0)
+                {
+                    item.StatusProduct = 1;
+                }
+                else
+                {
+                    item.StatusProduct = 0;
+                }
+
+            }
+            UpdateModel(list);
+            db.SubmitChanges();
             return View(list);
         }
+
 
         // hiển thị màn hình thêm sản phẩm
         [HttpGet]
@@ -255,7 +389,14 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             var loai = collection["Loai"];
             var size = collection["Size"];
             var sl = collection["quality"];
-            var status = collection["status"];
+            int status;
+            if (int.Parse(sl) > 0) 
+            {
+                status = 1;
+            }else
+            {
+                status = 0;
+            }
 
             var filename = Path.GetFileName(fileUpload.FileName); 
             var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);
@@ -271,8 +412,9 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             pr.PriceProduct = int.Parse(gia);
             pr.DescribeProduct = mota;
             pr.CreateDate = date;
+            pr.UpdateDate = date;
             pr.IdProductType = Int32.Parse(loai);
-            //pr.StatusProduct = int.Parse(status);
+            pr.StatusProduct = status;
             //pr.QuantityProduct = int.Parse(sl);
             db.Products.InsertOnSubmit(pr);
             db.SubmitChanges();
@@ -314,11 +456,8 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         {
             var img = "";
             ViewBag.Loai = new SelectList(db.ProductTypes.ToList().OrderBy(n => n.IdProductType), "IdProductType", "NameProductType");
-            if (Session["admin"] == null)
-            {
-                return RedirectToAction("Product", "Manage");
-            }
-            if (fileUpload != null)
+
+            if(fileUpload != null)
             {
                 img = Path.GetFileName(fileUpload.FileName);
                 var path = Path.Combine(Server.MapPath("~/Sản Phẩm"), img);
@@ -380,8 +519,17 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                     Response.StatusCode = 404;
                     return null;
                 }
-                db.Products.DeleteOnSubmit(sp);
-                db.SubmitChanges();
+                try
+                {
+                    db.Products.DeleteOnSubmit(sp);
+                    db.SubmitChanges();
+                    SetAlert("Xóa sản phẩm thành công", "success");
+                }
+                catch
+                {
+                    SetAlert("Không xóa được sản phẩm", "error");
+                }
+               
                 return RedirectToAction("Product");
             }
         }
@@ -438,8 +586,17 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
 
             ProductDetail sp = db.ProductDetails.Where(n => n.IdProduct == id && n.IdSizeProduct == size).SingleOrDefault();
 
-            db.ProductDetails.DeleteOnSubmit(sp);
-            db.SubmitChanges();
+            try
+            {
+                db.ProductDetails.DeleteOnSubmit(sp);
+                db.SubmitChanges();
+                SetAlert("Xóa chi tiết sản phẩm thành công", "success");
+            }
+            catch
+            {
+                SetAlert("Không xóa được chi tiết sản phẩm", "error");
+            }
+            
             return RedirectToAction("Product");
         }
 

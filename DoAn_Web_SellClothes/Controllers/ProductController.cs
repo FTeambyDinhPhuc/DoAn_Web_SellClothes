@@ -60,13 +60,12 @@ namespace DoAn_Web_SellClothes.Controllers
             sanPham.sizeProduct = sizeSanPham;
             if (demsanpham <= 0)
             {
-                sanPham.tinhtrangsanpham = false;
+                sanPham.StatusProduct = 0;
             }
             else
             {
-                sanPham.tinhtrangsanpham = true;
+                sanPham.StatusProduct = 1;
             }
-      
             return View(sanPham);
         }
         public ActionResult ProductPage(int? page)
