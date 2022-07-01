@@ -79,67 +79,31 @@
 
     <div class="col-xl-4" id="groupBtnStatus">
         <div class="card">
-            <div class="card-body d-xl-flex flex-column justify-content-between">
-                <button class="btn btn-success mb-xl-2">Xác nhận đơn hàng</button>
-                <button class="btn btn-warning mb-xl-2">Hủy đơn hàng</button>
+            <div class="card-body d-xl-flex flex-column justify-content-between">               
+                @if (@hd.Paid && @hd.StatusInvoice)
+                {
+                    <a class="btn btn-warning mb-xl-2" href="@Url.Action("CloseInvoice","Manage", new {id = @hd.IdInvoice, TrangThai = false})">Hủy đơn hàng</a>
+                    <a class="btn btn-warning mb-xl-2" href="@Url.Action("Chugiao","Manage", new {id = @hd.IdInvoice, TrangThai = false})">Hủy vận chuyển</a>
+                }
+                else if (@hd.Paid && @hd.StatusInvoice == false)
+                {
+                    <a class="btn btn-success mb-xl-2" href="@Url.Action("ConfilmInvoice","Manage", new {id = @hd.IdInvoice, TrangThai = true})">Xác nhận đơn hàng</a>
+                    <a class="btn btn-warning mb-xl-2" href="@Url.Action("Chugiao","Manage", new {id = @hd.IdInvoice, TrangThai = false})">Hủy vận chuyển</a>
+                }
+                else if (@hd.Paid == false && @hd.StatusInvoice)
+                {
+                    <a class="btn btn-warning mb-xl-2" href="@Url.Action("CloseInvoice","Manage", new {id = @hd.IdInvoice, TrangThai = false})">Hủy đơn hàng</a>
+                    <a class="btn btn-success mb-xl-2" href="@Url.Action("Dagiao","Manage", new {id = @hd.IdInvoice, TrangThai = true})">Vận chuyển</a>
+                }
+                else
+                {
+                    <a class="btn btn-success mb-xl-2" href="@Url.Action("ConfilmInvoice","Manage", new {id = @hd.IdInvoice, TrangThai = true})">Xác nhận đơn hàng</a>
+                    <a class="btn btn-success mb-xl-2" href="@Url.Action("Dagiao","Manage", new {id = @hd.IdInvoice, TrangThai = true})">Vận chuyển</a>
+                }               
                 <button id="btnPrintBill" class="btn btn-info mb-xl-2">In hóa đơn</button>
-                <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
+                <a class="btn btn-outline-dark" href="@Url.Action("Receipt","Manage")">Trở về</a>
             </div>
         </div>
     </div>
 </div>
-
-@*<div class="container-fluid px-4">
-        <h1 class="my-4">Chi tiết hóa đơn: <span>11</span></h1>
-
-        <div class="card mb-4">
-            <div class="card-header">
-                <i class="fas fa-table"></i>
-                Chi tiết hóa đơn
-            </div>
-            <div class="card-body">
-                <table id="datatablesInvoiceDetail" class="table-responsive">
-                    <thead>
-                        <tr>
-                            <th>Mã sản phẩm</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Giá</th>
-                            <th>HÌnh</th>
-                            <th>Ngày tạo</th>
-                            <th>Ngày cập nhật</th>
-                            <th>Mô tả</th>
-                            <th>Số lượng</th>
-                            <th>Trạng thái</th>
-                            <th>Loại sản phẩm</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-
-                        <tr>
-                            <td> @Html.DisplayFor(model => model.IdProduct)</td>
-                            <td> @Html.DisplayFor(model => model.NameProduct)</td>
-                            <td> @Html.DisplayFor(model => model.PriceProduct)</td>
-                            <td> @Html.DisplayFor(model => model.IdProduct)</td>
-                            <td> @String.Format("{0:dd/MM/yyyy}", Model.UpdateDate)</td>
-                            <td> @String.Format("{0:dd/MM/yyyy}", Model.CreateDate)</td>
-                            <td> @Html.DisplayFor(model => model.DescribeProduct)</td>
-                            <td> @Html.DisplayFor(model => model.QuantityProduct)</td>
-                            <td> @Html.DisplayFor(model => model.StatusProduct)</td>
-                            <td> @Html.DisplayFor(model => model.ProductType.NameProductType)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="form-actions no-color">
-                <div style="text-align:center"><a class="btn" href="@Url.Action("DSsanpham","ChucNang")"> Trở về</a></div>
-            </div>
-        }
-        <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
-    </div>*@
 

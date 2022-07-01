@@ -12,14 +12,12 @@
             <i class="fas fa-shirt"></i>
             Thêm loại đồ
         </div>
-        @using (Html.BeginForm(@*"AddProduct", "Manage", FormMethod.Post, new { @enctype = "multipart/form-data" }*@))
+        @using (Html.BeginForm())
         {
-            @*@Html.AntiForgeryToken()*@
             <div class="card-body">
                 <div class="table-Edit table-responsive">
                     <table class="table">
                         <tbody>
-                            @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
                             <tr>
                                 <th>Tên loại</th>
                                 <td>
@@ -30,9 +28,10 @@
                                 <th>Giới tính</th>
                                 <td>
                                     <div class="col-md-10">
-                                        <input type="number" name="sex" />
-                                        <span>"0" : Nữ</span>
-                                        <span>"1" : Nam</span>
+                                        <select class="form-select" aria-label="Default select example" name="sex" required>
+                                            <option value="1">Nam</option>
+                                            <option value="0">Nữ</option>
+                                        </select>
                                         @ViewData["1"]
                                     </div>                                   
                                 </td>

@@ -33,41 +33,65 @@
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
-        </div>   
+        </div>
     </div>
-
     <div class="row">
-        <div class="col-xl-6">
-            <div class="mb-2 d-flex justify-content-end">
-                <div class="mr-md-5 mr-3">
-                    Từ:&ensp;<input type="date" />
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">Loại đồ: <span>@ViewBag.SexMen</span></div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="@Url.Action("TypesClothes","Manage")">View Details</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
-                <div>Đến:&ensp;<input type="date" /></div>
-            </div>
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-chart-area"></i>
-                    Thống kê doanh thu năm
-                </div>
-                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
             </div>
         </div>
-        <div class="col-xl-6">
-            <div class="mb-2 d-flex justify-content-end">
-                <div>
-                    Từ:&ensp;<input type="date" />
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">Doanh thu: <span>@String.Format("{0:0,0 }", @ViewBag.TotalInvoid)<sub>đ</sub></span></div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="@Url.Action("Receipt","Manage")">View Details</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
-
             </div>
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-chart-bar"></i>
-                    Thống kê doanh thu tháng
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">Đơn hàng chưa xác nhận: <span>@ViewBag.StatusInvoic</span></div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="@Url.Action("Receipt","Manage")">View Details</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
-                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
             </div>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">Đã giao hàng: <span>@ViewBag.paidr</span></div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="@Url.Action("TypesClothes","Manage")">View Details</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">Chưa giao hàng: <span> @ViewBag.paidf</span></div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="@Url.Action("Receipt","Manage")">View Details</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">Đơn hàng dã xác nhận: <span>@ViewBag.rStatusInvoic</span></div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="@Url.Action("Receipt","Manage")">View Details</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 

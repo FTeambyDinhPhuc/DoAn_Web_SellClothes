@@ -12,7 +12,7 @@
             <li class="breadcrumb-item active" aria-current="page">@Model.NameProduct</li>
         </ol>
     </nav>
-    @if (Model.tinhtrangsanpham==false)
+    @if (Model.StatusProduct==0)
     { 
 
         <div class="product-details">
@@ -75,24 +75,19 @@
                                 @{
                                     for (int i = 0; i < Model.idSize.Count(); i++)
                                     {
-                                        if (Model.soluongton[Model.idSize[i] - 1] != 0 && Model.soluongton[Model.idSize[i] - 1] > 0)
+                                        if (Model.soluongton[i] != 0 && Model.soluongton[i] > 0)
                                         {
                                             <div class="GroupBtnSizecontent  d-flex justify-content-between">
                                                 <input type="radio" name="nameSize" value="@Model.idSize[i]">
                                                 <div class="Size">
-                                                    <span>@Model.sizeProduct[Model.idSize[i] - 1]</span>
+                                                    <span>@Model.sizeProduct[i]</span>
                                                 </div>
-                                                <span>@Model.soluongton[Model.idSize[i] - 1] Sản phẩm</span>
-
-
+                                                <span>@Model.soluongton[i] Sản phẩm</span>
                                             </div>
                                         }
                                     }
                                 }
                             </div>
-
-
-
                             @*<div class="occasion-cart desc_single">
             <h5 class="mt-4">Size</h5>
             <div class="size" id="custom-radio">

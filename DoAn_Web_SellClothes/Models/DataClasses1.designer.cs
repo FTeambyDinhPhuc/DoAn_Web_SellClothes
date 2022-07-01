@@ -1287,7 +1287,7 @@ namespace DoAn_Web_SellClothes.Models
         public List<int> idSize;
         public List<int?> soluongton;
         public List<string> sizeProduct;
-        public bool tinhtrangsanpham;
+      
 
         #region Extensibility Method Definitions
         partial void OnLoaded();
