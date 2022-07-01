@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuanLyBanQuanAo" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DINHPHUCDESKTOP\SQLEXPRESS;Initial Catalog=QuanLyBanQuanAo;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QuanLyBanQuanAoConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DINHPHUCDESKTOP\SQLEXPRESS;Initial Catalog=QuanLyBanQuanAo;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QuanLyBanQuanAoConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Account" Member="Accounts">
     <Type Name="Account">
       <Column Name="IdAccount" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -68,14 +68,6 @@
       <Column Name="IdProductType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Product_ProductDetail" Member="ProductDetails" ThisKey="IdProduct" OtherKey="IdProduct" Type="ProductDetail" />
       <Association Name="ProductType_Product" Member="ProductType" ThisKey="IdProductType" OtherKey="IdProductType" Type="ProductType" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ProductType" Member="ProductTypes">
-    <Type Name="ProductType">
-      <Column Name="IdProductType" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NameProductType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="IdSex" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="ProductType_Product" Member="Products" ThisKey="IdProductType" OtherKey="IdProductType" Type="Product" />
     </Type>
   </Table>
   <Table Name="dbo.ProductDetail" Member="ProductDetails">
