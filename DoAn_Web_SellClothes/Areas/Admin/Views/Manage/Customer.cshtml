@@ -1,8 +1,7 @@
 @model IEnumerable<DoAn_Web_SellClothes.Models.Account>
 
-@{
-    ViewBag.Title = "Customer";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+@{ ViewBag.Title = "Customer";
+   Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; 
 }
 
 <div class="container-fluid px-4">
@@ -27,14 +26,13 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.FullName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                            <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
-                            <td>@Html.DisplayFor(modelItem => item.AddressUser)</td>
-                            <td>@Html.DisplayFor(modelItem => item.PasswordUser)</td>
-                        </tr>
-                    }
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+            <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+            <td>@Html.DisplayFor(modelItem => item.AddressUser)</td>
+            <td>@Html.DisplayFor(modelItem => item.PasswordUser)</td>
+        </tr>}
                 </tbody>
             </table>
         </div>
