@@ -69,7 +69,6 @@
                             <hr class="light" />
                             <h5>Describe</h5>
                             @Model.DescribeProduct
-
                             <div class=" card-TableSize mt-3">
                                 <div class="title">Choose Product Size</div>
                                 @{
@@ -79,36 +78,18 @@
                                         {
                                             <div class="GroupBtnSizecontent  d-flex justify-content-between">
                                                 <input type="radio" name="nameSize" value="@Model.idSize[i]">
-                                                <div class="Size">
+                                                <div class="size d-flex justify-content-between">
                                                     <span>@Model.sizeProduct[i]</span>
+                                                    <span>@Model.soluongton[i] Sản phẩm</span>
                                                 </div>
-                                                <span>@Model.soluongton[i] Sản phẩm</span>
+                                                
+
+
                                             </div>
                                         }
                                     }
                                 }
                             </div>
-                            @*<div class="occasion-cart desc_single">
-            <h5 class="mt-4">Size</h5>
-            <div class="size" id="custom-radio">
-                @{
-                    for (int i = 0; i < Model.idSize.Count(); i++)
-                    {
-                        if (Model.soluongton[Model.idSize[i] - 1] != 0 && Model.soluongton[Model.idSize[i] - 1] > 0)
-                        {
-                            <label id="custom-label">
-                                <input id="nameSize" type="radio" name="nameSize" value="@Model.idSize[i]">
-                                <span class="ml-3 pt-1 text-center" style="font-size:1.5rem">@Model.sizeProduct[Model.idSize[i] - 1]</span>
-                                <span class="ml-3 pt-1 text-center" style="font-size:1.5rem">--@Model.soluongton[Model.idSize[i] - 1] Sản phẩm</span>
-                            </label>
-
-
-                        }
-                    }
-                }
-            </div>
-        </div>*@
-
                             <br />
                             <h5>quantity</h5>
                             <div class="btn-quantity">

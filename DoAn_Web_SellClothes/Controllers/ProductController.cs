@@ -47,7 +47,7 @@ namespace DoAn_Web_SellClothes.Controllers
             return View(sanphamloainu.ToPagedList(pageNum,pageSize));
         }
         [HttpGet]
-        public ActionResult ProductDetails(int? id,string url)
+        public ActionResult ProductDetails(int? id)
         {
             //var sanpham = from sp in data.Products where sp.IdProduct == id select sp;
             var sanPham = data.Products.FirstOrDefault(p => p.IdProduct == id);
@@ -56,7 +56,7 @@ namespace DoAn_Web_SellClothes.Controllers
             var sizeSanPham = data.SizeProducts.Select(p => p.NameSizeProduct).ToList();
             var demsanpham = soLuongTon.Sum(p => p.Value);
             sanPham.idSize = maSize;
-             sanPham.soluongton = soLuongTon;
+            sanPham.soluongton = soLuongTon;
             sanPham.sizeProduct = sizeSanPham;
             if (demsanpham <= 0)
             {

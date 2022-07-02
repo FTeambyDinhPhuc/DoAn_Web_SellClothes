@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.14\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -139,6 +142,8 @@
     </Compile>
     <Compile Include="Models\Giohang.cs" />
     <Compile Include="Models\InvoiceDetails.cs" />
+    <Compile Include="MoMo\MoMoSecurity.cs" />
+    <Compile Include="MoMo\PaymentRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2340,12 +2345,12 @@
     <Content Include="Areas\Admin\Views\Manage\DetailProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\AddProductDetailSize.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\DetailProducts.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\AddSex.cshtml" />
     <Content Include="Models\DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Areas\Admin\Views\Manage\AddSex.cshtml" />
     <None Include="Models\DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
@@ -2452,10 +2457,12 @@
     <Content Include="Views\Product\SPTheoLoaiNam.cshtml" />
     <Content Include="Views\Product\SPTheoLoaiNu.cshtml" />
     <Content Include="Views\Account\_User.cshtml" />
-    <Content Include="Views\Home\Thanks.cshtml" />
+    <Content Include="Views\Cart\Thanks.cshtml" />
     <Content Include="Views\History\History.cshtml" />
     <Content Include="Views\History\HistoryDetails.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Cart\ReturnUrl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

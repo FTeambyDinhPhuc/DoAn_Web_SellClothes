@@ -12,20 +12,16 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
     {
         // GET: Admin/Feedback
         DataClasses1DataContext db = new DataClasses1DataContext();
-        public ActionResult Feedback(int? page)
+        public ActionResult Feedback()
         {
             if (Session["admin"] == null)
             {
                 return RedirectToAction("LogIn", "Account");
             }
-            int pagesize = 25;
-            int pageNum = (page ?? 1);
+
             var list = db.Feedbacks.OrderByDescending(s => s.IdFeedback).ToList();
-            return View(list.ToPagedList(pageNum, pagesize));
+            return View(list);
         }
-        private List<Feedback> Feedback(int count)
-        {
-            return db.Feedbacks.OrderByDescending(s => s.IdFeedback).Take(count).ToList();
-        }      
+         
     }
 }

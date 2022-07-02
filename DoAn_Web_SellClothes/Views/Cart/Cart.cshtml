@@ -45,7 +45,7 @@
                                                 @item.iSizeProduct
                                             </td>
                                             <td class="product-price">
-                                                @item.iPriceProduct<span>đ</span>
+                                                @String.Format("{0:0,0}", @item.iPriceProduct)<span>đ</span>
                                             </td>
 
                                             <td class="product-quantity">
@@ -54,7 +54,7 @@
                                             </td>
 
                                             <td class="product-total-price">
-                                                <strong>@subtotal<span>đ</span></strong>
+                                                <strong>@String.Format("{0:0,0}", @subtotal)<span>đ</span></strong>
                                             </td>
                                         </tr>
                                     </form>
@@ -78,16 +78,16 @@
                             <tbody>
                                 <tr>
                                     <th>Tổng tiền sản phẩm</th>
-                                    <td>@ViewBag.TongTien<span>đ</span></td>
+                                    <td>@String.Format("{0:0,0}", @ViewBag.TongTien)<span>đ</span></td>
                                 </tr>
                                 <tr>
                                     <th>Phí vận chuyển</th>
-                                    <td>25.000<span>đ</span></td>
+                                    <td>25,000<span>đ</span></td>
                                 </tr>
                                 <tr class="order-total border-top">
                                     <th>Tổng tiền</th>
                                     <td>
-                                        @ViewBag.TongTienShip<span>đ</span>
+                                        @String.Format("{0:0,0}", @ViewBag.TongTienShip)<span>đ</span>
                                     </td>
                                 </tr>
                             </tbody>

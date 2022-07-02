@@ -42,7 +42,7 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#menuAccount" aria-expanded="false" aria-controls="menuAccount"><i class="fa fa-user"></i></a>
                     </li>
-                }
+                 }
             </ul>
             <ul class="navbar-nav mr-5">
                 @if (Session["user"] == null)
@@ -64,13 +64,11 @@
         </form>
     </div>
     <!--Hết Thanh tiềm kiếm-->
-
     <!--Nút scroll ont top-->
     <div id="progress">
         <span id="progress-value"><i class="fa-solid fa-arrow-up"></i></span>
     </div>
     <!--Hết nút scroll on top-->
-
     <!--Menu tài khoản khi đăng nhập-->
     <div class="collapse " id="menuAccount">
         <div class="py-2 px-5 text-right">
@@ -89,6 +87,38 @@
     </div>
 
     <!--End-body-->
+
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "111391104951893");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v14.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     <!--Footer-->
     <footer>
         <div class="container-fluid padding">

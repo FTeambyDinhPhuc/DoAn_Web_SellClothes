@@ -1,6 +1,4 @@
-﻿@using DoAn_Web_SellClothes.Models;
-@using PagedList.Mvc;
-@model PagedList.PagedList<Feedback>
+﻿@model IEnumerable<DoAn_Web_SellClothes.Models.Feedback>
 
 @{
     ViewBag.Title = "Feedback";
@@ -19,13 +17,13 @@
                 <thead>
                     <tr>
                         <th>Tên khách hàng</th>
-                        <th>Email</th>                        
+                        <th>Email</th>
                         <th>Nội dung phản hồi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach(var item in Model)
-                    { 
+                    @foreach (var item in Model)
+                    {
                         <tr>
 
                             <td style="min-width:200px">@Html.DisplayFor(modelItem => item.FullNameUserFeedback)</td>

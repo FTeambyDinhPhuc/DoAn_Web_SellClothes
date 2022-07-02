@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PagedList;
 using DoAn_Web_SellClothes.Models;
-using PagedList.Mvc;
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
@@ -30,12 +28,6 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             return hash.ToString();
         }
         //========================================================================================
-        //private int Receiptcount()
-        //{
-        //    var count = db.Invoices.OrderByDescending(s => s.IdInvoice).Count();
-        //    masage
-        //    return count;
-        //}
 
         public ActionResult Receipt()
         {
@@ -113,10 +105,6 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             return RedirectToAction("DetailReceipt", "Manage", new { id = idp });
         }
         //========================================================================================
-        private List<Account> Customer(int count)
-        {
-            return db.Accounts.OrderByDescending(s => s.IdAccount).Take(count).ToList();
-        }
 
         public ActionResult Customer()
         {
@@ -271,8 +259,8 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             }
         }
 
-        [HttpPost, ActionName("EditTypesClothes")]
-        public ActionResult eEditTypesClothes(FormCollection collection, int id)
+        [HttpPost]
+        public ActionResult EditTypesClothes(FormCollection collection, int id)
         {
             if (Session["admin"] == null)
             {

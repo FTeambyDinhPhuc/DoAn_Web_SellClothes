@@ -117,8 +117,8 @@
 #progress {
     position: fixed;
     z-index:2;
-    bottom: 2rem;
-    right: 1rem;
+    bottom: 7rem;
+    right: 1.5rem;
     height: 4rem;
     width: 4rem;
     display: none;
@@ -140,7 +140,6 @@
     color: #001a2e;
 }
 /*Hết nút scroll on top*/
-
 /*nội dung hiện thị ở màn hình chính chổ hình vàng */
 .caption {
     width: 100%;
@@ -537,7 +536,10 @@ footer {
        
     }
 
-    
+.size {
+    width: 70%;
+   
+}
 /* hết Bảng chọn size */
 /*Nút tăng giảm số lượng*/
 .btn-quantity {

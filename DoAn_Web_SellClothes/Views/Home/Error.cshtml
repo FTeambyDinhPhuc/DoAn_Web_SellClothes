@@ -1,13 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "Thanks";
+    ViewBag.Title = "Error";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Error</h2>
+
 <div class="container thanks-container text-center mt-5">
-    <h2>Cảm ơn bạn đã mua sản phẩm: <span>Áo polo</span></h2>
-    <h4>Mã đơn hàng của bạn là: <span><h2>@Session["idInvoice"]</h2></span></h4>
-    <p>Đơn hàng sẽ được giao tới bạn trong thời gian sớm nhất</p>
+    <h2>Thanh toán thất bại, vui lòng thanh toán lại</h2>
     <div class="row mt-5">
         <div class="col-md-4 col-xl-3 col-12 mx-auto mb-3">
             <a href="@Url.Action("Index","Home")" class="btn btn-outline-dark py-2">
@@ -15,10 +15,9 @@
             </a>
         </div>
         <div class="col-md-4 col-xl-3 col-12 mx-auto">
-            <a href="@Url.Action("ProductPage","Product")" class="btn btn-outline-dark py-2">
-                Tiếp tục mua sắm
+            <a href="@Url.Action("Cart", "Cart")" class="btn btn-outline-dark py-2">
+                Vào giỏ hàng
             </a>
         </div>
     </div>
 </div>
-
