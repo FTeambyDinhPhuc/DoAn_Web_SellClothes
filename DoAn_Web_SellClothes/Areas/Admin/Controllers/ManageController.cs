@@ -484,14 +484,6 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             }
             Product sp = db.Products.SingleOrDefault(n => n.IdProduct == id);
             sp.ImageProduct = img;
-            if (sp == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-            }else if(sp.StatusProduct !=1 || sp.StatusProduct != 0)
-            {
-                ViewData["1"] = "Bạn đã nhập sai !";
-            }
             UpdateModel(sp);
             db.SubmitChanges();
             return RedirectToAction("Product");
