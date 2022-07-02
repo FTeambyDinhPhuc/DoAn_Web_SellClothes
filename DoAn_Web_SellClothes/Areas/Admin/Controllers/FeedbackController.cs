@@ -22,9 +22,6 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             var list = db.Feedbacks.OrderByDescending(s => s.IdFeedback).ToList();
             return View(list);
         }
-        private List<Feedback> Feedback(int count)
-        {
-            return db.Feedbacks.OrderByDescending(s => s.IdFeedback).Take(count).ToList();
-        }      
+         
     }
 }
