@@ -36,19 +36,21 @@
                 </li>
                 @if (Session["user"] != null)
                 {
-    <li class="nav-item">
-        <a class="nav-link" href="@Url.Action("Cart", "Cart")"><i class="fa fa-bag-shopping"></i><sup>@HttpContext.Current.Session["QuantityCart"]</sup></a>
-    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Cart", "Cart")"><i class="fa fa-bag-shopping"></i><sup>@HttpContext.Current.Session["QuantityCart"]</sup></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#menuAccount" aria-expanded="false" aria-controls="menuAccount"><i class="fa fa-user"></i></a>
-                    </li>}
+                    </li>
+                 }
             </ul>
             <ul class="navbar-nav mr-5">
                 @if (Session["user"] == null)
                 {
-    <li class="nav-item">
-        <a class="nav-link" href="@Url.Action("Login", "Account")">Login</a>
-    </li>}
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Login", "Account")">Login</a>
+                    </li>
+                }
             </ul>
 
 
