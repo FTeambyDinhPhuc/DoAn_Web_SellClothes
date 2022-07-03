@@ -12,7 +12,6 @@
 
         @using (Html.BeginForm("EditProduct", "Manage", FormMethod.Post, new { @enctype = "multipart/form-data" }))
         {
-            @Html.AntiForgeryToken()
             <div class="card-body">
                 <div class="table-Edit table-responsive">
                     <table class="table">
@@ -40,11 +39,11 @@
                                 <th>Hình</th>
                                 <td>
                                     <div class="col-md-10">
-                                        <input type="file" name="fileUpload" />
-                                        <img src="~/Assets/img/Clothes/@Html.DisplayFor(modelItem => Model.ImageProduct)" class="img-thumbnail" style="width:75px" alt="Alternate Text" />
+                                        <input type="file" name="fileupload"/>
+                                        <img src="~/Assets/img/Clothes/@Html.DisplayFor(modelItem => Model.ImageProduct)" class="img-thumbnail" style="width:75px" alt="@Model.NameProduct" />
                                     </div>
                                 </td>
-                            </tr>                          
+                            </tr>
                             <tr>
                                 <th>Giá</th>
                                 <td>
@@ -54,6 +53,7 @@
                                     </div>
                                 </td>
                             </tr>
+                         
                             <tr>
                                 <th>Mô tả</th>
                                 <td>
@@ -72,7 +72,6 @@
                                 </td>
                             </tr>
                         </tbody>
-
                     </table>
                 </div>
             </div>
@@ -82,8 +81,3 @@
     <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
 </div>
 
-
-
-@*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@

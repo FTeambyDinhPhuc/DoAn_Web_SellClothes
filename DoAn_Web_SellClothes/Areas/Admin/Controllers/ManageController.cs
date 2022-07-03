@@ -372,8 +372,13 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
 
         //action thêm sản phẩm
         [HttpPost]
-        public ActionResult AddProduct(Product pr, ProductDetail dt, FormCollection collection, HttpPostedFileBase fileUpload)
+        public ActionResult AddProduct(Product pr, ProductDetail dt, FormCollection collection, HttpPostedFileBase img)
         {
+            
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("LogIn", "Account");
+            }
             ViewBag.Loai = new SelectList(db.ProductTypes.ToList().OrderBy(n => n.IdProductType), "IdProductType", "NameProductType");
             ViewBag.Size = new SelectList(db.SizeProducts.ToList().OrderBy(n => n.NameSizeProduct), "IdSizeProduct", "NameSizeProduct");
 
@@ -392,9 +397,11 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             {
                 status = 0;
             }
-            var filename = Path.GetFileName(fileUpload.FileName); 
-            var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);          
-            fileUpload.SaveAs(path);
+
+            var filename = Path.GetFileName(img.FileName); 
+            var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);
+      
+            img.SaveAs(path);
             pr.NameProduct = ten;
             pr.ImageProduct = filename;
             pr.PriceProduct = int.Parse(gia);
@@ -403,8 +410,11 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             pr.UpdateDate = date;
             pr.IdProductType = Int32.Parse(loai);
             pr.StatusProduct = status;
+
             db.Products.InsertOnSubmit(pr);
-            db.SubmitChanges();           
+            db.SubmitChanges();
+            
+;
 
             dt.IdSizeProduct = Int32.Parse(size);
             dt.IdProduct = pr.IdProduct;
@@ -431,7 +441,6 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                     return null;
                 }
                 ViewBag.Loai = new SelectList(db.ProductTypes.ToList().OrderBy(n => n.IdProductType), "IdProductType", "NameProductType");
-                //ViewBag.Size = new SelectList(db.SizeProducts.ToList().OrderBy(n => n.NameSizeProduct), "IdSizeProduct", "NameSizeProduct");
                 return View(sp);
             }
         }
@@ -444,7 +453,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             var date = DateTime.UtcNow.Date;
             if (img != null)
             {
-                if(ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
                     var filename = Path.GetFileName(img.FileName);
                     var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);
@@ -452,8 +461,8 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                     {
                         img.SaveAs(path);
                         sp.ImageProduct = filename;
-                    }                       
-                }                             
+                    }
+                }
             }
 
             
