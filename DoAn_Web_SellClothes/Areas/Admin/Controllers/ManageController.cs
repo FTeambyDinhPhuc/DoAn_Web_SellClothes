@@ -372,7 +372,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
 
         //action thêm sản phẩm
         [HttpPost]
-        public ActionResult AddProduct(Product pr, ProductDetail dt, FormCollection collection, HttpPostedFileBase fileUpload)
+        public ActionResult AddProduct(Product pr, ProductDetail dt, FormCollection collection, HttpPostedFileBase img)
         {
             
             if (Session["admin"] == null)
@@ -398,10 +398,10 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                 status = 0;
             }
 
-            var filename = Path.GetFileName(fileUpload.FileName); 
+            var filename = Path.GetFileName(img.FileName); 
             var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);
       
-            fileUpload.SaveAs(path);
+            img.SaveAs(path);
             pr.NameProduct = ten;
             pr.ImageProduct = filename;
             pr.PriceProduct = int.Parse(gia);
@@ -441,27 +441,25 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                     return null;
                 }
                 ViewBag.Loai = new SelectList(db.ProductTypes.ToList().OrderBy(n => n.IdProductType), "IdProductType", "NameProductType");
-                //ViewBag.Size = new SelectList(db.SizeProducts.ToList().OrderBy(n => n.NameSizeProduct), "IdSizeProduct", "NameSizeProduct");
                 return View(sp);
             }
         }
         //action sửa sản phẩm
         [HttpPost]
-        public ActionResult EditProduct(int id, HttpPostedFileBase fileUpload)
+        public ActionResult EditProduct(int id, HttpPostedFileBase img)
         {
             ViewBag.Loai = new SelectList(db.ProductTypes.ToList().OrderBy(n => n.IdProductType), "IdProductType", "NameProductType");
             Product sp = db.Products.SingleOrDefault(n => n.IdProduct == id);
-
             var date = DateTime.UtcNow.Date;
-            if (fileUpload != null)
+            if (img != null)
             {
                 if (ModelState.IsValid)
                 {
-                    var filename = Path.GetFileName(fileUpload.FileName);
+                    var filename = Path.GetFileName(img.FileName);
                     var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);
                     if (System.IO.File.Exists(path))
                     {
-                        fileUpload.SaveAs(path);
+                        img.SaveAs(path);
                         sp.ImageProduct = filename;
                     }
                 }
