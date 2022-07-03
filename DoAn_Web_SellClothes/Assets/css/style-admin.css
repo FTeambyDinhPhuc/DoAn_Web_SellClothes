@@ -120,8 +120,9 @@ body {
     flex-direction: column;
     height: 100%;
     flex-wrap: nowrap;
-    background-color: #4A453E;
-    color: #E7E0D6;
+
+    background-color: #212529;
+    color: rgba(255, 255, 255, 0.5);
 }
 
     .sidenav .sidenav-menu {
@@ -184,10 +185,9 @@ body {
             }
 
     .sidenav .sidenav-footer {
-        color: #E7E0D6;
         padding: 0.75rem;
         flex-shrink: 0;
-        background-color: #25211C;
+        background-color: #343a40;
     }
 /* hết Thanh navbar với side*/
 
@@ -208,7 +208,7 @@ body {
 }
 
 .login-head {
-    background-color: #FB9600;
+    background-color: #17a2b8;
     padding: .5rem 0;
     letter-spacing: 2.5px;
     border-top-left-radius: 1rem;
@@ -218,7 +218,7 @@ body {
     .login-head p {
         color: white;
         font-size:1.2rem;
-        font-weight: 500;
+        font-weight: bold;
         text-transform: uppercase;
         margin:0;
     }
@@ -250,48 +250,10 @@ body {
             width: 100%;
             height: 2.8rem;
             max-width: none;
-            font-weight:700;
         }
 
 /*Hết màn hình login*/
 
-/*
-    Style btn----------------------------
-*/
-
-.btn-info {
-    color: #fff;
-    background-color: #FB9600;
-    border-color: #FB9600;
-}
-    .btn-info:hover {
-        color: #fff;
-        background-color: #D88100;
-        border-color: #D88100;
-    }
-
-.btn-warning {
-    color: #FADEDB;
-    background-color: #B3261D;
-    border-color: #B3261D;
-}
-    .btn-warning:hover {
-        color: #FADEDB;
-        background-color: #7E0E07;
-        border-color: #7E0E07;
-    }
-
-/*
-    Style color-------------
-*/
-
-.bg-dark {
-    background-color: #25211C !important;
-}
-
-.navbar-dark .navbar-brand {
-    color: #E7E0D6;
-}
 /*table dữ liệu*/
 
 /*Hết table dữ liệu*/
