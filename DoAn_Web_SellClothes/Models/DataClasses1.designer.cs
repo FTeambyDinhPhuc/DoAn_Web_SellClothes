@@ -1260,11 +1260,10 @@ namespace DoAn_Web_SellClothes.Models
 		private EntitySet<ProductDetail> _ProductDetails;
 		
 		private EntityRef<ProductType> _ProductType;
-
 		//Giá trị ngoài
 		public List<int> idSize;
 		public List<string> sizeProduct;
-		public List<int> soluongton;
+		public List<int?> soluongton;
 
 		#region Extensibility Method Definitions
 		partial void OnLoaded();
