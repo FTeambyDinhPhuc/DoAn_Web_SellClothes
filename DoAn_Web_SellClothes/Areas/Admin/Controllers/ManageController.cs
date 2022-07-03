@@ -465,6 +465,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                 }
             }
 
+            
             sp.UpdateDate = date;
             UpdateModel(sp);
             db.SubmitChanges();
