@@ -10,15 +10,22 @@
 
     <div class="card mb-4">
 
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("EditProduct", "Manage", FormMethod.Post, new { @enctype = "multipart/form-data" }))
         {
-            @Html.AntiForgeryToken()
             <div class="card-body">
                 <div class="table-Edit table-responsive">
                     <table class="table">
                         <tbody>
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             @Html.HiddenFor(model => model.IdProduct)
+                            <tr>
+                                <th>Mã sản phẩm</th>
+                                <td>
+                                    <div class="col-md-10">
+                                        <div style="">@Model.IdProduct</div>
+                                    </div>
+                                </td>
+                            </tr>
                             <tr>
                                 <th>Tên sản phẩm</th>
                                 <td>
@@ -32,8 +39,8 @@
                                 <th>Hình</th>
                                 <td>
                                     <div class="col-md-10">
-                                        @Html.EditorFor(model => model.ImageProduct, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.ImageProduct, "", new { @class = "text-danger" })
+                                        <input type="file" name="fileupload" />
+                                        <img src="~/Assets/img/Clothes/@Html.DisplayFor(modelItem => Model.ImageProduct)" class="img-thumbnail" style="width:75px" alt="@Model.NameProduct" />
                                     </div>
                                 </td>
                             </tr>
@@ -46,15 +53,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <th>Ngày lập</th>
-                                <td>
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.UpdateDate, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
-                                    </div>
-                                </td>                               
-                            </tr>
+                         
                             <tr>
                                 <th>Mô tả</th>
                                 <td>
@@ -71,22 +70,8 @@
                                         @Html.DropDownList("Loai")
                                     </div>
                                 </td>
-                            </tr>                            
-                            <tr>
-                                <th>Trạng thái</th>
-                                <td>
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.StatusProduct, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.StatusProduct, "", new { @class = "text-danger" })
-                                        <span>"0" : Hết Hàng</span><br />
-                                        <span>"1" : Còn Hàng</span>
-                                        @ViewData["1"]
-                                    </div>
-                                </td>
                             </tr>
-
                         </tbody>
-
                     </table>
                 </div>
             </div>

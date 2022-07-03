@@ -400,12 +400,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
 
             var filename = Path.GetFileName(fileUpload.FileName); 
             var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);
-            //if (System.IO.File.Exists(path))
-            //{
-            //    ViewBag.ThongBaoAnh = "Hình Ảnh Đã Tồn Tại";
-            //    return this.AddProduct();
-            //}
-            
+      
             fileUpload.SaveAs(path);
             pr.NameProduct = ten;
             pr.ImageProduct = filename;
@@ -415,7 +410,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             pr.UpdateDate = date;
             pr.IdProductType = Int32.Parse(loai);
             pr.StatusProduct = status;
-            //pr.QuantityProduct = int.Parse(sl);
+
             db.Products.InsertOnSubmit(pr);
             db.SubmitChanges();
             
@@ -451,35 +446,28 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             }
         }
         //action sửa sản phẩm
-        [HttpPost, ActionName("EditProduct")]
-        public ActionResult eEditProduct(FormCollection collection, int id, HttpPostedFileBase fileUpload)
+        [HttpPost]
+        public ActionResult EditProduct(int id, HttpPostedFileBase fileUpload)
         {
-            var img = "";
             ViewBag.Loai = new SelectList(db.ProductTypes.ToList().OrderBy(n => n.IdProductType), "IdProductType", "NameProductType");
+            Product sp = db.Products.SingleOrDefault(n => n.IdProduct == id);
 
-            if(fileUpload != null)
+            var date = DateTime.UtcNow.Date;
+            if (fileUpload != null)
             {
-                img = Path.GetFileName(fileUpload.FileName);
-                var path = Path.Combine(Server.MapPath("~/Sản Phẩm"), img);
-                if (!System.IO.File.Exists(path))//Sản Phẩm Chưa Tồn Tại
+                if (ModelState.IsValid)
                 {
-                    fileUpload.SaveAs(path);
+                    var filename = Path.GetFileName(fileUpload.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);
+                    if (System.IO.File.Exists(path))
+                    {
+                        fileUpload.SaveAs(path);
+                        sp.ImageProduct = filename;
+                    }
                 }
             }
-            else
-            {
-                img = collection["Anh"];
-            }
-            Product sp = db.Products.SingleOrDefault(n => n.IdProduct == id);
-            sp.ImageProduct = img;
-            if (sp == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-            }else if(sp.StatusProduct !=1 || sp.StatusProduct != 0)
-            {
-                ViewData["1"] = "Bạn đã nhập sai !";
-            }
+
+            sp.UpdateDate = date;
             UpdateModel(sp);
             db.SubmitChanges();
             return RedirectToAction("Product");
