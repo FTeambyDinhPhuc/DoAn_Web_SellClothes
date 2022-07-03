@@ -34,5 +34,9 @@ html {
     box-sizing: border-box;
 }
 
+.alert{
+    margin-bottom: 0;
+}
+
 
 

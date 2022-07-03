@@ -4,13 +4,14 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DoAn_Web_SellClothes.Assets.csharp;
 using DoAn_Web_SellClothes.Models;
 using DoAn_Web_SellClothes.MoMo;
 using Newtonsoft.Json.Linq;
 
 namespace DoAn_Web_SellClothes.Controllers
 {
-    public class CartController : Controller
+    public class CartController : BaseController
     {
         DataClasses1DataContext data = new DataClasses1DataContext();
         // GET: Cart
@@ -87,11 +88,14 @@ namespace DoAn_Web_SellClothes.Controllers
 
                 giohang = new Giohang(idProduct, sizeid, sl);
                 listgiohang.Add(giohang);
+                SetAlert("Thêm vào giỏ hàng thành công", "success");
                 return Redirect(strURL);
+                
             }
             else
             {
                 giohang.iQuantityProduct++;
+                SetAlert("Thêm vào giỏ hàng thành công", "success");
                 return Redirect(strURL);
             }
         }

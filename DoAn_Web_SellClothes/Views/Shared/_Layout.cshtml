@@ -42,7 +42,7 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#menuAccount" aria-expanded="false" aria-controls="menuAccount"><i class="fa fa-user"></i></a>
                     </li>
-                 }
+                }
             </ul>
             <ul class="navbar-nav mr-5">
                 @if (Session["user"] == null)
@@ -81,13 +81,17 @@
     <!--End-Navigation-->
     <!--Body-->
     <div>
-        <div id="toast">
-        </div>
+        @if (TempData["AlertMessage"] != null)
+        {
+            <div id="AlerBox" class="alert @TempData["AlertType"]">
+                @TempData["AlertMessage"]
+            </div>
+        }
+
         @RenderBody()
     </div>
 
     <!--End-body-->
-
     <!-- Messenger Plugin chat Code -->
     <div id="fb-root"></div>
 
@@ -144,6 +148,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Assets/js/base.js"></script>
     <script src="~/Assets/js/main.js"></script>
 </body>
 </html>
