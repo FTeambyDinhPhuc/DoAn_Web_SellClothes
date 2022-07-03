@@ -24,7 +24,7 @@
                         <th>Tổng hóa đơn</th>
                         <th>Phương thức thanh toán</th>
                         <th>Trạng thái hóa đơn</th>
-                        <th>Trạng thái thanh toán</th>
+                        <th>Trạng thái vận chuyển</th>
                         <th>Lưu ý</th>
                         <th>&nbsp;</th>
 
@@ -51,11 +51,11 @@
                             }
                             @if (@item.Paid)
                             {
-                                <td>Đã thanh toán</td>
+                                <td>Đã vận chuyển</td>
                             }
                             else
                             {
-                                <td>Chưa thanh toán</td>
+                                <td>Chưa vận chuyển</td>
                             }
                             <td>@Html.DisplayFor(modelItem => item.NoteInvoice)</td>
                             <td>

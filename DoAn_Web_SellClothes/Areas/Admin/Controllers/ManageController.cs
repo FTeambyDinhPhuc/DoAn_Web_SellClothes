@@ -374,6 +374,11 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddProduct(Product pr, ProductDetail dt, FormCollection collection, HttpPostedFileBase fileUpload)
         {
+            
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("LogIn", "Account");
+            }
             ViewBag.Loai = new SelectList(db.ProductTypes.ToList().OrderBy(n => n.IdProductType), "IdProductType", "NameProductType");
             ViewBag.Size = new SelectList(db.SizeProducts.ToList().OrderBy(n => n.NameSizeProduct), "IdSizeProduct", "NameSizeProduct");
 
@@ -392,8 +397,15 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             {
                 status = 0;
             }
+
             var filename = Path.GetFileName(fileUpload.FileName); 
-            var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);          
+            var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);
+            //if (System.IO.File.Exists(path))
+            //{
+            //    ViewBag.ThongBaoAnh = "Hình Ảnh Đã Tồn Tại";
+            //    return this.AddProduct();
+            //}
+            
             fileUpload.SaveAs(path);
             pr.NameProduct = ten;
             pr.ImageProduct = filename;
@@ -403,8 +415,11 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             pr.UpdateDate = date;
             pr.IdProductType = Int32.Parse(loai);
             pr.StatusProduct = status;
+            //pr.QuantityProduct = int.Parse(sl);
             db.Products.InsertOnSubmit(pr);
-            db.SubmitChanges();           
+            db.SubmitChanges();
+            
+;
 
             dt.IdSizeProduct = Int32.Parse(size);
             dt.IdProduct = pr.IdProduct;
@@ -436,27 +451,35 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             }
         }
         //action sửa sản phẩm
-        [HttpPost]
-        public ActionResult EditProduct(int id, HttpPostedFileBase fileUpload)
+        [HttpPost, ActionName("EditProduct")]
+        public ActionResult eEditProduct(FormCollection collection, int id, HttpPostedFileBase fileUpload)
         {
+            var img = "";
             ViewBag.Loai = new SelectList(db.ProductTypes.ToList().OrderBy(n => n.IdProductType), "IdProductType", "NameProductType");
-            Product sp = db.Products.SingleOrDefault(n => n.IdProduct == id);
-            var date = DateTime.UtcNow.Date;
-            if (fileUpload != null)
+
+            if(fileUpload != null)
             {
-                if(ModelState.IsValid)
+                img = Path.GetFileName(fileUpload.FileName);
+                var path = Path.Combine(Server.MapPath("~/Sản Phẩm"), img);
+                if (!System.IO.File.Exists(path))//Sản Phẩm Chưa Tồn Tại
                 {
-                    var filename = Path.GetFileName(fileUpload.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);
-                    if (System.IO.File.Exists(path))
-                    {
-                        fileUpload.SaveAs(path);
-                        sp.ImageProduct = filename;
-                    }                       
-                }                             
+                    fileUpload.SaveAs(path);
+                }
             }
-            
-            sp.UpdateDate = date;
+            else
+            {
+                img = collection["Anh"];
+            }
+            Product sp = db.Products.SingleOrDefault(n => n.IdProduct == id);
+            sp.ImageProduct = img;
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }else if(sp.StatusProduct !=1 || sp.StatusProduct != 0)
+            {
+                ViewData["1"] = "Bạn đã nhập sai !";
+            }
             UpdateModel(sp);
             db.SubmitChanges();
             return RedirectToAction("Product");

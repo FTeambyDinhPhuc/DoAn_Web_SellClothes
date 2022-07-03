@@ -83,22 +83,22 @@
                 @if (@hd.Paid && @hd.StatusInvoice)
                 {
                     <a class="btn btn-warning mb-xl-2" href="@Url.Action("CloseInvoice","Manage", new {id = @hd.IdInvoice, TrangThai = false})">Hủy đơn hàng</a>
-                    <a class="btn btn-warning mb-xl-2" href="@Url.Action("Chugiao","Manage", new {id = @hd.IdInvoice, TrangThai = false})">Hủy thanh toán</a>
+                    <a class="btn btn-warning mb-xl-2" href="@Url.Action("Chugiao","Manage", new {id = @hd.IdInvoice, TrangThai = false})">Hủy vận chuyển</a>
                 }
                 else if (@hd.Paid && @hd.StatusInvoice == false)
                 {
                     <a class="btn btn-success mb-xl-2" href="@Url.Action("ConfilmInvoice","Manage", new {id = @hd.IdInvoice, TrangThai = true})">Xác nhận đơn hàng</a>
-                    <a class="btn btn-warning mb-xl-2" href="@Url.Action("Chugiao","Manage", new {id = @hd.IdInvoice, TrangThai = false})">Hủy thanh toán</a>
+                    <a class="btn btn-warning mb-xl-2" href="@Url.Action("Chugiao","Manage", new {id = @hd.IdInvoice, TrangThai = false})">Hủy vận chuyển</a>
                 }
                 else if (@hd.Paid == false && @hd.StatusInvoice)
                 {
                     <a class="btn btn-warning mb-xl-2" href="@Url.Action("CloseInvoice","Manage", new {id = @hd.IdInvoice, TrangThai = false})">Hủy đơn hàng</a>
-                    <a class="btn btn-success mb-xl-2" href="@Url.Action("Dagiao","Manage", new {id = @hd.IdInvoice, TrangThai = true})">Đã thanh toán</a>
+                    <a class="btn btn-success mb-xl-2" href="@Url.Action("Dagiao","Manage", new {id = @hd.IdInvoice, TrangThai = true})">Vận chuyển</a>
                 }
                 else
                 {
                     <a class="btn btn-success mb-xl-2" href="@Url.Action("ConfilmInvoice","Manage", new {id = @hd.IdInvoice, TrangThai = true})">Xác nhận đơn hàng</a>
-                    <a class="btn btn-success mb-xl-2" href="@Url.Action("Dagiao","Manage", new {id = @hd.IdInvoice, TrangThai = true})">Thanh toán</a>
+                    <a class="btn btn-success mb-xl-2" href="@Url.Action("Dagiao","Manage", new {id = @hd.IdInvoice, TrangThai = true})">Vận chuyển</a>
                 }               
                 <button id="btnPrintBill" class="btn btn-info mb-xl-2">In hóa đơn</button>
                 <a class="btn btn-outline-dark" href="@Url.Action("Receipt","Manage")">Trở về</a>
