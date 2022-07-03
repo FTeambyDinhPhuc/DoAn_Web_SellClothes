@@ -1570,7 +1570,7 @@ namespace DoAn_Web_SellClothes.Models
 		
 		private int _IdProduct;
 		
-		private int _SoLuongTon;
+		private System.Nullable<int> _SoLuongTon;
 		
 		private EntitySet<InvoiceDetail> _InvoiceDetails;
 		
@@ -1586,7 +1586,7 @@ namespace DoAn_Web_SellClothes.Models
     partial void OnIdSizeProductChanged();
     partial void OnIdProductChanging(int value);
     partial void OnIdProductChanged();
-    partial void OnSoLuongTonChanging(int value);
+    partial void OnSoLuongTonChanging(System.Nullable<int> value);
     partial void OnSoLuongTonChanged();
     #endregion
 		
@@ -1646,8 +1646,8 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuongTon", DbType="Int NOT NULL")]
-		public int SoLuongTon
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuongTon", DbType="Int")]
+		public System.Nullable<int> SoLuongTon
 		{
 			get
 			{

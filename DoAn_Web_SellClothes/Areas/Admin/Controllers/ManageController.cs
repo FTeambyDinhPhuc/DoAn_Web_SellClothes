@@ -457,7 +457,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                 {
                     var filename = Path.GetFileName(img.FileName);
                     var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);
-                    if (System.IO.File.Exists(path))
+                    if (!System.IO.File.Exists(path))
                     {
                         img.SaveAs(path);
                         sp.ImageProduct = filename;
