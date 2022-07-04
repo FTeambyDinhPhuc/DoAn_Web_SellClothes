@@ -36,12 +36,12 @@ namespace DoAn_Web_SellClothes.Models
     partial void InsertAdminAccount(AdminAccount instance);
     partial void UpdateAdminAccount(AdminAccount instance);
     partial void DeleteAdminAccount(AdminAccount instance);
-    partial void InsertFeedback(Feedback instance);
-    partial void UpdateFeedback(Feedback instance);
-    partial void DeleteFeedback(Feedback instance);
     partial void InsertInvoice(Invoice instance);
     partial void UpdateInvoice(Invoice instance);
     partial void DeleteInvoice(Invoice instance);
+    partial void InsertFeedback(Feedback instance);
+    partial void UpdateFeedback(Feedback instance);
+    partial void DeleteFeedback(Feedback instance);
     partial void InsertInvoiceDetail(InvoiceDetail instance);
     partial void UpdateInvoiceDetail(InvoiceDetail instance);
     partial void DeleteInvoiceDetail(InvoiceDetail instance);
@@ -51,12 +51,12 @@ namespace DoAn_Web_SellClothes.Models
     partial void InsertProductDetail(ProductDetail instance);
     partial void UpdateProductDetail(ProductDetail instance);
     partial void DeleteProductDetail(ProductDetail instance);
-    partial void InsertProductType(ProductType instance);
-    partial void UpdateProductType(ProductType instance);
-    partial void DeleteProductType(ProductType instance);
     partial void InsertSizeProduct(SizeProduct instance);
     partial void UpdateSizeProduct(SizeProduct instance);
     partial void DeleteSizeProduct(SizeProduct instance);
+    partial void InsertProductType(ProductType instance);
+    partial void UpdateProductType(ProductType instance);
+    partial void DeleteProductType(ProductType instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -105,19 +105,19 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Feedback> Feedbacks
-		{
-			get
-			{
-				return this.GetTable<Feedback>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Invoice> Invoices
 		{
 			get
 			{
 				return this.GetTable<Invoice>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Feedback> Feedbacks
+		{
+			get
+			{
+				return this.GetTable<Feedback>();
 			}
 		}
 		
@@ -145,19 +145,19 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<ProductType> ProductTypes
-		{
-			get
-			{
-				return this.GetTable<ProductType>();
-			}
-		}
-		
 		public System.Data.Linq.Table<SizeProduct> SizeProducts
 		{
 			get
 			{
 				return this.GetTable<SizeProduct>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ProductType> ProductTypes
+		{
+			get
+			{
+				return this.GetTable<ProductType>();
 			}
 		}
 	}
@@ -457,140 +457,6 @@ namespace DoAn_Web_SellClothes.Models
 					this._PasswordAdmin = value;
 					this.SendPropertyChanged("PasswordAdmin");
 					this.OnPasswordAdminChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Feedback")]
-	public partial class Feedback : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IdFeedback;
-		
-		private string _FullNameUserFeedback;
-		
-		private string _EmailUserFeedback;
-		
-		private string _DescribeFeedback;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdFeedbackChanging(int value);
-    partial void OnIdFeedbackChanged();
-    partial void OnFullNameUserFeedbackChanging(string value);
-    partial void OnFullNameUserFeedbackChanged();
-    partial void OnEmailUserFeedbackChanging(string value);
-    partial void OnEmailUserFeedbackChanged();
-    partial void OnDescribeFeedbackChanging(string value);
-    partial void OnDescribeFeedbackChanged();
-    #endregion
-		
-		public Feedback()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdFeedback", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int IdFeedback
-		{
-			get
-			{
-				return this._IdFeedback;
-			}
-			set
-			{
-				if ((this._IdFeedback != value))
-				{
-					this.OnIdFeedbackChanging(value);
-					this.SendPropertyChanging();
-					this._IdFeedback = value;
-					this.SendPropertyChanged("IdFeedback");
-					this.OnIdFeedbackChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FullNameUserFeedback", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string FullNameUserFeedback
-		{
-			get
-			{
-				return this._FullNameUserFeedback;
-			}
-			set
-			{
-				if ((this._FullNameUserFeedback != value))
-				{
-					this.OnFullNameUserFeedbackChanging(value);
-					this.SendPropertyChanging();
-					this._FullNameUserFeedback = value;
-					this.SendPropertyChanged("FullNameUserFeedback");
-					this.OnFullNameUserFeedbackChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailUserFeedback", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string EmailUserFeedback
-		{
-			get
-			{
-				return this._EmailUserFeedback;
-			}
-			set
-			{
-				if ((this._EmailUserFeedback != value))
-				{
-					this.OnEmailUserFeedbackChanging(value);
-					this.SendPropertyChanging();
-					this._EmailUserFeedback = value;
-					this.SendPropertyChanged("EmailUserFeedback");
-					this.OnEmailUserFeedbackChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DescribeFeedback", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string DescribeFeedback
-		{
-			get
-			{
-				return this._DescribeFeedback;
-			}
-			set
-			{
-				if ((this._DescribeFeedback != value))
-				{
-					this.OnDescribeFeedbackChanging(value);
-					this.SendPropertyChanging();
-					this._DescribeFeedback = value;
-					this.SendPropertyChanged("DescribeFeedback");
-					this.OnDescribeFeedbackChanged();
 				}
 			}
 		}
@@ -984,6 +850,140 @@ namespace DoAn_Web_SellClothes.Models
 		{
 			this.SendPropertyChanging();
 			entity.Invoice = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Feedback")]
+	public partial class Feedback : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IdFeedback;
+		
+		private string _FullNameUserFeedback;
+		
+		private string _EmailUserFeedback;
+		
+		private string _DescribeFeedback;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdFeedbackChanging(int value);
+    partial void OnIdFeedbackChanged();
+    partial void OnFullNameUserFeedbackChanging(string value);
+    partial void OnFullNameUserFeedbackChanged();
+    partial void OnEmailUserFeedbackChanging(string value);
+    partial void OnEmailUserFeedbackChanged();
+    partial void OnDescribeFeedbackChanging(string value);
+    partial void OnDescribeFeedbackChanged();
+    #endregion
+		
+		public Feedback()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdFeedback", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int IdFeedback
+		{
+			get
+			{
+				return this._IdFeedback;
+			}
+			set
+			{
+				if ((this._IdFeedback != value))
+				{
+					this.OnIdFeedbackChanging(value);
+					this.SendPropertyChanging();
+					this._IdFeedback = value;
+					this.SendPropertyChanged("IdFeedback");
+					this.OnIdFeedbackChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FullNameUserFeedback", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string FullNameUserFeedback
+		{
+			get
+			{
+				return this._FullNameUserFeedback;
+			}
+			set
+			{
+				if ((this._FullNameUserFeedback != value))
+				{
+					this.OnFullNameUserFeedbackChanging(value);
+					this.SendPropertyChanging();
+					this._FullNameUserFeedback = value;
+					this.SendPropertyChanged("FullNameUserFeedback");
+					this.OnFullNameUserFeedbackChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailUserFeedback", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string EmailUserFeedback
+		{
+			get
+			{
+				return this._EmailUserFeedback;
+			}
+			set
+			{
+				if ((this._EmailUserFeedback != value))
+				{
+					this.OnEmailUserFeedbackChanging(value);
+					this.SendPropertyChanging();
+					this._EmailUserFeedback = value;
+					this.SendPropertyChanged("EmailUserFeedback");
+					this.OnEmailUserFeedbackChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DescribeFeedback", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string DescribeFeedback
+		{
+			get
+			{
+				return this._DescribeFeedback;
+			}
+			set
+			{
+				if ((this._DescribeFeedback != value))
+				{
+					this.OnDescribeFeedbackChanging(value);
+					this.SendPropertyChanging();
+					this._DescribeFeedback = value;
+					this.SendPropertyChanged("DescribeFeedback");
+					this.OnDescribeFeedbackChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -1570,7 +1570,7 @@ namespace DoAn_Web_SellClothes.Models
 		
 		private int _IdProduct;
 		
-		private int _SoLuongTon;
+		private System.Nullable<int> _SoLuongTon;
 		
 		private EntitySet<InvoiceDetail> _InvoiceDetails;
 		
@@ -1586,7 +1586,7 @@ namespace DoAn_Web_SellClothes.Models
     partial void OnIdSizeProductChanged();
     partial void OnIdProductChanging(int value);
     partial void OnIdProductChanged();
-    partial void OnSoLuongTonChanging(int value);
+    partial void OnSoLuongTonChanging(System.Nullable<int> value);
     partial void OnSoLuongTonChanged();
     #endregion
 		
@@ -1646,8 +1646,8 @@ namespace DoAn_Web_SellClothes.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuongTon", DbType="Int NOT NULL")]
-		public int SoLuongTon
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuongTon", DbType="Int")]
+		public System.Nullable<int> SoLuongTon
 		{
 			get
 			{
@@ -1777,6 +1777,120 @@ namespace DoAn_Web_SellClothes.Models
 		{
 			this.SendPropertyChanging();
 			entity.ProductDetail = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SizeProduct")]
+	public partial class SizeProduct : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IdSizeProduct;
+		
+		private string _NameSizeProduct;
+		
+		private EntitySet<ProductDetail> _ProductDetails;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdSizeProductChanging(int value);
+    partial void OnIdSizeProductChanged();
+    partial void OnNameSizeProductChanging(string value);
+    partial void OnNameSizeProductChanged();
+    #endregion
+		
+		public SizeProduct()
+		{
+			this._ProductDetails = new EntitySet<ProductDetail>(new Action<ProductDetail>(this.attach_ProductDetails), new Action<ProductDetail>(this.detach_ProductDetails));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdSizeProduct", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int IdSizeProduct
+		{
+			get
+			{
+				return this._IdSizeProduct;
+			}
+			set
+			{
+				if ((this._IdSizeProduct != value))
+				{
+					this.OnIdSizeProductChanging(value);
+					this.SendPropertyChanging();
+					this._IdSizeProduct = value;
+					this.SendPropertyChanged("IdSizeProduct");
+					this.OnIdSizeProductChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameSizeProduct", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string NameSizeProduct
+		{
+			get
+			{
+				return this._NameSizeProduct;
+			}
+			set
+			{
+				if ((this._NameSizeProduct != value))
+				{
+					this.OnNameSizeProductChanging(value);
+					this.SendPropertyChanging();
+					this._NameSizeProduct = value;
+					this.SendPropertyChanged("NameSizeProduct");
+					this.OnNameSizeProductChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SizeProduct_ProductDetail", Storage="_ProductDetails", ThisKey="IdSizeProduct", OtherKey="IdSizeProduct")]
+		public EntitySet<ProductDetail> ProductDetails
+		{
+			get
+			{
+				return this._ProductDetails;
+			}
+			set
+			{
+				this._ProductDetails.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ProductDetails(ProductDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.SizeProduct = this;
+		}
+		
+		private void detach_ProductDetails(ProductDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.SizeProduct = null;
 		}
 	}
 	
@@ -1915,120 +2029,6 @@ namespace DoAn_Web_SellClothes.Models
 		{
 			this.SendPropertyChanging();
 			entity.ProductType = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SizeProduct")]
-	public partial class SizeProduct : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IdSizeProduct;
-		
-		private string _NameSizeProduct;
-		
-		private EntitySet<ProductDetail> _ProductDetails;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdSizeProductChanging(int value);
-    partial void OnIdSizeProductChanged();
-    partial void OnNameSizeProductChanging(string value);
-    partial void OnNameSizeProductChanged();
-    #endregion
-		
-		public SizeProduct()
-		{
-			this._ProductDetails = new EntitySet<ProductDetail>(new Action<ProductDetail>(this.attach_ProductDetails), new Action<ProductDetail>(this.detach_ProductDetails));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdSizeProduct", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int IdSizeProduct
-		{
-			get
-			{
-				return this._IdSizeProduct;
-			}
-			set
-			{
-				if ((this._IdSizeProduct != value))
-				{
-					this.OnIdSizeProductChanging(value);
-					this.SendPropertyChanging();
-					this._IdSizeProduct = value;
-					this.SendPropertyChanged("IdSizeProduct");
-					this.OnIdSizeProductChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameSizeProduct", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
-		public string NameSizeProduct
-		{
-			get
-			{
-				return this._NameSizeProduct;
-			}
-			set
-			{
-				if ((this._NameSizeProduct != value))
-				{
-					this.OnNameSizeProductChanging(value);
-					this.SendPropertyChanging();
-					this._NameSizeProduct = value;
-					this.SendPropertyChanged("NameSizeProduct");
-					this.OnNameSizeProductChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SizeProduct_ProductDetail", Storage="_ProductDetails", ThisKey="IdSizeProduct", OtherKey="IdSizeProduct")]
-		public EntitySet<ProductDetail> ProductDetails
-		{
-			get
-			{
-				return this._ProductDetails;
-			}
-			set
-			{
-				this._ProductDetails.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ProductDetails(ProductDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.SizeProduct = this;
-		}
-		
-		private void detach_ProductDetails(ProductDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.SizeProduct = null;
 		}
 	}
 }
