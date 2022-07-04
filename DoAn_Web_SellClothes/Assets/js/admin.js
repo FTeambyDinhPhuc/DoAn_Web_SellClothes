@@ -40,7 +40,7 @@
     if (datatablesFeedback) {
         new simpleDatatables.DataTable(datatablesFeedback);
     }
-    
+  
 });
 
 

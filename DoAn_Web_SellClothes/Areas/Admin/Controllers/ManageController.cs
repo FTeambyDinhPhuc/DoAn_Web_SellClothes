@@ -8,6 +8,7 @@ using System.IO;
 using System.Text;
 using System.Security.Cryptography;
 using DoAn_Web_SellClothes.Assets.csharp;
+using System.Web.UI.HtmlControls;
 
 namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
 {
@@ -257,12 +258,14 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             }
             else
             {
+                var s = collection["sex"];
                 ProductType type = db.ProductTypes.SingleOrDefault(n => n.IdProductType == id);
                 if (type == null)
                 {
                     Response.StatusCode = 404;
                     return null;
                 }
+                type.IdSex = Int32.Parse(s);
                 UpdateModel(type);
                 db.SubmitChanges();
                 return RedirectToAction("TypesClothes");
@@ -371,10 +374,12 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             ViewBag.Loai = new SelectList(db.ProductTypes.ToList().OrderBy(n => n.IdProductType), "IdProductType", "NameProductType");
             ViewBag.Size = new SelectList(db.SizeProducts.ToList().OrderBy(n => n.NameSizeProduct), "IdSizeProduct", "NameSizeProduct");
 
+            //HtmlTextArea txtImageupload = (HtmlTextArea)(frm.FindControl("txtImagename1"));
+            //string imagename = txtImageupload.Value;
             var ten = collection["name"];
             var gia = collection["price"];
             var date = DateTime.UtcNow.Date;
-            var mota = collection["describe"];            
+            var mota = collection["Mota"];
             var loai = collection["Loai"];
             var size = collection["Size"];
             var sl = collection["quality"];
@@ -389,7 +394,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
 
             var filename = Path.GetFileName(img.FileName); 
             var path = Path.Combine(Server.MapPath("~/Assets/img/Clothes"), filename);
-      
+
             img.SaveAs(path);
             pr.NameProduct = ten;
             pr.ImageProduct = filename;
@@ -402,9 +407,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
 
             db.Products.InsertOnSubmit(pr);
             db.SubmitChanges();
-            
-;
-
+           
             dt.IdSizeProduct = Int32.Parse(size);
             dt.IdProduct = pr.IdProduct;
             dt.SoLuongTon = int.Parse(sl);
@@ -453,8 +456,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                     }
                 }
             }
-
-            
+           
             sp.UpdateDate = date;
             UpdateModel(sp);
             db.SubmitChanges();
@@ -559,21 +561,22 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         public ActionResult DeleteProductDetail(int id)
         {
             int size = int.Parse(Request.QueryString["size"]);
-
+            ViewBag.IdProduct = Session["idp"];
+            int idpd = (int)Session["idp"];
             ProductDetail sp = db.ProductDetails.Where(n => n.IdProduct == id && n.IdSizeProduct == size).SingleOrDefault();
 
             try
             {
                 db.ProductDetails.DeleteOnSubmit(sp);
                 db.SubmitChanges();
-                SetAlert("Xóa chi tiết sản phẩm thành công", "success");
+                SetAlert("Xóa size thành công", "success");
             }
             catch
             {
-                SetAlert("Không xóa được chi tiết sản phẩm", "error");
+                SetAlert("Không xóa được size", "error");
             }
             
-            return RedirectToAction("Product");
+            return RedirectToAction("DetailProduct", new { id = idpd });
         }
 
         public ActionResult DetailProducts(int id)

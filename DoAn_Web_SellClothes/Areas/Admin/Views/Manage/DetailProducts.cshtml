@@ -23,7 +23,7 @@
                         <tr>
                             <th>Hình</th>
                             <td>
-                                <img src="~/Assets/img/Clothes/@Html.DisplayFor(model => model.ImageProduct)" class="img-thumbnail" style="width:75px" alt="Alternate Text" />
+                                <img src="~/Assets/img/Clothes/@Html.DisplayFor(model => model.ImageProduct)" class="img-thumbnail" alt="Alternate Text" />
                             </td>
                         </tr>
                         <tr>
@@ -33,10 +33,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>Ngày tạo</th>
-                            <td>
-                                @Html.DisplayFor(model => model.CreateDate)
-                            </td>
+                            <th>Ngày tạo</th>                            
+                            <td>@String.Format("{0:dd/MM/yyyy}", @Html.DisplayFor(model => model.CreateDate))</td>
                         </tr>
                         <tr>
                             <th>Ngày cập nhật</th>
@@ -57,12 +55,17 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>Trạng thái</th>
-                            <td>
-                                @Html.DisplayFor(model => model.StatusProduct)
-                            </td>
+                            <th>Trạng thái</th>                       
+                                @if (@Model.StatusProduct == 1)
+                                {
+                                    <td>Còn hàng</td>
+                                }
+                                else if (Model.StatusProduct == 0)
+                                {
+                                    <td>Hết hàng</td>
+                                }
+                             
                         </tr>
-
                     </tbody>
                 </table>
             </div>

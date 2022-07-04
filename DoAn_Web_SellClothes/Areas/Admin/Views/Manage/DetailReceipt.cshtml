@@ -15,7 +15,7 @@
                     <h1>FTeam</h1>
                     <div>
                         <h2>Hóa đơn #<span>@hd.IdInvoice</span></h2>
-                        <p>ngày lập: <span>@hd.InvoiceDate.ToString()</span></p>
+                        <p>Ngày lập: <span>@hd.InvoiceDate.ToString()</span></p>
                     </div>
                 </div>
                 <hr />
@@ -72,7 +72,7 @@
                     </tfoot>
                 </table>
                 <hr />
-                <p>Phương thức thanh toán: <span>@hd.PaymentsInvoice</span></p>
+                <p>Phương thức thanh toán: <span> @hd.PaymentsInvoice</span></p>
             </div>
         </div>
     </div>
@@ -93,7 +93,7 @@
                 else if (@hd.Paid == false && @hd.StatusInvoice)
                 {
                     <a class="btn btn-warning mb-xl-2" href="@Url.Action("CloseInvoice","Manage", new {id = @hd.IdInvoice, TrangThai = false})">Hủy đơn hàng</a>
-                    <a class="btn btn-success mb-xl-2" href="@Url.Action("Dagiao","Manage", new {id = @hd.IdInvoice, TrangThai = true})">Đã thanh toán</a>
+                    <a class="btn btn-success mb-xl-2" href="@Url.Action("Dagiao","Manage", new {id = @hd.IdInvoice, TrangThai = true})">Thanh toán</a>
                 }
                 else
                 {

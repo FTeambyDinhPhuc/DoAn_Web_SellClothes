@@ -39,8 +39,8 @@
                                 <th>Hình</th>
                                 <td>
                                     <div class="col-md-10">
-                                        <input type="file" name="img" />
-                                        <img src="~/Assets/img/Clothes/@Html.DisplayFor(modelItem => Model.ImageProduct)" class="img-thumbnail" style="width:75px" alt="Alternate Text" />
+                                        <input type="file" name="img"/>
+                                        <img src="~/Assets/img/Clothes/@Html.DisplayFor(modelItem => Model.ImageProduct)" class="img-thumbnail"  alt="@Model.NameProduct" />
                                     </div>
                                 </td>
                             </tr>
@@ -64,7 +64,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Mã loại</th>
+                                <th>Loại</th>
                                 <td>
                                     <div class="col-md-10">
                                         @Html.DropDownList("Loai")
