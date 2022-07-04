@@ -39,7 +39,7 @@
                             <td>@Html.DisplayFor(modelItem => item.InvoiceAddressReceiver)</td>
                             <td>@Html.DisplayFor(modelItem => item.InvoicePhoneReceiver)</td>
                             <td>@String.Format("{0:dd/MM/yyyy}", item.InvoiceDate)</td>
-                            <td>@String.Format("{0:0,0 }", item.TotalInvoice)<sub>đ</sub></td>
+                            <td>@String.Format("{0:0,0 }", item.TotalInvoice)<span>VNĐ</span></td>
                             <td>@Html.DisplayFor(modelItem => item.PaymentsInvoice)</td>
                             @if (@item.StatusInvoice)
                             {
