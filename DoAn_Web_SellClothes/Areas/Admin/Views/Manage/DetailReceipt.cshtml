@@ -58,16 +58,22 @@
                                 <td>@item.ProductDetail.Product.NameProduct</td>
                                 <td>@item.ProductDetail.SizeProduct.NameSizeProduct</td>
                                 <td>@item.Quantity</td>
-                                <td>@String.Format("{0:0,0 }", item.UnitPrice)<sub>đ</sub></td>
-                                <td>@String.Format("{0:0,0 }", item.UnitPrice * item.Quantity)<sub>đ</sub></td>
+                                <td>@String.Format("{0:0,0 }", item.UnitPrice)<span>VNĐ</span></td>
+                                <td>@String.Format("{0:0,0 }", item.UnitPrice * item.Quantity)<span>VNĐ</span></td>
                             </tr>
                         }
-
+                    <tr>
+                        <td>Phí ship</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>@String.Format("{0:0,0 }", 25000)<span>VNĐ</span></td>
+                    </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colspan="4" align="right"><b>Tổng tiền</b></td>
-                            <td>@String.Format("{0:0,0 }", @hd.TotalInvoice)<sub>đ</sub></td>
+                            <td>@String.Format("{0:0,0 }", @hd.TotalInvoice)<span>VNĐ</span></td>
                         </tr>
                     </tfoot>
                 </table>

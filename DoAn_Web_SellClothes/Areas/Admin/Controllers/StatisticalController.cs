@@ -23,6 +23,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             ViewBag.Customercount = Customercount();
             ViewBag.Productcount = Productcount();
             ViewBag.SexMen = SexMen();
+            ViewBag.TongTienUocTinh = TongTienUocTinh();
             ViewBag.TotalInvoid = TotalInvoid();
             ViewBag.StatusInvoic = StatusInvoic();
             ViewBag.rStatusInvoic = rStatusInvoic();
@@ -52,13 +53,14 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         }
         private int TotalInvoid()
         {
-            int tong = 0;
-            var count = db.Invoices.OrderByDescending(s => s.TotalInvoice).Count();
-            foreach(var item in db.Invoices)
-            {
-                tong = tong + item.TotalInvoice;
-            }
-            return tong;
+            int tongTien = db.Invoices.Where(p => p.Paid == true).Select(p => p.TotalInvoice).Sum();
+            return tongTien;
+        }
+
+        private int TongTienUocTinh()
+        {
+            int tongTien = db.Invoices.Select(p => p.TotalInvoice).Sum();
+            return tongTien;
         }
         private int StatusInvoic()
         {

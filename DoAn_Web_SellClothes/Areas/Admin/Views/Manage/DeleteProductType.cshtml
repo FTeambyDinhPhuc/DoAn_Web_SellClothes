@@ -19,10 +19,15 @@
                             </td>
                         </tr>        
                         <tr>
-                            <th>Mã giới tính</th>
-                            <td>
-                                @Html.DisplayFor(model => model.IdSex)
-                            </td>
+                            <th>Giới tính</th>
+                           @if (Model.IdSex == 1)
+                            {
+                                <td>Nam</td>
+                            }
+                            else
+                            {
+                                <td>Nữ</td>
+                            }
                         </tr>
                     </tbody>
                 </table>
@@ -31,7 +36,7 @@
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-            <input type="submit" class="mybtn btn btn-outline-success" />
+            <input type="submit" class="btn btn-outline-success btn-fluid" value="Xác nhận" />
         }
     </div>
     <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>

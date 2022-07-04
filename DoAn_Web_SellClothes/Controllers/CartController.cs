@@ -184,7 +184,7 @@ namespace DoAn_Web_SellClothes.Controllers
                 ddh.InvoiceAddressReceiver = collection["billing_address"];
                 ddh.NoteInvoice = collection["billing_note"];
                 ddh.InvoiceDate = DateTime.Now;
-                ddh.TotalInvoice = TongTien();
+                ddh.TotalInvoice = TongTien() + 25000;
                 ddh.PaymentsInvoice = collection["Payment"];
                 ddh.StatusInvoice = false;
                 ddh.Paid = false;
