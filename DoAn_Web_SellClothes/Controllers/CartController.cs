@@ -157,6 +157,11 @@ namespace DoAn_Web_SellClothes.Controllers
         [HttpPost]
         public ActionResult Checkout(string strURL, FormCollection collection)
         {
+            Session["billing_name"] = null;
+            Session["billing_phone"] = null;
+            Session["billing_address"] = null;
+            Session["billing_note"] = null;
+
             Session["billing_name"] = collection["billing_name"];
             Session["billing_phone"] = collection["billing_phone"];
             Session["billing_address"] = collection["billing_address"];
@@ -175,7 +180,7 @@ namespace DoAn_Web_SellClothes.Controllers
                 ddh.InvoiceAddressReceiver = collection["billing_address"];
                 ddh.NoteInvoice = collection["billing_note"];
                 ddh.InvoiceDate = DateTime.Now;
-                ddh.TotalInvoice = TongTien() + 25000;
+                ddh.TotalInvoice = TongTien();
                 ddh.PaymentsInvoice = collection["Payment"];
                 ddh.StatusInvoice = false;
                 ddh.Paid = false;
@@ -229,8 +234,8 @@ namespace DoAn_Web_SellClothes.Controllers
                 }
                 string returnUrl = ConfigurationManager.AppSettings["returnUrl"].ToString();
                 string notifyUrl = ConfigurationManager.AppSettings["notifyUrl"].ToString();
-
-                string amount = gh.Sum(n => n.iThanhTien).ToString();
+                int tt = gh.Sum(n => n.iThanhTien);
+                string amount = (tt + 25000).ToString();
                 string orderid = Guid.NewGuid().ToString();
                 string requestId = Guid.NewGuid().ToString();
                 string extraData = "";
@@ -286,49 +291,49 @@ namespace DoAn_Web_SellClothes.Controllers
                 }
                 else
                 {
-                Account ac = (Account)Session["user"];
-                Invoice ddh = new Invoice();
-                List<Giohang> gh = LayGioHang();
-                ddh.IdAccount = ac.IdAccount;
-                ddh.InvoiceNameReceiver = (string)Session["billing_name"];
-                ddh.InvoicePhoneReceiver = (string)Session["billing_phone"];
-                ddh.InvoiceAddressReceiver = (string)Session["billing_address"];
-                ddh.NoteInvoice = (string)Session["billing_note"];
-                ddh.InvoiceDate = DateTime.Now;
-                ddh.TotalInvoice = TongTien() + 25000;
-                ddh.PaymentsInvoice = "Thanh toán MoMo";
-                ddh.StatusInvoice = false;
-                ddh.Paid = true;
-                data.Invoices.InsertOnSubmit(ddh);
-                data.SubmitChanges();
-                Session["idInvoice"] = ddh.IdInvoice;
-                foreach (var item in gh)
-                {
-                    InvoiceDetail ctdh = new InvoiceDetail();
-                    ctdh.IdSizeProduct = (int)item.iSize;
-                    ctdh.IdProduct = (int)item.iIdProduct;
-                    ctdh.IdInvoice = ddh.IdInvoice;
-                    ctdh.Quantity = item.iQuantityProduct;
-                    ctdh.UnitPrice = item.iPriceProduct;
-                    int soLuongTon = data.ProductDetails.SingleOrDefault(p => p.IdProduct == item.iIdProduct && p.IdSizeProduct == item.iSize).SoLuongTon.Value;
-                    if (soLuongTon < ctdh.Quantity)
+                    Account ac = (Account)Session["user"];
+                    Invoice ddh = new Invoice();
+                    List<Giohang> gh = LayGioHang();
+                    ddh.IdAccount = ac.IdAccount;
+                    ddh.InvoiceNameReceiver = (string)Session["billing_name"];
+                    ddh.InvoicePhoneReceiver = (string)Session["billing_phone"];
+                    ddh.InvoiceAddressReceiver = (string)Session["billing_address"];
+                    ddh.NoteInvoice = (string)Session["billing_note"];
+                    ddh.InvoiceDate = DateTime.Now;
+                    ddh.TotalInvoice = TongTien() + 25000;
+                    ddh.PaymentsInvoice = "Thanh toán MoMo";
+                    ddh.StatusInvoice = false;
+                    ddh.Paid = true;
+                    data.Invoices.InsertOnSubmit(ddh);
+                    data.SubmitChanges();
+                    Session["idInvoice"] = ddh.IdInvoice;
+                    foreach (var item in gh)
                     {
-                        ViewBag.SoLuongTon = "Sản phẩm hết hàng hoặc quá số lượng tồn, sản phẩm hết hàng sẽ được xóa khỏi gio hàng!";
-                        List<Giohang> listProductInCart = LayGioHang();
-                        Giohang sp = listProductInCart.SingleOrDefault(n => n.iIdProduct == item.iIdProduct && n.iSize == item.iSize);
-                        listProductInCart.Remove(sp);
-                        return this.Checkout();
+                        InvoiceDetail ctdh = new InvoiceDetail();
+                        ctdh.IdSizeProduct = (int)item.iSize;
+                        ctdh.IdProduct = (int)item.iIdProduct;
+                        ctdh.IdInvoice = ddh.IdInvoice;
+                        ctdh.Quantity = item.iQuantityProduct;
+                        ctdh.UnitPrice = item.iPriceProduct;
+                        int soLuongTon = data.ProductDetails.SingleOrDefault(p => p.IdProduct == item.iIdProduct && p.IdSizeProduct == item.iSize).SoLuongTon.Value;
+                        if (soLuongTon < ctdh.Quantity)
+                        {
+                            ViewBag.SoLuongTon = "Sản phẩm hết hàng hoặc quá số lượng tồn, sản phẩm hết hàng sẽ được xóa khỏi gio hàng!";
+                            List<Giohang> listProductInCart = LayGioHang();
+                            Giohang sp = listProductInCart.SingleOrDefault(n => n.iIdProduct == item.iIdProduct && n.iSize == item.iSize);
+                            listProductInCart.Remove(sp);
+                            return this.Checkout();
+                        }
+                        updateSoLuong(ctdh);
+                        data.InvoiceDetails.InsertOnSubmit(ctdh);
                     }
-                    updateSoLuong(ctdh);
-                    data.InvoiceDetails.InsertOnSubmit(ctdh);
-                }
-                data.SubmitChanges();
-                ViewBag.message = "Thanh toán thành công";
-                Session["Giohang"] = null;
-                Session["billing_name"] = null;
-                Session["billing_phone"] = null;
-                Session["billing_address"] = null;
-                Session["billing_note"] = null;
+                    data.SubmitChanges();
+                    ViewBag.message = "Thanh toán thành công";
+                    Session["Giohang"] = null;
+                    Session["billing_name"] = null;
+                    Session["billing_phone"] = null;
+                    Session["billing_address"] = null;
+                    Session["billing_note"] = null;
                 return View();
             }
             return View();    
