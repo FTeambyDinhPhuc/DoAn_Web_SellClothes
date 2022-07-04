@@ -53,13 +53,39 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         }
         private int TotalInvoid()
         {
-            int tongTien = db.Invoices.Where(p => p.Paid == true).Select(p => p.TotalInvoice).Sum();
+            int tongTien = 0;
+            var hd = db.Invoices.Select(p => p.TotalInvoice).Count();
+            var tt = db.Invoices.Where(p => p.Paid == true).Select(p => p.TotalInvoice).Count();
+            if (hd == 0)
+            {
+                return tongTien;
+            }
+            else 
+            {
+                if(tt == 0)
+                {
+                    return tongTien;
+                }
+                else
+                {
+                    tongTien = db.Invoices.Where(p => p.Paid == true).Select(p => p.TotalInvoice).Sum();
+                }
+            }
             return tongTien;
         }
 
         private int TongTienUocTinh()
         {
-            int tongTien = db.Invoices.Select(p => p.TotalInvoice).Sum();
+            int tongTien = 0;
+            var hd = db.Invoices.Select(p => p.TotalInvoice).Count();
+            if (hd  == 0)
+            {
+                return tongTien;
+            }
+            else
+            {
+                tongTien = db.Invoices.Select(p => p.TotalInvoice).Sum();
+            }
             return tongTien;
         }
         private int StatusInvoic()
