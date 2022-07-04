@@ -28,7 +28,8 @@
                         <tr>
                             <th>Hình</th>
                             <td>
-                                @Html.DisplayFor(model => model.ImageProduct)
+                            
+                                <img class="img-thumbnail" src="~/Assets/img/Clothes/@Html.DisplayFor(modelItem => Model.ImageProduct)"/>
                             </td>
                         </tr>
                         <tr>
@@ -49,16 +50,24 @@
                                 @Html.DisplayFor(model => model.DescribeProduct)
                             </td>
                         </tr>
+                      
                         <tr>
                             <th>Trạng thái</th>
-                            <td>
-                                @Html.DisplayFor(model => model.StatusProduct)
-                            </td>
+                            @if (Model.StatusProduct == 1)
+                            {
+                                <td>Còn hhàng</td>
+                            }
+                            else if (Model.StatusProduct == 0)
+                            {
+                                <td>Hết hàng</td>
+                            }
+
+
                         </tr>
                         <tr>
-                            <th>Mã loại</th>
+                            <th>Loại</th>
                             <td>
-                                @Html.DisplayFor(model => model.IdProductType)
+                                @Html.DisplayFor(model => model.ProductType.NameProductType)
                             </td>
                         </tr>
 
@@ -70,10 +79,10 @@
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-            <input type="submit" class="mybtn btn btn-outline-success"/>
+            <input type="submit" class="btn-fluid btn btn-outline-success" value="Xác nhận"/>
         }
     </div>
-    <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
+    <a class="btn btn-outline-dark" href="@Url.Action("Product","Manage")">Trở về</a>
 
 
 </div>

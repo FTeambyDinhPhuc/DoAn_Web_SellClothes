@@ -28,7 +28,7 @@ body {
     padding: 0;
 }
 
-html {
+html, body{
     line-height: 1.5rem;
     font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;

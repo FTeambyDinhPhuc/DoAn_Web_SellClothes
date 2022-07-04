@@ -29,7 +29,7 @@
                         <tr>
                             <th>Giá</th>
                             <td>
-                                @String.Format("{0:0,0 }", Model.PriceProduct)<sub>đ</sub>
+                                @String.Format("{0:0,0 }", Model.PriceProduct)<span>VNĐ</span>
                             </td>
                         </tr>
                         <tr>
@@ -71,6 +71,6 @@
             </div>
         </div>
     </div>
-    <button class="btn btn-outline-dark" onclick="history.back()">Trở về</button>
+    <a class="btn btn-outline-dark" href="@Url.Action("Product","Manage")">Trở về</a>
 </div>
 

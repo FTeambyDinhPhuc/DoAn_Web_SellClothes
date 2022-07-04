@@ -49,15 +49,21 @@ namespace DoAn_Web_SellClothes.Controllers
         [HttpGet]
         public ActionResult ProductDetails(int? id)
         {
-            //var sanpham = from sp in data.Products where sp.IdProduct == id select sp;
             var sanPham = data.Products.FirstOrDefault(p => p.IdProduct == id);
             var maSize = data.ProductDetails.Where(p => p.IdProduct == id).Select(p => p.IdSizeProduct).ToList();
             var soLuongTon = data.ProductDetails.Where(p => p.IdProduct == id).Select(p => p.SoLuongTon).ToList();
-            var sizeSanPham = data.SizeProducts.Select(p => p.NameSizeProduct).ToList();
-            var demsanpham = soLuongTon.Sum(p => p.Value);
+            List<string> nameSize = new List<string>();
+            SizeProduct size;
+            foreach (var item in maSize)
+            {
+                size = data.SizeProducts.FirstOrDefault(p => p.IdSizeProduct == item);
+                nameSize.Add(size.NameSizeProduct);
+            }
             sanPham.idSize = maSize;
             sanPham.soluongton = soLuongTon;
-            sanPham.sizeProduct = sizeSanPham;
+            sanPham.sizeProduct = nameSize;
+
+            var demsanpham = soLuongTon.Sum(p => p.Value);
             if (demsanpham <= 0)
             {
                 sanPham.StatusProduct = 0;
