@@ -1,4 +1,13 @@
-﻿/*Thanh navbar với side*/
+﻿
+.btn-fluid{
+    width:100%;
+    max-width:none;
+}
+
+.mybtn{
+    width:8rem;
+}
+/*Thanh navbar với side*/
 .fixed-top, .nav-fixed #layoutSidenav #layoutSidenav_nav, .nav-fixed .topnav {
     position: fixed;
     top: 0;
@@ -7,11 +16,6 @@
     z-index: 1030;
 }
 
-
-html,
-body {
-    height: 100%;
-}
 
 
     #layoutSidenav #layoutSidenav_nav {
@@ -114,13 +118,11 @@ body {
 
 
 
-
 .sidenav {
     display: flex;
     flex-direction: column;
     height: 100%;
     flex-wrap: nowrap;
-
     background-color: #212529;
     color: rgba(255, 255, 255, 0.5);
 }
@@ -254,32 +256,27 @@ body {
 
 /*Hết màn hình login*/
 
-/*table dữ liệu*/
-
-/*Hết table dữ liệu*/
-/*Màn hình thông tin khách hàng*/
-/*Bảng chỉnh sửa thông tin*/
-.table-Edit .table tbody tr td input {
-    width: 100%;
-    padding: .5rem 1rem;
-    max-width: none;
+/*Màn hình thống kê*/
+.statistical label{
+    font-weight:600;
+    margin:1rem 0 .5rem 1rem;
+    font-size:1.2rem;
 }
-
-.mybtn{
-    width:100%;
-    max-width:none;
-    padding:.5rem 0;
+/*Table thống kê*/
+.table-statistical {
+    padding: 1rem;
+    padding-bottom: 0;
+    border: 2px solid var( --border-color);
+    border-radius: 1rem;
 }
-
-/*hết Màn hình thông tin khách hàng*/
-
-
+/*hết màn hình thống kê*/
 /*màn hình quản lý sản phẩm*/
-
-.img-thumbnail{
-    width:20px;
+.img-thumbnail {
+    width: 4.7rem;
 }
 /*Hết màn hình quản lý sản phẩm*/
+
+
 
 /*In*/
 @media print{

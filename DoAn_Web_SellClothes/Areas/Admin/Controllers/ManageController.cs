@@ -116,7 +116,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             return View(list);
         }
         //========================================================================================
-        public ActionResult Sex()
+        public ActionResult Size()
         {
             if (Session["admin"] == null)
             {
@@ -128,7 +128,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddSex()
+        public ActionResult AddSize()
         {
             if (Session["admin"] == null)
             {
@@ -140,7 +140,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult AddSex(SizeProduct pr, FormCollection collection)
+        public ActionResult AddSize(SizeProduct pr, FormCollection collection)
         {
             if (Session["admin"] == null)
             {
@@ -151,11 +151,12 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             pr.NameSizeProduct = ten;
             db.SizeProducts.InsertOnSubmit(pr);
             db.SubmitChanges();
-            return RedirectToAction("Sex", "Manage");
+            SetAlert("Thêm size thành công", "success");
+            return RedirectToAction("Size", "Manage");
         }       
 
 
-        public ActionResult DeleteSex(int id)
+        public ActionResult DeleteSize(int id)
         {
             if (Session["admin"] == null)
             {
@@ -180,22 +181,9 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
                     SetAlert("Không xóa được size", "error");
                 }
                
-                return RedirectToAction("Sex");
+                return RedirectToAction("Size");
             }
         }       
-        //========================================================================================
-        private List<SizeProduct> size(int count)
-        {
-            return db.SizeProducts.OrderByDescending(s => s.IdSizeProduct).Take(count).ToList();
-        }
-        private List<ProductType> type(int count)
-        {
-            return db.ProductTypes.OrderByDescending(s => s.IdProductType).Take(count).ToList();
-        }
-        private List<ProductDetail> detail(int count)
-        {
-            return db.ProductDetails.OrderByDescending(s => s.IdProduct).Take(count).ToList();
-        }
         //========================================================================================
         public ActionResult TypesClothes()
         {
@@ -236,6 +224,7 @@ namespace DoAn_Web_SellClothes.Areas.Admin.Controllers
             pr.IdSex = Int32.Parse(s);
             db.ProductTypes.InsertOnSubmit(pr);
             db.SubmitChanges();
+            SetAlert("Thêm loại sản phẩm thành công", "success");
             return RedirectToAction("TypesClothes", "Manage");
         } 
 

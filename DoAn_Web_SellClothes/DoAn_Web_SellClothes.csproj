@@ -2331,7 +2331,6 @@
     <Content Include="Areas\Admin\Views\Manage\Receipt.cshtml" />
     <Content Include="Areas\Admin\Views\Statistical\Statistical.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\Customer.cshtml" />
-    <Content Include="Areas\Admin\Views\Manage\Sex.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\TypesClothes.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\Product.cshtml" />
     <Content Include="Areas\Admin\Views\Feedback\Feedback.cshtml" />
@@ -2345,12 +2344,13 @@
     <Content Include="Areas\Admin\Views\Manage\DetailProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\AddProductDetailSize.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\DetailProducts.cshtml" />
-    <Content Include="Areas\Admin\Views\Manage\AddSex.cshtml" />
     <Content Include="Models\DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Areas\Admin\Views\Manage\Size.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\AddSize.cshtml" />
     <None Include="Models\DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>

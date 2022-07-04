@@ -18,10 +18,10 @@
         <div class="card-body">
             <table id="datatablesTypesClothes" class="table-responsive">
                 <thead>
-                    <tr>
-                        <th>Mã loại</th>
-                        <th>Tên loại</th>
-                        <th>Mã giới tính</th>
+                    <tr >
+                        <th style="min-width:130px" class="text-center">Mã loại</th>
+                        <th style="min-width:130px" class="text-center">Tên loại</th>
+                        <th style="min-width:150px" class="text-center">Mã giới tính</th>
                         <th>&nbsp;</th>
 
                     </tr>
@@ -30,13 +30,13 @@
 
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.IdProductType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.NameProductType)</td>
-                            <td>@Html.DisplayFor(modelItem => item.IdSex)</td>
+                        <tr class="text-center">
+                            <td >@Html.DisplayFor(modelItem => item.IdProductType)</td>
+                            <td >@Html.DisplayFor(modelItem => item.NameProductType)</td>
+                            <td >@Html.DisplayFor(modelItem => item.IdSex)</td>
                             <td>
-                                @Html.ActionLink("Edit", "EditTypesClothes", new { id = item.IdProductType }, new { @class = "btn btn-info mb-1 mb-lg-0" })
-                                @Html.ActionLink("Delete", "DeleteProductType", new { id = item.IdProductType }, new { @class = "btn btn-warning" })
+                                @Html.ActionLink("Edit", "EditTypesClothes", new { id = item.IdProductType }, new { @class = "mybtn btn btn-info mb-1 mb-md-0 mr-md-1" })
+                                @Html.ActionLink("Delete", "DeleteProductType", new { id = item.IdProductType }, new { @class = "mybtn btn btn-warning" })
 
                             </td>
                         </tr>
