@@ -36,7 +36,8 @@
 .sidenav-toggled #layoutSidenav #layoutSidenav_nav {
     transform: translateX(0);
 }
-
+/*
+lớp phủ đen khi nhấn nút sổ thanh dọc*/
 .sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
     content: "";
     display: block;
