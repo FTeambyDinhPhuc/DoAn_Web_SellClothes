@@ -40,7 +40,9 @@ namespace DoAn_Web_SellClothes.Controllers
             var diachi = collection["address"];
             var matkhau = collection["password"];
             var matkhaunhaplai = collection["confirmpassword"];
-            if (String.IsNullOrEmpty(hoten) || String.IsNullOrEmpty(email) || String.IsNullOrEmpty(matkhau) || String.IsNullOrEmpty(matkhaunhaplai) || String.IsNullOrEmpty(diachi) || String.IsNullOrEmpty(sodienthoai))
+            if (String.IsNullOrEmpty(hoten) || String.IsNullOrEmpty(email) 
+                || String.IsNullOrEmpty(matkhau) || String.IsNullOrEmpty(matkhaunhaplai) 
+                || String.IsNullOrEmpty(diachi) || String.IsNullOrEmpty(sodienthoai))
             {
                 ViewData["Error"] = "Vui lòng điền đầy đủ nội dung";
                 return this.Register();
@@ -48,6 +50,16 @@ namespace DoAn_Web_SellClothes.Controllers
             else if (checkUser(email, CHECK_EMAIL))
             {
                 ViewData["Error"] = "Tài khoản đã tồn tại";
+                return this.Register();
+            }
+            else if (sodienthoai.ToString().Length != 10)
+            {
+                ViewData["Error"] = "Số điện thoại phải 10 số";
+                return this.Register();
+            }
+            else if(matkhau.ToString().Length>=24 && matkhau.ToString().Length <= 8)
+            {
+                ViewData["Error"] = "Độ dài mật khẩu nhiều hơn 8 và ít hơn 24";
                 return this.Register();
             }
             else if (!String.Equals(matkhau.ToString(), matkhaunhaplai.ToString()))
