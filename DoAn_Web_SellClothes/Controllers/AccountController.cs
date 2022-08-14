@@ -57,7 +57,7 @@ namespace DoAn_Web_SellClothes.Controllers
                 ViewData["Error"] = "Số điện thoại phải 10 số";
                 return this.Register();
             }
-            else if (matkhau.ToString().Length >= 24 && matkhau.ToString().Length <= 8)
+            else if (matkhau.ToString().Length >= 24 || matkhau.ToString().Length <= 8)
             {
                 ViewData["Error"] = "Độ dài mật khẩu nhiều hơn 8 và ít hơn 24";
                 return this.Register();
